@@ -48,6 +48,11 @@ builder.Services.AddScoped<IHandleService, HandleService>();
 builder.Services.AddScoped<ITipService , TipService>();
 builder.Services.AddScoped<IGripeService, GripeService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<ICategoryService , CategoryService>();
+builder.Services.AddScoped<ICategoryDetailService, CategoryDetailService>();
+builder.Services.AddScoped<IWishListService, WishListService>();
+builder.Services.AddScoped<ICartDetailService, CartDetailService>();
 
 
 var app = builder.Build();
