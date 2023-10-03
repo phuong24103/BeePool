@@ -1,5 +1,6 @@
 ﻿using Datn_Api.IServices;
 using Datn_Shared.Models;
+using Datn_Shared.ViewModels.CartDetailViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Datn_Api.Controllers
@@ -40,10 +41,10 @@ namespace Datn_Api.Controllers
         }
 
         [HttpPost]
-        [Route("Create/{cartId:Guid}/{productId:Guid}")]
-        public async Task<ActionResult<CartDetail>> CreateCartDetail(Guid cartId, Guid productId)
+        [Route("Create")]
+        public async Task<ActionResult<CartDetail>> CreateCartDetail(CreateCartDetail cartDetail)
         {
-            await _cartDetailService.CreateCartDetail(cartId, productId);
+            await _cartDetailService.CreateCartDetail(cartDetail);
             return Ok();
         }
 
