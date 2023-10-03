@@ -45,15 +45,19 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 builder.Services.AddScoped<IMaterialService, MaterialService>();
 builder.Services.AddScoped<IRenService, RenService>();
 builder.Services.AddScoped<IHandleService, HandleService>();
-builder.Services.AddScoped<ITipService , TipService>();
+builder.Services.AddScoped<ITipService, TipService>();
 builder.Services.AddScoped<IGripeService, GripeService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IPostService, PostService>();
-builder.Services.AddScoped<ICategoryService , CategoryService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryDetailService, CategoryDetailService>();
 builder.Services.AddScoped<IWishListService, WishListService>();
 builder.Services.AddScoped<ICartDetailService, CartDetailService>();
-
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IUserservice, UserService>();
+builder.Services.AddScoped<IUserRoleService, UserRoleService>();
+builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<IRankService, RankService>();
 
 var app = builder.Build();
 
