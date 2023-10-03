@@ -58,6 +58,11 @@ builder.Services.AddScoped<IUserservice, UserService>();
 builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IRankService, RankService>();
+builder.Services.AddScoped<IBillStatusService, BillStatusService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IVoucherService, VoucherService>();
+builder.Services.AddScoped<IBillService, BillService>();
+builder.Services.AddScoped<IBillDetailService, BillDetailService>();
 
 var app = builder.Build();
 
