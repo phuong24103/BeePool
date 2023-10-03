@@ -77,9 +77,26 @@ namespace Datn_Api.Controllers
             foreach (var item in cartDetails)
             {
                 var product = _productService.GetProductById(item.ProductId);
-                product.Result.AvailableQuantity -= item.Quantity;
+                UpdateProduct updateProduct = new UpdateProduct()
+                {
+                Name = product.Result.Name,
+                ImportPrice = product.Result.ImportPrice,
+                Price = product.Result.Price,
+                AvailableQuantity = product.Result.AvailableQuantity - item.Quantity,
+                Sold = product.Result.Sold,
+                Image = product.Result.Image,
+                CreateDate = product.Result.CreateDate,
+                Producer = product.Result.Producer,
+                Status = product.Result.Status,
+                Description = product.Result.Description,
+                MaterialId = product.Result.MaterialId,
+                RenId = product.Result.RenId,
+                HandleId = product.Result.HandleId,
+                TipId = product.Result.TipId,
+                GripeId = product.Result.GripeId
+            };
                 
-                await _productService.UpdateProduct(product.Result.Id,product1);
+                await _productService.UpdateProduct(product.Result.Id,updateProduct);
 
                 CreateBillDetail billDetail = new CreateBillDetail()
                 {
