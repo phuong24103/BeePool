@@ -1,6 +1,7 @@
 ﻿using Datn_Api.Data;
 using Datn_Api.IServices;
 using Datn_Shared.Models;
+using Datn_Shared.ViewModels.CartDetailViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace Datn_Api.Services
@@ -13,21 +14,21 @@ namespace Datn_Api.Services
         {
             _context = context;
         }
-        public async Task<bool> CreateCartDetail(Guid cartId, Guid productId)
+        public async Task<bool> CreateCartDetail(CreateCartDetail cartDetail)
         {
-            var c = await _context.CartDetails.FirstOrDefaultAsync(p => p.CartId == cartId && p.ProductId == productId);
+            var c = await _context.CartDetails.FirstOrDefaultAsync(p => p.CartId == cartDetail.CartId && p.ProductId == cartDetail.ProductId);
             try
             {
                 if (c == null)
                 {
-                    var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+                    var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == cartDetail.ProductId);
                     CartDetail p = new CartDetail()
                     {
                         Id = Guid.NewGuid(),
-                        CartId = cartId,
-                        ProductId = productId,
-                        Quantity = 1,
-                        Price = product.Price,
+                        CartId = cartDetail.CartId,
+                        ProductId = cartDetail.ProductId,
+                        Quantity = cartDetail.Quantity,
+                        Price = cartDetail.Price,
                     };
                     await _context.CartDetails.AddAsync(c);
                 }
