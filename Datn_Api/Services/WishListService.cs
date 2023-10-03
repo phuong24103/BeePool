@@ -1,6 +1,7 @@
 ﻿using Datn_Api.Data;
 using Datn_Api.IServices;
 using Datn_Shared.Models;
+using Datn_Shared.ViewModels.WishListViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace Datn_Api.Services
@@ -14,24 +15,24 @@ namespace Datn_Api.Services
             _context = context;
         }
 
-        public async Task<bool> Like(Guid userId, Guid productId)
+        public async Task<bool> Like(CreateWishList wishList)
         {
             try
             {
-                var wishList = await _context.WishLists.FirstOrDefaultAsync(p => p.UserId == userId && p.ProductId == productId);
-                if (wishList == null)
+                var wl = await _context.WishLists.FirstOrDefaultAsync(p => p.UserId == wishList.UserId && p.ProductId == wishList.ProductId);
+                if (wl == null)
                 {
                     WishList p = new WishList()
                     {
                         Id = Guid.NewGuid(),
-                        UserId = userId,
-                        ProductId = productId,
+                        UserId = wishList.UserId,
+                        ProductId = wishList.ProductId,
                     };
                     await _context.WishLists.AddAsync(p);
                 }
                 else
                 {
-                    _context.WishLists.Remove(wishList);
+                    _context.WishLists.Remove(wl);
                 }
                 await _context.SaveChangesAsync();
                 return true;
