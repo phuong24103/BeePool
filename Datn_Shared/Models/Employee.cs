@@ -9,21 +9,18 @@ using System.Threading.Tasks;
 
 namespace Datn_Shared.Models
 {
-    public class User : IdentityUser<Guid>
+    public class Employee : IdentityUser<Guid>
     {
         [Key]
         public Guid Id { get; set; }
-        [ForeignKey("RankId")]
-        public Guid RankId { get; set; }
+
         public int Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Address{ get; set;}
-        public int Point { get; set; }
+        public DateTime CreateDate { get; set;}
         public int Status{ get; set;}
-        public virtual Rank Rank { get; set;}
-        public virtual Cart Cart { get; set;}
-        public virtual ICollection< Post> Posts { get; set;}
-        public virtual ICollection<WishList> WishLists { get; set;}
-        public virtual ICollection<Bill> Bills { get; set;}
+        public virtual ICollection<Voucher>  Vouchers { get; set;}
+
+
     }
 }

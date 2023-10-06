@@ -18,7 +18,7 @@ namespace Datn_Shared.ViewModels.BillViewModels
         public double Price { get; set; }
         public DateTime CreateDate { get; set; }
         public string Address { get; set; }
-        public User User { get; set; }
+        public Employee User { get; set; }
         public UsedVoucher UsedVoucher { get; set; }
         public BillStatus BillStatus { get; set; }
         public Payment Payment { get; set; }

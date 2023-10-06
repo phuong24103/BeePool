@@ -5,13 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Datn_Shared.ViewModels.RenViewModels
+namespace Datn_Shared.Models
 {
-    public class RenUpdate
+    public class Weight
     {
-        [Required]
+        [Key]
         public string Name { get; set; }
-        [Required]
+        public double Price { get; set; }
+
         public int Status { get; set; }
+        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
     }
 }

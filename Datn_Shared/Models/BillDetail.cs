@@ -14,14 +14,14 @@ namespace Datn_Shared.Models
         public Guid Id { get; set; }
         [ForeignKey("BillId")]
         public Guid BillId { get; set; }
-        [ForeignKey("ProductId")]
-        public Guid ProductId { get; set; }
+        [ForeignKey("ProductDetailId")]
+        public Guid ProductDetailId { get; set; }
 
         public int Quantity { get; set; }
 
         public double Price { get; set; }
         public virtual Bill Bill { get; set; }
-        public virtual Product Product { get; set; }
+        public virtual ProductDetail ProductDetail { get; set; }
 
 
     }

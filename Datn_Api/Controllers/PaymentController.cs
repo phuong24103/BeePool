@@ -2,7 +2,6 @@
 using Datn_Api.Services;
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.PaymentViewModels;
-using Datn_Shared.ViewModels.PostViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

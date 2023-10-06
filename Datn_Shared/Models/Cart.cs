@@ -10,9 +10,9 @@ namespace Datn_Shared.Models
     public class Cart
     {
         [Key]
-        public Guid UserId { get; set; }
+        public Guid CustomerId { get; set; }
         public string? Description { get; set; }
-        public virtual User User { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual ICollection<CartDetail> CartDetails { get; set; }
     }
 }

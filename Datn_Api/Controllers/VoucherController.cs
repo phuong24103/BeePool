@@ -1,7 +1,6 @@
 ﻿using Datn_Api.IServices;
 using Datn_Api.Services;
 using Datn_Shared.Models;
-using Datn_Shared.ViewModels.PostViewModels;
 using Datn_Shared.ViewModels.VoucherViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

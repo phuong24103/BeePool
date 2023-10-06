@@ -24,7 +24,7 @@ namespace Datn_Shared.Models
         public DateTime CreateDate { get; set; }
 
         public string Address { get; set; }
-        public virtual User User { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual UsedVoucher UsedVoucher { get; set; }
         public virtual BillStatus BillStatus { get; set; }
         public virtual Payment Payment { get; set; }

@@ -33,10 +33,7 @@ namespace Datn_Shared.ViewModels.ProductViewModels
         public int Status { get; set; }
         public string Description { get; set; }
 
-        public  Material Material { get; set; }
-        public  Ren Ren { get; set; }
-        public  Handle Handle { get; set; }
+        public  Shaft Shaft { get; set; }
         public  Tip Tip { get; set; }
-        public  Gripe Gripe { get; set; }
     }
 }
