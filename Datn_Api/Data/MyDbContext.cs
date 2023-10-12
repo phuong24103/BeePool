@@ -1,11 +1,20 @@
+<<<<<<< Updated upstream
 ﻿using Datn_Api.Extensions;
 using Datn_Shared.Models;
+=======
+﻿using Datn_Shared.Models;
+using Microsoft.AspNetCore.Identity;
+>>>>>>> Stashed changes
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Datn_Api.Data
 {
+<<<<<<< Updated upstream
     public class MyDbContext : IdentityDbContext<User, Role, Guid>
+=======
+    public class MyDbContext : IdentityDbContext<Employee, IdentityRole<Guid>, Guid>
+>>>>>>> Stashed changes
     {
         public MyDbContext(DbContextOptions options) : base(options)
         {
@@ -14,6 +23,7 @@ namespace Datn_Api.Data
         protected MyDbContext()
         {
         }
+
         public DbSet<Bill> Bills { get; set; }
         public DbSet<BillDetail> BillDetails { get; set; }
         public DbSet<BillStatus> BillStatuses { get; set; }
@@ -35,11 +45,19 @@ namespace Datn_Api.Data
         public DbSet<Voucher> Vouchers { get; set; }
         public DbSet<UsedVoucher> UsedVouchers { get; set; }
         public DbSet<WishList> WishLists { get; set; }
+<<<<<<< Updated upstream
         public DbSet<Post> Posts { get; set; }
+=======
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Shaft> Shafts { get; set; }
+        public DbSet<ProductDetail> ProductDetails { get; set; }
+        public DbSet<Weight> Weights { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+>>>>>>> Stashed changes
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=DATN;Integrated Security=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=HUYAN;Database=BeePool;User Id=huyddph28122;Password=anhhung0122;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -53,7 +71,23 @@ namespace Datn_Api.Data
             .WithOne(c => c.User)
             .HasForeignKey<Cart>(c => c.UserId);
             base.OnModelCreating(modelBuilder);
+<<<<<<< Updated upstream
             modelBuilder.Seed();
+=======
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                var tableName = entityType.GetTableName();
+                if (tableName.StartsWith("AspNet"))
+                {
+                    entityType.SetTableName(tableName.Substring(6));
+                }
+                if (tableName.StartsWith("AspNetUser"))
+                {
+                    entityType.SetTableName(String.Concat("Employee", tableName.Substring(10)));
+                }
+            }
+            //modelBuilder.Seed();
+>>>>>>> Stashed changes
         }
     }
 }
