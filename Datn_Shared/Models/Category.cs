@@ -11,10 +11,8 @@ namespace Datn_Shared.Models
     {
         [Key]
         public Guid Id { get; set; }
-
         public string Name { get; set; }
-
         public int Status { get; set; }
-        public virtual ICollection<CategoryDetail> CategoryDetails { get; set; }    
+        public virtual ICollection<Product> Products { get; set; }    
     }
 }

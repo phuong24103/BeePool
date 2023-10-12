@@ -1,5 +1,6 @@
 ﻿using Datn_Api.IServices;
 using Datn_Shared.Models;
+using Datn_Shared.ViewModels.WishListViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Datn_Api.Controllers
@@ -39,10 +40,10 @@ namespace Datn_Api.Controllers
             return Ok(wishLists);
         }
 
-        [HttpOptions("{userId}/{productId}")]
-        public async Task<ActionResult<WishList>> Like(Guid userId, Guid productId)
+        [HttpOptions("Like")]
+        public async Task<ActionResult<WishList>> Like(CreateWishList wishList)
         {
-            await _wishListService.Like(userId, productId);
+            await _wishListService.Like(wishList);
             return Ok();
         }
     }

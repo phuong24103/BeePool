@@ -14,6 +14,7 @@ namespace Datn_Shared.Models
         public string Name { get; set; }
         public int NecessaryPoints {  get; set; }
         public string Description { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
+
     }
 }

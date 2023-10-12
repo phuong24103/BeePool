@@ -12,15 +12,15 @@ namespace Datn_Shared.Models
     {
         [Key]
         public Guid Id { get; set; }
-        [ForeignKey("CartId")]
-        public Guid CartId { get; set; }
-        [ForeignKey ("ProductId")]
-        public Guid ProductId { get; set; }
+        [ForeignKey("CustomerId")]
+        public Guid CustomerId { get; set; }
+        [ForeignKey ("ProductDetailsId")]
+        public Guid ProductDetailsId { get; set; }
 
         public int Quantity { get; set; }
 
         public double Price { get; set; }
-        public virtual Product Product { get; set; }
+        public virtual ProductDetail ProductDetail { get; set; }
         public virtual Cart Cart { get; set; }
     }
 }
