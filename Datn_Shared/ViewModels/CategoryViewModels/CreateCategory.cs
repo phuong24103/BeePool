@@ -10,8 +10,7 @@ namespace Datn_Shared.ViewModels.CategoryViewModels
     public class CreateCategory
     {
         [Required(ErrorMessage = "Vui lòng nhập tên")]
-        public string? Name { get; set; }
-        [Required(ErrorMessage = "Vui lòng chọn trạng thái")]
+        public string Name { get; set; }
         public int Status { get; set; }
     }
 }
