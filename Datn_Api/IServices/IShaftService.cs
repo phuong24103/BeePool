@@ -15,5 +15,6 @@ namespace Datn_Api.IServices
         public Task<Shaft> GetShaftById(Guid id);
 
         public Task<IEnumerable<Shaft>> GetAllShaft();
+        public Task<IEnumerable<Shaft>> GetAllShaftById(Guid id);
     }
 }

@@ -68,12 +68,18 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 });
 
 builder.Services.AddScoped<ITipService, TipService>();
+builder.Services.AddScoped<IShaftService, ShaftService>();
+builder.Services.AddScoped<IWeightService, WeightService>();
+builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IRankService, RankService>();
 builder.Services.AddScoped<IBillStatusService, BillStatusService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IVoucherService, VoucherService>();
 builder.Services.AddScoped<IBillService, BillService>();
+
 
 var app = builder.Build();
 

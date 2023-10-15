@@ -62,6 +62,11 @@ namespace Datn_Api.Services
             return await _context.Shafts.ToListAsync();
         }
 
+        public async Task<IEnumerable<Shaft>> GetAllShaftById(Guid id)
+        {
+            return await _context.Shafts.Where(p=>p.Id == id).ToListAsync();
+        }
+
         public async Task<Shaft> GetShaftById(Guid id)
         {
             return await _context.Shafts.FindAsync(id);

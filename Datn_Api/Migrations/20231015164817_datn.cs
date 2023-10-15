@@ -144,13 +144,14 @@ namespace Datn_Api.Migrations
                 name: "Weights",
                 columns: table => new
                 {
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Weights", x => x.Name);
+                    table.PrimaryKey("PK_Weights", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,7 +164,6 @@ namespace Datn_Api.Migrations
                     Pin = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Wrap = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rings = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImportPrice = table.Column<double>(type: "float", nullable: false),
                     AvailableQuantity = table.Column<int>(type: "int", nullable: false),
                     Sold = table.Column<int>(type: "int", nullable: false),
                     Likes = table.Column<int>(type: "int", nullable: false),
@@ -364,8 +364,7 @@ namespace Datn_Api.Migrations
                     Price = table.Column<double>(type: "float", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    WeightName = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -389,10 +388,10 @@ namespace Datn_Api.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductDetails_Weights_WeightName",
-                        column: x => x.WeightName,
+                        name: "FK_ProductDetails_Weights_WeightId",
+                        column: x => x.WeightId,
                         principalTable: "Weights",
-                        principalColumn: "Name",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -657,9 +656,9 @@ namespace Datn_Api.Migrations
                 column: "TipId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductDetails_WeightName",
+                name: "IX_ProductDetails_WeightId",
                 table: "ProductDetails",
-                column: "WeightName");
+                column: "WeightId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductImages_ProductDetailId",

@@ -66,6 +66,11 @@ namespace Datn_Api.Services
             return await _db.Tips.ToListAsync(); 
         }
 
+        public async Task<IEnumerable<Tip>> GetAllTipById(Guid id)
+        {
+            return await _db.Tips.Where(p=>p.Id == id).ToListAsync();
+        }
+
         public async Task<Tip> GetTipById(Guid id)
         {
             return await _db.Tips.FindAsync(id);

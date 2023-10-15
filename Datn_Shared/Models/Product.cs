@@ -18,7 +18,6 @@ namespace Datn_Shared.Models
         public string Pin {  get; set; }
         public string Wrap {  get; set; }
         public string Rings {  get; set; }
-        public double ImportPrice { get; set; }
         public int AvailableQuantity { get; set; }
         public int Sold {  get; set; }
         public int Likes { get; set; }
