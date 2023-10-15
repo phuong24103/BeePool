@@ -22,8 +22,6 @@ namespace Datn_Shared.ViewModels.ProductViewModels
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Rings { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
-        public double ImportPrice { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public int AvailableQuantity { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public int Sold { get; set; }
@@ -37,6 +35,5 @@ namespace Datn_Shared.ViewModels.ProductViewModels
         public int Status { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Description { get; set; }
-        public  Category Category { get; set; }
     }
 }

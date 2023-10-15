@@ -14,5 +14,7 @@ namespace Datn_Api.IServices
         public Task<Tip> GetTipById(Guid id);
 
         public Task<IEnumerable<Tip>> GetAllTip();
+        public Task<IEnumerable<Tip>> GetAllTipById(Guid id);
+    
     }
 }

@@ -15,5 +15,6 @@ namespace Datn_Api.IServices
         public Task<Weight> GetWeightById(Guid id);
 
         public Task<IEnumerable<Weight>> GetAllWeight();
+        public Task<IEnumerable<Weight>> GetAllWeightById(Guid id);
     }
 }

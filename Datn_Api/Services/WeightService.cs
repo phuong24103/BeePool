@@ -59,6 +59,11 @@ namespace Datn_Api.Services
             return await _context.Weights.ToListAsync();
         }
 
+        public async Task<IEnumerable<Weight>> GetAllWeightById(Guid id)
+        {
+            return await _context.Weights.Where(p=>p.Id==id).ToListAsync();
+        }
+
         public async Task<Weight> GetWeightById(Guid id)
         {
             return await _context.Weights.FindAsync(id);

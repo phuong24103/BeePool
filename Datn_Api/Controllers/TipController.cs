@@ -40,7 +40,7 @@ namespace Datn_Api.Controllers
         [Route("Update/{id:Guid}")]
         public async Task<ActionResult<UpdateTip>> UpdateTip([FromRoute] Guid id, [FromBody] UpdateTip updateTip)
         {
-            await _itisv.UpdateTip(id, updateTip);
+            await _itisv.UpdateTip(id, updateTip);      
             return Ok(updateTip);
         }
         [HttpDelete]
@@ -49,6 +49,14 @@ namespace Datn_Api.Controllers
         {
             await _itisv.DeleteTip(id);
             return Ok();
+        }
+        [HttpGet]
+        [Route("GetByAllId/{id:Guid}")]
+
+        public async Task<IActionResult> GetAllTipById([FromRoute] Guid id)
+        {
+            var mate = await _itisv.GetAllTipById(id);
+            return Ok(mate);
         }
     }
 }

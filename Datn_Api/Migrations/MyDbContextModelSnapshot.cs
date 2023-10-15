@@ -357,9 +357,6 @@ namespace Datn_Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("ImportPrice")
-                        .HasColumnType("float");
-
                     b.Property<int>("Likes")
                         .HasColumnType("int");
 
@@ -434,10 +431,6 @@ namespace Datn_Api.Migrations
                     b.Property<Guid>("WeightId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("WeightName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProductID");
@@ -446,7 +439,7 @@ namespace Datn_Api.Migrations
 
                     b.HasIndex("TipId");
 
-                    b.HasIndex("WeightName");
+                    b.HasIndex("WeightId");
 
                     b.ToTable("ProductDetails");
                 });
@@ -615,8 +608,13 @@ namespace Datn_Api.Migrations
 
             modelBuilder.Entity("Datn_Shared.Models.Weight", b =>
                 {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -624,7 +622,7 @@ namespace Datn_Api.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
                     b.ToTable("Weights");
                 });
@@ -901,7 +899,7 @@ namespace Datn_Api.Migrations
 
                     b.HasOne("Datn_Shared.Models.Weight", "Weight")
                         .WithMany("ProductDetails")
-                        .HasForeignKey("WeightName")
+                        .HasForeignKey("WeightId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
