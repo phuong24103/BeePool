@@ -5,12 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Datn_Shared.ViewModels.CategoryViewModels
+namespace Datn_Shared.ViewModels.WeightViewModels
 {
-    public class UpdateCategory
+    public class CreateWeight
     {
-        [Required(ErrorMessage = "Vui lòng nhập tên")]
+        [Required(ErrorMessage = "Vui lòng nhập name")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập price")]
+        public double Price { get; set; }
+
+
         public int Status { get; set; }
     }
 }

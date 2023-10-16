@@ -1,6 +1,7 @@
 ﻿using Datn_Api.Data;
 using Datn_Api.IServices;
 using Datn_Shared.Models;
+using Datn_Shared.ViewModels.ShaftViewModels;
 using Datn_Shared.ViewModels.TipViewModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,11 @@ namespace Datn_Api.Services
             {
                 Id = Guid.NewGuid(),
                 Name = tip.Name,
+                Price = tip.Price,
+                Size = tip.Size,
+                Length = tip.Length,
+                Material = tip.Material,
+                Color =tip.Color,
                 Status = tip.Status,
 
             };
@@ -60,6 +66,11 @@ namespace Datn_Api.Services
             return await _db.Tips.ToListAsync(); 
         }
 
+        public async Task<IEnumerable<Tip>> GetAllTipById(Guid id)
+        {
+            return await _db.Tips.Where(p=>p.Id == id).ToListAsync();
+        }
+
         public async Task<Tip> GetTipById(Guid id)
         {
             return await _db.Tips.FindAsync(id);
@@ -70,6 +81,11 @@ namespace Datn_Api.Services
             var t = await _db.Tips.FindAsync(id);
             if (t == null) return false;
             t.Name = tip.Name;
+            t.Price = tip.Price;
+            t.Size = tip.Size;
+            t.Length = tip.Length;
+            t.Material = tip.Material;
+            t.Color = tip.Color;
             t.Status = tip.Status;
             try
             {

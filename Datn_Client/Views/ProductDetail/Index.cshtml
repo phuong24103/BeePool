@@ -1,5 +1,10 @@
-﻿@{
+﻿@model Datn_Shared.ViewModels.ProductDetailViewModels.ViewProductDetail
+@using Datn_Shared.Models;
+@{
     ViewData["Title"] = "ProductDetail";
+    var tip = (ViewData["Tip"] as List<Tip>);
+    var s = (ViewData["Shaft"] as List<Shaft>);
+    var w = (ViewData["Weight"] as List<Weight>);
     <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/productbutton.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/dropdown.css" asp-append-version="true" />
@@ -191,51 +196,63 @@
             Description
         </h3>
         <h6>
-            Để description ở đây
+            @Model.Description
         </h6>
     </div>
     <div class="col-md-6" style="text-align : left">
-        <h3 style="font-weight : bold">
-            Tên Sản Phẩm
+        <h3  style="font-weight : bold">
+            @Model.Product.Name
         </h3>
         <h3 style="font-weight : bold">
-            Giá : <b style="color : red">1 tỉ đồng</b>
+            Giá : <b style="color : red">@Model.Price</b>
         </h3>
         <div style="margin-bottom : 30px;margin-top : 30px">
             <b>Chọn các phụ kiện Custom</b>
-        </div>
-        <select style="margin-bottom : 30px">
-            <option selected value="0">Tip</option>
+        </div>  
+        <select asp-for="Tip" style="margin-bottom : 30px">
+            <option selected>Open this select menu</option>
+            @foreach (var item in tip)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+           @*  <option selected value="0">Tip</option>
             <option value="1">Giá : Tăng Dần</option>
             <option value="2">Giá : Giảm Dần</option>
             <option value="3">Tên A-Z</option>
             <option value="4">Tên Z-A</option>
             <option value="5">Cũ Nhất</option>
             <option value="6">Mới Nhất</option>
-            <option value="7">Bán Chạy Nhất</option>
+            <option value="7">Bán Chạy Nhất</option> *@
         </select>
 
-        <select style="margin-bottom : 30px">
-            <option selected value="0">Shaft</option>
+        <select asp-for ="Shaft" style="margin-bottom : 30px">
+            @foreach (var item in s)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+    @*         <option asp-for = "Shaft" selected value="0">Shaft</option>
             <option value="1">Giá : Tăng Dần</option>
             <option value="2">Giá : Giảm Dần</option>
             <option value="3">Tên A-Z</option>
             <option value="4">Tên Z-A</option>
             <option value="5">Cũ Nhất</option>
             <option value="6">Mới Nhất</option>
-            <option value="7">Bán Chạy Nhất</option>
+            <option value="7">Bán Chạy Nhất</option> *@
 
         </select>
-        <select style="margin-bottom : 30px">
-
-            <option selected value="0">Weight</option>
+        <select asp-for="Weight" style="margin-bottom : 30px">
+            @foreach (var item in w)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        @*     <option selected value="0">Weight</option>
             <option value="1">Giá : Tăng Dần</option>
             <option value="2">Giá : Giảm Dần</option>
             <option value="3">Tên A-Z</option>
             <option value="4">Tên Z-A</option>
             <option value="5">Cũ Nhất</option>
             <option value="6">Mới Nhất</option>
-            <option value="7">Bán Chạy Nhất</option>
+            <option value="7">Bán Chạy Nhất</option> *@
         </select>
         <div class="row">
             <div class="col-md-3">

@@ -4,6 +4,7 @@ using Datn_Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datn_Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231015164817_datn")]
+    partial class datn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,14 +110,8 @@ namespace Datn_Api.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<double>("TotalMoney")
-                        .HasColumnType("float");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CustomerId");
 
@@ -135,6 +131,9 @@ namespace Datn_Api.Migrations
                         .HasColumnType("float");
 
                     b.Property<Guid>("ProductDetailId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProductDetailsId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
@@ -476,14 +475,15 @@ namespace Datn_Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NecessaryPoints")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -917,7 +917,7 @@ namespace Datn_Api.Migrations
             modelBuilder.Entity("Datn_Shared.Models.ProductImage", b =>
                 {
                     b.HasOne("Datn_Shared.Models.ProductDetail", "ProductDetail")
-                        .WithMany("ProductImages")
+                        .WithMany("productImages")
                         .HasForeignKey("ProductDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1081,7 +1081,7 @@ namespace Datn_Api.Migrations
 
                     b.Navigation("CartDetails");
 
-                    b.Navigation("ProductImages");
+                    b.Navigation("productImages");
                 });
 
             modelBuilder.Entity("Datn_Shared.Models.Rank", b =>

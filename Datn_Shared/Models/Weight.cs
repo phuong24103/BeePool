@@ -10,6 +10,7 @@ namespace Datn_Shared.Models
     public class Weight
     {
         [Key]
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
 

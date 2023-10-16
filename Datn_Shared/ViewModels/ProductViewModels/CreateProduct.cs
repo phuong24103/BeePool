@@ -12,31 +12,28 @@ namespace Datn_Shared.ViewModels.ProductViewModels
     public class CreateProduct
     {
         public Guid Id { get; set; }
-        public Guid MaterialId { get; set; }
-        public Guid RenId { get; set; }
-        public Guid HandleId { get; set; }
-        public Guid TipId { get; set; }
-        public Guid GripeId { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập tên")]
+        public Guid CategoryID { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
-        public double ImportPrice { get; set; }
+        public string Pin { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
-        public double Price { get; set; }
+        public string Wrap { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
+        public string Rings { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public int AvailableQuantity { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public int Sold { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
-        public string Image { get; set; }
+        public int Likes { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public DateTime CreateDate { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Producer { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
+
         public int Status { get; set; }
-
+        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Description { get; set; }
-
     }
 }

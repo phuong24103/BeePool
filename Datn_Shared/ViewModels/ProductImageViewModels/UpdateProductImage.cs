@@ -1,18 +1,17 @@
-﻿using Datn_Shared.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Datn_Shared.ViewModels.MaterialViewModels
+namespace Datn_Shared.ViewModels.ProductImageViewModels
 {
-    public class UpdateMaterial
+    public class UpdateProductImage
     {
-        [Required]
+        public Guid ProductDetailId { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập name")]
         public string Name { get; set; }
-        [Required]
         public int Status { get; set; }
     }
 }

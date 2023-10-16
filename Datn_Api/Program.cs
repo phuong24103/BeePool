@@ -65,6 +65,11 @@ builder.Services.Configure<IdentityOptions>(options => {
 });
 
 builder.Services.AddScoped<ITipService, TipService>();
+builder.Services.AddScoped<IShaftService, ShaftService>();
+builder.Services.AddScoped<IWeightService, WeightService>();
+builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IRankService, RankService>();
 builder.Services.AddScoped<IBillStatusService, BillStatusService>();
@@ -81,6 +86,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 
