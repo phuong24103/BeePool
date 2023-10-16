@@ -21,7 +21,7 @@ namespace Datn_Shared.Models
         public Guid WeightId { get; set; }
         [ForeignKey("TipId")]
         public Guid TipId { get; set; }
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
         public double ImportPrice{ get; set; }
         public double Price { get; set; }
         public DateTime CreateDate { get; set; }
