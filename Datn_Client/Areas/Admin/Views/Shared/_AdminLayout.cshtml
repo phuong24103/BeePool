@@ -200,7 +200,7 @@
                     </ul><!-- End Messages Dropdown Items -->
 
                 </li><!-- End Messages Nav -->
-                @if (User.IsInRole("Admin"))
+                @if (User.IsInRole("Quản lý") || User.IsInRole("Nhân viên"))
                 {
                     <li class="nav-item dropdown pe-3">
 
