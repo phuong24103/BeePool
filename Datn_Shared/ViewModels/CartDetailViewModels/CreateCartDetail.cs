@@ -9,8 +9,8 @@ namespace Datn_Shared.ViewModels.CartDetailViewModels
 {
     public class CreateCartDetail
     {
-        public Guid CartId { get; set; }
-        public Guid ProductId { get; set; }
+        public Guid CustomerId { get; set; }
+        public Guid ProductDetailId { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
     }

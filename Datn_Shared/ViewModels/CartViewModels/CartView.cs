@@ -8,7 +8,9 @@ namespace Datn_Shared.ViewModels.CartViewModels
 {
     public class CartView
     {
-        public Guid UserId { get; set; }
-        public string Description { get; set; }
+        public Guid CustomerId { get; set; }
+        public int Quantity { get; set; }
+        public double TotalMoney { get; set; }
+        public int Status { get; set; }
     }
 }

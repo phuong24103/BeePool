@@ -5,6 +5,7 @@ using Datn_Shared.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -12,13 +13,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<MyDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyCS"));
+});
+
+builder.Services.AddIdentityCore<Customer>()
+    .AddEntityFrameworkStores<MyDbContext>();
 
 builder.Services.AddIdentity<Employee, IdentityRole<Guid>>()
     .AddEntityFrameworkStores<MyDbContext>()/*.AddDefaultTokenProviders()*/;
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -37,6 +42,7 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecretKey"]))
     };
 });
+
 builder.Services.Configure<IdentityOptions>(options => {
     // Thi?t l?p v? Password
     options.Password.RequireDigit = false; // Không b?t ph?i có s?
@@ -56,15 +62,6 @@ builder.Services.Configure<IdentityOptions>(options => {
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     options.User.RequireUniqueEmail = true;  // Email là duy nh?t
 
-    // C?u hình ??ng nh?p.
-    options.SignIn.RequireConfirmedEmail = true;            // C?u hình xác th?c ??a ch? email (email ph?i t?n t?i)
-    options.SignIn.RequireConfirmedPhoneNumber = false;     // Xác th?c s? ?i?n tho?i
-
-});
-
-builder.Services.AddDbContext<MyDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MyCS"));
 });
 
 builder.Services.AddScoped<ITipService, TipService>();
@@ -79,6 +76,16 @@ builder.Services.AddScoped<IBillStatusService, BillStatusService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IVoucherService, VoucherService>();
 builder.Services.AddScoped<IBillService, BillService>();
+builder.Services.AddScoped<ILoginEmployeeService, LoginEmployeeService>();
+builder.Services.AddScoped<IRegisterEmployeeService, RegisterEmployeeService>();
+builder.Services.AddScoped<ILoginCustomerService, LoginCustomerService>();
+builder.Services.AddScoped<IRegisterCustomerService, RegisterCustomerService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();

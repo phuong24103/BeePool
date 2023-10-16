@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace Datn_Shared.Models
 {
-    public class ProductDetail
-        
+    public class ProductDetail        
     {
         [Key]
         public Guid Id { get; set; }
@@ -22,7 +21,6 @@ namespace Datn_Shared.Models
         public Guid WeightId { get; set; }
         [ForeignKey("TipId")]
         public Guid TipId { get; set; }
-
         public string Quantity { get; set; }
         public double ImportPrice{ get; set; }
         public double Price { get; set; }
@@ -33,9 +31,8 @@ namespace Datn_Shared.Models
         public virtual Tip Tip { get; set; }
         public virtual Shaft Shaft { get; set; }
         public virtual Weight Weight { get; set; } 
-        public virtual ICollection<ProductImage> productImages { get; set; }
+        public virtual ICollection<ProductImage> ProductImages { get; set; }
         public  virtual ICollection<CartDetail> CartDetails { get; set; }
         public virtual ICollection<BillDetail> BillDetails { get; set; }
-
     }
 }

@@ -22,7 +22,6 @@ namespace Datn_Api.Services
                 Id = rank.Id,
                 Name = rank.Name,
                 NecessaryPoints = rank.NecessaryPoints,
-                Description = rank.Description
             };
             try
             {
@@ -69,7 +68,6 @@ namespace Datn_Api.Services
             r.Id = rank.Id;
             r.Name = rank.Name;
             r.NecessaryPoints = rank.NecessaryPoints;
-            r.Description = rank.Description;
             try
             {
                 _context.Update(r);

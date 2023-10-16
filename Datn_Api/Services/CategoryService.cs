@@ -38,9 +38,9 @@ namespace Datn_Api.Services
         {
             var Category = _context.Categories.Find(id);
             if (Category == null) return false;
-            Category.Status = 2;
             try
             {
+                Category.Status = 2;
                 _context.Categories.Update(Category);
                 await _context.SaveChangesAsync();
                 return true;
