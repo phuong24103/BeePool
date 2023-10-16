@@ -11,7 +11,9 @@ namespace Datn_Shared.Models
     {
         [Key]
         public Guid CustomerId { get; set; }
-        public string? Description { get; set; }
+        public int Quantity { get; set; }
+        public double TotalMoney { get; set; }
+        public int Status { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual ICollection<CartDetail> CartDetails { get; set; }
     }

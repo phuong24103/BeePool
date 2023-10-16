@@ -1,26 +1,12 @@
-
-using Datn_Api.Extensions;
-using Datn_Shared.Models;
-
 using Datn_Shared.Models;
 using Microsoft.AspNetCore.Identity;
-
-
-using Datn_Shared.Models;
-using Microsoft.AspNetCore.Identity;
-
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Principal;
 
 namespace Datn_Api.Data
 {
-
-    public class MyDbContext : IdentityDbContext<User, Role, Guid>
-
     public class MyDbContext : IdentityDbContext<Employee, IdentityRole<Guid>, Guid>
-
-    public class MyDbContext : IdentityDbContext<Employee, IdentityRole<Guid>,Guid>
-
     {
         public MyDbContext(DbContextOptions options) : base(options)
         {
@@ -44,32 +30,23 @@ namespace Datn_Api.Data
         public DbSet<Voucher> Vouchers { get; set; }
         public DbSet<UsedVoucher> UsedVouchers { get; set; }
         public DbSet<WishList> WishLists { get; set; }
-
-        public DbSet<Post> Posts { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Shaft> Shafts { get; set; }
         public DbSet<ProductDetail> ProductDetails { get; set; }
         public DbSet<Weight> Weights { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
 
-        public DbSet <Customer> Customers { get; set; }
-        public DbSet <Shaft> Shafts { get; set; }
-        public DbSet<ProductDetail> ProductDetails { get; set; }    
-        public DbSet <Weight> Weights { get; set; }
-        public DbSet <ProductImage> ProductImages { get; set; }
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=HUYAN;Database=BeePool;User Id=huyddph28122;Password=anhhung0122;");
+            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=BeePool;Integrated Security=True;TrustServerCertificate=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CartDetail>()
-.HasOne(a => a.Cart)
-.WithMany(c => c.CartDetails)
-.HasForeignKey(c => c.CustomerId);
+            .HasOne(a => a.Cart)
+            .WithMany(c => c.CartDetails)
+            .HasForeignKey(c => c.CustomerId);
             modelBuilder.Entity<Bill>()
             .HasOne(a => a.UsedVoucher)
             .WithOne(c => c.Bill)
@@ -80,7 +57,7 @@ namespace Datn_Api.Data
             .HasForeignKey<Cart>(c => c.CustomerId);
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Seed();
+            //modelBuilder.Seed();
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
@@ -94,13 +71,6 @@ namespace Datn_Api.Data
                     entityType.SetTableName(String.Concat("Employee", tableName.Substring(10)));
                 }
             }
-
-            //modelBuilder.Seed();
-
-
-           //modelBuilder.Seed();
-
         }
-
     }
 }

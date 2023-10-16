@@ -108,8 +108,14 @@ namespace Datn_Api.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<double>("TotalMoney")
+                        .HasColumnType("float");
 
                     b.HasKey("CustomerId");
 
@@ -129,9 +135,6 @@ namespace Datn_Api.Migrations
                         .HasColumnType("float");
 
                     b.Property<Guid>("ProductDetailId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ProductDetailsId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
@@ -357,9 +360,6 @@ namespace Datn_Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("ImportPrice")
-                        .HasColumnType("float");
-
                     b.Property<int>("Likes")
                         .HasColumnType("int");
 
@@ -480,15 +480,14 @@ namespace Datn_Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NecessaryPoints")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -917,7 +916,7 @@ namespace Datn_Api.Migrations
             modelBuilder.Entity("Datn_Shared.Models.ProductImage", b =>
                 {
                     b.HasOne("Datn_Shared.Models.ProductDetail", "ProductDetail")
-                        .WithMany("productImages")
+                        .WithMany("ProductImages")
                         .HasForeignKey("ProductDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1081,7 +1080,7 @@ namespace Datn_Api.Migrations
 
                     b.Navigation("CartDetails");
 
-                    b.Navigation("productImages");
+                    b.Navigation("ProductImages");
                 });
 
             modelBuilder.Entity("Datn_Shared.Models.Rank", b =>

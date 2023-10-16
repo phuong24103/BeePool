@@ -13,6 +13,11 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+.link-text {
+    color: #8FB9DF !important;
+    text-decoration: none;
+}
+
+.link-text:hover {
+    text-decoration: underline;
 }

@@ -1,28 +1,31 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpAccess
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Datn_Client</title>
+    <title>BeePool</title>
+    <link href="~/images/logo.png" rel="icon">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Datn_Client.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/nav.css" asp-append-version="true" />
     <script src="~/js/imagedetail.js"></script>
 </head>
-<body style = "background-color : #7A7A7A">
+<body style="background-color: white;">
     <header style="text-align : center;">
 
-        <div id="carouselExample" class="carousel slide" style="text-align : center;background-color : #778899;margin-bottom : 30px;margin-top : 100px">
+        <div id="carouselExample" class="carousel slide" style="text-align : center;background-color : #1e73be;margin-bottom : 30px;margin-top : 100px; color: white">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    Giảm <b style="font-weight : bold">20%</b> tối đa <b style="font-weight : bold">30k/Sản Phẩm</b> Gậy Phá: <b style="font-weight : bold">FREEBREAK20</b> <a href="">Xem ngay</a>
+                    Giảm <b style="font-weight : bold">20%</b> tối đa <b style="font-weight : bold">30k/Sản Phẩm</b> Gậy Phá: <b style="font-weight : bold">FREEBREAK20</b> <a href="" class="link-text">Xem ngay</a>
                 </div>
                 <div class="carousel-item">
-                    Giảm <b style="font-weight : bold">20%</b> tối đa <b style="font-weight : bold">30k/Sản Phẩm</b> Gậy Đánh: <b style="font-weight : bold">POOL20</b><a href="">Xem ngay</a>
+                    Giảm <b style="font-weight : bold">20%</b> tối đa <b style="font-weight : bold">30k/Sản Phẩm</b> Gậy Đánh: <b style="font-weight : bold">POOL20</b> <a href="" class="link-text">Xem ngay</a>
                 </div>
                 <div class="carousel-item">
-                    Giảm <b style="font-weight : bold">20%</b> tối đa <b style="font-weight : bold">40k/Sản Phẩm</b> Gậy Custom: <b style="font-weight : bold">POD1LAN20</b><a href="">Xem ngay</a>
+                    Giảm <b style="font-weight : bold">20%</b> tối đa <b style="font-weight : bold">40k/Sản Phẩm</b> Gậy Custom: <b style="font-weight : bold">POD1LAN20</b> <a href="" class="link-text">Xem ngay</a>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -35,15 +38,13 @@
             </div>
 
         </div>
-        <a class="nav-link px-2" href="#!">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link px-2">
             <div style="margin-bottom : 50px">
                 <div style="text-align : center">
                     <img src="~/images/logo.png" alt="" style="width : 175px;height : 175px">
-
                 </div>
             </div>
         </a>
-
 
         <nav class="navbar navbar-expand-lg fixed-top navbar-scroll">
             <div class="container">
@@ -55,7 +56,7 @@
                     </span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarExample01">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav mx-auto mb-lg-0">
                         <li class="nav-item active">
                             <a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -77,6 +78,12 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Tin Tức</a>
                         </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto mb-lg-0">
+                        <li class="nav-item active">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
+                        </li>
                         <li class="nav-item">
                             <a asp-area="" asp-controller="Cart" asp-action="Cart">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
@@ -84,13 +91,25 @@
                                 </svg>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a asp-area="" asp-controller="Login" asp-action="Login">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-                                </svg>
-                            </a>
-                        </li>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Login" asp-action="Login">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            }
+                            else
+                            {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Logout">
+                                    Sign Out
+                                </a>
+                            </li>
+
+                            }
                     </ul>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 ﻿//using Datn_Shared.Models;
+//using Microsoft.AspNetCore.Identity;
 //using Microsoft.EntityFrameworkCore;
 
 //namespace Datn_Api.Extensions
@@ -10,55 +11,61 @@
 //            modelBuilder.Entity<Rank>().HasData(
 //            new Rank()
 //            {
+//                Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9000"),
+//                Name = "Đồng",
+//                NecessaryPoints = 0,
+//                Status = 0,
+//            },
+//            new Rank()
+//            {
 //                Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9232"),
 //                Name = "Đồng",
 //                NecessaryPoints = 1000,
-//                Description = "Sành điệu",
-//            },
+//				Status = 0,
+//			},
 //            new Rank()
 //            {
 //                Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9233"),
 //                Name = "Bạc",
 //                NecessaryPoints = 2000,
-//                Description = "Sành điệu",
-//            },
+//				Status = 0,
+//			},
 //            new Rank()
 //            {
 //                Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9234"),
 //                Name = "Vàng",
 //                NecessaryPoints = 5000,
-//                Description = "Sành điệu",
-//            },
+//				Status = 0,
+//			},
 //            new Rank()
 //            {
 //                Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9235"),
 //                Name = "Bạch kim",
 //                NecessaryPoints = 8000,
-//                Description = "Sành điệu",
-//            },
+//				Status = 0,
+//			},
 //            new Rank()
 //            {
 //                Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"),
 //                Name = "Kim cương",
 //                NecessaryPoints = 12000,
-//                Description = "Sành điệu",
-//            });
+//				Status = 0,
+//			});
 
-//            modelBuilder.Entity<Role>().HasData(
-//                new Role() { Name = "Admin", NormalizedName = "ADMIN", Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872") },
-//                new Role() { Name = "User", NormalizedName = "USER", Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873") }
+//            modelBuilder.Entity<IdentityRole<Guid>>().HasData(
+//                new IdentityRole<Guid>() { Name = "Quản lý", NormalizedName = "MANAGE", Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872") },
+//                new IdentityRole<Guid>() { Name = "Nhân viên", NormalizedName = "STAFF", Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873") }
 //            );
 
 //            modelBuilder.Entity<Employee>().HasData(
 //            new Employee()
 //            {
 //                Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
-//                RankId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"),
 //                Gender = 0,
 //                DateOfBirth = new DateTime(2003, 10, 20),
 //                Address = "Hoa Thanh Quế",
-//                Point = 12000,
-//                Status = 0,
+//				CreateDate = new DateTime(2023, 09, 11),
+//				Status = 0,
 //                UserName = "ThanhTung",
 //                Email = "thanhtung@gmail.com",
 //                PasswordHash = "Thanhtung@09",
@@ -67,31 +74,30 @@
 //            new Employee()
 //            {
 //                Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
-//                RankId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"),
 //                Gender = 1,
 //                DateOfBirth = new DateTime(2003, 11, 11),
 //                Address = "Hoa Thanh Quế",
-//                Point = 12000,
-//                Status = 0,
+//				CreateDate = new DateTime(2023, 09, 11),
+//				Status = 0,
 //                UserName = "QuynhAnh",
 //                Email = "quynhanhvippro@gmail.com",
 //                PasswordHash = "Quynhanh@03",
 //                PhoneNumber = "0363636363",
 //            });
 
-//            modelBuilder.Entity<UserRole>().HasData(
-//                new UserRole()
+//            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(
+//                new IdentityUserRole<Guid>()
 //                {
 //                    UserId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
 //                    RoleId = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872")
 //                },
-//                new UserRole()
+//                new IdentityUserRole<Guid>()
 //                {
 //                    UserId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
 //                    RoleId = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873")
 //                });
 
-//            modelBuilder.Entity<Post>().HasData(
+//            /*modelBuilder.Entity<Post>().HasData(
 //            new Post()
 //            {
 //                Id = new Guid("486d827b-27a7-4232-85c8-a14396cf0f12"),
@@ -124,85 +130,80 @@
 //                CreateDate = new DateTime(2023, 09, 11),
 //                Description = "This entry was posted in BLOG, Tin Tức Bida. Bookmark the permalink.",
 //                Status = 0,
-//            });
+//            });*/
 
-//            modelBuilder.Entity<Material>().HasData(
-//                new Material()
+//            modelBuilder.Entity<Category>().HasData(
+//                new Category()
 //                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d81"),
-//                    Name = "Gỗ Phong già",
-//                    Status = 0,
-
+//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d03"),
+//                    Name = "Cơ Đánh",
+//                    Status = 0
 //                },
-//                new Material()
+//                new Category()
 //                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d71"),
-//                    Name = "Gỗ Phong Canada cao cấp",
-//                    Status = 0,
-
+//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d04"),
+//                    Name = "Cơ Nhảy",
+//                    Status = 0
+//                },
+//                new Category()
+//                {
+//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d05"),
+//                    Name = "Cơ Phá",
+//                    Status = 0
+//                },
+//                new Category()
+//                {
+//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d06"),
+//                    Name = "Cơ Phá + Nhảy",
+//                    Status = 0
 //                });
 
-//            modelBuilder.Entity<Ren>().HasData(
-//                new Ren()
+//            modelBuilder.Entity<Product>().HasData(
+//                new Product()
 //                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d82"),
-//                    Name = "5/16/18",
+//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+//                    Name = "PREDATOR CLASSIC 2-4 POOL CUE",
+//                    Pin = "Uni-Loc",
+//                    Wrap = "Black Linen Wrap",
+//                    Rings = "Silver",
+//					AvailableQuantity = 1000,
+//                    Sold = 500,
+//					Likes = 0,
+//                    Producer = "PREKC24_",
+//					CreateDate = new DateTime(2023, 09, 11),
 //                    Status = 0,
+//                    Description = "Description",
 //                },
-//                new Ren()
-//                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d72"),
-//                    Name = "5/16/14",
-//                    Status = 0,
-//                },
-//                new Ren()
-//                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d62"),
-//                    Name = "3/8/11",
-//                    Status = 0,
-//                },
-//                new Ren()
-//                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d52"),
-//                    Name = "3/8/10",
-//                    Status = 0,
-//                },
-//                new Ren()
-//                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d42"),
-//                    Name = "United",
-//                    Status = 0,
-//                },
-//                new Ren()
-//                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d32"),
-//                    Name = "Fury mini uniloc",
-//                    Status = 0,
-//                },
-//                new Ren()
-//                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d22"),
-//                    Name = "Uniloc",
-//                    Status = 0,
-//                },
-//                new Ren()
-//                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d12"),
-//                    Name = "True loc",
-//                    Status = 0,
-//                },
-//                new Ren()
-//                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d02"),
-//                    Name = "Radial",
-//                    Status = 0,
-//                },
-//                new Ren()
-//                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d92"),
-//                    Name = "Wavy",
-//                    Status = 0,
-//                });
+//				new Product()
+//				{
+//					Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8b"),
+//					Name = "PREDATOR CLASSIC 2-4 POOL CUE",
+//					Pin = "Uni-Loc",
+//					Wrap = "Black Linen Wrap",
+//					Rings = "Silver",
+//					AvailableQuantity = 1000,
+//					Sold = 500,
+//					Likes = 0,
+//					Producer = "PREKC24_",
+//					CreateDate = new DateTime(2023, 09, 11),
+//					Status = 0,
+//					Description = "Description",
+//				},
+//				new Product()
+//				{
+//					Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"),
+//					Name = "PREDATOR CLASSIC 2-4 POOL CUE",
+//					Pin = "Uni-Loc",
+//					Wrap = "Black Linen Wrap",
+//					Rings = "Silver",
+//					AvailableQuantity = 1000,
+//					Sold = 500,
+//					Likes = 0,
+//					Producer = "PREKC24_",
+//					CreateDate = new DateTime(2023, 09, 11),
+//					Status = 0,
+//					Description = "Description",
+//				});
 
 //            modelBuilder.Entity<Shaft>().HasData(
 //            new Shaft()
@@ -245,83 +246,10 @@
 //                Status = 0,
 //            });
 
-//            modelBuilder.Entity<Gripe>().HasData(
-//            new Gripe()
-//            {
-//                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
-//                Name = "CW4",
-//                Status = 0,
-//            },
-//            new Gripe()
-//            {
-//                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
-//                Name = "CW3",
-//                Status = 0,
-//            });
-//            modelBuilder.Entity<Product>().HasData(
-//                new Product()
-//                {
-//                    Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
-//                    MaterialId = new Guid("cc37720a-7e89-463a-9510-1936e6761d81"),
-//                    RenId = new Guid("cc37720a-7e89-463a-9510-1936e6761d82"),
-//                    HandleId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
-//                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
-//                    GripeId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
-//                    Name = "Gậy bida sành điệu 1",
-//                    ImportPrice = 1000,
-//                    Price = 1500,
-//                    AvailableQuantity = 1000,
-//                    Sold = 500,
-//                    Image = "gay1.png",
-//                    CreateDate = new DateTime(2023, 09, 11),
-//                    Producer = "Lucasi",
-//                    Status = 0,
-//                    Description = "Description",
-//                },
-//                   new Product()
-//                   {
-//                       Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8b"),
-//                       MaterialId = new Guid("cc37720a-7e89-463a-9510-1936e6761d81"),
-//                       RenId = new Guid("cc37720a-7e89-463a-9510-1936e6761d82"),
-//                       HandleId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
-//                       TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
-//                       GripeId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
-//                       Name = "Gậy bida sành điệu 2",
-//                       ImportPrice = 1000,
-//                       Price = 1500,
-//                       AvailableQuantity = 1000,
-//                       Sold = 500,
-//                       Image = "gay2.png",
-//                       CreateDate = new DateTime(2023, 09, 11),
-//                       Producer = "Lucasi",
-
-//                       Status = 0,
-//                       Description = "Description",
-//                   },
-//                      new Product()
-//                      {
-//                          Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"),
-//                          MaterialId = new Guid("cc37720a-7e89-463a-9510-1936e6761d71"),
-//                          RenId = new Guid("cc37720a-7e89-463a-9510-1936e6761d72"),
-//                          HandleId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
-//                          TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
-//                          GripeId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
-//                          Name = "Gậy bida sành điệu 3",
-//                          ImportPrice = 1000,
-//                          Price = 1500,
-//                          AvailableQuantity = 1000,
-//                          Sold = 500,
-//                          Image = "gay3.png",
-//                          CreateDate = new DateTime(2023, 09, 11),
-//                          Producer = "Molinari",
-//                          Status = 0,
-//                          Description = "Description",
-//                      });
-
 //            modelBuilder.Entity<Cart>().HasData(
 //                new Cart()
 //                {
-//                    UserId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
+//                    CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
 //                });
 
 //            modelBuilder.Entity<CartDetail>().HasData(
@@ -332,109 +260,6 @@
 //                    ProductId = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
 //                    Quantity = 1,
 //                    Price = 1500
-//                });
-
-//            modelBuilder.Entity<Category>().HasData(
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d03"),
-//                    Name = "BK",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d04"),
-//                    Name = "Cuetec",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d05"),
-//                    Name = "Demon",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d06"),
-//                    Name = "EXCEED",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d07"),
-//                    Name = "Fury",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d08"),
-//                    Name = "Peri Pool",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d09"),
-//                    Name = "Predator",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d00"),
-//                    Name = "HOW",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d10"),
-//                    Name = "Mezz",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d11"),
-//                    Name = "Mit",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d12"),
-//                    Name = "Cơ Lỗ Cho Người Mới",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d13"),
-//                    Name = "Rhino",
-//                    Status = 0
-//                },
-//                new Category()
-//                {
-//                    Id = new Guid("357267e8-d162-4844-a660-661f46933d14"),
-//                    Name = "The Rack",
-//                    Status = 0
-//                });
-
-//            modelBuilder.Entity<CategoryDetail>().HasData(
-//                new CategoryDetail()
-//                {
-//                    Id = new Guid("ff5bf36d-8272-4780-adbf-c4a717543079"),
-//                    CategoryId = new Guid("357267e8-d162-4844-a660-661f46933d03"),
-//                    ProductId = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
-//                    QuantityProduct = 2
-//                },
-//                new CategoryDetail()
-//                {
-//                    Id = new Guid("ff5bf36d-8272-4780-adbf-c4a717543078"),
-//                    CategoryId = new Guid("357267e8-d162-4844-a660-661f46933d03"),
-//                    ProductId = new Guid("cc37720a-7e89-463a-9510-1936e6761d8b"),
-//                    QuantityProduct = 2
-//                },
-//                new CategoryDetail()
-//                {
-//                    Id = new Guid("ff5bf36d-8272-4780-adbf-c4a717543077"),
-//                    CategoryId = new Guid("357267e8-d162-4844-a660-661f46933d04"),
-//                    ProductId = new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"),
-//                    QuantityProduct = 1
 //                });
 
 //            modelBuilder.Entity<BillStatus>().HasData(

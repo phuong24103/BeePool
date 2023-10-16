@@ -9,8 +9,8 @@ namespace Datn_Api.IServices
         public Task<bool> IncreaseCartDetail(Guid id);
         public Task<bool> ReduceCartDetail(Guid id);
         public Task<bool> DeleteCartDetail(Guid id);
-        public Task<CartDetail> GetCartDetailById(Guid id);
-        public Task<List<CartDetail>> GetCartDetailByUserId(Guid id);
-        public Task<List<CartDetail>> GetAllCartDetail();
+        public Task<CartDetailView> GetCartDetailById(Guid id);
+        public Task<List<CartDetailView>> GetCartDetailByCustomerId(Guid id);
+        public Task<List<CartDetailView>> GetAllCartDetail();
     }
 }

@@ -1,7 +1,7 @@
 ﻿.navbar-scroll .nav-link,
 .navbar-scroll .fa-bars,
 .navbar-scroll .navar-brand {
-    color: #4f4f4f;
+    color: #1e73be;
 }
 
     .navbar-scroll .nav-link:hover {
@@ -12,13 +12,13 @@
 .navbar-scrolled .nav-link,
 .navbar-scrolled .fa-bars,
 .navbar-scrolled .navar-brand {
-    color: #4f4f4f;
+    color: #1e73be;
 }
 
 /* Color of the navbar AFTER scroll */
 .navbar-scroll,
 .navbar-scrolled {
-    background-color: #778899;
+    background-color: #F8F8F8;
 }
 
 /* An optional height of the navbar AFTER scroll */

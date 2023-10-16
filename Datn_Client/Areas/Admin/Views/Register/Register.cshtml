@@ -1,0 +1,171 @@
+﻿@model Datn_Shared.ViewModels.AccountViewModels.Register
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Pages / Register - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/images/logo.png" rel="icon">
+    <link href="~/images/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/Admin/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <main>
+        <div class="container">
+
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                            <div class="d-flex justify-content-center py-4">
+                                <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center w-auto">
+                                    <img src="~/images/logo.png" alt="">
+                                    <span class="d-none d-lg-block">BeePool</span>
+                                </a>
+                            </div><!-- End Logo -->
+
+                            <div class="card mb-3">
+
+                                <div class="card-body">
+
+                                    <div class="pt-4 pb-2">
+                                        <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                                        <p class="text-center small">Enter your personal details to create account</p>
+                                    </div>
+
+                                    <form asp-area="Admin" asp-controller="Register" asp-action="Register" class="row g-3 needs-validation">
+                                        <div class="col-12">
+                                            <label class="form-label">Username</label>
+                                            <input asp-for="Username" type="text" class="form-control">
+                                            @* <div class="invalid-feedback">Please, enter your username!</div> *@
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label">Password</label>
+                                            <input asp-for="Password" type="password" class="form-control">
+                                            @* <div class="invalid-feedback">Please enter your password!</div> *@
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label">ConfirmPassword</label>
+                                            <input asp-for="ConfirmPassword" type="password" class="form-control">
+                                            @* <div class="invalid-feedback">Please enter your ConfirmPassword!</div> *@
+                                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="control-label">Giới tính</label>
+                                            <select asp-for="Gender" class="form-control">
+                                                <option value="0">Nam</option>
+                                                <option value="1">Nữ</option>
+                                                <option value="2">Khác</option>
+                                            </select>
+                                            @* <div class="invalid-feedback">Please choose a Gender.</div> *@
+                                            <span asp-validation-for="Gender" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label">Your PhoneNumber</label>
+                                            <input asp-for="PhoneNumber" type="text" class="form-control">
+                                            @* <div class="invalid-feedback">Please enter a valid PhoneNumber!</div> *@
+                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label">Your Email</label>
+                                            <input asp-for="Email" type="email" class="form-control">
+                                            @* <div class="invalid-feedback">Please enter a valid Email adddress!</div> *@
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label">DateOfBirth</label>
+                                            <input asp-for="DateOfBirth" type="datetime" class="form-control">
+                                            @* <div class="invalid-feedback">Please choose a DateOfBirth.</div> *@
+                                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label">Address</label>
+                                            <input asp-for="Address" type="text" class="form-control">
+                                            @* <div class="invalid-feedback">Please enter your Address!</div> *@
+                                            <span asp-validation-for="Address" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                                                <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                                                <div class="invalid-feedback">You must agree before submitting.</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="small mb-0">Already have an account? <a asp-area="Admin" asp-controller="Login" asp-action="Login">Log in</a></p>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main><!-- End #main -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/chart.js/chart.umd.js"></script>
+    <script src="~/vendor/echarts/echarts.min.js"></script>
+    <script src="~/vendor/quill/quill.min.js"></script>
+    <script src="~/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="~/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/js/Admin/main.js"></script>
+
+</body>
+
+</html>
