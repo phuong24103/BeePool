@@ -21,7 +21,7 @@ namespace Datn_Shared.ViewModels.ProductDetailViewModels
         [ForeignKey("TipId")]
         public Guid TipId { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập quantity")]
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập importprice")]
         public double ImportPrice { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập Price")]

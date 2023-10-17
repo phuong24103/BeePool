@@ -24,7 +24,12 @@ namespace Datn_Api.Services
 			return await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);
 		}
 
-		public async Task<bool> UpdateCustomer(Guid id, Customer customer)
+        public async Task<Customer> GetCustomerbyName(string name)
+        {
+            return await _context.Customers.FirstOrDefaultAsync(c => c.UserName == name);
+        }
+
+        public async Task<bool> UpdateCustomer(Guid id, Customer customer)
 		{
 			var n = _context.Customers.Find(id);
 			if (n == null) return false;

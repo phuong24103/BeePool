@@ -6,6 +6,7 @@ namespace Datn_Api.IServices
 	{
 		public Task<List<Customer>> GetAllCustomer();
 		public Task<Customer> GetCustomerbyId(Guid id);
+		public Task<Customer> GetCustomerbyName(string name);
 		public Task<bool> UpdateCustomer(Guid id, Customer customer);
 	}
 }

@@ -20,31 +20,33 @@ namespace Datn_Api.Services
             var c = await _context.CartDetails.FirstOrDefaultAsync(p => p.CustomerId == cartDetail.CustomerId && p.ProductDetailId == cartDetail.ProductDetailId);
             try
             {
+                var product = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
                 var cart = await _context.Carts.FirstOrDefaultAsync(p => p.CustomerId == cartDetail.CustomerId);
-                Cart updateCart = new Cart();
-                updateCart.CustomerId = cartDetail.CustomerId;
                 if (c == null)
                 {
-                    var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
+                    if (cart.Quantity == 0)
+                    {
+                        cart.Status = 0;
+                    }
                     CartDetail p = new CartDetail()
                     {
                         Id = Guid.NewGuid(),
                         CustomerId = cartDetail.CustomerId,
                         ProductDetailId = cartDetail.ProductDetailId,
                         Quantity = cartDetail.Quantity,
-                        Price = cartDetail.Price,
+                        Price = product.Price * cartDetail.Quantity,
                     };
-                    await _context.CartDetails.AddAsync(c);
+                    await _context.CartDetails.AddAsync(p);
+                    cart.Quantity++;
                 }
                 else
                 {
-                    c.Quantity++;
+                    c.Quantity += cartDetail.Quantity;
+                    c.Price += product.Price * cartDetail.Quantity;
                     _context.CartDetails.Update(c);
-                    updateCart.Quantity++;
-                    updateCart.Status = 0;
                 }
-                updateCart.TotalMoney = cartDetail.Price;
-                _context.Carts.Update(updateCart);
+                cart.TotalMoney += product.Price * cartDetail.Quantity;
+                _context.Carts.Update(cart);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -77,13 +79,16 @@ namespace Datn_Api.Services
                 (from a in _context.CartDetails
                  join b in _context.Carts on a.CustomerId equals b.CustomerId
                  join c in _context.ProductDetails on a.ProductDetailId equals c.Id
+                 join d in _context.Products on c.ProductID equals d.Id
                  select new CartDetailView()
                  {
                      Id = a.Id,
                      CustomerId = a.CustomerId,
                      ProductDetailId = a.ProductDetailId,
+                     Name = d.Name,
                      Quantity = a.Quantity,
                      Price = a.Price,
+                     Description = d.Description,
                      Cart = b,
                      ProductDetail = c
                  }).ToListAsync();
@@ -97,14 +102,17 @@ namespace Datn_Api.Services
                 (from a in _context.CartDetails
                  join b in _context.Carts on a.CustomerId equals b.CustomerId
                  join c in _context.ProductDetails on a.ProductDetailId equals c.Id
+                 join d in _context.Products on c.ProductID equals d.Id
                  where a.Id == id
                  select new CartDetailView()
                  {
                      Id = a.Id,
                      CustomerId = a.CustomerId,
                      ProductDetailId = a.ProductDetailId,
+                     Name = d.Name,
                      Quantity = a.Quantity,
                      Price = a.Price,
+                     Description = d.Description,
                      Cart = b,
                      ProductDetail = c
                  }).FirstAsync();
@@ -118,14 +126,17 @@ namespace Datn_Api.Services
                 (from a in _context.CartDetails
                  join b in _context.Carts on a.CustomerId equals b.CustomerId
                  join c in _context.ProductDetails on a.ProductDetailId equals c.Id
+                 join d in _context.Products on c.ProductID equals d.Id
                  where a.CustomerId == id
                  select new CartDetailView()
                  {
                      Id = a.Id,
                      CustomerId = a.CustomerId,
                      ProductDetailId = a.ProductDetailId,
+                     Name = d.Name,
                      Quantity = a.Quantity,
                      Price = a.Price,
+                     Description = d.Description,
                      Cart = b,
                      ProductDetail = c
                  }).ToListAsync();

@@ -1,5 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Cart";
+﻿@model IEnumerable<Datn_Shared.ViewModels.CartDetailViewModels.CartDetailView>
+
+@{
+    ViewData["Title"] = "Index";
 }
 
 <div class=" container-fluid my-5 ">
@@ -28,7 +30,7 @@
                             <ol class="breadcrumb indigo lighten-6 first  ">
                                 <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " href="#"><span class="mr-md-3 mr-1">TRANG CHỦ</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
                                 <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" href="#"><span class="mr-md-3 mr-1">SẢN PHẨM</span></a><i class="fa fa-angle-double-right text-uppercase " aria-hidden="true"></i></li>
-                                <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase active-2"  asp-controller="Bill" asp-action="Bill"><span class="mr-md-3 mr-1">HÓA ĐƠN</span></a></li>
+                                <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase active-2" asp-controller="Bill" asp-action="Bill"><span class="mr-md-3 mr-1">HÓA ĐƠN</span></a></li>
                             </ol>
                         </nav>
                     </div>
@@ -58,15 +60,15 @@
                                     <label for="NAME" class="small text-muted mb-1">Số điện thoại</label>
                                     <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label for="NAME" class="small text-muted mb-1">Địa chỉ nhận hàng</label>
                                     <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label for="NAME" class="small text-muted mb-1">Mã giảm giá</label>
                                     <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
                                 </div>
-                                <div class="row mb-md-5" style = "margin-top : 20px">
+                                <div class="row mb-md-5" style="margin-top : 20px">
                                     <div class="col">
                                         <div class="col-md-7 col-lg-6 mx-auto"><button type="button" class="btn btn-block btn-outline-primary btn-lg">Xác Nhận</button></div>
                                     </div>
@@ -81,56 +83,29 @@
                                 <hr class="my-2">
                             </div>
                             <div class="card-body pt-0">
-                                <div class="row  justify-content-between">
-                                    <div class="col-auto col-md-7">
-                                        <div class="media flex-column flex-sm-row">
-                                            <img class=" img-fluid" src="https://i.imgur.com/6oHix28.jpg" width="62" height="62">
-                                            <div class="media-body  my-auto">
-                                                <div class="row ">
-                                                    <div class="col-auto"><p class="mb-0"><b>(Tên Sản Phẩm)</b></p><small class="text-muted">(Mô Tả)</small></div>
+                                @foreach (var item in @Model)
+                                {
+                                    <div class="row  justify-content-between">
+                                        <div class="col-auto col-md-7">
+                                            <div class="media flex-column flex-sm-row">
+                                                <img class=" img-fluid" src="https://i.imgur.com/6oHix28.jpg" width="62" height="62">
+                                                <div class="media-body  my-auto">
+                                                    <div class="row ">
+                                                        <div class="col-auto"><p class="mb-0"><b>@item.Name</b></p><small class="text-muted">@item.Description</small></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class=" pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed-1">@item.Quantity</p></div>
+                                        <div class=" pl-0 flex-sm-col col-auto  my-auto "><p><b>$@item.Price</b></p></div>
                                     </div>
-                                    <div class=" pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed-1">2</p></div>
-                                    <div class=" pl-0 flex-sm-col col-auto  my-auto "><p><b>(Tiền)</b></p></div>
-                                </div>
-                                <hr class="my-2">
-                                <div class="row  justify-content-between">
-                                    <div class="col-auto col-md-7">
-                                        <div class="media flex-column flex-sm-row">
-                                            <img class=" img-fluid " src="https://i.imgur.com/9MHvALb.jpg" width="62" height="62">
-                                            <div class="media-body  my-auto">
-                                                <div class="row ">
-                                                    <div class="col"><p class="mb-0"><b>(Tên Sản Phẩm)</b></p><small class="text-muted">(Mô Tả)</small></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed">3</p></div>
-                                    <div class="pl-0 flex-sm-col col-auto my-auto"><p><b>(Tiền)</b></p></div>
-                                </div>
-                                <hr class="my-2">
-                                <div class="row  justify-content-between">
-                                    <div class="col-auto col-md-7">
-                                        <div class="media flex-column flex-sm-row">
-                                            <img class=" img-fluid " src="https://i.imgur.com/6oHix28.jpg" width="62" height="62">
-                                            <div class="media-body  my-auto">
-                                                <div class="row ">
-                                                    <div class="col"><p class="mb-0"><b>(Tên Sản Phẩm)</b></p><small class="text-muted">(Mô Tả)</small></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed-1">2</p></div>
-                                    <div class="pl-0 flex-sm-col col-auto my-auto"><p><b>(Tiền)</b></p></div>
-                                </div>
-                                <hr class="my-2">
+                                    <hr class="my-2">
+                                }
                                 <div class="row ">
                                     <div class="col">
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p class="mb-1"><b>Tổng Tiền Sản Phẩm</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>(Tiền)</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>$@Model.First().Cart.TotalMoney</b></p></div>
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>Số Tiền Giảm Giá</b></p></div>
@@ -143,7 +118,8 @@
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p><b>Tổng Tiền Phải Trả</b></p></div>
                                             <div class="flex-sm-col col-auto"><p class="mb-1"><b>(Tổng tiền)</b></p> </div>
-                                        </div><hr class="my-0">
+                                        </div>
+                                        <hr class="my-0">
                                     </div>
                                 </div>
                                 <div class="row mb-5 mt-4 ">

@@ -1,4 +1,5 @@
-﻿using Datn_Api.IServices;
+﻿using Datn_Api.Data;
+using Datn_Api.IServices;
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.AccountViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -9,9 +10,12 @@ namespace Datn_Api.Services
     public class RegisterCustomerService : IRegisterCustomerService
     {
         private readonly UserManager<Customer> _customerManager;
-        public RegisterCustomerService(UserManager<Customer> customerManager)
+        private readonly MyDbContext _context;
+
+        public RegisterCustomerService(UserManager<Customer> customerManager, MyDbContext context)
         {
             _customerManager = customerManager;
+            _context = context;
         }
 
         public async Task<Response> RegisterAsync(Register registerCustomer)
@@ -60,7 +64,7 @@ namespace Datn_Api.Services
                 CreateDate = DateTime.Now,
                 Point = 0,
                 Status = 0,
-                RankId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9000"),
+                RankId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9232"),
             };
 
             // Add customer to the database
@@ -76,6 +80,16 @@ namespace Datn_Api.Services
                     Message = "Đăng ký không thành công, đã xảy ra lỗi!"
                 };
             }
+
+            Cart cart = new Cart()
+            {
+                CustomerId = identityCustomer.Id,
+                Quantity = 0,
+                TotalMoney = 0,
+                Status = 1
+            };
+            await _context.Carts.AddAsync(cart);
+            await _context.SaveChangesAsync();
 
             return new Response
             {

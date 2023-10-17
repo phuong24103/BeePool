@@ -17,14 +17,13 @@ namespace Datn_Shared.ViewModels.ProductDetailViewModels
         public Guid WeightId { get; set; }
         public Guid TipId { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập quantity")]
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập Importprice")]
         public double ImportPrice { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập price")]
         public double Price { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập createdate")]
         public DateTime CreateDate { get; set; }
-
         public int Status { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập description")]
         public string Description { get; set; }
