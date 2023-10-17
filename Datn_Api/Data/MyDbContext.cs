@@ -1,8 +1,8 @@
+using Datn_Api.Extensions;
 using Datn_Shared.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Principal;
 
 namespace Datn_Api.Data
 {
@@ -57,7 +57,7 @@ namespace Datn_Api.Data
             .HasForeignKey<Cart>(c => c.CustomerId);
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Seed();
+            modelBuilder.Seed();
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {

@@ -21,7 +21,7 @@ namespace Datn_Api.Services
             Bill b = new Bill()
             {
                 Id = Guid.NewGuid(),
-                UserId = bill.UserId,
+                CustomerId = bill.CustomerId,
                 BillStatusId = bill.BillStatusId,
                 PaymentId = bill.PaymentId,
                 Price = bill.Price,
@@ -62,18 +62,18 @@ namespace Datn_Api.Services
             billViews = await (
                 from a in _context.Bills
                 join b in _context.BillStatuses on a.BillStatusId equals b.Id
-                join c in _context.Users on a.UserId equals c.Id
+                join c in _context.Customers on a.CustomerId equals c.Id
                 join d in _context.Payments on a.PaymentId equals d.Id
                 select new BillView()
                 {
                     Id = a.Id,
-                    UserId = a.UserId,
+                    CustomerId = a.CustomerId,
                     BillStatusId = a.BillStatusId,
                     PaymentId = a.PaymentId,
                     Price = a.Price,
                     CreateDate = a.CreateDate,
                     Address = a.Address,
-                    User = c,
+                    Customer = c,
                     BillStatus = b,
                     Payment = d
                 }).ToListAsync();
@@ -87,18 +87,18 @@ namespace Datn_Api.Services
             billViews = await (
                 from a in _context.Bills
                 join b in _context.BillStatuses on a.BillStatusId equals b.Id
-                join c in _context.Users on a.UserId equals c.Id
+                join c in _context.Customers on a.CustomerId equals c.Id
                 join d in _context.Payments on a.PaymentId equals d.Id
                 select new BillView()
                 {
                     Id = a.Id,
-                    UserId = a.UserId,
+                    CustomerId = a.CustomerId,
                     BillStatusId = a.BillStatusId,
                     PaymentId = a.PaymentId,
                     Price = a.Price,
                     CreateDate = a.CreateDate,
                     Address = a.Address,
-                    User = c,
+                    Customer = c,
                     BillStatus = b,
                     Payment = d
                 }).ToListAsync();
@@ -109,7 +109,7 @@ namespace Datn_Api.Services
         {
             var b = _context.Bills.Find(id);
             if (b == null) return false;
-            b.UserId = bill.UserId;
+            b.CustomerId = bill.CustomerId;
             b.BillStatusId = bill.BillStatusId;
             b.PaymentId = bill.PaymentId;
             b.Price = bill.Price;

@@ -26,13 +26,13 @@
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Trang Chủ <span class="sr-only">/</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" asp-area="" asp-controller="Product" asp-action="AllProductController">Danh Mục <span class="sr-only">/</span></a>
+                <a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Danh Mục <span class="sr-only">/</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" asp-area="" asp-controller="Product" asp-action="AllProductController">Tất Cả Sản Phẩm <span class="sr-only"></span></a>
+                <a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Tất Cả Sản Phẩm <span class="sr-only">/</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" asp-area="" asp-controller="Product" asp-action="AllProductController">Chi tiết sản phẩm : (Tên sản phẩm)<span class="sr-only"></span></a>
+                <a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Chi tiết sản phẩm : @Model.Product.Name<span class="sr-only"></span></a>
             </li>
 
         </ul>
@@ -114,198 +114,202 @@
 
         </select>
     </div>
-
-
 </div>
-<div class="row" style="margin-top : 100px;margin-bottom : 100px;border: 2px solid #006100;border-radius: 10px;">
-    <div class="col-md-6">
-        <section>
-            <div class="container" style = "border-right: 2px solid #006100;border-radius: 10px;border-bottom: 2px solid #006100;border-radius: 10px">
-                <div class="carousel">
-                    <input type="radio" name="slides" checked="checked" id="slide-1">
-                    <input type="radio" name="slides" id="slide-2">
-                    <input type="radio" name="slides" id="slide-3">
-                    <input type="radio" name="slides" id="slide-4">
-                    <input type="radio" name="slides" id="slide-5">
-                    <input type="radio" name="slides" id="slide-6">
-                    <ul class="carousel__slides">
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="~/images/1.png" alt="">
-                                </div>
+@* <form asp-action="Create" asp-controller="Cart"> *@
+    <div class="row" style="margin-top : 100px;margin-bottom : 100px;border: 2px solid #006100;border-radius: 10px;">
+        <div class="col-md-6">
+            <section>
+                <div class="container" style="border-right: 2px solid #006100;border-radius: 10px;border-bottom: 2px solid #006100;border-radius: 10px">
+                    <div class="carousel">
+                        <input type="radio" name="slides" checked="checked" id="slide-1">
+                        <input type="radio" name="slides" id="slide-2">
+                        <input type="radio" name="slides" id="slide-3">
+                        <input type="radio" name="slides" id="slide-4">
+                        <input type="radio" name="slides" id="slide-5">
+                        <input type="radio" name="slides" id="slide-6">
+                        <ul class="carousel__slides">
+                            <li class="carousel__slide">
+                                <figure>
+                                    <div>
+                                        <img src="~/images/1.png" alt="">
+                                    </div>
 
-                            </figure>
-                        </li>
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="~/images/2.png" alt="">
-                                </div>
+                                </figure>
+                            </li>
+                            <li class="carousel__slide">
+                                <figure>
+                                    <div>
+                                        <img src="~/images/2.png" alt="">
+                                    </div>
 
-                            </figure>
-                        </li>
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="~/images/3.png" alt="">
-                                </div>
+                                </figure>
+                            </li>
+                            <li class="carousel__slide">
+                                <figure>
+                                    <div>
+                                        <img src="~/images/3.png" alt="">
+                                    </div>
 
-                            </figure>
-                        </li>
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="~/images/4.png" alt="">
-                                </div>
+                                </figure>
+                            </li>
+                            <li class="carousel__slide">
+                                <figure>
+                                    <div>
+                                        <img src="~/images/4.png" alt="">
+                                    </div>
 
-                            </figure>
-                        </li>
-                        <li class="carousel__slide">
-                            <figure>
-                                <div>
-                                    <img src="~/images/5.png" alt="">
-                                </div>
+                                </figure>
+                            </li>
+                            <li class="carousel__slide">
+                                <figure>
+                                    <div>
+                                        <img src="~/images/5.png" alt="">
+                                    </div>
 
-                            </figure>
-                        </li>
+                                </figure>
+                            </li>
 
-                    </ul>
-                    <ul class="carousel__thumbnails">
-                        <li>
-                            <label for="slide-1"><img src="~/images/1.png" alt="" style="width : 100px;height : 100px"></label>
-                        </li>
-                        <li>
-                            <label for="slide-2"><img src="~/images/2.png" alt="" style="width : 100px;height : 100px"></label>
-                        </li>
-                        <li>
-                            <label for="slide-3"><img src="~/images/3.png" alt="" style="width : 100px;height : 100px"></label>
-                        </li>
-                        <li>
-                            <label for="slide-4"><img src="~/images/4.png" alt="" style="width : 100px;height : 100px"></label>
-                        </li>
-                        <li>
-                            <label for="slide-5"><img src="~/images/5.png" alt="" style="width : 100px;height : 100px"></label>
-                        </li>
+                        </ul>
+                        <ul class="carousel__thumbnails">
+                            <li>
+                                <label for="slide-1"><img src="~/images/1.png" alt="" style="width : 100px;height : 100px"></label>
+                            </li>
+                            <li>
+                                <label for="slide-2"><img src="~/images/2.png" alt="" style="width : 100px;height : 100px"></label>
+                            </li>
+                            <li>
+                                <label for="slide-3"><img src="~/images/3.png" alt="" style="width : 100px;height : 100px"></label>
+                            </li>
+                            <li>
+                                <label for="slide-4"><img src="~/images/4.png" alt="" style="width : 100px;height : 100px"></label>
+                            </li>
+                            <li>
+                                <label for="slide-5"><img src="~/images/5.png" alt="" style="width : 100px;height : 100px"></label>
+                            </li>
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
+            </section>
+            <h3 style="font-weight : bold;margin-top : 60px">
+                Description
+            </h3>
+            <h6>
+                @Model.Description
+            </h6>
+        </div>
+        @* <input hidden asp-for="Id" value="@Model.Id"> *@
+        <div class="col-md-6" style="text-align : left">
+            <h3 style="font-weight : bold">
+                @Model.Product.Name
+            </h3>
+            <h3 style="font-weight : bold">
+                Giá : <b style="color : red">$@Model.Price</b>
+            </h3>
+            <div style="margin-bottom : 30px;margin-top : 30px">
+                <b>Chọn các phụ kiện Custom</b>
             </div>
-        </section>
-        <h3 style = "font-weight : bold;margin-top : 60px">
-            Description
-        </h3>
-        <h6>
-            @Model.Description
-        </h6>
-    </div>
-    <div class="col-md-6" style="text-align : left">
-        <h3  style="font-weight : bold">
-            @Model.Product.Name
-        </h3>
-        <h3 style="font-weight : bold">
-            Giá : <b style="color : red">@Model.Price</b>
-        </h3>
-        <div style="margin-bottom : 30px;margin-top : 30px">
-            <b>Chọn các phụ kiện Custom</b>
-        </div>  
-        <select asp-for="Tip" style="margin-bottom : 30px">
-            <option selected>Open this select menu</option>
-            @foreach (var item in tip)
-            {
-                <option value="@item.Id">@item.Name</option>
-            }
-           @*  <option selected value="0">Tip</option>
-            <option value="1">Giá : Tăng Dần</option>
-            <option value="2">Giá : Giảm Dần</option>
-            <option value="3">Tên A-Z</option>
-            <option value="4">Tên Z-A</option>
-            <option value="5">Cũ Nhất</option>
-            <option value="6">Mới Nhất</option>
-            <option value="7">Bán Chạy Nhất</option> *@
-        </select>
+            <select asp-for="Tip" style="margin-bottom : 30px">
+                <option selected value="@Model.TipId">@Model.Tip.Name</option>
+                @foreach (var item in tip)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+                @*  <option selected value="0">Tip</option>
+                <option value="1">Giá : Tăng Dần</option>
+                <option value="2">Giá : Giảm Dần</option>
+                <option value="3">Tên A-Z</option>
+                <option value="4">Tên Z-A</option>
+                <option value="5">Cũ Nhất</option>
+                <option value="6">Mới Nhất</option>
+                <option value="7">Bán Chạy Nhất</option> *@
+            </select>
 
-        <select asp-for ="Shaft" style="margin-bottom : 30px">
-            @foreach (var item in s)
-            {
-                <option value="@item.Id">@item.Name</option>
-            }
-    @*         <option asp-for = "Shaft" selected value="0">Shaft</option>
-            <option value="1">Giá : Tăng Dần</option>
-            <option value="2">Giá : Giảm Dần</option>
-            <option value="3">Tên A-Z</option>
-            <option value="4">Tên Z-A</option>
-            <option value="5">Cũ Nhất</option>
-            <option value="6">Mới Nhất</option>
-            <option value="7">Bán Chạy Nhất</option> *@
+            <select asp-for="Shaft" style="margin-bottom : 30px">
+                <option selected value="@Model.ShaftId">@Model.Shaft.Name</option>
+                @foreach (var item in s)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+                @*         <option asp-for = "Shaft" selected value="0">Shaft</option>
+                <option value="1">Giá : Tăng Dần</option>
+                <option value="2">Giá : Giảm Dần</option>
+                <option value="3">Tên A-Z</option>
+                <option value="4">Tên Z-A</option>
+                <option value="5">Cũ Nhất</option>
+                <option value="6">Mới Nhất</option>
+                <option value="7">Bán Chạy Nhất</option> *@
 
-        </select>
-        <select asp-for="Weight" style="margin-bottom : 30px">
-            @foreach (var item in w)
-            {
-                <option value="@item.Id">@item.Name</option>
-            }
-        @*     <option selected value="0">Weight</option>
-            <option value="1">Giá : Tăng Dần</option>
-            <option value="2">Giá : Giảm Dần</option>
-            <option value="3">Tên A-Z</option>
-            <option value="4">Tên Z-A</option>
-            <option value="5">Cũ Nhất</option>
-            <option value="6">Mới Nhất</option>
-            <option value="7">Bán Chạy Nhất</option> *@
-        </select>
-        <div class="row">
-            <div class="col-md-3">
-                <div style = "border : solid black 1px;text-align : center">
-                <p>Số lượng: <span id="quantity">0</span></p>
+            </select>
+            <select asp-for="Weight" style="margin-bottom : 30px">
+                <option selected value="@Model.WeightId">@Model.Weight.Name</option>
+                @foreach (var item in w)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+                @*     <option selected value="0">Weight</option>
+                <option value="1">Giá : Tăng Dần</option>
+                <option value="2">Giá : Giảm Dần</option>
+                <option value="3">Tên A-Z</option>
+                <option value="4">Tên Z-A</option>
+                <option value="5">Cũ Nhất</option>
+                <option value="6">Mới Nhất</option>
+                <option value="7">Bán Chạy Nhất</option> *@
+            </select>
+            <div class="row">
+                <div class="col-md-3">
+                    <div style="border : solid black 1px;text-align : center">
+                        <p>Số lượng: <label id="quantity">1</label></p>
 
-                <button onclick="giamSoLuong()">-</button>
-                <button onclick="tangSoLuong()">+</button>
+                        <button onclick="giamSoLuong()">-</button>
+                        <button onclick="tangSoLuong()">+</button>
 
-                <script>
-                    var soLuong = 0; // Khởi tạo số lượng ban đầu
+                        <script>
+                            var soLuong = 1; // Khởi tạo số lượng ban đầu
 
-                    function capNhatSoLuong() {
-                        var spanSoLuong = document.getElementById("quantity");
-                        spanSoLuong.textContent = soLuong;
-                    }
+                            function capNhatSoLuong() {
+                                var spanSoLuong = document.getElementById("quantity");
+                                spanSoLuong.textContent = soLuong;
+                            }
 
-                    function tangSoLuong() {
-                        soLuong++;
-                        capNhatSoLuong();
-                    }
+                            function tangSoLuong() {
+                                soLuong++;
+                                capNhatSoLuong();
+                            }
 
-                    function giamSoLuong() {
-                        if (soLuong > 0) {
-                            soLuong--;
+                            function giamSoLuong() {
+                                if (soLuong > 1) {
+                                    soLuong--;
+                                    capNhatSoLuong();
+                                }
+                            }
+
+                            // Gọi hàm để hiển thị số lượng ban đầu
                             capNhatSoLuong();
-                        }
-                    }
-
-                    // Gọi hàm để hiển thị số lượng ban đầu
-                    capNhatSoLuong();
-                </script>
+                        </script>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    @* <input type="submit" value="Thêm Vào Giỏ Hàng" class="btn btn-danger" /> *@
+                <a asp-action="Create" asp-controller="Cart" asp-route-id="@Model.Id" class="btn btn-danger">Thêm Vào Giỏ Hàng</a>
                 </div>
             </div>
-            <div class="col-md-9">
-                <button type="button" class="btn btn-danger">Thêm Vào Giỏ Hàng</button>
+            <div style="color : darkorange;margin-top : 30px;">
+                <h4>Trạng Thái</h4>
+            </div>
+            <div>
+                <h6 style="font-weight: bold">(Mã Giảm Giá)</h6><h8>Details mã giảm giá</h8>
+            </div>
+            <div>
+                <h6 style="font-weight: bold">(Mã Giảm Giá)</h6><h8>Details mã giảm giá</h8>
+            </div>
+            <div>
+                <h6 style="font-weight: bold">(Mã Giảm Giá)</h6><h8>Details mã giảm giá</h8>
             </div>
         </div>
-        <div style = "color : darkorange;margin-top : 30px;">
-            <h4>Trạng Thái</h4>
-        </div>
-        <div>
-            <h6 style = "font-weight : bold">(Mã Giảm Giá)</h6><h8>Details mã giảm giá</h8>
-        </div>
-        <div>
-            <h6 style = "font-weight : bold">(Mã Giảm Giá)</h6><h8>Details mã giảm giá</h8>
-        </div>
-        <div>
-            <h6 style = "font-weight : bold">(Mã Giảm Giá)</h6><h8>Details mã giảm giá</h8>
-        </div>
     </div>
-</div>
-<div style="text-align : center;margin-top : 30px;margin-bottom : 30px;font-weight : bold">
+@* </form> *@
+<div style="text-align: center; margin-top: 30px; margin-bottom : 30px; font-weight: bold">
     <h1>Sản Phẩm Tương Tự</h1>
 </div>
 <div class="row" style="margin-bottom : 100px;margin-top : 100px">

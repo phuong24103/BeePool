@@ -33,8 +33,8 @@ namespace Datn_Api.Controllers
         }
 
         [HttpGet]
-        [Route("GetByCategoryId/{id:Guid}")]
-        public async Task<IActionResult> GetCartDetailByUserId([FromRoute] Guid id)
+        [Route("GetByCustomerId/{id:Guid}")]
+        public async Task<IActionResult> GetCartDetailByCustomerId([FromRoute] Guid id)
         {
             var cartDetails = await _cartDetailService.GetCartDetailByCustomerId(id);
             return Ok(cartDetails);

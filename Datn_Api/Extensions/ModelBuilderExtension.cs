@@ -60,9 +60,14 @@ namespace Datn_Api.Extensions
                 CreateDate = new DateTime(2020, 10, 23),
                 Status = 0,
                 UserName = "QuocPhuong",
+                NormalizedUserName = "QUOCPHUONG",
                 Email = "quocphuong@gmail.com",
-                PasswordHash = "Quocphuong@09",
+                NormalizedEmail = "QUOCPHUONG@GMAIL.COM",
+                PasswordHash = "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==",
+                SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
+                ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
                 PhoneNumber = "06969433323",
+                LockoutEnabled = true,
             },
             new Employee()
             {
@@ -73,9 +78,14 @@ namespace Datn_Api.Extensions
                 CreateDate = new DateTime(2020, 12, 23),
                 Status = 0,
                 UserName = "VanPhuong",
+                NormalizedUserName = "VANPHUONG",
                 Email = "vanphuong@gmail.com",
-                PasswordHash = "Vanphuong@09",
+                NormalizedEmail = "VANPHUONG@GMAIL.COM",
+                PasswordHash = "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==",
+                SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
+                ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
                 PhoneNumber = "0386753434",
+                LockoutEnabled = true,
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(
@@ -101,9 +111,14 @@ namespace Datn_Api.Extensions
                 Point = 12000,
                 Status = 0,
                 UserName = "ThanhTung",
+                NormalizedUserName = "THANHTUNG",
                 Email = "thanhtung@gmail.com",
-                PasswordHash = "Thanhtung@09",
+                NormalizedEmail = "THANHTUNG@GMAIL.COM",
+                PasswordHash = "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==",
+                SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
+                ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
                 PhoneNumber = "0696969696",
+                LockoutEnabled = true,
             },
             new Customer()
             {
@@ -115,9 +130,14 @@ namespace Datn_Api.Extensions
                 Point = 12000,
                 Status = 0,
                 UserName = "QuynhAnh",
-                Email = "quynhanhvippro@gmail.com",
-                PasswordHash = "Quynhanh@03",
+                NormalizedUserName = "QUYNHANH",
+                Email = "quynhanh@gmail.com",
+                NormalizedEmail = "QUYNHANH@GMAIL.COM",
+                PasswordHash = "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==",
+                SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
+                ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
                 PhoneNumber = "0363636363",
+                LockoutEnabled = true,
             });
 
             modelBuilder.Entity<Shaft>().HasData(
@@ -370,8 +390,15 @@ namespace Datn_Api.Extensions
             modelBuilder.Entity<Cart>().HasData(
                 new Cart()
                 {
+                    CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
+                    Quantity = 0,
+                    TotalMoney = 0,
+                    Status = 1
+                },
+                new Cart()
+                {
                     CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
-                    Quantity = 2,
+                    Quantity = 1,
                     TotalMoney = 2000,
                     Status = 0
                 });
@@ -383,7 +410,7 @@ namespace Datn_Api.Extensions
                     CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
                     ProductDetailId = new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"),
                     Quantity = 1,
-                    Price = 1500
+                    Price = 2000
                 });
 
             modelBuilder.Entity<BillStatus>().HasData(
@@ -436,7 +463,7 @@ namespace Datn_Api.Extensions
             new Bill()
             {
                 Id = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf3"),
-                UserId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
+                CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
                 BillStatusId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
                 PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
                 Price = 1500,
@@ -447,7 +474,7 @@ namespace Datn_Api.Extensions
             new Bill()
             {
                 Id = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b13"),
-                UserId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
+                CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
                 BillStatusId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5"),
                 PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16"),
                 Price = 1450,
@@ -483,6 +510,7 @@ namespace Datn_Api.Extensions
             modelBuilder.Entity<WishList>().HasData(
             new WishList()
             {
+                Id = new Guid("37c66a8d-acb9-41a1-af73-f46e83a578dc"),
                 CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
                 ProductId = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a")
             });
@@ -491,7 +519,7 @@ namespace Datn_Api.Extensions
             new ProductImage()
             {
                 Id = new Guid("d5c65161-7591-48c1-9198-daca151bce7c"),
-                ProductDetailId = new Guid(""),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"),
                 Name = "image1",
                 Status = 0,
             });

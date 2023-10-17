@@ -25,7 +25,7 @@ namespace Datn_Client.Areas.Admin.Controllers
 		public async Task<IActionResult> Register(Register registerEmployee, string role)
         {
             // Add role to queryString
-            role = "Admin";
+            role = "Nhân viên";
             var queryString = $"?role={role}";
             // Send request POST to register API
             var response = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterEmployee{queryString}", registerEmployee);

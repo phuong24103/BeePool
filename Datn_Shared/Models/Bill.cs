@@ -12,17 +12,14 @@ namespace Datn_Shared.Models
     {
         [Key]
         public Guid Id { get; set; }
-        [ForeignKey("UserId")]
-        public Guid UserId { get; set; }
+        [ForeignKey("CustomerId")]
+        public Guid CustomerId { get; set; }
         [ForeignKey("BillStatusId")]
         public Guid BillStatusId { get; set; }
         [ForeignKey("PaymentId")]
         public Guid PaymentId { get; set; }
-
         public double Price { get; set; }
-
         public DateTime CreateDate { get; set; }
-
         public string Address { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual UsedVoucher UsedVoucher { get; set; }
