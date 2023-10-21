@@ -1,16 +1,16 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 .link-text {
@@ -18,6 +18,73 @@ html {
     text-decoration: none;
 }
 
-.link-text:hover {
-    text-decoration: underline;
+    .link-text:hover {
+        text-decoration: underline;
+    }
+
+.input-group > .btn-outline-primary {
+    padding: 5px 12px !important;
 }
+
+.btn-outline-primary {
+    background-color: #fff !important;
+    color: #4bb8a9 !important;
+    border-radius: 0.2rem !important;
+    border: 1px solid #4bb8a9;
+    padding: 0 1rem !important;
+}
+
+    .btn-outline-primary:hover {
+        background-color: #4bb8a9 !important;
+        color: #fff !important;
+        border: 1px solid #4bb8a9;
+    }
+
+    .btn-outline-primary:active:focus-visible {
+        border: 1px solid #4bb8a9;
+    }
+
+    .btn-outline-primary:focus, .btn-check:active + .btn-outline-primary:focus, .btn-check:checked + .btn-outline-primary:focus, .btn-outline-primary.active:focus, .btn-outline-primary:active:focus, .show > .btn-outline-primary.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.25rem #A5DCD4;
+    }
+
+.btn-primary {
+    background-color: #4bb8a9 !important;
+    color: #fff !important;
+    border-radius: 0.2rem !important;
+    border: 1px solid #4bb8a9;
+    padding: auto 1rem !important;
+}
+
+    .btn-primary:hover {
+        background-color: #fff !important;
+        color: #4bb8a9 !important;
+        border: 1px solid #4bb8a9;
+    }
+
+    .btn-primary:active:focus-visible {
+        border: 1px solid #4bb8a9;
+    }
+
+    .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-check:checked + .btn-primary:focus, .btn-primary.active:focus, .btn-primary:active:focus, .show > .btn-primary.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.25rem #A5DCD4;
+    }
+
+.bxs-heart {
+    font-size: 36px;
+    color: #4bb8a9;
+}
+
+    .bxs-heart:hover {
+        text-shadow: 0 0 0.25rem #A5DCD4;
+    }
+
+.bx-heart {
+    font-size: 36px;
+    color: #4bb8a9;
+}
+
+    .bx-heart:hover:before {
+        content: "\ede2";
+        text-shadow: 0 0 0.25rem #A5DCD4;
+    }

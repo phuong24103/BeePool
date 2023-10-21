@@ -50,7 +50,7 @@ namespace Datn_Api.Controllers
 
         [HttpPut]
         [Route("Increase/{id:Guid}")]
-        public async Task<ActionResult<CartDetailView>> IncreaseCartDetail([FromRoute] Guid id)
+        public async Task<ActionResult<CartDetail>> IncreaseCartDetail([FromRoute] Guid id)
         {
             await _cartDetailService.IncreaseCartDetail(id);
             return Ok();
@@ -58,7 +58,7 @@ namespace Datn_Api.Controllers
 
         [HttpPut]
         [Route("Reduce/{id:Guid}")]
-        public async Task<ActionResult<CartDetailView>> ReduceCartDetail([FromRoute] Guid id)
+        public async Task<ActionResult<CartDetail>> ReduceCartDetail([FromRoute] Guid id)
         {
             await _cartDetailService.ReduceCartDetail(id);
             return Ok();
@@ -69,6 +69,14 @@ namespace Datn_Api.Controllers
         public async Task<ActionResult<CartDetailView>> DeleteCartDetail([FromRoute] Guid id)
         {
             await _cartDetailService.DeleteCartDetail(id);
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("DeleteAll/{id:Guid}")]
+        public async Task<ActionResult<CartDetailView>> DeleteAllCartDetail([FromRoute] Guid id)
+        {
+            await _cartDetailService.DeleteAllCartDetail(id);
             return Ok();
         }
     }

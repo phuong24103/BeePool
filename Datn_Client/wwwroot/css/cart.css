@@ -28,8 +28,12 @@ body {
     color: #aaa !important;
 }
 
-.first {
-    background-color: white;
+.breadcrumb-item {
+    padding: 0 5px !important;
+}
+
+.fa-angle-double-right {
+    padding: 1px 5px !important;
 }
 
 a {
@@ -37,12 +41,12 @@ a {
     color: #aaa;
 }
 
-    .btn-lg, .form-control-sm:focus,
+    /*.btn-lg, .form-control-sm:focus,
     .form-control-sm:active,
     a:focus, a:active {
         outline: none !important;
         box-shadow: none !important
-    }
+    }*/
 
 .form-control-sm:focus {
     border: 1.5px solid #4bb8a9;
@@ -52,7 +56,6 @@ a {
     padding: .5rem 0.1rem;
     font-size: 1rem;
     border-radius: 0;
-    color: white !important;
     background-color: #4bb8a9;
     height: 2.8rem !important;
     border-radius: 0.2rem !important;
@@ -62,26 +65,8 @@ a {
         background-color: #26A69A;
     }
 
-.btn-outline-primary {
-    background-color: #fff !important;
-    color: #4bb8a9 !important;
-    border-radius: 0.2rem !important;
-    border: 1px solid #4bb8a9;
-}
-
-    .btn-outline-primary:hover {
-        background-color: #4bb8a9 !important;
-        color: #fff !important;
-        border: 1px solid #4bb8a9;
-    }
-
 .card-2 {
     margin-top: 40px !important;
-}
-
-.card-header {
-    background-color: #fff;
-    border-bottom: 0px solid #aaaa !important;
 }
 
 p {
@@ -125,3 +110,32 @@ p {
         padding-left: 0
     }
 }
+
+.fa-trash {
+    font-size: 26px;
+    color: #dc3545;
+    margin: 0;
+}
+
+    .fa-trash:hover {
+        text-shadow: 0 0 0.2rem #EE9AA2;
+    }
+
+.fa-trash-o {
+    font-size: 26px;
+    color: #dc3545;
+    margin: 1rem 0;
+}
+
+    .fa-trash-o:hover {
+        text-shadow: 0 0 0.2rem #EE9AA2;
+    }
+
+.link-text-name {
+    font-weight: bold;
+    color: black;
+}
+
+    .link-text-name:hover {
+        color: #4bb8a9;
+    }

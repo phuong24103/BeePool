@@ -22,6 +22,14 @@ namespace Datn_Api.Services
             {
                 var product = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
                 var cart = await _context.Carts.FirstOrDefaultAsync(p => p.CustomerId == cartDetail.CustomerId);
+                if (cart.Quantity == 0)
+                {
+                    cart.TotalMoney = product.Price * cartDetail.Quantity;
+                }
+                else
+                {
+                    cart.TotalMoney += product.Price * cartDetail.Quantity;
+                }
                 if (c == null)
                 {
                     if (cart.Quantity == 0)
@@ -45,7 +53,8 @@ namespace Datn_Api.Services
                     c.Price += product.Price * cartDetail.Quantity;
                     _context.CartDetails.Update(c);
                 }
-                cart.TotalMoney += product.Price * cartDetail.Quantity;
+                product.Quantity = 1;
+                _context.ProductDetails.Update(product);
                 _context.Carts.Update(cart);
                 await _context.SaveChangesAsync();
                 return true;
@@ -62,6 +71,10 @@ namespace Datn_Api.Services
             if (cartDetail == null) return false;
             try
             {
+                var cart = _context.Carts.Find(cartDetail.CustomerId);
+                cart.Quantity--;
+                cart.TotalMoney -= cartDetail.Price;
+                _context.Carts.Update(cart);
                 _context.CartDetails.Remove(cartDetail);
                 await _context.SaveChangesAsync();
                 return true;
@@ -147,14 +160,15 @@ namespace Datn_Api.Services
         {
             var cartDetail = _context.CartDetails.Find(id);
             if (cartDetail == null) return false;
-            cartDetail.Quantity++;
-            cartDetail.Price += cartDetail.ProductDetail.Price;
             try
             {
-                var cart = _context.Carts.Find(cartDetail.CustomerId);
-                cart.TotalMoney += cartDetail.Price;
-                _context.Carts.Update(cart);
+                cartDetail.Quantity++;
+                var productDetail = _context.ProductDetails.Find(cartDetail.ProductDetailId);
+                cartDetail.Price += productDetail.Price;
                 _context.CartDetails.Update(cartDetail);
+                var cart = _context.Carts.Find(cartDetail.CustomerId);
+                cart.TotalMoney += productDetail.Price;
+                _context.Carts.Update(cart);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -168,15 +182,14 @@ namespace Datn_Api.Services
         {
             var cartDetail = _context.CartDetails.Find(id);
             if (cartDetail == null) return false;
-            cartDetail.Quantity--;
-            cartDetail.Price -= cartDetail.ProductDetail.Price;
             try
             {
                 var cart = _context.Carts.Find(cartDetail.CustomerId);
+                var productDetail = _context.ProductDetails.Find(cartDetail.ProductDetailId);
                 if (cartDetail.Quantity > 1)
                 {
                     cartDetail.Quantity--;
-                    cartDetail.Price -= cartDetail.ProductDetail.Price;
+                    cartDetail.Price -= productDetail.Price;
                     _context.CartDetails.Update(cartDetail);
                 }
                 else
@@ -184,7 +197,31 @@ namespace Datn_Api.Services
                     _context.CartDetails.Remove(cartDetail);
                     cart.Quantity--;
                 }
-                cart.TotalMoney -= cartDetail.Price;
+                cart.TotalMoney -= productDetail.Price;
+                _context.Carts.Update(cart);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteAllCartDetail(Guid id)
+        {
+            var customer = _context.Customers.Find(id);
+            if (customer == null) return false;
+            try
+            {
+                var cartDetail = _context.CartDetails.Where(p => p.CustomerId == customer.Id);
+                foreach (var item in cartDetail)
+                {
+                    _context.CartDetails.Remove(item);
+                }
+                var cart = _context.Carts.Find(customer.Id);
+                cart.Quantity = 0;
+                cart.TotalMoney = 0;
                 _context.Carts.Update(cart);
                 await _context.SaveChangesAsync();
                 return true;

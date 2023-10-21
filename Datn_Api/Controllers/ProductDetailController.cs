@@ -1,5 +1,7 @@
 ﻿using Datn_Api.IServices;
+using Datn_Api.Services;
 using Datn_Shared.Models;
+using Datn_Shared.ViewModels.CartDetailViewModels;
 using Datn_Shared.ViewModels.ProductDetailViewModels;
 using Datn_Shared.ViewModels.TipViewModels;
 using Microsoft.AspNetCore.Http;
@@ -44,6 +46,23 @@ namespace Datn_Api.Controllers
             await _iprodtsv.UpdateProductDetail(id, updateProductDetail);
             return Ok(updateProductDetail);
         }
+
+        [HttpPut]
+        [Route("Increase/{id:Guid}")]
+        public async Task<ActionResult<ProductDetail>> IncreaseProductDetail([FromRoute] Guid id)
+        {
+            await _iprodtsv.IncreaseProductDetail(id);
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("Reduce/{id:Guid}")]
+        public async Task<ActionResult<ProductDetail>> ReduceProductDetail([FromRoute] Guid id)
+        {
+            await _iprodtsv.ReduceProductDetail(id);
+            return Ok();
+        }
+
         [HttpDelete]
         [Route("Delete/{id:Guid}")]
         public async Task<ActionResult<ProductDetail>> DeleteProductDetail([FromRoute] Guid id)

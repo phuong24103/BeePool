@@ -1,10 +1,12 @@
 ﻿@model Datn_Shared.ViewModels.ProductDetailViewModels.ViewProductDetail
 @using Datn_Shared.Models;
+
 @{
     ViewData["Title"] = "ProductDetail";
     var tip = (ViewData["Tip"] as List<Tip>);
     var s = (ViewData["Shaft"] as List<Shaft>);
     var w = (ViewData["Weight"] as List<Weight>);
+    var CheckExistLike = (ViewData["CheckExistLike"] as string);
     <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/productbutton.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/dropdown.css" asp-append-version="true" />
@@ -14,7 +16,6 @@
     <script src="~/js/imagedetail.js"></script>
     <link rel="stylesheet" href="~/css/plusminus.css" asp-append-version="true" />
 }
-
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +116,8 @@
         </select>
     </div>
 </div>
-@* <form asp-action="Create" asp-controller="Cart"> *@
+<form asp-action="Create" asp-controller="Cart">
+    <input hidden asp-for="Id" value="@Model.Id">
     <div class="row" style="margin-top : 100px;margin-bottom : 100px;border: 2px solid #006100;border-radius: 10px;">
         <div class="col-md-6">
             <section>
@@ -198,7 +200,6 @@
                 @Model.Description
             </h6>
         </div>
-        @* <input hidden asp-for="Id" value="@Model.Id"> *@
         <div class="col-md-6" style="text-align : left">
             <h3 style="font-weight : bold">
                 @Model.Product.Name
@@ -258,40 +259,57 @@
             </select>
             <div class="row">
                 <div class="col-md-3">
-                    <div style="border : solid black 1px;text-align : center">
-                        <p>Số lượng: <label id="quantity">1</label></p>
+                    <div style="text-align: center;" class="input-group">
+                        <a asp-controller="ProductDetail" asp-action="Reduce" asp-route-id="@Model.Id" class="btn btn-outline-primary" style="margin-left: 10px;">-</a>
+                        <input readonly asp-for="Quantity" class="form-control">
+                        <a asp-controller="ProductDetail" asp-action="Increase" asp-route-id="@Model.Id" class="btn btn-outline-primary" style="margin-right: 10px;">+</a>
+                        @* <p>Số lượng: <label id="quantity">1</label></p>
 
                         <button onclick="giamSoLuong()">-</button>
                         <button onclick="tangSoLuong()">+</button>
 
                         <script>
-                            var soLuong = 1; // Khởi tạo số lượng ban đầu
+                        var soLuong = 1; // Khởi tạo số lượng ban đầu
 
-                            function capNhatSoLuong() {
-                                var spanSoLuong = document.getElementById("quantity");
-                                spanSoLuong.textContent = soLuong;
-                            }
+                        function capNhatSoLuong() {
+                        var spanSoLuong = document.getElementById("quantity");
+                        spanSoLuong.textContent = soLuong;
+                        }
 
-                            function tangSoLuong() {
-                                soLuong++;
-                                capNhatSoLuong();
-                            }
+                        function tangSoLuong() {
+                        soLuong++;
+                        capNhatSoLuong();
+                        }
 
-                            function giamSoLuong() {
-                                if (soLuong > 1) {
-                                    soLuong--;
-                                    capNhatSoLuong();
-                                }
-                            }
+                        function giamSoLuong() {
+                        if (soLuong > 1) {
+                        soLuong--;
+                        capNhatSoLuong();
+                        }
+                        }
 
-                            // Gọi hàm để hiển thị số lượng ban đầu
-                            capNhatSoLuong();
-                        </script>
+                        // Gọi hàm để hiển thị số lượng ban đầu
+                        capNhatSoLuong();
+                        </script> *@
                     </div>
                 </div>
-                <div class="col-md-9">
-                    @* <input type="submit" value="Thêm Vào Giỏ Hàng" class="btn btn-danger" /> *@
-                <a asp-action="Create" asp-controller="Cart" asp-route-id="@Model.Id" class="btn btn-danger">Thêm Vào Giỏ Hàng</a>
+                @if (CheckExistLike != null)
+                {
+                    <div class="col-md-1">
+                        <a asp-controller="WishList" asp-action="Like" asp-route-id="@Model.ProductID">
+                            @if (CheckExistLike == "True")
+                            {
+                                <i class="bx bxs-heart"></i>
+                            }
+                            else
+                            {
+                                <i class="bx bx-heart"></i>
+                            }
+                        </a>
+                    </div>
+                }
+                <div class="col-md-4" style="text-align: center;">
+                    <input type="submit" value="Thêm Vào Giỏ Hàng" class="btn btn-danger" />
                 </div>
             </div>
             <div style="color : darkorange;margin-top : 30px;">
@@ -308,7 +326,7 @@
             </div>
         </div>
     </div>
-@* </form> *@
+</form>
 <div style="text-align: center; margin-top: 30px; margin-bottom : 30px; font-weight: bold">
     <h1>Sản Phẩm Tương Tự</h1>
 </div>
@@ -350,7 +368,7 @@
         </a>
     </div>
     <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
+        <a asp-controller="ProductDetail" asp-action="ProductDetail">
             <div class="container page-wrapper">
                 <div class="page-inner">
                     <div class="row">
@@ -385,7 +403,7 @@
         </a>
     </div>
     <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
+        <a asp-controller="ProductDetail" asp-action="ProductDetail">
             <div class="container page-wrapper">
                 <div class="page-inner">
                     <div class="row">

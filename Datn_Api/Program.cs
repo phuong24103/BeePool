@@ -83,6 +83,7 @@ builder.Services.AddScoped<IRegisterCustomerService, RegisterCustomerService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<ICartDetailService, CartDetailService>();
+builder.Services.AddScoped<IWishListService, WishListService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

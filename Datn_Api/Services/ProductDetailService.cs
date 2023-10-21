@@ -27,13 +27,13 @@ namespace Datn_Api.Services
                 WeightId = product.WeightId,
                 Quantity = product.Quantity,
                 ImportPrice = product.ImportPrice,
-                
+
                 Price = product.Price,
-                
+
                 CreateDate = product.CreateDate,
                 Status = product.Status,
                 Description = product.Description,
-               
+
             };
             try
             {
@@ -67,8 +67,8 @@ namespace Datn_Api.Services
         public async Task<IEnumerable<ViewProductDetail>> GetAllProductDetail()
         {
             List<ViewProductDetail> prodtview = new List<ViewProductDetail>();
-            prodtview = await(
-                from a in _context.ProductDetails 
+            prodtview = await (
+                from a in _context.ProductDetails
                 join b in _context.Tips on a.TipId equals b.Id
                 join c in _context.Shafts on a.ShaftId equals c.Id
                 join d in _context.Weights on a.WeightId equals d.Id
@@ -82,15 +82,15 @@ namespace Datn_Api.Services
                     ProductID = a.ProductID,
                     Quantity = a.Quantity,
                     ImportPrice = a.ImportPrice,
-                        Price = a.Price,
-                        CreateDate = a.CreateDate,
-                        Status = a.Status,
-                        Description = a.Description,
-                   Tip = b,
-                   Shaft = c,
-                   Weight = d,
-                   Product = e,
-                    
+                    Price = a.Price,
+                    CreateDate = a.CreateDate,
+                    Status = a.Status,
+                    Description = a.Description,
+                    Tip = b,
+                    Shaft = c,
+                    Weight = d,
+                    Product = e,
+
                 }).ToListAsync();
             return prodtview;
         }
@@ -98,7 +98,7 @@ namespace Datn_Api.Services
         public async Task<ViewProductDetail> GetProductDetailById(Guid id)
         {
             ViewProductDetail prodtview = new ViewProductDetail();
-            prodtview = await(
+            prodtview = await (
                 from a in _context.ProductDetails
                 join b in _context.Tips on a.TipId equals b.Id
                 join c in _context.Shafts on a.ShaftId equals c.Id
@@ -127,7 +127,42 @@ namespace Datn_Api.Services
             return prodtview;
         }
 
-      
+        public async Task<bool> IncreaseProductDetail(Guid id)
+        {
+            var productDetail = _context.ProductDetails.Find(id);
+            if (productDetail == null) return false;
+            try
+            {
+                productDetail.Quantity++;
+                _context.ProductDetails.Update(productDetail);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> ReduceProductDetail(Guid id)
+        {
+            var productDetail = _context.ProductDetails.Find(id);
+            if (productDetail == null) return false;
+            try
+            {
+                if (productDetail.Quantity > 1)
+                {
+                    productDetail.Quantity--;
+                    _context.ProductDetails.Update(productDetail);
+                    await _context.SaveChangesAsync();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         public async Task<bool> UpdateProductDetail(Guid id, UpdateProductDetail product)
         {
