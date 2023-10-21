@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Datn_Client.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/nav.css" asp-append-version="true" />
+    <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <script src="~/js/imagedetail.js"></script>
 </head>
 <body style="background-color: white;">
@@ -66,9 +67,12 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" asp-area="" asp-controller="Product" asp-action="Index">Sản Phẩm</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Sản Phẩm Yêu Thích</a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated && !User.IsInRole("Quản lý") && !User.IsInRole("Nhân viên"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" asp-area="" asp-controller="WishList" asp-action="Index">Danh Sách Yêu Thích</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" asp-area="" asp-controller="Tip" asp-action="Index">Tip</a>
                         </li>
@@ -86,13 +90,13 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto mb-lg-0">
-                        @if (!User.Identity.IsAuthenticated)
+                        @if (!User.Identity.IsAuthenticated || User.IsInRole("Quản lý") || User.IsInRole("Nhân viên"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
                             </li>
                             <li class="nav-item">
-                                <a asp-area="" asp-controller="Login" asp-action="Login">
+                                <a asp-controller="Login" asp-action="Login">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                                     </svg>
@@ -102,18 +106,17 @@
                         else
                         {
                             <li class="nav-item">
-                                <a asp-area="" asp-controller="Cart" asp-action="Index">
+                                <a asp-controller="Cart" asp-action="Index">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
                                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                     </svg>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Logout">
+                                <a class="nav-link" asp-controller="Login" asp-action="Logout">
                                     Sign Out
                                 </a>
                             </li>
-
                         }
                     </ul>
                 </div>

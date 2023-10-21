@@ -1,0 +1,202 @@
+﻿@model IEnumerable<Datn_Shared.Models.Category>
+@using Datn_Shared.Models;
+
+@{
+    ViewData["Title"] = "Index";
+    var category = (ViewData["Category"] as List<Category>);
+}
+
+<div class="pagetitle">
+    <h1>Quản lý danh mục</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Tổng quan</li>
+            <li class="breadcrumb-item active">Danh mục</li>
+        </ol>
+    </nav>
+</div>
+<!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+            <div class="row">
+                <!-- Recent Sales -->
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Danh mục <span>| </span></h5>
+
+                            <table class="table table-hover datatable">
+                                <tr>
+                                    <td>Tên</td>
+                                    <td>Trạng thái</td>
+                                    <td></td>
+                                </tr>
+                                @foreach (var item in @Model)
+                                {
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td>
+                                            @if (item.Status == 0)
+                                            {
+                                                <span>Còn hàng</span>
+                                            }
+                                            else if (item.Status == 1)
+                                            {
+                                                <span>Hết hàng</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Ngừng bán</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a asp-area="Admin" asp-controller="Category" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success">
+                                                <i class="bx bxs-detail"></i>
+                                            </a>
+                                            <a asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                                <i class="bx bxs-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div><!-- End Recent Sales -->
+            </div>
+
+        </div><!-- End Left side columns -->
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+            <!-- Recent Activity -->
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Sửa <span>| xx</span></h5>
+                    <!-- Default Tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="contact-tab" data-bs-toggle="tab"
+                                    data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
+                                    aria-selected="false">
+                                Chi tiết
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link " id="home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">
+                                Cập nhật
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    aria-selected="false">
+                                Tạo mới
+                            </button>
+                        </li>
+                    </ul>
+
+                    @* Update *@
+                    <div class="tab-content pt-2" id="myTabContent">
+                        <div class="tab-pane fade" id="home" role="tabpanel"
+                             aria-labelledby="home-tab">
+                            @if (category != null)
+                            {
+                                <form asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-id="@category.First().Id">
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Name</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@category.First().Name" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Status</label>
+                                        <div class="col-sm-8">
+                                            <select asp-for="@category.First().Status" class="form-select" aria-label="Default select example">
+                                                <option selected>Open this select menu</option>
+                                                <option value="0">Còn hàng</option>
+                                                <option value="1">Hết hàng</option>
+                                                <option value="2">Ngừng bán</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-warning">Lưu</button>
+                                </form>
+                            }
+                        </div>
+
+                        @* Create *@
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <form asp-area="Admin" asp-controller="Category" asp-action="Create">
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Name</label>
+                                    <div class="col-sm-8">
+                                        <input asp-for="@Model.First().Name" type="text" class="form-control" value=""/>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Status</label>
+                                    <div class="col-sm-8">
+                                        <select asp-for="@Model.First().Status" class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="0">Còn hàng</option>
+                                            <option value="1">Hết hàng</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-success">Thêm</button>
+                            </form><!-- End Multi Columns Form -->
+                        </div>
+
+                        @* Detail *@
+                        <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            @if (category != null)
+                            {
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">
+                                        <p>Tên</p>
+                                        <span>Trạng thái</span>
+                                    </label>
+                                    <label class="col-sm-8 col-form-label">
+                                        @foreach (var item in category)
+                                        {
+                                            <p>@item.Name</p>
+                                            @if (item.Status == 0)
+                                            {
+                                                <span>Còn hàng</span>
+                                            }
+                                            else if (item.Status == 1)
+                                            {
+                                                <span>Hết hàng</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Ngừng bán</span>
+                                            }
+                                        }
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div><!-- End Default Tabs -->
+
+
+                </div>
+
+            </div>
+        </div><!-- End Recent Activity -->
+
+
+    </div><!-- End Right side columns -->
+
+</section>

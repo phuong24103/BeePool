@@ -9,7 +9,7 @@ namespace Datn_Client.Controllers
 {
     public class CartController : Controller
     {
-        HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
         public CartController(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -23,19 +23,39 @@ namespace Datn_Client.Controllers
             return View(result);
         }
 
-        /*[HttpPost]
-        [Route("[action]")]*/
-        public async Task<IActionResult> Create(Guid id)
+        [HttpPost]
+        public async Task<IActionResult> Create([FromForm] CreateCartDetailFE cartDetailFE)
         {
             var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userName != null)
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role == null)
             {
                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
-                var productDetail = await _httpClient.GetFromJsonAsync<ProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{id}");
                 CreateCartDetail cartDetail = new CreateCartDetail()
                 {
                     CustomerId = customer.Id,
-                    ProductDetailId = productDetail.Id,
+                    ProductDetailId = cartDetailFE.Id,
+                    Quantity = cartDetailFE.Quantity,
+                };
+                await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/CartDetail/Create", cartDetail);
+                return RedirectToAction("Index", "Cart");
+            }
+            return RedirectToAction("Login", "Login");
+        }
+
+        [Route("[action]/{id:Guid}")]
+        public async Task<IActionResult> CreateOne(Guid id)
+        {
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role == null)
+            {
+                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
+                var product = await _httpClient.GetFromJsonAsync<ProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{id}");
+                CreateCartDetail cartDetail = new CreateCartDetail()
+                {
+                    CustomerId = customer.Id,
+                    ProductDetailId = product.Id,
                     Quantity = 1,
                 };
                 await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/CartDetail/Create", cartDetail);
@@ -51,18 +71,28 @@ namespace Datn_Client.Controllers
             return RedirectToAction("Index");
         }
 
-        [Route("[action]/{id:Guid}")]
-        public async Task<IActionResult> Increase(Guid id)
+        [Route("[action]")]
+        public async Task<IActionResult> DeleteAll()
         {
-            await _httpClient.PutAsJsonAsync<CartDetailView>($"https://localhost:7033/api/CartDetail/Increase/{id}", null);
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userName != null)
+            {
+                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
+                await _httpClient.DeleteAsync($"https://localhost:7033/api/CartDetail/DeleteAll/{customer.Id}");
+            }
             return RedirectToAction("Index");
         }
 
-        [Route("[action]/{id:Guid}")]
+        public async Task<IActionResult> Increase(Guid id)
+        {
+            await _httpClient.PutAsJsonAsync<CartDetail>($"https://localhost:7033/api/CartDetail/Increase/{id}", null);
+            return RedirectToAction("Index", new { id = id });
+        }
+
         public async Task<IActionResult> Reduce(Guid id)
         {
-            await _httpClient.PutAsJsonAsync<CartDetailView>($"https://localhost:7033/api/CartDetail/Reduce/{id}", null);
-            return RedirectToAction("Index");
+            await _httpClient.PutAsJsonAsync<CartDetail>($"https://localhost:7033/api/CartDetail/Reduce/{id}", null);
+            return RedirectToAction("Index", new { id = id });
         }
     }
 }

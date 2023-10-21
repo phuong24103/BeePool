@@ -33,17 +33,25 @@ namespace Datn_Api.Controllers
         }
 
         [HttpGet]
-        [Route("GetByUserId/{id:Guid}")]
-        public async Task<IActionResult> GetWishListByUserId([FromRoute] Guid id)
+        [Route("GetByCustomerId/{id:Guid}")]
+        public async Task<IActionResult> GetWishListByCustomerId([FromRoute] Guid id)
         {
-            var wishLists = await _wishListService.GetWishListByUserId(id);
+            var wishLists = await _wishListService.GetWishListByCustomerId(id);
             return Ok(wishLists);
         }
 
-        [HttpOptions("Like")]
-        public async Task<ActionResult<WishList>> Like(CreateWishList wishList)
+        [HttpGet]
+        [Route("CheckExistLike/{customerId:Guid}/{productId:Guid}")]
+        public async Task<IActionResult> CheckExistLike(Guid customerId, Guid productId)
         {
-            await _wishListService.Like(wishList);
+            var wishList = await _wishListService.CheckExistLike(customerId, productId);
+            return Ok(wishList);
+        }
+
+        [HttpOptions("Like/{customerId:Guid}/{productId:Guid}")]
+        public async Task<ActionResult<WishList>> Like(Guid customerId, Guid productId)
+        {
+            await _wishListService.Like(customerId, productId);
             return Ok();
         }
     }

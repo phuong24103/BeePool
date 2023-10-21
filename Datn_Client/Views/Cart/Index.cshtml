@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Index";
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
 }
 
 <div class=" container-fluid my-5 ">
@@ -16,7 +18,9 @@
                     <div class="col">
                         <div class="row justify-content-start ">
                             <div class="col">
-                                <img class="irc_mi img-fluid cursor-pointer " src="~/images/logo.png" width="70" height="70">
+                                <a asp-controller="Home" asp-action="Index" class="nav-link px-2">
+                                    <img class="irc_mi img-fluid cursor-pointer " src="~/images/logo.png" width="70" height="70">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -28,8 +32,10 @@
                     <div class="col-12 mt-3 ">
                         <nav aria-label="breadcrumb" class="second ">
                             <ol class="breadcrumb indigo lighten-6 first  ">
-                                <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " href="#"><span class="mr-md-3 mr-1">TRANG CHỦ</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
-                                <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" href="#"><span class="mr-md-3 mr-1">SẢN PHẨM</span></a><i class="fa fa-angle-double-right text-uppercase " aria-hidden="true"></i></li>
+                                <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase" asp-controller="Home" asp-action="Index"><span class="mr-md-3 mr-1">TRANG CHỦ</span></a></li>
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" asp-controller="Product" asp-action="Index"><span class="mr-md-3 mr-1">SẢN PHẨM</span></a></li>
+                                <i class="fa fa-angle-double-right text-uppercase " aria-hidden="true"></i>
                                 <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase active-2" asp-controller="Bill" asp-action="Bill"><span class="mr-md-3 mr-1">HÓA ĐƠN</span></a></li>
                             </ol>
                         </nav>
@@ -79,25 +85,45 @@
                     <div class="col-md-5">
                         <div class="card border-0 ">
                             <div class="card-header card-2">
-                                <p class="card-text text-muted mt-md-4  mb-2 space">GIỎ HÀNG <span class=" small text-muted ml-2 cursor-pointer">CỦA BẠN</span> </p>
+                                <p class="card-text text-muted mt-md-4  mb-2 space row">
+                                    <span class="col-6">GIỎ HÀNG <span class=" small text-muted ml-2 cursor-pointer">CỦA BẠN</span></span>
+                                    <span class="col-6 d-flex justify-content-end">
+                                        <a asp-controller="Cart" asp-action="DeleteAll">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </span>
+                                </p>
                                 <hr class="my-2">
                             </div>
-                            <div class="card-body pt-0">
+                            <div class="card-body">
                                 @foreach (var item in @Model)
                                 {
-                                    <div class="row  justify-content-between">
+                                    <div class="row justify-content-between">
                                         <div class="col-auto col-md-7">
                                             <div class="media flex-column flex-sm-row">
                                                 <img class=" img-fluid" src="https://i.imgur.com/6oHix28.jpg" width="62" height="62">
                                                 <div class="media-body  my-auto">
                                                     <div class="row ">
-                                                        <div class="col-auto"><p class="mb-0"><b>@item.Name</b></p><small class="text-muted">@item.Description</small></div>
+                                                        <div class="col-auto">
+                                                            <p class="mb-0"><a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId" class="link-text-name">@item.Name</a></p>
+                                                            <div class=" pl-0 flex-sm-col col-auto  my-auto "><span style="font-size: 13px;"><b>$@item.ProductDetail.Price</b></span></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class=" pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed-1">@item.Quantity</p></div>
-                                        <div class=" pl-0 flex-sm-col col-auto  my-auto "><p><b>$@item.Price</b></p></div>
+                                        <div class=" pl-0 flex-sm-col col-auto  my-auto">
+                                            <form class="input-group">
+                                                <a asp-controller="Cart" asp-action="Reduce" asp-route-id="@item.Id" class="btn btn-outline-primary">-</a>
+                                                <label asp-for="@item.Quantity" class="form-control" style="min-width: 51px; text-align: center;">@item.Quantity</label>
+                                                <a asp-controller="Cart" asp-action="Increase" asp-route-id="@item.Id" class="btn btn-outline-primary">+</a>
+                                            </form>
+                                            <span class="d-flex justify-content-end">
+                                                <a asp-controller="Cart" asp-action="Delete" asp-route-id="@item.Id">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </a>
+                                            </span>
+                                        </div>
                                     </div>
                                     <hr class="my-2">
                                 }
@@ -105,7 +131,14 @@
                                     <div class="col">
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p class="mb-1"><b>Tổng Tiền Sản Phẩm</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>$@Model.First().Cart.TotalMoney</b></p></div>
+                                            @if (@Model.Any())
+                                            {
+                                                <div class="flex-sm-col col-auto"><p class="mb-1"><b>$@Model.First().Cart.TotalMoney</b></p></div>
+                                            }
+                                            else
+                                            {
+                                                <div class="flex-sm-col col-auto"><p class="mb-1"><b>$0</b></p></div>
+                                            }
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>Số Tiền Giảm Giá</b></p></div>
@@ -114,10 +147,17 @@
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p><b>Tiền Ship</b></p></div>
                                             <div class="flex-sm-col col-auto"><p class="mb-1"><b>(Tiền ship)</b></p> </div>
-                                        </div><hr class="my-0">
+                                        </div><hr class="my-2">
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p><b>Tổng Tiền Phải Trả</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>(Tổng tiền)</b></p> </div>
+                                            @if (@Model.Any())
+                                            {
+                                                <div class="flex-sm-col col-auto"><p class="mb-1"><b>$@Model.First().Cart.TotalMoney</b></p></div>
+                                            }
+                                            else
+                                            {
+                                                <div class="flex-sm-col col-auto"><p class="mb-1"><b>$0</b></p></div>
+                                            }
                                         </div>
                                         <hr class="my-0">
                                     </div>

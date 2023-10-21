@@ -59,27 +59,27 @@
                                 <div class="card-body">
 
                                     <div class="pt-4 pb-2">
-                                        <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                                        <p class="text-center small">Enter your personal details to create account</p>
+                                        <h5 class="card-title text-center pb-0 fs-4">Tạo một tài khoản</h5>
+                                        <p class="text-center small">Nhập thông tin cá nhân để tạo tài khoản</p>
                                     </div>
 
                                     <form asp-area="Admin" asp-controller="Register" asp-action="Register" class="row g-3 needs-validation">
                                         <div class="col-12">
-                                            <label class="form-label">Username</label>
+                                            <label class="form-label">Tài Khoản</label>
                                             <input asp-for="Username" type="text" class="form-control">
                                             @* <div class="invalid-feedback">Please, enter your username!</div> *@
-                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                            <span asp-validation-for="Username" class="text-danger"></span>
                                         </div>
 
                                         <div class="col-12">
-                                            <label class="form-label">Password</label>
+                                            <label class="form-label">Mật Khẩu</label>
                                             <input asp-for="Password" type="password" class="form-control">
                                             @* <div class="invalid-feedback">Please enter your password!</div> *@
                                             <span asp-validation-for="Password" class="text-danger"></span>
                                         </div>
 
                                         <div class="col-12">
-                                            <label class="form-label">ConfirmPassword</label>
+                                            <label class="form-label">Nhập Lại Mật Khẩu</label>
                                             <input asp-for="ConfirmPassword" type="password" class="form-control">
                                             @* <div class="invalid-feedback">Please enter your ConfirmPassword!</div> *@
                                             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
@@ -97,28 +97,28 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <label class="form-label">Your PhoneNumber</label>
+                                            <label class="form-label">Số điện thoại</label>
                                             <input asp-for="PhoneNumber" type="text" class="form-control">
                                             @* <div class="invalid-feedback">Please enter a valid PhoneNumber!</div> *@
                                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                         </div>
 
                                         <div class="col-12">
-                                            <label class="form-label">Your Email</label>
+                                            <label class="form-label">Email</label>
                                             <input asp-for="Email" type="email" class="form-control">
                                             @* <div class="invalid-feedback">Please enter a valid Email adddress!</div> *@
                                             <span asp-validation-for="Email" class="text-danger"></span>
                                         </div>
 
                                         <div class="col-12">
-                                            <label class="form-label">DateOfBirth</label>
+                                            <label class="form-label">Ngày sinh</label>
                                             <input asp-for="DateOfBirth" type="datetime" class="form-control">
                                             @* <div class="invalid-feedback">Please choose a DateOfBirth.</div> *@
                                             <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                                         </div>
 
                                         <div class="col-12">
-                                            <label class="form-label">Address</label>
+                                            <label class="form-label">Địa chỉ</label>
                                             <input asp-for="Address" type="text" class="form-control">
                                             @* <div class="invalid-feedback">Please enter your Address!</div> *@
                                             <span asp-validation-for="Address" class="text-danger"></span>
@@ -127,15 +127,12 @@
                                         <div class="col-12">
                                             <div class="form-check">
                                                 <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                                                <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                                                <div class="invalid-feedback">You must agree before submitting.</div>
+                                                <label class="form-check-label" for="acceptTerms">Tôi đồng ý và chấp nhận <a href="#">các điều khoản và điều kiện</a></label>
+                                                <div class="invalid-feedback">Bạn phải đồng ý trước khi tạo tài khoản.</div>
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <button class="btn btn-primary w-100" type="submit">Create Account</button>
-                                        </div>
-                                        <div class="col-12">
-                                            <p class="small mb-0">Already have an account? <a asp-area="Admin" asp-controller="Login" asp-action="Login">Log in</a></p>
+                                            <button class="btn btn-primary w-100" type="submit">Tạo tài khoản</button>
                                         </div>
                                     </form>
 
