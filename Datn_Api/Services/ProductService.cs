@@ -4,6 +4,7 @@ using Datn_Shared.Models;
 using Datn_Shared.ViewModels.ProductDetailViewModels;
 using Datn_Shared.ViewModels.ProductViewModels;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Datn_Api.Services
 {
@@ -21,14 +22,14 @@ namespace Datn_Api.Services
                 Id = Guid.NewGuid(),
                 CategoryID = product.CategoryID,
 
-               
+
                 Name = product.Name,
                 Pin = product.Pin,
                 Wrap = product.Wrap,
                 Rings = product.Rings,
                 AvailableQuantity = product.AvailableQuantity,
                 Sold = product.Sold,
-                Likes   = product.Likes,
+                Likes = product.Likes,
                 Producer = product.Producer,
                 CreateDate = product.CreateDate,
                 Status = product.Status,
@@ -66,36 +67,48 @@ namespace Datn_Api.Services
 
         public async Task<IEnumerable<ProductView>> GetAllProduct()
         {
-            List<ProductView> proview = new List<ProductView>();
-            proview = await(
-                from a in _context.Products
-                join b in _context.Categories on a.CategoryID equals b.Id
-                
-                select new ProductView()
-                {
-                    Id = a.Id,
-                    CategoryID  = a.CategoryID,
-                    Name = a.Name,
-                    Pin = a.Pin,
-                    Wrap    = a.Wrap,
-                    Rings = a.Rings, 
-                    AvailableQuantity = a.AvailableQuantity,
-                    Sold = a.Sold,
-                    Likes   = a.Likes,
-                    Producer = a.Producer,
-                    CreateDate = a.CreateDate,
-                    Status = a.Status,
-                    Description = a.Description,
-                    Category = b,
+            var products = await _context.Products.Include(p => p.ProductDetails).ToListAsync();
 
-                }).ToListAsync();
+            List<ProductView> proview = new List<ProductView>();
+
+            foreach (var product in products)
+            {
+                double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+
+                proview.Add(new ProductView
+                {
+                    Id = product.Id,
+                    CategoryID = product.CategoryID,
+                    ProductDetailId = productDetailId,
+                    Name = product.Name,
+                    Pin = product.Pin,
+                    Wrap = product.Wrap,
+                    Rings = product.Rings,
+                    AvailableQuantity = product.AvailableQuantity,
+                    Price = price,
+                    Image = image,
+                    Sold = product.Sold,
+                    Likes = product.Likes,
+                    Producer = product.Producer,
+                    CreateDate = product.CreateDate,
+                    Status = product.Status,
+                    Description = product.Description,
+                    Category = product.Category
+                });
+            }
             return proview;
         }
 
         public async Task<ProductView> GetProductById(Guid id)
         {
+            var product = await _context.Products.Include(p => p.ProductDetails).FirstOrDefaultAsync(p => p.Id == id);
+            double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+            Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+            string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
             ProductView proview = new ProductView();
-            proview = await(
+            proview = await (
                 from a in _context.Products
                 join b in _context.Categories on a.CategoryID equals b.Id
                 where a.Id == id
@@ -103,11 +116,14 @@ namespace Datn_Api.Services
                 {
                     Id = a.Id,
                     CategoryID = a.CategoryID,
+                    ProductDetailId = productDetailId,
                     Name = a.Name,
                     Pin = a.Pin,
                     Wrap = a.Wrap,
                     Rings = a.Rings,
                     AvailableQuantity = a.AvailableQuantity,
+                    Price = price,
+                    Image = image,
                     Sold = a.Sold,
                     Likes = a.Likes,
                     Producer = a.Producer,
@@ -122,29 +138,39 @@ namespace Datn_Api.Services
 
         public async Task<IEnumerable<ProductView>> GetProductByName(string name)
         {
+            var products = await _context.Products.Where(p => p.Name.ToLower().Contains(name.ToLower())).Include(p => p.ProductDetails).ToListAsync();
+
             List<ProductView> proview = new List<ProductView>();
-            proview = await(
-                from a in _context.Products
-                join b in _context.Categories on a.CategoryID equals b.Id
-
-                select new ProductView()
+            if (products != null)
+            {
+                foreach (var product in products)
                 {
-                    Id = a.Id,
-                    CategoryID = a.CategoryID,
-                    Name = a.Name,
-                    Pin = a.Pin,
-                    Wrap = a.Wrap,
-                    Rings = a.Rings,
-                    AvailableQuantity = a.AvailableQuantity,
-                    Sold = a.Sold,
-                    Likes = a.Likes,
-                    Producer = a.Producer,
-                    CreateDate = a.CreateDate,
-                    Status = a.Status,
-                    Description = a.Description,
-                    Category = b,
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                    Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
 
-                }).Where(p => p.Name.ToLower().Contains(name.ToLower())).ToListAsync(); ;
+                    proview.Add(new ProductView
+                    {
+                        Id = product.Id,
+                        CategoryID = product.CategoryID,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Pin = product.Pin,
+                        Wrap = product.Wrap,
+                        Rings = product.Rings,
+                        AvailableQuantity = product.AvailableQuantity,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Likes = product.Likes,
+                        Producer = product.Producer,
+                        CreateDate = product.CreateDate,
+                        Status = product.Status,
+                        Description = product.Description,
+                        Category = product.Category
+                    });
+                }
+            }
             return proview;
         }
 
@@ -152,7 +178,7 @@ namespace Datn_Api.Services
         {
             var n = _context.Products.Find(id);
             if (n == null) return false;
-           n.Name = product.Name;
+            n.Name = product.Name;
             n.Pin = product.Pin;
             n.Wrap = product.Wrap;
             n.Rings = product.Rings;

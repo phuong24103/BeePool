@@ -106,7 +106,7 @@
                                                     <div class="row ">
                                                         <div class="col-auto">
                                                             <p class="mb-0"><a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId" class="link-text-name">@item.Name</a></p>
-                                                            <div class=" pl-0 flex-sm-col col-auto  my-auto "><span style="font-size: 13px;"><b>$@item.ProductDetail.Price</b></span></div>
+                                                            <div class=" pl-0 flex-sm-col col-auto  my-auto "><span style="font-size: 13px;"><b>$@item.ProductPrice</b></span></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -133,7 +133,7 @@
                                             <div class="col-4"><p class="mb-1"><b>Tổng Tiền Sản Phẩm</b></p></div>
                                             @if (@Model.Any())
                                             {
-                                                <div class="flex-sm-col col-auto"><p class="mb-1"><b>$@Model.First().Cart.TotalMoney</b></p></div>
+                                                <div class="flex-sm-col col-auto"><p class="mb-1"><b>$@Model.FirstOrDefault().TotalMoney</b></p></div>
                                             }
                                             else
                                             {
@@ -152,7 +152,7 @@
                                             <div class="col-4"><p><b>Tổng Tiền Phải Trả</b></p></div>
                                             @if (@Model.Any())
                                             {
-                                                <div class="flex-sm-col col-auto"><p class="mb-1"><b>$@Model.First().Cart.TotalMoney</b></p></div>
+                                                <div class="flex-sm-col col-auto"><p class="mb-1"><b>$@Model.FirstOrDefault().TotalMoney</b></p></div>
                                             }
                                             else
                                             {

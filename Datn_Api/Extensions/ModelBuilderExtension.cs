@@ -365,7 +365,7 @@ namespace Datn_Api.Extensions
                     TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
                     ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
                     WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
-                    Quantity = 2,
+                    Quantity = 1,
                     ImportPrice = 1500,
                     Price = 2000,
                     CreateDate = new DateTime(2023, 09, 12),
@@ -379,7 +379,21 @@ namespace Datn_Api.Extensions
                     TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
                     ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
                     WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
-                    Quantity = 2,
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
                     ImportPrice = 1500,
                     Price = 2000,
                     CreateDate = new DateTime(2023, 09, 12),
@@ -521,6 +535,20 @@ namespace Datn_Api.Extensions
                 Id = new Guid("d5c65161-7591-48c1-9198-daca151bce7c"),
                 ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"),
                 Name = "image1",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d1"),
+                ProductDetailId = new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"),
+                Name = "image2",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6423"),
+                ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
+                Name = "image3",
                 Status = 0,
             });
         }

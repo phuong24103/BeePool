@@ -44,6 +44,11 @@ body {
     padding: 15px;
     margin: 15px auto;
     background-color: #fff;
+    border: 2px solid black;
+    border-radius: 1rem;
+    transform: translateX(var(--link-icon-translate));
+    opacity: var(--link-icon-opacity);
+    transition: all 0.3s;
 }
 
 @media (max-width: 991px) {
@@ -57,6 +62,10 @@ body {
         width: 290px;
         margin: 30px auto;
     }
+}
+
+.el-wrapper:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
 .el-wrapper:hover .h-bg {
@@ -113,7 +122,8 @@ body {
 }
 
 .el-wrapper .img {
-    padding: 20px 0;
+    border-radius: 1.1rem 1.1rem 0 0;
+    /*padding: 20px 0;*/
     -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
     -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
     -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);

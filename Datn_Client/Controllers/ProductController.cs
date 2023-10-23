@@ -20,13 +20,13 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(await _httpClient.GetFromJsonAsync<List<ViewProductDetail>>("https://localhost:7033/api/ProductDetail/GetAll"));
+            return View(await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAll"));
         }
 
         [HttpGet]
         public async Task<IActionResult> Search(string Name)
         {
-            return View("Index", await _httpClient.GetFromJsonAsync<List<ViewProductDetail>>($"https://localhost:7033/api/ProductDetail/GetProductByName/{Name}"));
+            return View("Index", await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByName/{Name}"));
         }
 
         public async Task<IActionResult> Create()

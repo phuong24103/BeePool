@@ -13,27 +13,19 @@ namespace Datn_Shared.ViewModels.ProductViewModels
     {
         public Guid Id { get; set; }
         public Guid CategoryID { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
+        public Guid? ProductDetailId { get; set; }
         public string Name { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Pin { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Wrap { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Rings { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public int AvailableQuantity { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
+        public double Price { get; set; }
+        public string? Image { get; set; }
         public int Sold { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public int Likes { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public DateTime CreateDate { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Producer { get; set; }
-
         public int Status { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Description { get; set; }
         public Category Category { get; set; }
     }

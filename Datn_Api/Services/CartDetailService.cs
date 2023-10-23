@@ -3,6 +3,7 @@ using Datn_Api.IServices;
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.CartDetailViewModels;
 using Datn_Shared.ViewModels.CartViewModels;
+using Datn_Shared.ViewModels.ProductViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace Datn_Api.Services
@@ -87,72 +88,97 @@ namespace Datn_Api.Services
 
         public async Task<List<CartDetailView>> GetAllCartDetail()
         {
+            var cartDetails = await _context.CartDetails.Include(p => p.ProductDetail).ToListAsync();
+
             List<CartDetailView> lstCartDetailView = new List<CartDetailView>();
-            lstCartDetailView = await
-                (from a in _context.CartDetails
-                 join b in _context.Carts on a.CustomerId equals b.CustomerId
-                 join c in _context.ProductDetails on a.ProductDetailId equals c.Id
-                 join d in _context.Products on c.ProductID equals d.Id
-                 select new CartDetailView()
-                 {
-                     Id = a.Id,
-                     CustomerId = a.CustomerId,
-                     ProductDetailId = a.ProductDetailId,
-                     Name = d.Name,
-                     Quantity = a.Quantity,
-                     Price = a.Price,
-                     Description = d.Description,
-                     Cart = b,
-                     ProductDetail = c
-                 }).ToListAsync();
+
+            foreach (var cartDetail in cartDetails)
+            {
+                var productDetail = await _context.ProductDetails.Include(p => p.Product).FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
+                var price = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
+                string name = (productDetail != null && productDetail.Product != null) ? _context.Products.FirstOrDefault(p => p.Id == productDetail.ProductID).Name : null;
+                var cart = await _context.Carts.Include(p => p.CartDetails).FirstOrDefaultAsync(p => p.CustomerId == cartDetail.CustomerId);
+
+                lstCartDetailView.Add(new CartDetailView
+                {
+                    Id = cartDetail.Id,
+                    CustomerId = cartDetail.CustomerId,
+                    ProductDetailId = cartDetail.ProductDetailId,
+                    Name = name,
+                    Quantity = cartDetail.Quantity,
+                    Price = cartDetail.Price,
+                    ProductPrice = price.Price,
+                    TotalMoney = cart.TotalMoney,
+                    Cart = cartDetail.Cart,
+                    ProductDetail = cartDetail.ProductDetail
+                });
+            }
             return lstCartDetailView;
         }
 
         public async Task<CartDetailView> GetCartDetailById(Guid id)
         {
-            CartDetailView lstCartDetailView = new CartDetailView();
-            lstCartDetailView = await
+            var cartDetail = await _context.CartDetails.Include(p => p.ProductDetail).FirstOrDefaultAsync(p => p.Id == id);
+
+            CartDetailView cartDetailView = new CartDetailView();
+
+            var productDetail = await _context.ProductDetails.Include(p => p.Product).FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
+            var price = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
+            string name = (productDetail != null && productDetail.Product != null) ? _context.Products.FirstOrDefault(p => p.Id == productDetail.ProductID).Name : null;
+            var cart = await _context.Carts.Include(p => p.CartDetails).FirstOrDefaultAsync(p => p.CustomerId == cartDetail.CustomerId);
+
+            cartDetailView = await
                 (from a in _context.CartDetails
                  join b in _context.Carts on a.CustomerId equals b.CustomerId
                  join c in _context.ProductDetails on a.ProductDetailId equals c.Id
-                 join d in _context.Products on c.ProductID equals d.Id
                  where a.Id == id
                  select new CartDetailView()
                  {
-                     Id = a.Id,
-                     CustomerId = a.CustomerId,
-                     ProductDetailId = a.ProductDetailId,
-                     Name = d.Name,
-                     Quantity = a.Quantity,
-                     Price = a.Price,
-                     Description = d.Description,
-                     Cart = b,
-                     ProductDetail = c
+                     Id = cartDetail.Id,
+                     CustomerId = cartDetail.CustomerId,
+                     ProductDetailId = cartDetail.ProductDetailId,
+                     Name = name,
+                     Quantity = cartDetail.Quantity,
+                     Price = cartDetail.Price,
+                     ProductPrice = price.Price,
+                     TotalMoney = cart.TotalMoney,
+                     Cart = cartDetail.Cart,
+                     ProductDetail = cartDetail.ProductDetail
                  }).FirstAsync();
-            return lstCartDetailView;
+            return cartDetailView;
         }
 
         public async Task<List<CartDetailView>> GetCartDetailByCustomerId(Guid id)
         {
+            var cartDetails = await _context.CartDetails
+        .Include(cd => cd.ProductDetail)
+        .Include(cd => cd.ProductDetail.Product)
+        .Include(cd => cd.Cart)
+        .Where(p => p.CustomerId == id).ToListAsync();
+
             List<CartDetailView> lstCartDetailView = new List<CartDetailView>();
-            lstCartDetailView = await
-                (from a in _context.CartDetails
-                 join b in _context.Carts on a.CustomerId equals b.CustomerId
-                 join c in _context.ProductDetails on a.ProductDetailId equals c.Id
-                 join d in _context.Products on c.ProductID equals d.Id
-                 where a.CustomerId == id
-                 select new CartDetailView()
-                 {
-                     Id = a.Id,
-                     CustomerId = a.CustomerId,
-                     ProductDetailId = a.ProductDetailId,
-                     Name = d.Name,
-                     Quantity = a.Quantity,
-                     Price = a.Price,
-                     Description = d.Description,
-                     Cart = b,
-                     ProductDetail = c
-                 }).ToListAsync();
+
+            foreach (var cartDetail in cartDetails)
+            {
+                var productDetail = await _context.ProductDetails.Include(p => p.Product).FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
+                var price = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
+                string name = (productDetail != null && productDetail.Product != null) ? _context.Products.FirstOrDefault(p => p.Id == productDetail.ProductID).Name : null;
+                var cart = await _context.Carts.Include(p => p.CartDetails).FirstOrDefaultAsync(p => p.CustomerId == cartDetail.CustomerId);
+
+                lstCartDetailView.Add(new CartDetailView
+                {
+                    Id = cartDetail.Id,
+                    CustomerId = cartDetail.CustomerId,
+                    ProductDetailId = cartDetail.ProductDetailId,
+                    Name = name,
+                    Quantity = cartDetail.Quantity,
+                    Price = cartDetail.Price,
+                    ProductPrice = price.Price,
+                    TotalMoney = cart.TotalMoney,
+                    Cart = cartDetail.Cart,
+                    ProductDetail = cartDetail.ProductDetail,
+                });
+            }
             return lstCartDetailView;
         }
 

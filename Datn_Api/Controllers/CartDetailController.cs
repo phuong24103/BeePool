@@ -2,6 +2,9 @@
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.CartDetailViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System;
 
 namespace Datn_Api.Controllers
 {
@@ -21,7 +24,14 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetAllCartDetail()
         {
             var cartDetails = await _cartDetailService.GetAllCartDetail();
-            return Ok(cartDetails);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(cartDetails, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
 
         [HttpGet]
@@ -29,7 +39,14 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetCartDetailById([FromRoute] Guid id)
         {
             var cartDetail = await _cartDetailService.GetCartDetailById(id);
-            return Ok(cartDetail);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(cartDetail, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
 
         [HttpGet]
@@ -37,7 +54,14 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetCartDetailByCustomerId([FromRoute] Guid id)
         {
             var cartDetails = await _cartDetailService.GetCartDetailByCustomerId(id);
-            return Ok(cartDetails);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(cartDetails, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
 
         [HttpPost]
