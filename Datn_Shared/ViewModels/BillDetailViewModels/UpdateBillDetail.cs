@@ -9,9 +9,8 @@ namespace Datn_Shared.ViewModels.BillDetailViewModels
 {
     public class UpdateBillDetail
     {
-        public Guid Id { get; set; }
         public Guid BillId { get; set; }
-        public Guid ProductId { get; set; }
+        public Guid ProductDetailId { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập số lượng")]
         public int Quantity { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập giá")]

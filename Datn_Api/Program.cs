@@ -76,6 +76,8 @@ builder.Services.AddScoped<IBillStatusService, BillStatusService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IVoucherService, VoucherService>();
 builder.Services.AddScoped<IBillService, BillService>();
+builder.Services.AddScoped<IBillDetailService, BillDetailService>();
+builder.Services.AddScoped<IUserVoucherService, UserVoucherService>();
 builder.Services.AddScoped<ILoginEmployeeService, LoginEmployeeService>();
 builder.Services.AddScoped<IRegisterEmployeeService, RegisterEmployeeService>();
 builder.Services.AddScoped<ILoginCustomerService, LoginCustomerService>();

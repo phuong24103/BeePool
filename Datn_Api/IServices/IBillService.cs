@@ -9,6 +9,7 @@ namespace Datn_Api.IServices
         public Task<bool> UpdateBill(Guid id, UpdateBill bill);
         public Task<bool> DeleteBill(Guid id);
         public Task<BillView> GetBillById(Guid id);
-        public Task<List<BillView>> GetAllBills();
+        public Task<IEnumerable<BillView>> GetBillByCustomerId(Guid id);
+        public Task<IEnumerable<BillView>> GetAllBills();
     }
 }
