@@ -107,41 +107,45 @@
 <div class="row" style="margin-bottom : 100px;margin-top : 100px">
     @foreach (var item in @Model)
     {
-        <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-            <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
-                <div class="container page-wrapper">
-                    <div class="page-inner">
-                        <div class="row">
-                            <div class="el-wrapper">
-                                <div class="box-up">
-                                    <img class="img" src="~/images//1.png" alt="">
-                                    <div class="img-info">
-                                        <div class="info-inner">
-                                            <span class="p-name">@item.Product.Name</span>
-                                            <span class="p-company">@item.Product.Producer</span>
+        @if (@item.ProductDetailId != Guid.Empty)
+        {
+            <div class="col-md-4">
+                <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
+                    <div class="container page-wrapper">
+                        <div class="page-inner">
+                            <div class="row">
+                                <div class="el-wrapper">
+                                    <div class="box-up">
+                                        <img class="img" src="~/images//1.png" alt="">
+                                        <div class="img-info">
+                                            <div class="info-inner">
+                                                <span class="p-name">@item.Product.Name</span>
+                                                <span class="p-company">@item.Product.Producer</span>
+                                            </div>
+                                            <div class="a-size">Số lượng : <span class="size">@item.Product.AvailableQuantity</span></div>
                                         </div>
-                                        <div class="a-size">Số lượng : <span class="size">@item.Product.AvailableQuantity</span></div>
-                                    </div>
-                                </div>
-
-                                <div class="box-down">
-                                    <div class="h-bg">
-                                        <div class="h-bg-inner"></div>
                                     </div>
 
-                                    <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
-                                        <span class="price">$@item.Price</span>
-                                        <span class="add-to-cart">
-                                            <span class="txt">Thêm vào giỏ hàng</span>
-                                        </span>
-                                    </a>
+                                    <div class="box-down">
+                                        <div class="h-bg">
+                                            <div class="h-bg-inner"></div>
+                                        </div>
+
+                                        <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
+                                            <span class="price">$@item.Price</span>
+                                            <span class="add-to-cart">
+                                                <span class="txt">Thêm vào giỏ hàng</span>
+                                            </span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
+
+        }
     }
 </div>
 <div style="text-align :center;position : relative; left : 500px">

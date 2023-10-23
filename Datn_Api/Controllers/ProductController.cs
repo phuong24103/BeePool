@@ -4,6 +4,10 @@ using Datn_Shared.Models;
 using Datn_Shared.ViewModels.ProductViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Xml;
 
 namespace Datn_Api.Controllers
 {
@@ -21,20 +25,41 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetAllProduct()
         {
             var mate = await _iprosv.GetAllProduct();
-            return Ok(mate);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(mate, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
         [HttpGet]
         [Route("GetById/{id:Guid}")]
         public async Task<IActionResult> GetProductById([FromRoute] Guid id)
         {
             var mate = await _iprosv.GetProductById(id);
-            return Ok(mate);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(mate, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
-        [HttpGet("{name}")]
+        [HttpGet("GetByName/{name}")]
         public async Task<IActionResult> GetProductByName([FromRoute] string name)
         {
             var product = await _iprosv.GetProductByName(name);
-            return Ok(product);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(product, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
         [HttpPost]
         [Route("Create")]

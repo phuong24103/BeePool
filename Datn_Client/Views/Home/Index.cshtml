@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable< Datn_Shared.ViewModels.ProductViewModels.ProductView>
+
+@{
     ViewData["Title"] = "Home Page";
     <link rel="stylesheet" href="~/css/default.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
@@ -146,452 +148,94 @@
     <div class="fg"> Gậy Đánh </div>
 </div>
 <div class="row" style="margin-bottom : 100px;margin-top : 100px">
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                            <div class="box-up">
-                                <img class="img" src="~/images//testproduct.png" alt="">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name">Tên</span>
-                                        <span class="p-company">Hãng</span>
+    @foreach (var item in @Model)
+    {
+        @if (@item.ProductDetailId != Guid.Empty)
+        {
+            <div class="col-md-4">
+                <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
+                    <div class="container page-wrapper">
+                        <div class="page-inner">
+                            <div class="row">
+                                <div class="el-wrapper">
+                                    <div class="box-up">
+                                        <img class="img" src="~/images//1.png" alt="">
+                                        <div class="img-info">
+                                            <div class="info-inner">
+                                                <span class="p-name">@item.Name</span>
+                                                <span class="p-company">@item.Producer</span>
+                                            </div>
+                                            <div class="a-size">Số lượng : <span class="size">@item.AvailableQuantity</span></div>
+                                        </div>
                                     </div>
-                                    <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                </div>
-                            </div>
 
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
+                                    <div class="box-down">
+                                        <div class="h-bg">
+                                            <div class="h-bg-inner"></div>
+                                        </div>
 
-                                <a class="cart" href="#">
-                                    <span class="price">$120</span>
-                                    <span class="add-to-cart">
-                                        <span class="txt">Thêm vào giỏ hàng</span>
-                                    </span>
-                                </a>
+                                        <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
+                                            <span class="price">$@item.Price</span>
+                                            <span class="add-to-cart">
+                                                <span class="txt">Thêm vào giỏ hàng</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
-        </a>
-    </div>
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                            <div class="box-up">
-                                <img class="img" src="~/images//1.png" alt="">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name">Tên</span>
-                                        <span class="p-company">Hãng</span>
-                                    </div>
-                                    <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                </div>
-                            </div>
-
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
-
-                                <a class="cart" href="#">
-                                    <span class="price">$120</span>
-                                    <span class="add-to-cart">
-                                        <span class="txt">Thêm vào giỏ hàng</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                            <div class="box-up">
-                                <img class="img" src="~/images//1.png" alt="">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name">Tên</span>
-                                        <span class="p-company">Hãng</span>
-                                    </div>
-                                    <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                </div>
-                            </div>
-
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
-
-                                <a class="cart" href="#">
-                                    <span class="price">$120</span>
-                                    <span class="add-to-cart">
-                                        <span class="txt">Thêm vào giỏ hàng</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
+        }
+    }
 </div>
 <div class="wrapper">
     <div class="bg"> Gậy Phá </div>
     <div class="fg"> Gậy Phá </div>
 </div>
 <div class="row" style="margin-bottom : 100px;margin-top : 100px">
-
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                            <div class="box-up">
-                                <img class="img" src="~/images//testproduct.png" alt="">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name">Tên</span>
-                                        <span class="p-company">Hãng</span>
-                                    </div>
-                                    <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                </div>
-                            </div>
-
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
-
-                                <a class="cart" href="#">
-                                    <span class="price">$120</span>
-                                    <span class="add-to-cart">
-                                        <span class="txt">Thêm vào giỏ hàng</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                            <div class="box-up">
-                                <img class="img" src="~/images//1.png" alt="">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name">Tên</span>
-                                        <span class="p-company">Hãng</span>
-                                    </div>
-                                    <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                </div>
-                            </div>
-
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
-
-                                <a class="cart" href="#">
-                                    <span class="price">$120</span>
-                                    <span class="add-to-cart">
-                                        <span class="txt">Thêm vào giỏ hàng</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                            <div class="box-up">
-                                <img class="img" src="~/images//1.png" alt="">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name">Tên</span>
-                                        <span class="p-company">Hãng</span>
-                                    </div>
-                                    <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                </div>
-                            </div>
-
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
-
-                                <a class="cart" href="#">
-                                    <span class="price">$120</span>
-                                    <span class="add-to-cart">
-                                        <span class="txt">Thêm vào giỏ hàng</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<div class="wrapper">
-    <div class="bg"> Tip </div>
-    <div class="fg"> Tip </div>
-</div>
-<div class="row" style="margin-bottom : 100px;margin-top : 100px">
-
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <div class="box">
-            <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-                <div class="container page-wrapper">
-                    <div class="page-inner">
-                        <div class="row">
-                            <div class="el-wrapper">
-                                <div class="box-up">
-                                    <img class="img" src="~/images//testproduct.png" alt="">
-                                    <div class="img-info">
-                                        <div class="info-inner">
-                                            <span class="p-name">Tên</span>
-                                            <span class="p-company">Hãng</span>
+    @foreach (var item in @Model)
+    {
+        @if (@item.ProductDetailId != Guid.Empty)
+        {
+            <div class="col-md-4">
+                <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
+                    <div class="container page-wrapper">
+                        <div class="page-inner">
+                            <div class="row">
+                                <div class="el-wrapper">
+                                    <div class="box-up">
+                                        <img class="img" src="~/images//1.png" alt="">
+                                        <div class="img-info">
+                                            <div class="info-inner">
+                                                <span class="p-name">@item.Name</span>
+                                                <span class="p-company">@item.Producer</span>
+                                            </div>
+                                            <div class="a-size">Số lượng : <span class="size">@item.AvailableQuantity</span></div>
                                         </div>
-                                        <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                    </div>
-                                </div>
-
-                                <div class="box-down">
-                                    <div class="h-bg">
-                                        <div class="h-bg-inner"></div>
                                     </div>
 
-                                    <a class="cart" href="#">
-                                        <span class="price">$120</span>
-                                        <span class="add-to-cart">
-                                            <span class="txt">Thêm vào giỏ hàng</span>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-    </div>
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                            <div class="box-up">
-                                <img class="img" src="~/images//1.png" alt="">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name">Tên</span>
-                                        <span class="p-company">Hãng</span>
-                                    </div>
-                                    <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                </div>
-                            </div>
-
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
-
-                                <a class="cart" href="#">
-                                    <span class="price">$120</span>
-                                    <span class="add-to-cart">
-                                        <span class="txt">Thêm vào giỏ hàng</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                            <div class="box-up">
-                                <img class="img" src="~/images//1.png" alt="">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name">Tên</span>
-                                        <span class="p-company">Hãng</span>
-                                    </div>
-                                    <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                </div>
-                            </div>
-
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
-
-                                <a class="cart" href="#">
-                                    <span class="price">$120</span>
-                                    <span class="add-to-cart">
-                                        <span class="txt">Thêm vào giỏ hàng</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<div class="wrapper">
-    <div class="bg"> Shaft </div>
-    <div class="fg"> Shaft </div>
-</div>
-<div class="row" style="margin-bottom : 100px;margin-top : 100px">
-
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px">
-        <div class="b">
-            <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-                <div class="container page-wrapper">
-                    <div class="page-inner">
-                        <div class="row">
-                            <div class="el-wrapper">
-                                <div class="box-up">
-                                    <img class="img" src="~/images//testproduct.png" alt="">
-                                    <div class="img-info">
-                                        <div class="info-inner">
-                                            <span class="p-name">Tên</span>
-                                            <span class="p-company">Hãng</span>
+                                    <div class="box-down">
+                                        <div class="h-bg">
+                                            <div class="h-bg-inner"></div>
                                         </div>
-                                        <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                    </div>
-                                </div>
 
-                                <div class="box-down">
-                                    <div class="h-bg">
-                                        <div class="h-bg-inner"></div>
+                                        <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
+                                            <span class="price">$@item.Price</span>
+                                            <span class="add-to-cart">
+                                                <span class="txt">Thêm vào giỏ hàng</span>
+                                            </span>
+                                        </a>
                                     </div>
-
-                                    <a class="cart" href="#">
-                                        <span class="price">$120</span>
-                                        <span class="add-to-cart">
-                                            <span class="txt">Thêm vào giỏ hàng</span>
-                                        </span>
-                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                            <div class="box-up">
-                                <img class="img" src="~/images//1.png" alt="">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name">Tên</span>
-                                        <span class="p-company">Hãng</span>
-                                    </div>
-                                    <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                </div>
-                            </div>
-
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
-
-                                <a class="cart" href="#">
-                                    <span class="price">$120</span>
-                                    <span class="add-to-cart">
-                                        <span class="txt">Thêm vào giỏ hàng</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </a>
             </div>
-        </a>
-    </div>
-    <div class="col-md-4" style="border: 2px solid #006100;border-radius: 10px;">
-        <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                            <div class="box-up">
-                                <img class="img" src="~/images//1.png" alt="">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name">Tên</span>
-                                        <span class="p-company">Hãng</span>
-                                    </div>
-                                    <div class="a-size">Số lượng : <span class="size">Số lượng</span></div>
-                                </div>
-                            </div>
-
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
-
-                                <a class="cart" href="#">
-                                    <span class="price">$120</span>
-                                    <span class="add-to-cart">
-                                        <span class="txt">Thêm vào giỏ hàng</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
+        }
+    }
 </div>
 <section class="articles">
     <article>
@@ -637,7 +281,7 @@
             </figure>
             <div class="article-body">
                 <h2>Tin tức</h2>
-                 <h6>sdgsdfdsfsdfdsf</h6>
+                <h6>sdgsdfdsfsdfdsf</h6>
                 <a href="#" class="read-more">
                     Read more <span class="sr-only">about this is some title</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">

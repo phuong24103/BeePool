@@ -637,8 +637,8 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "28ce2014-422f-4998-9256-532acf40b861", "Quản lý", "MANAGE" },
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "632a6307-8426-43ed-a490-2b9c03ab369a", "Nhân viên", "STAFF" }
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "7cdcea2f-872a-4c32-8400-6b45e8d1acff", "Quản lý", "MANAGE" },
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "3444862e-8682-4cc5-908a-58e2be23290f", "Nhân viên", "STAFF" }
                 });
 
             migrationBuilder.InsertData(
@@ -730,8 +730,9 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "CreateDate", "Description", "ImportPrice", "Price", "ProductID", "Quantity", "ShaftId", "Status", "TipId", "WeightId" },
                 values: new object[,]
                 {
-                    { new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"), 2, new Guid("cc37720a-7e89-463a-9510-1936e6761d83"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d84"), new Guid("cc37720a-7e89-463a-9510-1936e6761d85") },
-                    { new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-1936e6761d8b"), 2, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") }
+                    { new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d83"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d84"), new Guid("cc37720a-7e89-463a-9510-1936e6761d85") },
+                    { new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") },
+                    { new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-1936e6761d8b"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") }
                 });
 
             migrationBuilder.InsertData(
@@ -756,7 +757,12 @@ namespace Datn_Api.Migrations
             migrationBuilder.InsertData(
                 table: "ProductImages",
                 columns: new[] { "Id", "Name", "ProductDetailId", "Status" },
-                values: new object[] { new Guid("d5c65161-7591-48c1-9198-daca151bce7c"), "image1", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"), 0 });
+                values: new object[,]
+                {
+                    { new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6423"), "image3", new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca151bce7c"), "image1", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"), 0 },
+                    { new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d1"), "image2", new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"), 0 }
+                });
 
             migrationBuilder.InsertData(
                 table: "UsedVouchers",

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datn_Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231017063600_datn")]
+    [Migration("20231023151023_datn")]
     partial class datn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -769,7 +769,7 @@ namespace Datn_Api.Migrations
                             ImportPrice = 1500.0,
                             Price = 2000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
-                            Quantity = 2,
+                            Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
                             Status = 0,
                             TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
@@ -783,7 +783,21 @@ namespace Datn_Api.Migrations
                             ImportPrice = 1500.0,
                             Price = 2000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8b"),
-                            Quantity = 2,
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 1500.0,
+                            Price = 2000.0,
+                            ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"),
+                            Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
                             Status = 0,
                             TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
@@ -819,6 +833,20 @@ namespace Datn_Api.Migrations
                             Id = new Guid("d5c65161-7591-48c1-9198-daca151bce7c"),
                             Name = "image1",
                             ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d1"),
+                            Name = "image2",
+                            ProductDetailId = new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6423"),
+                            Name = "image3",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
                             Status = 0
                         });
                 });
@@ -1194,14 +1222,14 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"),
-                            ConcurrencyStamp = "28ce2014-422f-4998-9256-532acf40b861",
+                            ConcurrencyStamp = "7cdcea2f-872a-4c32-8400-6b45e8d1acff",
                             Name = "Quản lý",
                             NormalizedName = "MANAGE"
                         },
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"),
-                            ConcurrencyStamp = "632a6307-8426-43ed-a490-2b9c03ab369a",
+                            ConcurrencyStamp = "3444862e-8682-4cc5-908a-58e2be23290f",
                             Name = "Nhân viên",
                             NormalizedName = "STAFF"
                         });
