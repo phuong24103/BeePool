@@ -20,6 +20,7 @@ namespace Datn_Api.Services
             Voucher v = new Voucher()
             {
                 Id = Guid.NewGuid(),
+                EmPloyeeId = voucher.EmPloyeeId,
                 Code = voucher.Code,
                 Value = voucher.Value,
                 TimeStart = voucher.TimeStart,
@@ -69,6 +70,7 @@ namespace Datn_Api.Services
         {
             var v = _context.Vouchers.Find(id);
             if (v == null) return false;
+            v.EmPloyeeId = voucher.EmPloyeeId;
             v.Code = voucher.Code;
             v.Value = voucher.Value;
             v.TimeStart = voucher.TimeStart;
