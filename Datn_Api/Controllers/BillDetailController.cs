@@ -34,6 +34,14 @@ namespace Datn_Api.Controllers
             return Ok(billDetail);
         }
 
+        [HttpGet]
+        [Route("GetByBillId/{id:Guid}")]
+        public async Task<IActionResult> GetBillDetailByBillId([FromRoute] Guid id)
+        {
+            var billDetail = await _billDetailService.GetBillDetailsByIdBill(id);
+            return Ok(billDetail);
+        }
+
         [HttpPost]
         [Route("Create")]
         public async Task<ActionResult<CreateBillDetail>> CreateBillDetail(CreateBillDetail billDetail)

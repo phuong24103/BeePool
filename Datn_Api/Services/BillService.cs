@@ -20,7 +20,7 @@ namespace Datn_Api.Services
         {
             Bill b = new Bill()
             {
-                Id = Guid.NewGuid(),
+                Id = bill.Id,
                 CustomerId = bill.CustomerId,
                 BillStatusId = bill.BillStatusId,
                 PaymentId = bill.PaymentId,
@@ -56,7 +56,7 @@ namespace Datn_Api.Services
             }
         }
 
-        public async Task<List<BillView>> GetAllBills()
+        public async Task<IEnumerable<BillView>> GetAllBills()
         {
             List<BillView> billViews = new List<BillView>();
             billViews = await (
@@ -80,15 +80,15 @@ namespace Datn_Api.Services
             return billViews;
         }
 
-
-        public async Task<BillView> GetBillById(Guid id)
+        public async Task<IEnumerable<BillView>> GetBillByCustomerId(Guid id)
         {
             List<BillView> billViews = new List<BillView>();
-            billViews = await (
+            billViews = await(
                 from a in _context.Bills
                 join b in _context.BillStatuses on a.BillStatusId equals b.Id
                 join c in _context.Customers on a.CustomerId equals c.Id
                 join d in _context.Payments on a.PaymentId equals d.Id
+                where a.CustomerId == id
                 select new BillView()
                 {
                     Id = a.Id,
@@ -102,7 +102,32 @@ namespace Datn_Api.Services
                     BillStatus = b,
                     Payment = d
                 }).ToListAsync();
-            return billViews.FirstOrDefault(p => p.Id == id);
+            return billViews;
+        }
+
+        public async Task<BillView> GetBillById(Guid id)
+        {
+            BillView billViews = new BillView();
+            billViews = await (
+                from a in _context.Bills
+                join b in _context.BillStatuses on a.BillStatusId equals b.Id
+                join c in _context.Customers on a.CustomerId equals c.Id
+                join d in _context.Payments on a.PaymentId equals d.Id
+                where a.Id == id
+                select new BillView()
+                {
+                    Id = a.Id,
+                    CustomerId = a.CustomerId,
+                    BillStatusId = a.BillStatusId,
+                    PaymentId = a.PaymentId,
+                    Price = a.Price,
+                    CreateDate = a.CreateDate,
+                    Address = a.Address,
+                    Customer = c,
+                    BillStatus = b,
+                    Payment = d
+                }).FirstAsync();
+            return billViews;
         }
 
         public async Task<bool> UpdateBill(Guid id, UpdateBill bill)

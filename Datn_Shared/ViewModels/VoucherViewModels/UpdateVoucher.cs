@@ -11,6 +11,7 @@ namespace Datn_Shared.ViewModels.VoucherViewModels
     {
         public Guid Id { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập code")]
+        public Guid EmPloyeeId { get; set; }
         public string? Code { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập giá trị")]
         public double Value { get; set; }
