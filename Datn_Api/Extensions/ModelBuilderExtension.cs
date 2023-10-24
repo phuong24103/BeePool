@@ -7,12 +7,12 @@ namespace Datn_Api.Extensions
     public static class ModelBuilderExtension
     {
         public static void Seed(this ModelBuilder modelBuilder)
-        {            
+        {
             modelBuilder.Entity<IdentityRole<Guid>>().HasData(
                 new IdentityRole<Guid>() { Name = "Quản lý", NormalizedName = "MANAGE", Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872") },
                 new IdentityRole<Guid>() { Name = "Nhân viên", NormalizedName = "STAFF", Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873") }
             );
-           
+
             modelBuilder.Entity<Rank>().HasData(
             new Rank()
             {
@@ -151,7 +151,6 @@ namespace Datn_Api.Extensions
                 Material = "Gỗ",
                 Color = "Đen",
                 Status = 0,
-
             },
             new Shaft()
             {
@@ -483,7 +482,6 @@ namespace Datn_Api.Extensions
                 Price = 1500,
                 CreateDate = new DateTime(2023, 09, 11),
                 Address = "Bình nguyên vô tận",
-
             },
             new Bill()
             {

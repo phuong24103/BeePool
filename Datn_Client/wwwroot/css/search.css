@@ -6,8 +6,8 @@
     display: grid;
     grid-area: search;
     grid-template:
-        "search" 40px
-        / 200px;
+        "search" 50px
+        / 300px;
     justify-content: center;
     align-content: center;
     justify-items: stretch;

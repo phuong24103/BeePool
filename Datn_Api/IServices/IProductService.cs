@@ -12,8 +12,23 @@ namespace Datn_Api.IServices
         public Task<bool> DeleteProduct(Guid id);
 
         public Task<ProductView> GetProductById(Guid id);
+
         public Task<IEnumerable<ProductView>> GetProductByName(string name);
 
         public Task<IEnumerable<ProductView>> GetAllProduct();
+
+        public Task<IEnumerable<ProductView>> GetProductByNameAZ();
+
+        public Task<IEnumerable<ProductView>> GetProductByNameZA();
+
+        public Task<IEnumerable<ProductView>> GetProductByCreateDateOld();
+
+        public Task<IEnumerable<ProductView>> GetProductByCreateDateNew();
+
+        public Task<IEnumerable<ProductView>> GetProductByPrice2();
+
+        public Task<IEnumerable<ProductView>> GetProductByPriceMin();
+
+        public Task<IEnumerable<ProductView>> GetProductByPriceMax();
     }
 }

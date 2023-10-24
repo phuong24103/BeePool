@@ -11,17 +11,18 @@ namespace Datn_Api.Services
     public class ProductService : IProductService
     {
         private readonly MyDbContext _context;
+
         public ProductService(MyDbContext myDbContext)
         {
             _context = myDbContext;
         }
+
         public async Task<bool> CreateProduct(CreateProduct product)
         {
             Product b = new Product()
             {
                 Id = Guid.NewGuid(),
                 CategoryID = product.CategoryID,
-
 
                 Name = product.Name,
                 Pin = product.Pin,
@@ -34,7 +35,6 @@ namespace Datn_Api.Services
                 CreateDate = product.CreateDate,
                 Status = product.Status,
                 Description = product.Description,
-
             };
             try
             {
@@ -101,6 +101,82 @@ namespace Datn_Api.Services
             return proview;
         }
 
+        public async Task<IEnumerable<ProductView>> GetProductByCreateDateNew()
+        {
+            var products = await _context.Products.OrderByDescending(p => p.CreateDate).Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductView> proview = new List<ProductView>();
+            if (products != null)
+            {
+                foreach (var product in products)
+                {
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                    Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+
+                    proview.Add(new ProductView
+                    {
+                        Id = product.Id,
+                        CategoryID = product.CategoryID,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Pin = product.Pin,
+                        Wrap = product.Wrap,
+                        Rings = product.Rings,
+                        AvailableQuantity = product.AvailableQuantity,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Likes = product.Likes,
+                        Producer = product.Producer,
+                        CreateDate = product.CreateDate,
+                        Status = product.Status,
+                        Description = product.Description,
+                        Category = product.Category
+                    });
+                }
+            }
+            return proview;
+        }
+
+        public async Task<IEnumerable<ProductView>> GetProductByCreateDateOld()
+        {
+            var products = await _context.Products.OrderBy(p => p.CreateDate).Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductView> proview = new List<ProductView>();
+            if (products != null)
+            {
+                foreach (var product in products)
+                {
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                    Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+
+                    proview.Add(new ProductView
+                    {
+                        Id = product.Id,
+                        CategoryID = product.CategoryID,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Pin = product.Pin,
+                        Wrap = product.Wrap,
+                        Rings = product.Rings,
+                        AvailableQuantity = product.AvailableQuantity,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Likes = product.Likes,
+                        Producer = product.Producer,
+                        CreateDate = product.CreateDate,
+                        Status = product.Status,
+                        Description = product.Description,
+                        Category = product.Category
+                    });
+                }
+            }
+            return proview;
+        }
+
         public async Task<ProductView> GetProductById(Guid id)
         {
             var product = await _context.Products.Include(p => p.ProductDetails).FirstOrDefaultAsync(p => p.Id == id);
@@ -131,7 +207,6 @@ namespace Datn_Api.Services
                     Status = a.Status,
                     Description = a.Description,
                     Category = b,
-
                 }).FirstAsync();
             return proview;
         }
@@ -170,6 +245,199 @@ namespace Datn_Api.Services
                         Category = product.Category
                     });
                 }
+            }
+            return proview;
+        }
+
+        public async Task<IEnumerable<ProductView>> GetProductByNameAZ()
+        {
+            var products = await _context.Products.OrderBy(p => p.Name).Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductView> proview = new List<ProductView>();
+            if (products != null)
+            {
+                foreach (var product in products)
+                {
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                    Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+
+                    proview.Add(new ProductView
+                    {
+                        Id = product.Id,
+                        CategoryID = product.CategoryID,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Pin = product.Pin,
+                        Wrap = product.Wrap,
+                        Rings = product.Rings,
+                        AvailableQuantity = product.AvailableQuantity,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Likes = product.Likes,
+                        Producer = product.Producer,
+                        CreateDate = product.CreateDate,
+                        Status = product.Status,
+                        Description = product.Description,
+                        Category = product.Category
+                    });
+                }
+            }
+            return proview;
+        }
+
+        public async Task<IEnumerable<ProductView>> GetProductByNameZA()
+        {
+            var products = await _context.Products.OrderByDescending(p => p.Name).Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductView> proview = new List<ProductView>();
+            if (products != null)
+            {
+                foreach (var product in products)
+                {
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                    Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+
+                    proview.Add(new ProductView
+                    {
+                        Id = product.Id,
+                        CategoryID = product.CategoryID,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Pin = product.Pin,
+                        Wrap = product.Wrap,
+                        Rings = product.Rings,
+                        AvailableQuantity = product.AvailableQuantity,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Likes = product.Likes,
+                        Producer = product.Producer,
+                        CreateDate = product.CreateDate,
+                        Status = product.Status,
+                        Description = product.Description,
+                        Category = product.Category
+                    });
+                }
+            }
+            return proview;
+        }
+
+        public async Task<IEnumerable<ProductView>> GetProductByPrice2()
+        {
+            var products = await _context.Products.Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductView> proview = new List<ProductView>();
+            if (products != null)
+            {
+                foreach (var product in products)
+                {
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                    Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+
+                    proview.Add(new ProductView
+                    {
+                        Id = product.Id,
+                        CategoryID = product.CategoryID,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Pin = product.Pin,
+                        Wrap = product.Wrap,
+                        Rings = product.Rings,
+                        AvailableQuantity = product.AvailableQuantity,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Likes = product.Likes,
+                        Producer = product.Producer,
+                        CreateDate = product.CreateDate,
+                        Status = product.Status,
+                        Description = product.Description,
+                        Category = product.Category
+                    });
+                }
+                proview = proview.Where(p => p.Price >= 0 && p.Price <= 2001).ToList();
+            }
+            return proview;
+        }
+
+        public async Task<IEnumerable<ProductView>> GetProductByPriceMax()
+        {
+            var products = await _context.Products.Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductView> proview = new List<ProductView>();
+            if (products != null)
+            {
+                foreach (var product in products)
+                {
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                    Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+
+                    proview.Add(new ProductView
+                    {
+                        Id = product.Id,
+                        CategoryID = product.CategoryID,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Pin = product.Pin,
+                        Wrap = product.Wrap,
+                        Rings = product.Rings,
+                        AvailableQuantity = product.AvailableQuantity,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Likes = product.Likes,
+                        Producer = product.Producer,
+                        CreateDate = product.CreateDate,
+                        Status = product.Status,
+                        Description = product.Description,
+                        Category = product.Category
+                    });
+                }
+                proview = proview.OrderByDescending(p => p.Price).ToList();
+            }
+            return proview;
+        }
+
+        public async Task<IEnumerable<ProductView>> GetProductByPriceMin()
+        {
+            var products = await _context.Products.Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductView> proview = new List<ProductView>();
+            if (products != null)
+            {
+                foreach (var product in products)
+                {
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                    Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+
+                    proview.Add(new ProductView
+                    {
+                        Id = product.Id,
+                        CategoryID = product.CategoryID,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Pin = product.Pin,
+                        Wrap = product.Wrap,
+                        Rings = product.Rings,
+                        AvailableQuantity = product.AvailableQuantity,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Likes = product.Likes,
+                        Producer = product.Producer,
+                        CreateDate = product.CreateDate,
+                        Status = product.Status,
+                        Description = product.Description,
+                        Category = product.Category
+                    });
+                }
+                proview = proview.OrderBy(p => p.Price).ToList();
             }
             return proview;
         }
