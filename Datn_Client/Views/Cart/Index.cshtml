@@ -58,6 +58,7 @@
                                 <div class="row mt-4">
                                     <div class="col"><p class="text-muted mb-2">PAYMENT DETAILS</p><hr class="mt-0"></div>
                                 </div>
+                                <form action="/Bill/CreateVoucher" method="post">
                                 <div class="form-group">
                                     <label for="NAME" class="small text-muted mb-1">Họ và tên</label>
                                     <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="BBBootstrap Team">
@@ -71,14 +72,15 @@
                                     <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
                                 </div>
                                 <div class="form-group">
-                                    <label for="NAME" class="small text-muted mb-1">Mã giảm giá</label>
-                                    <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
+                                    <label class="small text-muted mb-1">Mã giảm giá</label>
+                                    <input class="form-control form-control-sm" name="code">
                                 </div>
                                 <div class="row mb-md-5" style="margin-top : 20px">
                                     <div class="col">
-                                        <div class="col-md-7 col-lg-6 mx-auto"><button type="button" class="btn btn-block btn-outline-primary btn-lg">Xác Nhận</button></div>
+                                            <input type="submit" value="Thanh toán" class="btn btn-block btn-outline-primary btn-lg">
                                     </div>
-                                </div>
+                                </div> 
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -161,9 +163,6 @@
                                         </div>
                                         <hr class="my-0">
                                     </div>
-                                </div>
-                                <div class="row mb-5 mt-4 ">
-                                    <div class="col-md-7 col-lg-6 mx-auto"><a asp-controller="Bill" asp-action="Create" class="btn btn-block btn-outline-primary btn-lg">Tạo Hóa Đơn</a></div>                                   
                                 </div>
                             </div>
                         </div>

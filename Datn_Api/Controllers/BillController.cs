@@ -132,18 +132,17 @@ namespace Datn_Api.Controllers
         }
 
         [HttpPost]
-        [Route("CreateBillVoucher")]
-        public async Task<ActionResult<Bill>> CreateBillVoucher(List<CartDetail> cartDetails, string address, string codevoucher)
+        [Route("CreateBillVoucher/{codevoucher}")]
+        public async Task<ActionResult<Bill>> CreateBillVoucher(List<CartDetail> cartDetails,string codevoucher)
         {
-            Guid CustomerId = Guid.NewGuid();
             double price = 0;
             foreach (var item in cartDetails)
             {
                 var productdetail = _productDetailService.GetProductDetailById(item.ProductDetailId);
                 price += (productdetail.Result.Price * item.Quantity);
-                CustomerId = item.CustomerId;
             }
 
+            var customer = _customerService.GetCustomerbyId(cartDetails.First().CustomerId).Result;
 
             var allvoucher = _voucherService.GetAllVoucher();
             var voucher = allvoucher.Result.FirstOrDefault(p => p.Code == codevoucher);
@@ -160,24 +159,26 @@ namespace Datn_Api.Controllers
             CreateBill bill = new CreateBill()
             {
                 Id = Guid.NewGuid(),
-                CustomerId = CustomerId,
+                CustomerId = customer.Id,
                 BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
                 PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
                 Price = price,
                 CreateDate = DateTime.Now,
-                Address = address,
+                Address = customer.Address,
             };
             await _billService.CreateBill(bill);
 
 
-
-            UsedVoucher uv = new UsedVoucher()
+            if(voucher != null)
             {
-                BillId = bill.Id,
-                VoucherId = voucher.Id,
-            };
-            await _userVoucherService.CreateUserVoucher(uv);
-
+                UsedVoucher uv = new UsedVoucher()
+                {
+                    BillId = bill.Id,
+                    VoucherId = voucher.Id,
+                };
+                await _userVoucherService.CreateUserVoucher(uv);
+            }
+            
 
 
             foreach (var item in cartDetails)
@@ -185,24 +186,24 @@ namespace Datn_Api.Controllers
                 var productdetail = _productDetailService.GetProductDetailById(item.ProductDetailId);
 
 
-                //var product = _productService.GetProductById(productdetail.Result.ProductID);
-                //UpdateProduct updateProduct = new UpdateProduct()
-                //{
-                //    CategoryID = product.Result.CategoryID,
-                //    Name = product.Result.Name,
-                //    Pin = product.Result.Pin,
-                //    Wrap = product.Result.Wrap,
-                //    Rings = product.Result.Rings,
-                //    AvailableQuantity = product.Result.AvailableQuantity - item.Quantity,
-                //    Sold = product.Result.Sold,
-                //    Likes = product.Result.Likes,
-                //    CreateDate = product.Result.CreateDate,
-                //    Producer = product.Result.Producer,
-                //    Status = product.Result.Status,
-                //    Description = product.Result.Description,
-                //};
+                var product = _productService.GetProductById(productdetail.Result.ProductID);
+                UpdateProduct updateProduct = new UpdateProduct()
+                {
+                    CategoryID = product.Result.CategoryID,
+                    Name = product.Result.Name,
+                    Pin = product.Result.Pin,
+                    Wrap = product.Result.Wrap,
+                    Rings = product.Result.Rings,
+                    AvailableQuantity = product.Result.AvailableQuantity - item.Quantity,
+                    Sold = product.Result.Sold,
+                    Likes = product.Result.Likes,
+                    CreateDate = product.Result.CreateDate,
+                    Producer = product.Result.Producer,
+                    Status = product.Result.Status,
+                    Description = product.Result.Description,
+                };
 
-                //await _productService.UpdateProduct(product.Result.Id, updateProduct);
+                await _productService.UpdateProduct(product.Result.Id, updateProduct);
 
                 CreateBillDetail billDetail = new CreateBillDetail()
                 {
