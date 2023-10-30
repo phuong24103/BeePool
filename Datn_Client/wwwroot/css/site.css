@@ -40,7 +40,11 @@ html {
         border: 1px solid #4bb8a9;
     }
 
-    .btn-outline-primary:active:focus-visible {
+    .btn-outline-primary:active {
+        border: 1px solid #4bb8a9;
+    }
+
+    .btn-outline-primary:focus-visible {
         border: 1px solid #4bb8a9;
     }
 
@@ -62,7 +66,11 @@ html {
         border: 1px solid #4bb8a9;
     }
 
-    .btn-primary:active:focus-visible {
+    .btn-primary:active {
+        border: 1px solid #4bb8a9;
+    }
+
+    .btn-primary:focus-visible {
         border: 1px solid #4bb8a9;
     }
 

@@ -14,7 +14,7 @@ namespace Datn_Shared.Models
         public int Quantity { get; set; }
         public double TotalMoney { get; set; }
         public int Status { get; set; }
-        public virtual Customer Customer { get; set; }
-        public virtual ICollection<CartDetail> CartDetails { get; set; }
+        public virtual Customer? Customer { get; set; }
+        public virtual ICollection<CartDetail>? CartDetails { get; set; }
     }
 }

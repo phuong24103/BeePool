@@ -35,7 +35,7 @@ namespace Datn_Api.Controllers
 
         [HttpPost]
         [Route("Create")]
-        public async Task<ActionResult<CreateCart>> CreateUserRole(CreateCart cart)
+        public async Task<ActionResult<CreateCart>> CreateCart(CreateCart cart)
         {
             await _cartService.CreateCart(cart);
             return Ok(cart);

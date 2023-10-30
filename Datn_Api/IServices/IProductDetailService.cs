@@ -9,6 +9,7 @@ namespace Datn_Api.IServices
         public Task<bool> UpdateProductDetail(Guid id, UpdateProductDetail product);
         public Task<bool> IncreaseProductDetail(Guid id);
         public Task<bool> ReduceProductDetail(Guid id);
+        public Task<bool> ResetQuantityProductDetail(Guid id);
         public Task<bool> DeleteProductDetail(Guid id);
         public Task<ViewProductDetail> GetProductDetailById(Guid id);
         public Task<IEnumerable<ViewProductDetail>> GetAllProductDetail();

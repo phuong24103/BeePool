@@ -30,6 +30,10 @@
         outline-offset: -8px;
     }
 
+    #search input:focus-visible {
+        outline: none;
+    }
+
     #search svg {
         grid-area: search;
         overflow: visible;
