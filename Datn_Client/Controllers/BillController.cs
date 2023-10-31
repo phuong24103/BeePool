@@ -68,17 +68,52 @@ namespace Datn_Client.Controllers
                 detail.Price = item.Price;
                 cartDetails.Add(detail);
             }
+
+
             if (code == null)
             {
                 await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/Create", cartDetails);
+                return RedirectToAction("Bill");
             }
             else
             {
-                await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillVoucher/{code}", cartDetails);
-            }
-            return RedirectToAction("Bill");
-        }
+                string message = string.Empty;
+                var allvoucher = await _httpClient.GetFromJsonAsync<List<Voucher>>($"https://localhost:7033/api/Voucher/GetAll");
+                var voucher = allvoucher.FirstOrDefault(p => p.Code == code);
 
+                if (voucher == null)
+                {
+                    message = "Voucher này không tồn tại";
+                    TempData["Message"] = message;
+                }
+                else if (voucher.Status == 1)
+                {
+                    message = "Voucher này đang khóa";
+                    TempData["Message"] = message;
+
+                }
+                else if (DateTime.Now < voucher.TimeStart)
+                {
+                    message = "Voucher này chưa bắt đầu";
+                    TempData["Message"] = message;
+
+                }
+                else if (DateTime.Now > voucher.TimeEnd)
+                {
+                    message = "Voucher này đã hết hạn";
+                    TempData["Message"] = message;
+
+                }
+                else
+                {
+                    await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillVoucher/{code}", cartDetails);
+                    return RedirectToAction("Bill");
+                }
+                return RedirectToAction("Index", "Cart");
+            }
+
+            
+        }
 
     }
 }

@@ -54,8 +54,6 @@ namespace Datn_Api.Services
                     c.Price += product.Price * cartDetail.Quantity;
                     _context.CartDetails.Update(c);
                 }
-                product.Quantity = 1;
-                _context.ProductDetails.Update(product);
                 _context.Carts.Update(cart);
                 await _context.SaveChangesAsync();
                 return true;

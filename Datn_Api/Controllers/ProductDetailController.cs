@@ -63,6 +63,14 @@ namespace Datn_Api.Controllers
             return Ok();
         }
 
+        [HttpPut]
+        [Route("ResetQuantity/{id:Guid}")]
+        public async Task<ActionResult<ProductDetail>> ResetQuantityProductDetail([FromRoute] Guid id)
+        {
+            await _iprodtsv.ResetQuantityProductDetail(id);
+            return Ok();
+        }
+
         [HttpDelete]
         [Route("Delete/{id:Guid}")]
         public async Task<ActionResult<ProductDetail>> DeleteProductDetail([FromRoute] Guid id)

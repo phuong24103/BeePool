@@ -164,6 +164,23 @@ namespace Datn_Api.Services
             }
         }
 
+        public async Task<bool> ResetQuantityProductDetail(Guid id)
+        {
+            var productDetail = _context.ProductDetails.Find(id);
+            if (productDetail == null) return false;
+            try
+            {
+                productDetail.Quantity = 1;
+                _context.ProductDetails.Update(productDetail);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public async Task<bool> UpdateProductDetail(Guid id, UpdateProductDetail product)
         {
             var n = _context.ProductDetails.Find(id);

@@ -6,7 +6,18 @@
     <link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
 }
 
-<div class=" container-fluid my-5 ">
+@section scripts{
+    <script>
+        $(function () {
+            $('#AlertBox').removeClass('hide');
+            $('#AlertBox').delay(5000).slideUp(500);
+        });
+
+    </script>
+    }
+
+
+<div class=" container-fluid mb-md-5">
     <div class="row justify-content-center ">
         <div class="col-xl-10">
             <div class="card shadow-lg ">
@@ -70,6 +81,15 @@
                                     <div class="form-group">
                                         <label for="NAME" class="small text-muted mb-1">Địa chỉ nhận hàng</label>
                                         <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="VD : 850 Láng,Đống Đa,Hà Nội">
+                                        <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="BBBootstrap Team">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="NAME" class="small text-muted mb-1">Số điện thoại</label>
+                                        <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="NAME" class="small text-muted mb-1">Địa chỉ nhận hàng</label>
+                                        <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
                                     </div>
                                     <div class="form-group">
                                         <label class="small text-muted mb-1">Mã giảm giá</label>
@@ -79,6 +99,14 @@
                                         <div class="col">
                                             <input type="submit" value="Thanh toán" class="btn btn-block btn-outline-primary btn-lg">
                                         </div>
+                                    @if (TempData["Message"] != null)
+                                    {
+                                        <div id="AlertBox" class="alert alert-warning hide" role="alert">
+                                            @TempData["Message"]
+                                        </div>
+                                    }
+                                    <div class="my-3 mx-auto" style="width: 7.2rem;">
+                                        <input type="submit" value="Thanh toán" class="btn btn-outline-primary btn-lg">
                                     </div>
                                 </form>
                             </div>
@@ -114,7 +142,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class=" pl-0 flex-sm-col col-auto  my-auto">
+                                        <div class=" pl-0 flex-sm-col col-auto my-auto">
                                             <form class="input-group">
                                                 <a asp-controller="Cart" asp-action="Reduce" asp-route-id="@item.Id" class="btn btn-outline-primary">-</a>
                                                 <label asp-for="@item.Quantity" class="form-control" style="min-width: 51px; text-align: center;">@item.Quantity</label>
@@ -129,7 +157,7 @@
                                     </div>
                                     <hr class="my-2">
                                 }
-                                <div class="row ">
+                                <div class="row mb-md-5">
                                     <div class="col">
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p class="mb-1"><b>Tổng Tiền Sản Phẩm</b></p></div>
@@ -174,4 +202,3 @@
         </div>
     </div>
 </div>
-
