@@ -69,7 +69,7 @@ namespace Datn_Client.Controllers
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByNameAZ");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("Index", pagedList);
+            return View("GetByNameAZ", pagedList);
         }
 
         [HttpGet]
@@ -77,7 +77,7 @@ namespace Datn_Client.Controllers
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByNameZA");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("Index", pagedList);
+            return View("GetByNameZA", pagedList);
         }
 
         [HttpGet]
@@ -85,7 +85,7 @@ namespace Datn_Client.Controllers
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByCreateDateOld");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("Index", pagedList);
+            return View("GetByCreateDateOld", pagedList);
         }
 
         [HttpGet]
@@ -93,7 +93,7 @@ namespace Datn_Client.Controllers
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByCreateDateNew");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("Index", pagedList);
+            return View("GetByCreateDateNew", pagedList);
         }
 
         [HttpGet]
@@ -101,7 +101,7 @@ namespace Datn_Client.Controllers
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPriceMin");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("Index", pagedList);
+            return View("GetByPriceMin", pagedList);
         }
 
         [HttpGet]
@@ -109,7 +109,7 @@ namespace Datn_Client.Controllers
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPriceMax");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("Index", pagedList);
+            return View("GetByPriceMax", pagedList);
         }
 
         [HttpGet]
@@ -117,7 +117,7 @@ namespace Datn_Client.Controllers
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPrice2");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("Index", pagedList);
+            return View("GetByPrice2", pagedList);
         }
     }
 }
