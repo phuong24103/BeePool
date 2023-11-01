@@ -4,6 +4,7 @@ using Datn_Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datn_Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231031125558_datn")]
+    partial class datn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1232,7 +1234,6 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"),
-
                             ConcurrencyStamp = "d982f69c-2280-4ac5-ba64-c63a884a0c51",
                             Name = "Quản lý",
                             NormalizedName = "MANAGE"
@@ -1240,7 +1241,6 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"),
-
                             ConcurrencyStamp = "8075a902-82bf-42e4-839b-fe9c2d817cde",
                             Name = "Nhân viên",
                             NormalizedName = "STAFF"

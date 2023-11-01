@@ -1,60 +1,82 @@
 ﻿@model IEnumerable<Datn_Shared.ViewModels.BillViewModels.BillView>
 @{
     ViewData["Title"] = "Bill";
+    <link rel="stylesheet" href="~/css/text.css" asp-append-version="true" />
 }
 
-<div class="card">
-  <div class="card-body mx-4">
-        <p class="container" style="text-align : center"><h3>Bill</h3></p>
-        @foreach(var item in @Model)
+<div class="card" style = "margin-bottom : 200px">
+    <div class="card-body mx-4" >
+        <div class="wrapper" style = "background-color : white">
+            <div class="bg"> Bill </div>
+            <div class="fg"> Bill </div>
+        </div>
+        @foreach (var item in @Model)
         {
-        <div class="container" style = "text-align : center">
-        <br>
-      <div class="row">
-        <ul class="list-unstyled">
-          <li class="text-black">Tên khách hàng: @item.Customer.UserName</li>
-        </ul>
-        <hr>
-        <div class="col-xl-10">
-          <p>Địa chỉ</p>
-        </div>
-        <div class="col-xl-2">
-          <p class="float-end">@item.Address
-          </p>
-        </div>
-        <hr>
-        <div class="col-xl-10">
-          <p>Ngày tạo</p>
-        </div>
-        <div class="col-xl-2">
-          <p class="float-end">@item.CreateDate
-          </p>
-        </div>
-        <hr>
-        <div class="col-xl-10">
-          <p>Trạng thái</p>
-        </div>
-        <div class="col-xl-2">
-          <p class="float-end">@item.BillStatus.Name
-          </p>
-        </div>
-        <hr>
-      </div>
-      <div class="row text-black">
+            <div class="container" style="text-align : center">
+                <br>
+                <div class="row">
+                    <div class="col-xl-10" style="text-align : left">
+                        <p>Họ và tên</p>
+                    </div>
+                    <div class="col-xl-2">
+                        <p class="float-end">
+                            @item.CustomerName
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="col-xl-10" style="text-align : left">
+                        <p>Sdt</p>
+                    </div>
+                    <div class="col-xl-2">
+                        <p class="float-end">
+                            @item.CustomerPhone
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="col-xl-10" style = "text-align : left">
+                        <p>Địa chỉ</p>
+                    </div>
+                    <div class="col-xl-2">
+                        <p class="float-end">
+                            @item.Address
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="col-xl-10" style = "text-align : left">
+                        <p>Ngày tạo</p>
+                    </div>
+                    <div class="col-xl-2">
+                        <p class="float-end">
+                            @item.CreateDate
+                        </p>
+                    </div>
+                    <hr>
+                    @*<div class="col-xl-10" style = "text-align : left">
+                        <p>Trạng thái</p>
+                    </div>
+                    <div class="col-xl-2">
+                        <p class="float-end">
+                            @item.BillStatus.Name
+                        </p>
+                    </div>
+                    <hr>*@
+                </div>
+                <div class="row text-black">
 
-        <div class="col-xl-12">
-          <p class="float-end fw-bold">Tổng tiền: @item.Price
-          </p>
-        </div>
-        <div class="text-center" style="margin-top: 30px;">
-        <a asp-controller="BillDetails" asp-action="BillDetails" asp-route-id="@item.Id"> <button class="btn btn-block btn-outline-primary btn-lg" type="button">Hóa đơn chi tiết</button></a>
-      </div>
-        <hr style="border: 2px solid black;">
-      </div>
+                    <div class="col-xl-12">
+                        <p class="float-end fw-bold">
+                            Tổng tiền: @item.Price
+                        </p>
+                    </div>
+                    <div class="text-center" style="margin-top: 30px;margin-bottom : 30px">
+                        <a asp-controller="BillDetails" asp-action="BillDetails" asp-route-id="@item.Id"> <button class="btn btn-block btn-outline-primary btn-lg" type="button">Hóa đơn chi tiết</button></a>
+                    </div>
+                    <hr style="border: 2px solid black;">
+                </div>
 
+            </div>
+
+        }
     </div>
-
-    }
-  </div>
 </div>
 

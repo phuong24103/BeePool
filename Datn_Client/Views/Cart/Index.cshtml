@@ -72,16 +72,34 @@
                                 <form action="/Bill/CreateVoucher" method="post">
                                     <div class="form-group">
                                         <label for="NAME" class="small text-muted mb-1">Họ và tên</label>
-                                        <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="BBBootstrap Team">
+                                        <input class="form-control form-control-sm" name="name">
                                     </div>
+                                    @if (TempData["Messagename"] != null)
+                                    {
+                                        <div id="AlertBox" class="alert alert-warning hide" role="alert">
+                                            @TempData["Messagename"]
+                                        </div>
+                                    }
                                     <div class="form-group">
                                         <label for="NAME" class="small text-muted mb-1">Số điện thoại</label>
-                                        <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
+                                        <input class="form-control form-control-sm" name="phonenumber">
                                     </div>
+                                    @if (TempData["Messagephone"] != null)
+                                    {
+                                        <div id="AlertBox" class="alert alert-warning hide" role="alert">
+                                            @TempData["Messagephone"]
+                                        </div>
+                                    }
                                     <div class="form-group">
                                         <label for="NAME" class="small text-muted mb-1">Địa chỉ nhận hàng</label>
-                                        <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
+                                        <input class="form-control form-control-sm" name="address">
                                     </div>
+                                    @if (TempData["Messageaddress"] != null)
+                                    {
+                                        <div id="AlertBox" class="alert alert-warning hide" role="alert">
+                                            @TempData["Messageaddress"]
+                                        </div>
+                                    }
                                     <div class="form-group">
                                         <label class="small text-muted mb-1">Mã giảm giá</label>
                                         <input class="form-control form-control-sm" name="code">
@@ -90,6 +108,12 @@
                                     {
                                         <div id="AlertBox" class="alert alert-warning hide" role="alert">
                                             @TempData["Message"]
+                                        </div>
+                                    }
+                                    @if (TempData["Giagiam"] != null)
+                                    {
+                                        <div class="alert alert-success">
+                                            Số tiền được giảm: @TempData["Giagiam"]
                                         </div>
                                     }
                                     <div class="my-3 mx-auto" style="width: 7.2rem;">
@@ -177,9 +201,11 @@
                                             }
                                         </div>
                                         <hr class="my-0">
+
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

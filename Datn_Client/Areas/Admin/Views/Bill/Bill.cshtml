@@ -20,9 +20,11 @@
                         <thead style="background-color:#84B0CA ;" class="text-white">
                             <tr>
                                 <th scope="col">Tên khách hàng</th>
+                                <th scope="col">Số điện thoại</th>
                                 <th scope="col">Địa chỉ</th>
                                 <th scope="col">Ngày tạo</th>
                                 <th scope="col">Tổng tiền</th>
+                                <th scope="col">Phương thức thanh toán</th>
                                 <th scope="col">Trạng thái</th>
                                 <th scope="col">Đổi trạng thái</th>
                                 <th scope="col">Xóa</th>
@@ -32,10 +34,12 @@
                             @foreach (var item in @Model)
                             {
                                 <tr>
-                                    <td>@item.Customer.UserName</td>
+                                    <td>@item.CustomerName</td>
+                                    <td>@item.CustomerPhone</td>
                                     <td>@item.Address</td>
                                     <td>@item.CreateDate</td>
                                     <td>@item.Price</td>
+                                    <td>@item.Payment.Name</td>
                                     <td>@item.BillStatus.Name</td>
                                     <td>
                                         <a asp-area="Admin" asp-controller="Bill" asp-action="UpdateBillStatus" asp-route-id="@item.Id" class="btn btn-success">

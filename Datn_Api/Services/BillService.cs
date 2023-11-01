@@ -26,7 +26,9 @@ namespace Datn_Api.Services
                 PaymentId = bill.PaymentId,
                 Price = bill.Price,
                 CreateDate = bill.CreateDate,
-                Address = bill.Address
+                Address = bill.Address,
+                CustomerName = bill.CustomerName,
+                CustomerPhone = bill.CustomerPhone,
             };
             try
             {
@@ -73,6 +75,8 @@ namespace Datn_Api.Services
                     Price = a.Price,
                     CreateDate = a.CreateDate,
                     Address = a.Address,
+                    CustomerName = a.CustomerName,
+                    CustomerPhone = a.CustomerPhone,
                     Customer = c,
                     BillStatus = b,
                     Payment = d
@@ -98,6 +102,8 @@ namespace Datn_Api.Services
                     Price = a.Price,
                     CreateDate = a.CreateDate,
                     Address = a.Address,
+                    CustomerName = a.CustomerName,
+                    CustomerPhone = a.CustomerPhone,
                     Customer = c,
                     BillStatus = b,
                     Payment = d
@@ -123,6 +129,8 @@ namespace Datn_Api.Services
                     Price = a.Price,
                     CreateDate = a.CreateDate,
                     Address = a.Address,
+                    CustomerName = a.CustomerName,
+                    CustomerPhone = a.CustomerPhone,
                     Customer = c,
                     BillStatus = b,
                     Payment = d
@@ -140,6 +148,8 @@ namespace Datn_Api.Services
             b.Price = bill.Price;
             b.CreateDate = bill.CreateDate;
             b.Address = bill.Address;
+            b.CustomerName = bill.CustomerName;
+            b.CustomerPhone = bill.CustomerPhone;
             try
             {
                 _context.Bills.Update(b);
