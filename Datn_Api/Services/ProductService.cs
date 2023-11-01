@@ -29,10 +29,10 @@ namespace Datn_Api.Services
                 Wrap = product.Wrap,
                 Rings = product.Rings,
                 AvailableQuantity = product.AvailableQuantity,
-                Sold = product.Sold,
-                Likes = product.Likes,
+                Sold = 0,
+                Likes = 0,
                 Producer = product.Producer,
-                CreateDate = product.CreateDate,
+                CreateDate = DateTime.Now,
                 Status = product.Status,
                 Description = product.Description,
             };
@@ -95,7 +95,9 @@ namespace Datn_Api.Services
                     CreateDate = product.CreateDate,
                     Status = product.Status,
                     Description = product.Description,
-                    Category = product.Category
+                    Category = product.Category/*,
+                    CategoryName = product.Category.Name*/
+                    
                 });
             }
             return proview;

@@ -1,11 +1,12 @@
-﻿@model IEnumerable<Datn_Shared.Models.Shaft>
+﻿@model IEnumerable<Datn_Shared.ViewModels.ProductViewModels.ProductView>
 @using Datn_Shared.Models;
+@using Datn_Shared.ViewModels.ProductViewModels;
 
 @{
     ViewData["Title"] = "Index";
-    var category = (ViewData["s"] as List<Shaft>);
+    var cate = (ViewData["a"] as List<Category>);
+    var category = (ViewData["p"] as List<ProductView>);
 }
-
 <div class="pagetitle">
     <h1>Quản lý danh mục</h1>
     <nav>
@@ -28,30 +29,37 @@
                     <div class="card recent-sales overflow-auto">
 
                         <div class="card-body">
-                            <h5 class="card-title">shaft <span>| </span></h5>
+                            <h5 class="card-title">Sản phẩm <span>| </span></h5>
 
                             <table class="table table-hover datatable">
                                 <tr>
-                           
-                                    <td>Tên</td>
-                                    <td>giá</td>
-                                    <td>size</td>
-                                    <td>lenght</td>
-                                    <td>Material</td>
-                                    <td>Color</td>
+                                    <td>tên Sản phẩm</td>
+                                   @*  //<td>Tên danh mục</td> *@
+                                    <td>Pin</td>
+                                    <td>Wrap</td>
+                                    <td>Rings</td>
+                                    <td>AvailableQuantity</td>
+                                    <td>Sold</td>
+                                    <td>Likes</td>
+                                    <td>Producer</td>
+                                    <td>CreateDate</td>
+                                    <td>Description</td>
                                     <td>Trạng thái</td>
-                                    <td></td>
                                 </tr>
                                 @foreach (var item in @Model)
                                 {
                                     <tr>
                                         <td>@item.Name</td>
-                             
-                                        <td>giá</td>
-                                        <td>size</td>
-                                        <td>lenght</td>
-                                        <td>Material</td>
-                                        <td>Color</td>
+                                     @*    //<td>@item.CategoryName</td> *@
+                                        <td>@item.Pin</td>
+                                        <td>@item.Wrap</td>
+                                        <td>@item.Rings</td>
+                                        <td>@item.AvailableQuantity</td>
+                                        <td>@item.Sold</td>
+                                        <td>@item.Likes</td>
+                                        <td>@item.Producer</td>
+                                        <td>@item.CreateDate</td>
+                                        <td>@item.Description</td>
                                         <td>
                                             @if (item.Status == 0)
                                             {
@@ -67,10 +75,10 @@
                                             }
                                         </td>
                                         <td>
-                                            <a asp-area="Admin" asp-controller="Shaft" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success">
+                                            <a asp-area="Admin" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success">
                                                 <i class="bx bxs-detail"></i>
                                             </a>
-                                            <a asp-area="Admin" asp-controller="Shaft" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                            <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
                                                 <i class="bx bxs-trash-alt"></i>
                                             </a>
                                         </td>
@@ -122,41 +130,43 @@
                              aria-labelledby="home-tab">
                             @if (category != null)
                             {
-                                <form asp-area="Admin" asp-controller="Shaft" asp-action="Update" asp-route-id="@category.First().Id">
+                                <form asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@category.First().Id">
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Name</label>
                                         <div class="col-sm-8">
                                             <input asp-for="@category.First().Name" type="text" class="form-control" />
                                         </div>
+                                    </div>   
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">
+                                            Pin
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@category.First().Pin" type="text" class="form-control" />
+                                        </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Price</label>
+                                        <label class="col-sm-4 col-form-label">
+                                            wrap
+                                        </label>
                                         <div class="col-sm-8">
-                                            <input asp-for="@category.First().Price" type="text" class="form-control" />
+                                            <input asp-for="@category.First().Wrap" type="text" class="form-control" />
                                         </div>
-                                    </div>  
+                                    </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Size</label>
+                                        <label class="col-sm-4 col-form-label">
+                                            rings
+                                        </label>
                                         <div class="col-sm-8">
-                                            <input asp-for="@category.First().Size" type="text" class="form-control" />
+                                            <input asp-for="@category.First().Rings" type="text" class="form-control" />
                                         </div>
-                                    </div>    
+                                    </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Length</label>
+                                        <label class="col-sm-4 col-form-label">
+                                            avali
+                                        </label>
                                         <div class="col-sm-8">
-                                            <input asp-for="@category.First().Length" type="text" class="form-control" />
-                                        </div>
-                                    </div>  
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Material</label>
-                                        <div class="col-sm-8">
-                                            <input asp-for="@category.First().Material" type="text" class="form-control" />
-                                        </div>
-                                    </div> 
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Color</label>
-                                        <div class="col-sm-8">
-                                            <input asp-for="@category.First().Color" type="text" class="form-control" />
+                                            <input asp-for="@category.First().AvailableQuantity" type="text" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -178,7 +188,7 @@
 
                         @* Create *@
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <form asp-area="Admin" asp-controller="Shaft" asp-action="Create">
+                            <form asp-area="Admin" asp-controller="Product" asp-action="Create" enctype="multipart/form-data">
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Name</label>
                                     <div class="col-sm-8">
@@ -186,33 +196,76 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Price</label>
+                                    <label class="col-sm-4 col-form-label">Tên danh mục</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Price" type="text" class="form-control" value="" />
+                                        <select asp-for="@Model.First().Category.Id" class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            @if (cate != null)
+                                            {
+                                                @foreach (var item in cate)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
+
+                                            }
+                                        
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Size</label>
+                                    <label class="col-sm-4 col-form-label">Pin</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Size" type="text" class="form-control" value="" />
+                                        <input asp-for="@Model.First().Pin" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Length</label>
+                                    <label class="col-sm-4 col-form-label">Wrap</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Length" type="text" class="form-control" value="" />
+                                        <input asp-for="@Model.First().Wrap" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Material</label>
+                                    <label class="col-sm-4 col-form-label">Rings</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Material" type="text" class="form-control" value="" />
+                                        <input asp-for="@Model.First().Rings" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
+                              
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Color</label>
+                                    <label class="col-sm-4 col-form-label">AvailableQuantity</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Color" type="text" class="form-control" value="" />
+                                        <input asp-for="@Model.First().AvailableQuantity" type="text" class="form-control" value="" />
+                                    </div>
+                        @*         </div> <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Sold</label>
+                                    <div class="col-sm-8">
+                                        <input asp-for="@Model.First().Sold" type="text" class="form-control" value="" />
+                                    </div>
+                                </div>  *@ 
+
+                           @*      <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Likes</label>
+                                    <div class="col-sm-8">
+                                        <input asp-for="@Model.First().Likes" type="text" class="form-control" value="" />
+                                    </div>
+                                </div> *@
+
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Producer</label>
+                                    <div class="col-sm-8">
+                                        <input asp-for="@Model.First().Producer" type="text" class="form-control" value="" />
+                                    </div>
+                                </div>  
+                            @*     <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">CreateDate</label>
+                                    <div class="col-sm-8">
+                                        <input asp-for="@Model.First().CreateDate" type="datetime" class="form-control" value="" />
+                                    </div>
+                                </div> *@
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Description</label>
+                                    <div class="col-sm-8">
+                                        <input asp-for="@Model.First().Description" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
@@ -236,12 +289,17 @@
                             {
                                 <div class="row">
                                     <label class="col-sm-4 col-form-label">
-                                        <p>Tên</p>
-                                        <p>Price</p>
-                                        <p>Size</p>
-                                        <p>Length</p>
-                                        <p>Material</p>
-                                        <p>Color</p>
+                                        <p>Tên sản phẩm</p>
+                                        <p>Tên danh mục</p>
+                                        <p>Pin</p>
+                                        <p>Wrap</p>
+                                        <p>Rings</p>
+                                        <p>AvailableQuantity</p>
+                                        <p>Sold</p>
+                                        <p>Likes</p>
+                                        <p>Producer</p>
+                                        <p>CreateDate</p>
+                                        <p>Description</p>
                                         <span>Trạng thái</span>
                                     </label>
                                     <label class="col-sm-8 col-form-label">

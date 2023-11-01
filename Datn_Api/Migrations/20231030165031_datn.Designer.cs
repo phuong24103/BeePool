@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datn_Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231023151023_datn")]
+    [Migration("20231030165031_datn")]
     partial class datn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1222,14 +1222,14 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"),
-                            ConcurrencyStamp = "7cdcea2f-872a-4c32-8400-6b45e8d1acff",
+                            ConcurrencyStamp = "ddf7ed17-d371-4e69-82e6-ce94221c59e4",
                             Name = "Quản lý",
                             NormalizedName = "MANAGE"
                         },
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"),
-                            ConcurrencyStamp = "3444862e-8682-4cc5-908a-58e2be23290f",
+                            ConcurrencyStamp = "bf2c2a6c-9577-4f93-a3b6-fecee88a86c5",
                             Name = "Nhân viên",
                             NormalizedName = "STAFF"
                         });
