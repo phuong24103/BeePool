@@ -405,7 +405,9 @@ namespace Datn_Api.Migrations
                     PaymentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CustomerPhone = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -637,8 +639,8 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "7cdcea2f-872a-4c32-8400-6b45e8d1acff", "Quản lý", "MANAGE" },
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "3444862e-8682-4cc5-908a-58e2be23290f", "Nhân viên", "STAFF" }
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "d982f69c-2280-4ac5-ba64-c63a884a0c51", "Quản lý", "MANAGE" },
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "8075a902-82bf-42e4-839b-fe9c2d817cde", "Nhân viên", "STAFF" }
                 });
 
             migrationBuilder.InsertData(
@@ -709,11 +711,11 @@ namespace Datn_Api.Migrations
 
             migrationBuilder.InsertData(
                 table: "Bills",
-                columns: new[] { "Id", "Address", "BillStatusId", "CreateDate", "CustomerId", "PaymentId", "Price" },
+                columns: new[] { "Id", "Address", "BillStatusId", "CreateDate", "CustomerId", "CustomerName", "CustomerPhone", "PaymentId", "Price" },
                 values: new object[,]
                 {
-                    { new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b13"), "phi phai", new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"), new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16"), 1450.0 },
-                    { new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf3"), "Bình nguyên vô tận", new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"), new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"), 1500.0 }
+                    { new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b13"), "phi phai", new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"), "Hoàng Xuân", "0364838484", new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16"), 1450.0 },
+                    { new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf3"), "Bình nguyên vô tận", new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"), "Hoàng Xuân", "0364838484", new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"), 1500.0 }
                 });
 
             migrationBuilder.InsertData(

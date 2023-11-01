@@ -15,9 +15,23 @@
             <div class="container" style="text-align : center">
                 <br>
                 <div class="row">
-                    <ul class="list-unstyled">
-                        <li class="text-black">Tên khách hàng: @item.Customer.UserName</li>
-                    </ul>
+                    <div class="col-xl-10" style="text-align : left">
+                        <p>Họ và tên</p>
+                    </div>
+                    <div class="col-xl-2">
+                        <p class="float-end">
+                            @item.CustomerName
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="col-xl-10" style="text-align : left">
+                        <p>Sdt</p>
+                    </div>
+                    <div class="col-xl-2">
+                        <p class="float-end">
+                            @item.CustomerPhone
+                        </p>
+                    </div>
                     <hr>
                     <div class="col-xl-10" style = "text-align : left">
                         <p>Địa chỉ</p>
@@ -37,7 +51,7 @@
                         </p>
                     </div>
                     <hr>
-                    <div class="col-xl-10" style = "text-align : left">
+                    @*<div class="col-xl-10" style = "text-align : left">
                         <p>Trạng thái</p>
                     </div>
                     <div class="col-xl-2">
@@ -45,7 +59,7 @@
                             @item.BillStatus.Name
                         </p>
                     </div>
-                    <hr>
+                    <hr>*@
                 </div>
                 <div class="row text-black">
 

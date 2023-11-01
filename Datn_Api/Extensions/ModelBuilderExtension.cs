@@ -482,6 +482,8 @@ namespace Datn_Api.Extensions
                 Price = 1500,
                 CreateDate = new DateTime(2023, 09, 11),
                 Address = "Bình nguyên vô tận",
+                CustomerName = "Hoàng Xuân",
+                CustomerPhone = "0364838484",
             },
             new Bill()
             {
@@ -492,6 +494,8 @@ namespace Datn_Api.Extensions
                 Price = 1450,
                 CreateDate = new DateTime(2023, 09, 11),
                 Address = "phi phai",
+                CustomerName = "Hoàng Xuân",
+                CustomerPhone = "0364838484",
             });
 
             modelBuilder.Entity<UsedVoucher>().HasData(
