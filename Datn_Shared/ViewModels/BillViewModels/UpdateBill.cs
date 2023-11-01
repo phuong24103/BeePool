@@ -19,5 +19,9 @@ namespace Datn_Shared.ViewModels.BillViewModels
         public DateTime CreateDate { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập địa chỉ")]
         public string? Address { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập tên")]
+        public string CustomerName { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập số điện thoại")]
+        public string CustomerPhone { get; set; }
     }
 }
