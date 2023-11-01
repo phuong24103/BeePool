@@ -4,6 +4,7 @@ using Datn_Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datn_Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231030165031_datn")]
+    partial class datn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,14 +43,6 @@ namespace Datn_Api.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CustomerName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomerPhone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("PaymentId")
                         .HasColumnType("uniqueidentifier");
 
@@ -73,8 +67,6 @@ namespace Datn_Api.Migrations
                             BillStatusId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
-                            CustomerName = "Hoàng Xuân",
-                            CustomerPhone = "0364838484",
                             PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
                             Price = 1500.0
                         },
@@ -85,8 +77,6 @@ namespace Datn_Api.Migrations
                             BillStatusId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
-                            CustomerName = "Hoàng Xuân",
-                            CustomerPhone = "0364838484",
                             PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16"),
                             Price = 1450.0
                         });
@@ -1232,16 +1222,14 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"),
-
-                            ConcurrencyStamp = "d982f69c-2280-4ac5-ba64-c63a884a0c51",
+                            ConcurrencyStamp = "ddf7ed17-d371-4e69-82e6-ce94221c59e4",
                             Name = "Quản lý",
                             NormalizedName = "MANAGE"
                         },
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"),
-
-                            ConcurrencyStamp = "8075a902-82bf-42e4-839b-fe9c2d817cde",
+                            ConcurrencyStamp = "bf2c2a6c-9577-4f93-a3b6-fecee88a86c5",
                             Name = "Nhân viên",
                             NormalizedName = "STAFF"
                         });

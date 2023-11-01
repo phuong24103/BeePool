@@ -23,12 +23,12 @@ namespace Datn_Shared.ViewModels.ProductViewModels
         public string Rings { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public int AvailableQuantity { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập nội dung")]
+     /*   [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public int Sold { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public int Likes { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
-        public DateTime CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }*/
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Producer { get; set; }
 

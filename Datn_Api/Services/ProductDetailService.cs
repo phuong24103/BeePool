@@ -30,7 +30,7 @@ namespace Datn_Api.Services
 
                 Price = product.Price,
 
-                CreateDate = product.CreateDate,
+                CreateDate = DateTime.Now,
                 Status = product.Status,
                 Description = product.Description,
 

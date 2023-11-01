@@ -120,6 +120,12 @@
                                         <div class="col-sm-8">
                                             <input asp-for="@tip.First().Name" type="text" class="form-control" />
                                         </div>
+                                    </div> 
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Price</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@tip.First().Price" type="text" class="form-control" />
+                                        </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Status</label>
@@ -146,6 +152,12 @@
                                     <div class="col-sm-8">
                                         <input asp-for="@Model.First().Name" type="text" class="form-control" value="" />
                                     </div>
+                                </div>  
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Price</label>
+                                    <div class="col-sm-8">
+                                        <input asp-for="@Model.First().Price" type="text" class="form-control" value="" />
+                                    </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Status</label>
@@ -169,6 +181,7 @@
                                 <div class="row">
                                     <label class="col-sm-4 col-form-label">
                                         <p>Tên</p>
+                                        <p>Price</p>
                                         <span>Trạng thái</span>
                                     </label>
                                     <label class="col-sm-8 col-form-label">
