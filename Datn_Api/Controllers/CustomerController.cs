@@ -5,6 +5,9 @@ using Datn_Shared.ViewModels.CustomerViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Datn_Api.Services;
 
 namespace Datn_Api.Controllers
 {
@@ -43,12 +46,35 @@ namespace Datn_Api.Controllers
 			return Ok(customer);
 		}
 
+		[HttpGet]
+		[Route("GetByNameWithViewModel/{name}")]
+		public async Task<IActionResult> GetCustomerByNameWithViewModel(string name)
+		{
+			var customer = await _customerService.GetCustomerByNameWithViewModel(name);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(customer, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
+		}
+
         [HttpPut]
         [Route("Update/{id:Guid}")]
         public async Task<ActionResult<CustomerView>> UpdateCustomer(Guid id, Customer customer)
 		{
 			await _customerService.UpdateCustomer(id, customer);
 			return Ok(customer);
-		}
-	}
+        }
+
+        [HttpPut]
+        [Route("UpdateImage/{userName}/{image}")]
+        public async Task<IActionResult> UpdateImageCustomer(string userName, string image)
+        {
+            await _customerService.UpdateImageCustomer(userName, image);
+            return Ok(image);
+        }
+    }
 }

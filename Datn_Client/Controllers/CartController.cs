@@ -26,6 +26,10 @@ namespace Datn_Client.Controllers
             {
                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
                 var result = await _httpClient.GetFromJsonAsync<List<CartDetailView>>($"https://localhost:7033/api/CartDetail/GetByCustomerId/{customer.Id}");
+
+                ViewData["ReceiverName"] = customer.FullName;
+                ViewData["CustomerPhone"] = customer.PhoneNumber;
+                ViewData["AddressDelivery"] = customer.Address;
                 return View(result);
             }
             else

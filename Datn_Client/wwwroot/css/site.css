@@ -13,6 +13,10 @@ html {
     min-height: 100%;
 }
 
+body {
+    background: linear-gradient(110deg, #BBDEFB 55%,#42A5F5 55%);
+}
+
 .link-text {
     color: #8FB9DF !important;
     text-decoration: none;

@@ -54,9 +54,15 @@ namespace Datn_Api.Extensions
             new Employee()
             {
                 Id = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
+                FullName = "Phạm Nguyễn Quốc Phương",
                 Gender = 0,
                 DateOfBirth = new DateTime(2003, 8, 20),
                 Address = "Hoa Thanh Quế",
+                Image = "phuongpnq.png",
+                Twitter = "https://twitter.com/#",
+                Facebook = "https://facebook.com/#",
+                Instagram = "https://instagram.com/#",
+                Linkedin = "https://linkedin.com/#",
                 CreateDate = new DateTime(2020, 10, 23),
                 Status = 0,
                 UserName = "QuocPhuong",
@@ -72,9 +78,15 @@ namespace Datn_Api.Extensions
             new Employee()
             {
                 Id = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
+                FullName = "Mai Văn Phương",
                 Gender = 0,
                 DateOfBirth = new DateTime(2000, 10, 26),
                 Address = "Hoa Thanh Quế",
+                Image = "phuongmv.png",
+                Twitter = "https://twitter.com/#",
+                Facebook = "https://facebook.com/#",
+                Instagram = "https://instagram.com/#",
+                Linkedin = "https://linkedin.com/#",
                 CreateDate = new DateTime(2020, 12, 23),
                 Status = 0,
                 UserName = "VanPhuong",
@@ -105,9 +117,11 @@ namespace Datn_Api.Extensions
             {
                 Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
                 RankId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"),
+                FullName = "Hoàng Thanh Tùng",
                 Gender = 0,
                 DateOfBirth = new DateTime(2003, 10, 20),
                 Address = "Hoa Thanh Quế",
+                Image = "tunght.png",
                 Point = 12000,
                 Status = 0,
                 UserName = "ThanhTung",
@@ -124,9 +138,11 @@ namespace Datn_Api.Extensions
             {
                 Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
                 RankId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"),
+                FullName = "Quỳnh Anh",
                 Gender = 1,
                 DateOfBirth = new DateTime(2003, 11, 11),
                 Address = "Hoa Thanh Quế",
+                Image = "anhq.png",
                 Point = 12000,
                 Status = 0,
                 UserName = "QuynhAnh",
@@ -230,13 +246,13 @@ namespace Datn_Api.Extensions
                 new Category()
                 {
                     Id = new Guid("357267e8-d162-4844-a660-661f46933d03"),
-                    Name = "BK",
+                    Name = "Gậy đánh",
                     Status = 0
                 },
                 new Category()
                 {
                     Id = new Guid("357267e8-d162-4844-a660-661f46933d04"),
-                    Name = "Cuetec",
+                    Name = "Gậy Phá",
                     Status = 0
                 },
                 new Category()

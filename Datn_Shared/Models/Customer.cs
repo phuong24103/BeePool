@@ -15,6 +15,8 @@ namespace Datn_Shared.Models
         public Guid Id { get; set; }
         [ForeignKey("RankId")]
         public Guid RankId { get; set; }
+        public string FullName { get; set; }
+        public string Image { get; set; }
         public int Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime CreateDate { get; set; }
