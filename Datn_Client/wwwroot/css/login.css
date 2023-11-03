@@ -1,7 +1,6 @@
 body {
     margin: 0;
     color: #6a6f8c;
-    background: #c8c8c8;
     font: 600 16px/18px 'Open Sans',sans-serif;
 }
 
@@ -73,6 +72,10 @@ a {
         margin: 0 15px 10px 0;
         display: inline-block;
         border-bottom: 2px solid transparent;
+    }
+
+    .login-html .tab:hover {
+        cursor: pointer;
     }
 
     .login-html .sign-in:checked + .tab,
@@ -186,4 +189,8 @@ a {
 
 .foot-lnk {
     text-align: center;
+}
+
+select option {
+    color: black;
 }

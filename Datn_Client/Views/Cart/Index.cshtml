@@ -2,6 +2,9 @@
 
 @{
     ViewData["Title"] = "Index";
+    var receiverName = (ViewData["ReceiverName"] as string);
+    var customerPhone = (ViewData["CustomerPhone"] as string);
+    var addressDelivery = (ViewData["AddressDelivery"] as string);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
 }
@@ -71,8 +74,8 @@
                                 </div>
                                 <form action="/Bill/CreateVoucher" method="post">
                                     <div class="form-group">
-                                        <label for="NAME" class="small text-muted mb-1">Tên</label>
-                                        <input class="form-control form-control-sm" name="name">
+                                        <label for="NAME" class="small text-muted mb-1">Họ và tên</label>
+                                        <input class="form-control form-control-sm" name="name" value="@receiverName">
                                     </div>
                                     @if (TempData["Messagename"] != null)
                                     {
@@ -82,7 +85,7 @@
                                     }
                                     <div class="form-group">
                                         <label for="NAME" class="small text-muted mb-1">Số điện thoại</label>
-                                        <input class="form-control form-control-sm" name="phonenumber" type="number">
+                                        <input class="form-control form-control-sm" name="phonenumber" type="number" value="@customerPhone">
                                     </div>
                                     @if (TempData["Messagephone"] != null)
                                     {
@@ -92,7 +95,7 @@
                                     }
                                     <div class="form-group">
                                         <label for="NAME" class="small text-muted mb-1">Địa chỉ nhận hàng</label>
-                                        <input class="form-control form-control-sm" name="address">
+                                        <input class="form-control form-control-sm" name="address" value="@addressDelivery">
                                     </div>
                                     @if (TempData["Messageaddress"] != null)
                                     {

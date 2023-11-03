@@ -272,4 +272,9 @@
     <TypeScriptCompile Include="wwwroot\vendor\tinymce\tinymce.d.ts" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\customers\" />
+    <Folder Include="wwwroot\images\employees\" />
+  </ItemGroup>
+
 </Project>

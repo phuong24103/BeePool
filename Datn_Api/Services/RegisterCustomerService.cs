@@ -55,6 +55,7 @@ namespace Datn_Api.Services
             Customer identityCustomer = new()
             {
                 Id = Guid.NewGuid(),
+                FullName = registerCustomer.FullName,
                 UserName = registerCustomer.Username,
                 Email = registerCustomer.Email,
                 PhoneNumber = registerCustomer.PhoneNumber,
@@ -62,6 +63,7 @@ namespace Datn_Api.Services
                 DateOfBirth = Convert.ToDateTime(registerCustomer.DateOfBirth),
                 Address = registerCustomer.Address,
                 CreateDate = DateTime.Now,
+                Image = registerCustomer.Image,
                 Point = 0,
                 Status = 0,
                 RankId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9232"),

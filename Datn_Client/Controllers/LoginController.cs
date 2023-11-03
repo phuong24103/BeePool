@@ -19,11 +19,6 @@ namespace Datn_Client.Controllers
             _httpClient = httpClient;
         }
 
-		public IActionResult Index()
-        {
-            return View();
-        }
-
         public async Task<IActionResult> Login(Login loginCustomer)
         {
             // Send request POST to register API
@@ -50,7 +45,7 @@ namespace Datn_Client.Controllers
             else
             {
                 ViewBag.Message = await response.Content.ReadAsStringAsync();
-                return View();
+                return RedirectToAction("Register", "Register");
             }
         }
         public async Task<IActionResult> Logout()

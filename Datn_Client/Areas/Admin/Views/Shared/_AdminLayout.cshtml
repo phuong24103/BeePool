@@ -79,7 +79,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <a asp-area="Admin" asp-controller="Employee" asp-action="Index" class="dropdown-item d-flex align-items-center">
                                     <i class="bi bi-person"></i>
                                     <span>Quản lý tài khoản</span>
                                 </a>
@@ -230,7 +230,7 @@
             @if (User.IsInRole("Quản lý") || User.IsInRole("Nhân viên"))
             {
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="users-profile.html">
+                    <a asp-area="Admin" asp-controller="Employee" asp-action="Index" class="nav-link collapsed">
                         <i class="bi bi-person"></i>
                         <span>Hồ sơ</span>
                     </a>
