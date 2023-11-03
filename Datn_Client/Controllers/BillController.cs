@@ -1,4 +1,5 @@
 ﻿using Datn_Shared.Models;
+using Datn_Shared.ViewModels.AccountViewModels;
 using Datn_Shared.ViewModels.BillDetailViewModels;
 using Datn_Shared.ViewModels.BillViewModels;
 using Datn_Shared.ViewModels.CartDetailViewModels;
@@ -87,27 +88,8 @@ namespace Datn_Client.Controllers
                 
                 if (code == null)
                 {   
-                    if(name == null)
-                    {
-                        string messagename = "Vui lòng nhập tên";
-                        TempData["Messagename"] = messagename;
-                    }
-                    else if(phonenumber == null)
-                    {
-                        string messagephone = "Vui lòng nhập số điện thoại";
-                        TempData["Messagephone"] = messagephone;
-                    }
-                    else if (address == null)
-                    {
-                        string messageaddress = "Vui lòng nhập địa chỉ nhận";
-                        TempData["Messageaddress"] = messageaddress;
-                    }
-                    else
-                    {
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/Create/{address}/{name}/{phonenumber}", cartDetails);
+                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/Create", cartDetails);
                         return RedirectToAction("Bill");
-                    }
-                    return RedirectToAction("Index", "Cart");
                 }
             
                     
@@ -118,22 +100,8 @@ namespace Datn_Client.Controllers
                     var allvoucher = await _httpClient.GetFromJsonAsync<List<Voucher>>($"https://localhost:7033/api/Voucher/GetAll");
                     var voucher = allvoucher.FirstOrDefault(p => p.Code == code);
 
-                    if (name == null)
-                    {
-                        string messagename = "Vui lòng nhập tên";
-                        TempData["Messagename"] = messagename;
-                    }
-                    else if (phonenumber == null)
-                    {
-                        string messagephone = "Vui lòng nhập số điện thoại";
-                        TempData["Messagephone"] = messagephone;
-                    }
-                    else if (address == null)
-                    {
-                        string messageaddress = "Vui lòng nhập địa chỉ nhận";
-                        TempData["Messageaddress"] = messageaddress;
-                    }
-                    else if (voucher == null)
+                    
+                    if (voucher == null)
                     {
                         message = "Voucher này không tồn tại";
                         TempData["Message"] = message;
@@ -160,7 +128,7 @@ namespace Datn_Client.Controllers
                     {
                         giagiam = voucher.Value.ToString();
                         TempData["Giagiam"] = giagiam;
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillVoucher/{code}/{address}/{name}/{phonenumber}", cartDetails);
+                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillVoucher/{code}", cartDetails);
                         return RedirectToAction("Index", "Cart");
                     }
                     return RedirectToAction("Index", "Cart");
@@ -198,9 +166,9 @@ namespace Datn_Client.Controllers
                         string messagename = "Vui lòng nhập tên";
                         TempData["Messagename"] = messagename;
                     }
-                    else if (phonenumber == null)
+                    else if (phonenumber == null || phonenumber.Length > 10)
                     {
-                        string messagephone = "Vui lòng nhập số điện thoại";
+                        string messagephone = "Vui lòng nhập số điện thoại và tối đa là 10";
                         TempData["Messagephone"] = messagephone;
                     }
                     else if (address == null)
@@ -210,11 +178,25 @@ namespace Datn_Client.Controllers
                     }
                     else
                     {
+                        //Tạo mới khách hàng
+                        Register Registercustomer = new Register()
+                        {
+                            Username = name,
+                            Password = "123456",
+                            ConfirmPassword = "123456",
+                            Gender = 0,
+                            DateOfBirth = new DateTime(2003, 10, 20),
+                            Address = address,
+                            PhoneNumber = phonenumber,
+                            Email = $"{name}@gmail.com",
+                        };
+                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
+                        var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{name}");
                         //Bill thêm vào session
                         BillView bill = new BillView()
                         {
                             Id = Guid.NewGuid(),
-                            CustomerId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            CustomerId = customer.Id,
                             BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
                             PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
                             Price = price,
@@ -227,7 +209,7 @@ namespace Datn_Client.Controllers
                         CreateBill createBill = new CreateBill()
                         {
                             Id = bill.Id,
-                            CustomerId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            CustomerId = customer.Id,
                             BillStatusId = bill.BillStatusId,
                             PaymentId = bill.PaymentId,
                             Price = bill.Price,
@@ -291,9 +273,9 @@ namespace Datn_Client.Controllers
                         string messagename = "Vui lòng nhập tên";
                         TempData["Messagename"] = messagename;
                     }
-                    else if (phonenumber == null)
+                    else if (phonenumber == null || phonenumber.Length > 10)
                     {
-                        string messagephone = "Vui lòng nhập số điện thoại";
+                        string messagephone = "Vui lòng nhập số điện thoại và tối đa là 10";
                         TempData["Messagephone"] = messagephone;
                     }
                     else if (address == null)
@@ -336,11 +318,25 @@ namespace Datn_Client.Controllers
                         {
                             price -= 0;
                         }
+                        //Tạo mới khách hàng
+                        Register Registercustomer = new Register()
+                        {
+                            Username = name,
+                            Password = "123456",
+                            ConfirmPassword = "123456",
+                            Gender = 0,
+                            DateOfBirth = new DateTime(2003, 10, 20),
+                            Address = address,
+                            PhoneNumber = phonenumber,
+                            Email = $"{name}@gmail.com",
+                        };
+                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
+                        var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{name}");
                         //Bill thêm vào session
                         BillView bill = new BillView()
                         {
                             Id = Guid.NewGuid(),
-                            CustomerId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            CustomerId = customer.Id,
                             BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
                             PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
                             Price = price,
@@ -353,7 +349,7 @@ namespace Datn_Client.Controllers
                         CreateBill createBill = new CreateBill()
                         {
                             Id = bill.Id,
-                            CustomerId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            CustomerId = customer.Id,
                             BillStatusId = bill.BillStatusId,
                             PaymentId = bill.PaymentId,
                             Price = bill.Price,

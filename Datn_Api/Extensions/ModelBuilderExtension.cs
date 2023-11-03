@@ -452,6 +452,16 @@ namespace Datn_Api.Extensions
             {
                 Id = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
                 Name = "Chờ xác nhận"
+            },
+            new BillStatus()
+            {
+                Id = new Guid("b392b872-712a-41a7-8542-83fb58249c23"),
+                Name = "Đang lấy hàng"
+            },
+            new BillStatus()
+            {
+                Id = new Guid("00357f21-9356-468b-8c0c-b590e3d1bc0a"),
+                Name = "Đang giao hàng"
             });
 
             modelBuilder.Entity<Payment>().HasData(
