@@ -71,7 +71,7 @@
                                 </div>
                                 <form action="/Bill/CreateVoucher" method="post">
                                     <div class="form-group">
-                                        <label for="NAME" class="small text-muted mb-1">Họ và tên</label>
+                                        <label for="NAME" class="small text-muted mb-1">Tên</label>
                                         <input class="form-control form-control-sm" name="name">
                                     </div>
                                     @if (TempData["Messagename"] != null)
@@ -82,7 +82,7 @@
                                     }
                                     <div class="form-group">
                                         <label for="NAME" class="small text-muted mb-1">Số điện thoại</label>
-                                        <input class="form-control form-control-sm" name="phonenumber">
+                                        <input class="form-control form-control-sm" name="phonenumber" type="number">
                                     </div>
                                     @if (TempData["Messagephone"] != null)
                                     {
