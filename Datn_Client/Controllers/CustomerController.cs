@@ -49,5 +49,10 @@ namespace Datn_Client.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> EditProfile()
+        {
+            return View();
+        }
     }
 }
