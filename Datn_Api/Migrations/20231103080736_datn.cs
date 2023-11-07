@@ -39,9 +39,15 @@ namespace Datn_Api.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Twitter = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Facebook = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Instagram = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Linkedin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -273,6 +279,8 @@ namespace Datn_Api.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RankId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -590,8 +598,8 @@ namespace Datn_Api.Migrations
                 values: new object[,]
                 {
                     { new Guid("357267e8-d162-4844-a660-661f46933d00"), "HOW", 0 },
-                    { new Guid("357267e8-d162-4844-a660-661f46933d03"), "BK", 0 },
-                    { new Guid("357267e8-d162-4844-a660-661f46933d04"), "Cuetec", 0 },
+                    { new Guid("357267e8-d162-4844-a660-661f46933d03"), "Gậy đánh", 0 },
+                    { new Guid("357267e8-d162-4844-a660-661f46933d04"), "Gậy Phá", 0 },
                     { new Guid("357267e8-d162-4844-a660-661f46933d05"), "Demon", 0 },
                     { new Guid("357267e8-d162-4844-a660-661f46933d06"), "EXCEED", 0 },
                     { new Guid("357267e8-d162-4844-a660-661f46933d07"), "Fury", 0 },
@@ -606,11 +614,11 @@ namespace Datn_Api.Migrations
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "CreateDate", "DateOfBirth", "Email", "EmailConfirmed", "Gender", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "CreateDate", "DateOfBirth", "Email", "EmailConfirmed", "Facebook", "FullName", "Gender", "Image", "Instagram", "Linkedin", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "Twitter", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"), 0, "Hoa Thanh Quế", "e4bf7cff-6b1d-4814-801c-02470855c7e5", new DateTime(2020, 10, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2003, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "quocphuong@gmail.com", false, 0, true, null, "QUOCPHUONG@GMAIL.COM", "QUOCPHUONG", "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==", "06969433323", false, "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ", 0, false, "QuocPhuong" },
-                    { new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"), 0, "Hoa Thanh Quế", "e4bf7cff-6b1d-4814-801c-02470855c7e5", new DateTime(2020, 12, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2000, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "vanphuong@gmail.com", false, 0, true, null, "VANPHUONG@GMAIL.COM", "VANPHUONG", "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==", "0386753434", false, "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ", 0, false, "VanPhuong" }
+                    { new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"), 0, "Hoa Thanh Quế", "e4bf7cff-6b1d-4814-801c-02470855c7e5", new DateTime(2020, 10, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2003, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "quocphuong@gmail.com", false, "https://facebook.com/#", "Phạm Nguyễn Quốc Phương", 0, "phuongpnq.png", "https://instagram.com/#", "https://linkedin.com/#", true, null, "QUOCPHUONG@GMAIL.COM", "QUOCPHUONG", "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==", "06969433323", false, "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ", 0, "https://twitter.com/#", false, "QuocPhuong" },
+                    { new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"), 0, "Hoa Thanh Quế", "e4bf7cff-6b1d-4814-801c-02470855c7e5", new DateTime(2020, 12, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2000, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "vanphuong@gmail.com", false, "https://facebook.com/#", "Mai Văn Phương", 0, "phuongmv.png", "https://instagram.com/#", "https://linkedin.com/#", true, null, "VANPHUONG@GMAIL.COM", "VANPHUONG", "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==", "0386753434", false, "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ", 0, "https://twitter.com/#", false, "VanPhuong" }
                 });
 
             migrationBuilder.InsertData(
@@ -639,8 +647,8 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "d982f69c-2280-4ac5-ba64-c63a884a0c51", "Quản lý", "MANAGE" },
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "8075a902-82bf-42e4-839b-fe9c2d817cde", "Nhân viên", "STAFF" }
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "27d4aac2-6ece-4efd-a5fb-da70067e2421", "Quản lý", "MANAGE" },
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "edf56a78-42a0-41bf-89fd-1016992645a7", "Nhân viên", "STAFF" }
                 });
 
             migrationBuilder.InsertData(
@@ -674,11 +682,11 @@ namespace Datn_Api.Migrations
 
             migrationBuilder.InsertData(
                 table: "Customers",
-                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "CreateDate", "DateOfBirth", "Email", "EmailConfirmed", "Gender", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Point", "RankId", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "CreateDate", "DateOfBirth", "Email", "EmailConfirmed", "FullName", "Gender", "Image", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Point", "RankId", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"), 0, "Hoa Thanh Quế", "e4bf7cff-6b1d-4814-801c-02470855c7e5", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2003, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "quynhanh@gmail.com", false, 1, true, null, "QUYNHANH@GMAIL.COM", "QUYNHANH", "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==", "0363636363", false, 12000, new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"), "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ", 0, false, "QuynhAnh" },
-                    { new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"), 0, "Hoa Thanh Quế", "e4bf7cff-6b1d-4814-801c-02470855c7e5", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2003, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "thanhtung@gmail.com", false, 0, true, null, "THANHTUNG@GMAIL.COM", "THANHTUNG", "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==", "0696969696", false, 12000, new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"), "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ", 0, false, "ThanhTung" }
+                    { new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"), 0, "Hoa Thanh Quế", "e4bf7cff-6b1d-4814-801c-02470855c7e5", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2003, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "quynhanh@gmail.com", false, "Quỳnh Anh", 1, "anhq.png", true, null, "QUYNHANH@GMAIL.COM", "QUYNHANH", "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==", "0363636363", false, 12000, new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"), "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ", 0, false, "QuynhAnh" },
+                    { new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"), 0, "Hoa Thanh Quế", "e4bf7cff-6b1d-4814-801c-02470855c7e5", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2003, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "thanhtung@gmail.com", false, "Hoàng Thanh Tùng", 0, "tunght.png", true, null, "THANHTUNG@GMAIL.COM", "THANHTUNG", "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==", "0696969696", false, 12000, new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"), "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ", 0, false, "ThanhTung" }
                 });
 
             migrationBuilder.InsertData(

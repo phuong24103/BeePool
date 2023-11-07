@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datn_Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231030165031_datn")]
+    [Migration("20231103080736_datn")]
     partial class datn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,14 @@ namespace Datn_Api.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerPhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid>("PaymentId")
                         .HasColumnType("uniqueidentifier");
 
@@ -67,6 +75,8 @@ namespace Datn_Api.Migrations
                             BillStatusId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
+                            CustomerName = "Hoàng Xuân",
+                            CustomerPhone = "0364838484",
                             PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
                             Price = 1500.0
                         },
@@ -77,6 +87,8 @@ namespace Datn_Api.Migrations
                             BillStatusId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
+                            CustomerName = "Hoàng Xuân",
+                            CustomerPhone = "0364838484",
                             PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16"),
                             Price = 1450.0
                         });
@@ -247,13 +259,13 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d03"),
-                            Name = "BK",
+                            Name = "Gậy đánh",
                             Status = 0
                         },
                         new
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d04"),
-                            Name = "Cuetec",
+                            Name = "Gậy Phá",
                             Status = 0
                         },
                         new
@@ -352,8 +364,16 @@ namespace Datn_Api.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Gender")
                         .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -411,7 +431,9 @@ namespace Datn_Api.Migrations
                             DateOfBirth = new DateTime(2003, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "thanhtung@gmail.com",
                             EmailConfirmed = false,
+                            FullName = "Hoàng Thanh Tùng",
                             Gender = 0,
+                            Image = "tunght.png",
                             LockoutEnabled = true,
                             NormalizedEmail = "THANHTUNG@GMAIL.COM",
                             NormalizedUserName = "THANHTUNG",
@@ -435,7 +457,9 @@ namespace Datn_Api.Migrations
                             DateOfBirth = new DateTime(2003, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "quynhanh@gmail.com",
                             EmailConfirmed = false,
+                            FullName = "Quỳnh Anh",
                             Gender = 1,
+                            Image = "anhq.png",
                             LockoutEnabled = true,
                             NormalizedEmail = "QUYNHANH@GMAIL.COM",
                             NormalizedUserName = "QUYNHANH",
@@ -481,8 +505,25 @@ namespace Datn_Api.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Facebook")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Gender")
                         .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Instagram")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Linkedin")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -512,6 +553,9 @@ namespace Datn_Api.Migrations
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<string>("Twitter")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -543,7 +587,12 @@ namespace Datn_Api.Migrations
                             DateOfBirth = new DateTime(2003, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "quocphuong@gmail.com",
                             EmailConfirmed = false,
+                            Facebook = "https://facebook.com/#",
+                            FullName = "Phạm Nguyễn Quốc Phương",
                             Gender = 0,
+                            Image = "phuongpnq.png",
+                            Instagram = "https://instagram.com/#",
+                            Linkedin = "https://linkedin.com/#",
                             LockoutEnabled = true,
                             NormalizedEmail = "QUOCPHUONG@GMAIL.COM",
                             NormalizedUserName = "QUOCPHUONG",
@@ -552,6 +601,7 @@ namespace Datn_Api.Migrations
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
                             Status = 0,
+                            Twitter = "https://twitter.com/#",
                             TwoFactorEnabled = false,
                             UserName = "QuocPhuong"
                         },
@@ -565,7 +615,12 @@ namespace Datn_Api.Migrations
                             DateOfBirth = new DateTime(2000, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "vanphuong@gmail.com",
                             EmailConfirmed = false,
+                            Facebook = "https://facebook.com/#",
+                            FullName = "Mai Văn Phương",
                             Gender = 0,
+                            Image = "phuongmv.png",
+                            Instagram = "https://instagram.com/#",
+                            Linkedin = "https://linkedin.com/#",
                             LockoutEnabled = true,
                             NormalizedEmail = "VANPHUONG@GMAIL.COM",
                             NormalizedUserName = "VANPHUONG",
@@ -574,6 +629,7 @@ namespace Datn_Api.Migrations
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
                             Status = 0,
+                            Twitter = "https://twitter.com/#",
                             TwoFactorEnabled = false,
                             UserName = "VanPhuong"
                         });
@@ -1222,14 +1278,14 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"),
-                            ConcurrencyStamp = "ddf7ed17-d371-4e69-82e6-ce94221c59e4",
+                            ConcurrencyStamp = "27d4aac2-6ece-4efd-a5fb-da70067e2421",
                             Name = "Quản lý",
                             NormalizedName = "MANAGE"
                         },
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"),
-                            ConcurrencyStamp = "bf2c2a6c-9577-4f93-a3b6-fecee88a86c5",
+                            ConcurrencyStamp = "edf56a78-42a0-41bf-89fd-1016992645a7",
                             Name = "Nhân viên",
                             NormalizedName = "STAFF"
                         });

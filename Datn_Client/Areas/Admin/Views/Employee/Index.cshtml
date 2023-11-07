@@ -1,0 +1,275 @@
+﻿@model Datn_Shared.ViewModels.EmployeeViewModels.EmployeeView
+@using Datn_Shared.Models;
+
+@{
+    ViewData["Title"] = "Employee";
+    var role = (ViewData["Role"] as string);
+}
+
+<div class="pagetitle">
+    <h1>Hồ sơ</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+            <li class="breadcrumb-item">Người dùng</li>
+            <li class="breadcrumb-item active">Hồ sơ</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section profile">
+    <div class="row">
+        <div class="col-xl-4">
+
+            <div class="card">
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                    <img src="~/images/employees/@Model.Image" class="rounded-circle">
+                    <h2>@Model.FullName</h2>
+                    <h3>@role</h3>
+                    <div class="social-links mt-2">
+                        <a href="@Model.Twitter" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="@Model.Facebook" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="@Model.Instagram" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="@Model.Linkedin" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+            <div class="card">
+                <div class="card-body pt-3">
+                    <!-- Bordered Tabs -->
+                    <ul class="nav nav-tabs nav-tabs-bordered">
+
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Tổng quan</button>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh sửa hồ sơ</button>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Đổi mật khẩu</button>
+                        </li>
+
+                        <li class="nav-item">
+                            <span style="color: red" class="nav-link">@ViewBag.Message</span>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content pt-2">
+
+                        <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+                            <h5 class="card-title">Chi tiết Hồ sơ</h5>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label ">Họ tên</div>
+                                <div class="col-lg-9 col-md-8">@Model.FullName</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Giới tính</div>
+                                @if (Model.Gender == 0)
+                                {
+                                    <div class="col-lg-9 col-md-8">Nam</div>
+                                }
+                                else if (Model.Gender == 1)
+                                {
+                                    <div class="col-lg-9 col-md-8">Nữ</div>
+                                }
+                                else
+                                {
+                                    <div class="col-lg-9 col-md-8">Khác</div>
+                                }
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Ngày sinh</div>
+                                <div class="col-lg-9 col-md-8">@Model.DateOfBirth.Day/@Model.DateOfBirth.Month/@Model.DateOfBirth.Year</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Địa chỉ</div>
+                                <div class="col-lg-9 col-md-8">@Model.Address</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Số điện thoại</div>
+                                <div class="col-lg-9 col-md-8">@Model.PhoneNumber</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Email</div>
+                                <div class="col-lg-9 col-md-8">@Model.Email</div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                            <!-- Profile Edit Form -->
+                            <form asp-area="Admin" asp-controller="Employee" asp-action="UpdateProfile" class="needs-validation" novalidate>
+                                <div class="row mb-3">
+                                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Hình ảnh</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <img src="~/images/employees/@Model.Image" alt="Hồ sơ">
+                                        <div class="pt-2">
+                                            <input type="file" id="imageFileInput" name="imageFile" style="display: none;" accept="image/*">
+                                            <a class="btn btn-primary btn-sm" title="Tải lên hình ảnh hồ sơ mới" id="uploadButton">
+                                                <i class="bi bi-upload"></i>
+                                            </a>
+                                            <a asp-area="Admin" asp-controller="Employee" asp-action="DeleteImage" class="btn btn-danger btn-sm" title="Xóa ảnh hồ sơ của bạn">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Họ tên</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input asp-for="FullName" type="text" class="form-control" value="@Model.FullName" required>
+                                        <div class="invalid-feedback">Xin hãy nhập Mật khẩu hiện tại.</div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-md-4 col-lg-3 col-form-label">Giới tính</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <select asp-for="Gender" class="form-control">
+                                            @if(Model.Gender == 0)
+                                            {
+                                                <option value="0" selected>Nam</option>
+                                                <option value="1">Nữ</option>
+                                                <option value="2">Khác</option>
+                                            }
+                                            else if(Model.Gender == 1)
+                                            {
+                                                <option value="0">Nam</option>
+                                                <option value="1" selected>Nữ</option>
+                                                <option value="2">Khác</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="0">Nam</option>
+                                                <option value="1">Nữ</option>
+                                                <option value="2" selected>Khác</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="company" class="col-md-4 col-lg-3 col-form-label">Ngày sinh</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input asp-for="DateOfBirth" type="date" class="form-control" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="Address" class="col-md-4 col-lg-3 col-form-label">Địa chỉ</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input asp-for="Address" type="text" class="form-control" value="@Model.Address" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Số điện thoại</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input asp-for="PhoneNumber" type="text" class="form-control" value="@Model.PhoneNumber" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input asp-for="Email" type="email" class="form-control" value="@Model.Email" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input asp-for="Twitter" type="text" class="form-control" value="@Model.Twitter">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input asp-for="Facebook" type="text" class="form-control" value="@Model.Facebook">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input asp-for="Instagram" type="text" class="form-control" value="@Model.Instagram">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input asp-for="Linkedin" type="text" class="form-control" id="Linkedin" value="@Model.Linkedin">
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                                </div>
+                            </form><!-- End Profile Edit Form -->
+
+                        </div>
+
+                        <div class="tab-pane fade pt-3" id="profile-change-password">
+                            <!-- Change Password Form -->
+                            <form asp-area="Admin" asp-controller="Employee" asp-action="UpdatePassword" class="needs-validation" novalidate>
+
+                                <div class="row mb-3">
+                                    <label class="col-md-4 col-lg-4 col-form-label">Mật khẩu hiện tại</label>
+                                    <div class="col-md-8 col-lg-8">
+                                        <input asp-for="CurrentPassword" type="password" class="form-control" required>
+                                        <div class="invalid-feedback">Xin hãy nhập Mật khẩu hiện tại.</div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-md-4 col-lg-4 col-form-label">Mật khẩu mới</label>
+                                    <div class="col-md-8 col-lg-8">
+                                        <input asp-for="NewPassword" type="password" class="form-control" required>
+                                        <div class="invalid-feedback">Xin hãy nhập Mật khẩu mới.</div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-md-4 col-lg-4 col-form-label">Nhập lại Mật khẩu mới</label>
+                                    <div class="col-md-8 col-lg-8">
+                                        <input asp-for="ConfirmNewPassword" type="password" class="form-control" required>
+                                        <div class="invalid-feedback">Xin hãy nhập lại Mật khẩu mới.</div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+                                </div>
+                            </form><!-- End Change Password Form -->
+
+                        </div>
+
+                    </div><!-- End Bordered Tabs -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script src="~/js/Admin/uploadFile.js"></script>

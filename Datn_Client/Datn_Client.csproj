@@ -273,6 +273,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\customers\" />
+    <Folder Include="wwwroot\images\employees\" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <Folder Include="Models\Payment\" />
   </ItemGroup>
 

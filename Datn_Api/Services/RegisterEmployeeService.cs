@@ -57,12 +57,14 @@ namespace Datn_Api.Services
             Employee identityEmployee = new()
             {
                 Id = Guid.NewGuid(),
+                FullName = registerEmployee.FullName,
                 UserName = registerEmployee.Username,
                 Email = registerEmployee.Email,
                 PhoneNumber = registerEmployee.PhoneNumber,
                 Gender = Convert.ToInt32(registerEmployee.Gender),
                 DateOfBirth = Convert.ToDateTime(registerEmployee.DateOfBirth),
                 Address = registerEmployee.Address,
+                Image = registerEmployee.Image,
                 CreateDate = DateTime.Now,
                 Status = 0
             };
