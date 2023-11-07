@@ -272,4 +272,8 @@
     <TypeScriptCompile Include="wwwroot\vendor\tinymce\tinymce.d.ts" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Payment\" />
+  </ItemGroup>
+
 </Project>
