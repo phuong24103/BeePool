@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
     <script src="~/js/login.js"></script>
 }
+
 <div style="margin-bottom : 50px">
     <div class="login-wrap">
         <div class="login-html">
@@ -78,7 +79,7 @@
                         </div>
                         <div class="group">
                             <label class="label">Ngày sinh</label>
-                            <input asp-for="DateOfBirth" type="date" class="input">
+                            <input asp-for="DateOfBirth" type="date" class="input" min="1920-01-01" max="2015-12-31">
                             <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                         </div>
                         <div class="group">

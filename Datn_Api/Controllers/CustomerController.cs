@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Datn_Api.Services;
+using Datn_Shared.ViewModels.EmployeeViewModels;
 
 namespace Datn_Api.Controllers
 {
@@ -67,6 +68,26 @@ namespace Datn_Api.Controllers
 		{
 			await _customerService.UpdateCustomer(id, customer);
 			return Ok(customer);
+        }
+
+        [HttpPut]
+        [Route("UpdatePassword/{userName}")]
+        public async Task<IActionResult> UpdatePasswordCustomer(string userName, UpdatePasswordCustomer customer)
+        {
+            var result = await _customerService.UpdatePasswordCustomer(userName, customer);
+            if (result.IsSuccess)
+            {
+                return Ok(result.Token);
+            }
+            return StatusCode(result.StatusCode, result.Message);
+        }
+
+        [HttpPut]
+        [Route("UpdateProfile/{userName}")]
+        public async Task<IActionResult> UpdateProfileCustomer(string userName, UpdateProfileCustomer customer)
+        {
+            await _customerService.UpdateProfileCustomer(userName, customer);
+            return Ok(customer);
         }
 
         [HttpPut]

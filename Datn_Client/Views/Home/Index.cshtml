@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="~/css/text.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/article.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/categoryhome.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/categoryhome.css" asp-append-version="true" />
 
 }
 <div class="container" style="width : 100%;text-align : center;margin-bottom : 70px">
@@ -78,9 +77,7 @@
             <div>
 
 </section>
-<div class="row" style="margin-bottom : 30px">
-
-
+<div class="row">
     <div class="section-fluid-main">
         <div class="section-row">
             <div class="section-col">
@@ -151,11 +148,11 @@
     </div>
 
 </div>
-<div class="wrapper">
+<div class="wrapper mb-5">
     <div class="bg"> Gậy Đánh </div>
     <div class="fg"> Gậy Đánh </div>
 </div>
-<div class="row" style="margin-bottom : 100px;margin-top : 100px">
+<div class="row">
     @foreach (var item in @Model)
     {
         @if (@item.ProductDetailId != Guid.Empty)
@@ -198,11 +195,11 @@
         }
     }
 </div>
-<div class="wrapper">
+<div class="wrapper my-5">
     <div class="bg"> Gậy Phá </div>
     <div class="fg"> Gậy Phá </div>
 </div>
-<div class="row" style="margin-bottom : 100px;margin-top : 100px">
+<div class="row">
     @foreach (var item in @Model)
     {
         @if (@item.ProductDetailId != Guid.Empty)
@@ -245,11 +242,11 @@
         }
     }
 </div>
-<div class="wrapper" style = "margin-bottom : 100px">
+<div class="wrapper my-5">
     <div class="bg"> Tin Tức </div>
     <div class="fg"> Tin Tức </div>
 </div>
-<section class="articles">
+<section class="articles mb-5">
     <article>
         <div class="article-wrapper">
             <figure>
@@ -304,27 +301,23 @@
         </div>
     </article>
 </section>
-<div class="bg-imggggg" style="margin-top : 100px">
-    <form action="/action_page.php" class="containerrrrr">
-        <h1>Đăng nhập</h1>
 
-        <label for="usn"><b>Tài Khoản</b></label>
-        <input type="text" placeholder="Nhập Tài Khoản" name="usn" required>
+@if (!User.Identity.IsAuthenticated || User.IsInRole("Quản lý") || User.IsInRole("Nhân viên"))
+{
+    <div class="bg-imggggg">
+        <form asp-controller="Login" asp-action="Login" class="containerrrrr">
+            <h1>Đăng nhập</h1>
 
-        <label for="psw"><b>Mật Khẩu</b></label>
-        <input type="password" placeholder="Nhập Mật Khẩu" name="psw" required>
+            <label for="usn"><b>Tài Khoản</b></label>
+            <input type="text" name="Username" placeholder="Nhập Tài Khoản" required>
 
-        <button type="submit" class="btnnnnn">Đăng Nhập</button>
-    </form>
-</div>
+            <label for="psw"><b>Mật Khẩu</b></label>
+            <input type="password" name="Password" placeholder="Nhập Mật Khẩu" required>
 
-<p style="font-weight : bold;text-align : center;">Nếu chưa có tài khoản,hãy đăng ký để nhận thêm thông tin về chúng tôi </p><a asp-area="" asp-controller="Login" asp-action="Login"><p style="text-align:center;margin-bottom : 150px"> <button type="submit" class="btnnnnn" style="width : 200px">Đăng Ký</button></p></a>
+            <button type="submit" class="btnnnnn">Đăng Nhập</button>
+        </form>
+    </div>
+    <p style="font-weight : bold;text-align : center;">Nếu chưa có tài khoản,hãy đăng ký để nhận thêm thông tin về chúng tôi </p>
 
-
-
-
-
-
-
-
-
+    <a asp-area="" asp-controller="Register" asp-action="Register"><p style="text-align:center;margin-bottom : 100px"> <button type="submit" class="btnnnnn" style="width : 200px">Đăng Ký</button></p></a>
+}

@@ -1,98 +1,77 @@
-﻿@{
+﻿@model Datn_Shared.ViewModels.CustomerViewModels.CustomerView
+
+@{
     ViewData["Title"] = "EditProfile";
     <link rel="stylesheet" href="~/css/editprofile.css" asp-append-version="true" />
 }
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <div class="container emp-profile">
-    <form method="post">
-        <div class="row">
+    <form asp-controller="Customer" asp-action="UpdateProfile">
+        <div class="row" style="margin-right: 1rem;">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
-                    <div class="file btn btn-lg btn-primary">
-                        Thay đổi ảnh
-                        <input type="file" name="file" />
-                    </div>
+                    <img src="~/images/customers/@Model.Customer.Image" alt="" />
+                    @* <div class="file btn btn-lg btn-primary">
+                    Thay đổi ảnh
+                    <input type="file" name="file" />
+                    </div> *@
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="profile-head">
-                    <h5>
-                        Kshiti Ghelani
-                    </h5>
-                    <p class="proile-rating">RANKINGS : <span></span></p>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
                 <div class="profile-work">
                     <p>MUA BÁN</p>
-                    <a asp-area="" asp-controller="WishList" asp-action="Index">Sản Phẩm Yêu Thích</a><br />
-                    <a asp-area="" asp-controller="Cart" asp-action="Index">Giỏ Hàng</a><br />
-                    <a asp-area="" asp-controller="Bill" asp-action="Bill">Hóa Đơn</a>
+                    <a asp-area="" asp-controller="WishList" asp-action="Index" class="link-text-name">Sản Phẩm Yêu Thích</a><br />
+                    <a asp-area="" asp-controller="Cart" asp-action="Index" class="link-text-name">Giỏ Hàng</a><br />
+                    <a asp-area="" asp-controller="Bill" asp-action="Bill" class="link-text-name">Hóa Đơn</a>
                 </div>
             </div>
             <div class="col-md-8">
+                <div class="profile-head">
+                    <h5 style="display: contents;">@Model.Customer.UserName</h5>
+                    <a asp-area="" asp-controller="Customer" asp-action="Index" class="link-text-name" style="float: right;">Quay lại</a>
+                    <p class="proile-rating">RANKINGS : <span>@Model.Customer.Rank.Name</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <div class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Chỉnh sửa Hồ sơ</div>
+                        </li>
+                    </ul>
+                </div>
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Tài khoản</label>
-                            </div>
-                            <div class="col-md-6" style="margin-bottom : 10px">
-                                <div class="input-group flex-nowrap">
-                                    <input type="text" class="form-control" placeholder="Tài khoản" aria-label="Tài khoản" aria-describedby="addon-wrapping">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Mật khẩu</label>
-                            </div>
-                            <div class="col-md-6" style="margin-bottom : 10px">
-                                <div class="input-group flex-nowrap">
-                                    <input type="text" class="form-control" placeholder="Mật khẩu" aria-label="Mật khẩu" aria-describedby="addon-wrapping">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Mật khẩu mới</label>
-                            </div>
-                            <div class="col-md-6" style="margin-bottom : 10px">
-                                <div class="input-group flex-nowrap">
-                                    <input type="text" class="form-control" placeholder="Mật khẩu mới" aria-label="Mật khẩu mới" aria-describedby="addon-wrapping">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Xác nhận mật khẩu</label>
-                            </div>
-                            <div class="col-md-6" style="margin-bottom : 10px">
-                                <div class="input-group flex-nowrap">
-                                    <input type="text" class="form-control" placeholder="Xác nhận mật khẩu" aria-label="Xác nhận mật khẩu" aria-describedby="addon-wrapping">
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Họ tên</label>
                             </div>
                             <div class="col-md-6" style="margin-bottom : 10px">
                                 <div class="input-group flex-nowrap">
-                                    <input type="text" class="form-control" placeholder="Họ và tên" aria-label="Họ và tên" aria-describedby="addon-wrapping">
+                                    <input asp-for="Customer.FullName" name="FullName" type="text" class="form-control" placeholder="Họ tên" aria-label="Họ và tên" aria-describedby="addon-wrapping">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Giới tính</label>
+                            </div>
+                            <div class="col-md-6" style="margin-bottom : 10px">
+                                <div class="input-group flex-nowrap">
+                                    <select asp-for="Customer.Gender" name="Gender" class="form-control">
+                                        @if (Model.Customer.Gender == 0)
+                                        {
+                                            <option value="0" selected>Nam</option>
+                                            <option value="1">Nữ</option>
+                                            <option value="2">Khác</option>
+                                        }
+                                        else if (Model.Customer.Gender == 1)
+                                        {
+                                            <option value="0">Nam</option>
+                                            <option value="1" selected>Nữ</option>
+                                            <option value="2">Khác</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="0">Nam</option>
+                                            <option value="1">Nữ</option>
+                                            <option value="2" selected>Khác</option>
+                                        }
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +81,7 @@
                             </div>
                             <div class="col-md-6" style="margin-bottom : 10px">
                                 <div class="input-group flex-nowrap">
-                                    <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping">
+                                    <input asp-for="Customer.Email" name="Email" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping">
                                 </div>
                             </div>
                         </div>
@@ -112,7 +91,7 @@
                             </div>
                             <div class="col-md-6" style="margin-bottom : 10px">
                                 <div class="input-group flex-nowrap">
-                                    <input type="text" class="form-control" placeholder="Số điện thoại" aria-label="Số điện thoại" aria-describedby="addon-wrapping">
+                                    <input asp-for="Customer.PhoneNumber" name="PhoneNumber" type="text" class="form-control" placeholder="Số điện thoại" aria-label="Số điện thoại" aria-describedby="addon-wrapping">
                                 </div>
                             </div>
                         </div>
@@ -120,8 +99,8 @@
                             <div class="col-md-6">
                                 <label>Ngày tháng năm sinh</label>
                             </div>
-                            <div class="col-md-6">
-                                <input type="date" id="start" name="trip-start" value="2003-05-27" min="1920-01-01" max="2015-12-31" />
+                            <div class="col-md-6" style="margin-bottom : 10px">
+                                <input asp-for="Customer.DateOfBirth" name="DateOfBirth" type="date" id="start" class="form-control" value="@Model.Customer.DateOfBirth.ToString("yyyy-MM-dd")" min="1920-01-01" max="2015-12-31" />
                             </div>
                         </div>
                         <div class="row">
@@ -130,20 +109,20 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group flex-nowrap" style="margin-bottom : 10px">
-                                    <input type="text" class="form-control" placeholder="Địa chỉ" aria-label="Địa chỉ" aria-describedby="addon-wrapping">
+                                    <input asp-for="Customer.Address" name="Address" type="text" class="form-control" placeholder="Địa chỉ" aria-label="Địa chỉ" aria-describedby="addon-wrapping">
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12" style = "margin-left : 100px;margin-top : 20px">
-                                <button type="button" class="btn btn-success">Xác nhận thay đổi</button>
-                            </div>
-                            
+                        <div class="my-5" style="text-align: center;">
+                            <button type="submit" class="btn btn-success">Xác nhận thay đổi</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+        </div>
     </form>
 </div>
-
