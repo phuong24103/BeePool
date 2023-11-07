@@ -132,6 +132,7 @@ namespace Datn_Api.Services
 
                 Employee employee1 = n;
                 employee1.FullName = employee.FullName;
+                employee1.Gender = employee.Gender;
                 employee1.DateOfBirth = employee.DateOfBirth;
                 employee1.Address = employee.Address;
                 employee1.PhoneNumber = employee.PhoneNumber;

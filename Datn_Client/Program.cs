@@ -17,13 +17,13 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-			  .AddCookie(options =>
-			  {
-				  options.Cookie.HttpOnly = true;
-				  options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-				  options.LoginPath = "/Login/Login";
-				  options.SlidingExpiration = true;
-			  });
+              .AddCookie(options =>
+              {
+                  options.Cookie.HttpOnly = true;
+                  options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                  options.LoginPath = "/Login/Login";
+                  options.SlidingExpiration = true;
+              });
 
 var app = builder.Build();
 

@@ -1,16 +1,14 @@
 ﻿using Datn_Api.Data;
 using Datn_Api.IServices;
 using Datn_Shared.Models;
-using Datn_Shared.ViewModels.CartViewModels;
+using Datn_Shared.ViewModels.AccountViewModels;
 using Datn_Shared.ViewModels.CustomerViewModels;
-using Datn_Shared.ViewModels.EmployeeViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Xml.Linq;
 
 namespace Datn_Api.Services
 {
-	public class CustomerService : ICustomerService
+    public class CustomerService : ICustomerService
 	{
 		private readonly MyDbContext _context;
         private readonly UserManager<Customer> _customerManager;
@@ -80,6 +78,75 @@ namespace Datn_Api.Services
                 Customer customer = n;
                 customer.Image = image;
                 _context.Customers.Update(customer);
+                await _context.SaveChangesAsync();
+                return true;
+
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        public async Task<Response> UpdatePasswordCustomer(string userName, UpdatePasswordCustomer customer)
+        {
+            try
+            {
+                var check = await _customerManager.FindByNameAsync(userName);
+                if (customer.NewPassword != customer.ConfirmNewPassword)
+                {
+                    return new Response()
+                    {
+                        IsSuccess = false,
+                        StatusCode = 400,
+                        Message = "Mật khẩu xác nhận không trùng khớp"
+                    };
+                }
+                else if (check != null && await _customerManager.CheckPasswordAsync(check, customer.CurrentPassword))
+                {
+                    await _customerManager.ChangePasswordAsync(check, customer.CurrentPassword, customer.NewPassword);
+                    return new Response()
+                    {
+                        IsSuccess = true,
+                        StatusCode = 200,
+                        Message = "Đổi mật khẩu thành công"
+                    };
+                }
+                return new Response()
+                {
+                    IsSuccess = false,
+                    StatusCode = 400,
+                    Message = "Sai Mật khẩu"
+                };
+            }
+            catch (Exception)
+            {
+                return new Response()
+                {
+                    IsSuccess = false,
+                    StatusCode = 400,
+                    Message = "Đổi mật khẩu thất bại"
+                };
+            }
+        }
+
+        public async Task<bool> UpdateProfileCustomer(string userName, UpdateProfileCustomer customer)
+        {
+            try
+            {
+                var n = await _customerManager.FindByNameAsync(userName);
+                if (n == null) return false;
+
+                Customer customer1 = n;
+                customer1.FullName = customer.FullName;
+                customer1.Gender = customer.Gender;
+                customer1.DateOfBirth = customer.DateOfBirth;
+                customer1.Address = customer.Address;
+                customer1.PhoneNumber = customer.PhoneNumber;
+                customer1.Email = customer.Email;
+
+                _context.Customers.Update(customer1);
                 await _context.SaveChangesAsync();
                 return true;
 

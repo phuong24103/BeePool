@@ -121,11 +121,11 @@
 </div>
 <form asp-action="Create" asp-controller="Cart">
     <input hidden asp-for="Id" value="@Model.Id">
-    <div class="row" style="margin-top : 100px;margin-bottom : 100px;border: 2px solid #006100;border-radius: 10px;">
-        <div class="col-md-6">
+    <div class="row my-5" style="border: 2px solid black; border-radius: 10px; background-color: white;">
+        <div class="col-md-6" style="padding-left: 0">
             <section>
-                <div class="container" style="border-right: 2px solid #006100;border-radius: 10px;border-bottom: 2px solid #006100;border-radius: 10px">
-                    <div class="carousel">
+                <div class="container px-5" style="border-right: 2px solid black; border-bottom: 2px solid black; border-radius: 0 0 10px 0">
+                    <div class="carousel pt-5">
                         <input type="radio" name="slides" checked="checked" id="slide-1">
                         <input type="radio" name="slides" id="slide-2">
                         <input type="radio" name="slides" id="slide-3">
@@ -196,14 +196,14 @@
                     </div>
                 </div>
             </section>
-            <h3 style="font-weight : bold;margin-top : 60px">
+            <h3 class="mt-5 mx-3" style="font-weight: bold;">
                 Description
             </h3>
-            <h6>
+            <h6 class="mb-5 mx-3">
                 @Model.Description
             </h6>
         </div>
-        <div class="col-md-6" style="text-align : left">
+        <div class="col-md-6 my-5" style="text-align : left">
             <h3 style="font-weight : bold">
                 @Model.Product.Name
             </h3>
@@ -220,13 +220,13 @@
                     <option value="@item.Id">@item.Name</option>
                 }
                 @*  <option selected value="0">Tip</option>
-                    <option value="1">Giá : Tăng Dần</option>
-                    <option value="2">Giá : Giảm Dần</option>
-                    <option value="3">Tên A-Z</option>
-                    <option value="4">Tên Z-A</option>
-                    <option value="5">Cũ Nhất</option>
-                    <option value="6">Mới Nhất</option>
-                    <option value="7">Bán Chạy Nhất</option> *@
+                <option value="1">Giá : Tăng Dần</option>
+                <option value="2">Giá : Giảm Dần</option>
+                <option value="3">Tên A-Z</option>
+                <option value="4">Tên Z-A</option>
+                <option value="5">Cũ Nhất</option>
+                <option value="6">Mới Nhất</option>
+                <option value="7">Bán Chạy Nhất</option> *@
             </select>
 
             <select asp-for="Shaft" style="margin-bottom : 30px">
@@ -236,13 +236,13 @@
                     <option value="@item.Id">@item.Name</option>
                 }
                 @*         <option asp-for = "Shaft" selected value="0">Shaft</option>
-                    <option value="1">Giá : Tăng Dần</option>
-                    <option value="2">Giá : Giảm Dần</option>
-                    <option value="3">Tên A-Z</option>
-                    <option value="4">Tên Z-A</option>
-                    <option value="5">Cũ Nhất</option>
-                    <option value="6">Mới Nhất</option>
-                    <option value="7">Bán Chạy Nhất</option> *@
+                <option value="1">Giá : Tăng Dần</option>
+                <option value="2">Giá : Giảm Dần</option>
+                <option value="3">Tên A-Z</option>
+                <option value="4">Tên Z-A</option>
+                <option value="5">Cũ Nhất</option>
+                <option value="6">Mới Nhất</option>
+                <option value="7">Bán Chạy Nhất</option> *@
 
             </select>
             <select asp-for="Weight" style="margin-bottom : 30px">
@@ -252,13 +252,13 @@
                     <option value="@item.Id">@item.Name</option>
                 }
                 @*     <option selected value="0">Weight</option>
-                    <option value="1">Giá : Tăng Dần</option>
-                    <option value="2">Giá : Giảm Dần</option>
-                    <option value="3">Tên A-Z</option>
-                    <option value="4">Tên Z-A</option>
-                    <option value="5">Cũ Nhất</option>
-                    <option value="6">Mới Nhất</option>
-                    <option value="7">Bán Chạy Nhất</option> *@
+                <option value="1">Giá : Tăng Dần</option>
+                <option value="2">Giá : Giảm Dần</option>
+                <option value="3">Tên A-Z</option>
+                <option value="4">Tên Z-A</option>
+                <option value="5">Cũ Nhất</option>
+                <option value="6">Mới Nhất</option>
+                <option value="7">Bán Chạy Nhất</option> *@
             </select>
             <div class="row">
                 <div class="col-md-3">
@@ -268,32 +268,32 @@
                         <a asp-controller="ProductDetail" asp-action="Increase" asp-route-id="@Model.Id" class="btn btn-outline-primary" style="margin-right: 10px;">+</a>
                         @* <p>Số lượng: <label id="quantity">1</label></p>
 
-                            <button onclick="giamSoLuong()">-</button>
-                            <button onclick="tangSoLuong()">+</button>
+                        <button onclick="giamSoLuong()">-</button>
+                        <button onclick="tangSoLuong()">+</button>
 
-                            <script>
-                            var soLuong = 1; // Khởi tạo số lượng ban đầu
+                        <script>
+                        var soLuong = 1; // Khởi tạo số lượng ban đầu
 
-                            function capNhatSoLuong() {
-                            var spanSoLuong = document.getElementById("quantity");
-                            spanSoLuong.textContent = soLuong;
-                            }
+                        function capNhatSoLuong() {
+                        var spanSoLuong = document.getElementById("quantity");
+                        spanSoLuong.textContent = soLuong;
+                        }
 
-                            function tangSoLuong() {
-                            soLuong++;
-                            capNhatSoLuong();
-                            }
+                        function tangSoLuong() {
+                        soLuong++;
+                        capNhatSoLuong();
+                        }
 
-                            function giamSoLuong() {
-                            if (soLuong > 1) {
-                            soLuong--;
-                            capNhatSoLuong();
-                            }
-                            }
+                        function giamSoLuong() {
+                        if (soLuong > 1) {
+                        soLuong--;
+                        capNhatSoLuong();
+                        }
+                        }
 
-                            // Gọi hàm để hiển thị số lượng ban đầu
-                            capNhatSoLuong();
-                            </script> *@
+                        // Gọi hàm để hiển thị số lượng ban đầu
+                        capNhatSoLuong();
+                        </script> *@
                     </div>
                 </div>
                 @if (CheckExistLike != null)
