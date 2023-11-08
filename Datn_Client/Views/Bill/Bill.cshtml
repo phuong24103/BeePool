@@ -2,16 +2,17 @@
 @{
     ViewData["Title"] = "Bill";
     <link rel="stylesheet" href="~/css/text.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bill.css" asp-append-version="true" />
 }
 
-<div class="card" style = "margin-bottom : 200px">
-    <div class="card-body mx-4" >
-        <div class="wrapper" style = "background-color : white">
-            <div class="bg"> Bill </div>
-            <div class="fg"> Bill </div>
-        </div>
+<div class="card">
+    <div class="card-body mx-4" style = "margin-bottom : 100px">
         @foreach (var item in @Model)
         {
+            <div class="wrapper" style="background-color : white">
+                <div class="bg"> Bill </div>
+                <div class="fg"> Bill </div>
+            </div>
             <div class="container" style="text-align : center">
                 <br>
                 <div class="row">
@@ -33,7 +34,7 @@
                         </p>
                     </div>
                     <hr>
-                    <div class="col-xl-10" style = "text-align : left">
+                    <div class="col-xl-10" style="text-align : left">
                         <p>Địa chỉ</p>
                     </div>
                     <div class="col-xl-2">
@@ -42,7 +43,7 @@
                         </p>
                     </div>
                     <hr>
-                    <div class="col-xl-10" style = "text-align : left">
+                    <div class="col-xl-10" style="text-align : left">
                         <p>Ngày tạo</p>
                     </div>
                     <div class="col-xl-2">
@@ -53,13 +54,13 @@
                     <hr>
                     @*<div class="col-xl-10" style = "text-align : left">
                         <p>Trạng thái</p>
-                    </div>
-                    <div class="col-xl-2">
+                        </div>
+                        <div class="col-xl-2">
                         <p class="float-end">
-                            @item.BillStatus.Name
+                        @item.BillStatus.Name
                         </p>
-                    </div>
-                    <hr>*@
+                        </div>
+                        <hr>*@
                 </div>
                 <div class="row text-black">
 
@@ -78,7 +79,6 @@
                 </div>
 
             </div>
-
         }
     </div>
 </div>
