@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 900px; /* You can adjust the value to your desired maximum width */
+    margin: 0 auto; /* Center the container on the page */
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Header styles */
+.wrapper {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.bg {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.fg {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Content styles */
+.row p {
+    font-weight: bold;
+}
+
+.col-xl-2 p {
+    font-weight: normal;
+    color: #333;
+}
+
+/* Total price styles */
+.col-xl-12 p.fw-bold {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Button styles */
+.btn.btn-outline-primary {
+    background-color: #007BFF;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .btn.btn-outline-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* Add margin to buttons */
+.text-center a {
+    margin: 20px 0;
+}
+
+/* Add a border under each section */
+hr {
+    border: 1px solid #ddd;
+    margin: 20px 0;
+}
