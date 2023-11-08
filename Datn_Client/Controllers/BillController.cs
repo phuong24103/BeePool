@@ -159,6 +159,7 @@ namespace Datn_Client.Controllers
                     var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
                     price += (productdetail.Price * item.Quantity);
                 }
+                //Nếu ko điền code
                 if (code == null)
                 {
                     if (name == null)
@@ -178,89 +179,114 @@ namespace Datn_Client.Controllers
                     }
                     else
                     {
-                        //Tạo mới khách hàng
-                        Register Registercustomer = new Register()
+                        //Kiểm tra username có tồn tại hay ko
+                        var allcustomer = await _httpClient.GetFromJsonAsync<List<Customer>>($"https://localhost:7033/api/Customer/GetAll");
+                        var usernamecustomer = allcustomer.FirstOrDefault(p => p.UserName == name);
+                        if(usernamecustomer != null)
                         {
-                            Username = name,
-                            Password = "123456",
-                            ConfirmPassword = "123456",
-                            Gender = 0,
-                            DateOfBirth = new DateTime(2003, 10, 20),
-                            Address = address,
-                            PhoneNumber = phonenumber,
-                            Email = $"{name}@gmail.com",
-                        };
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
-                        var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{name}");
-                        //Bill thêm vào session
-                        BillView bill = new BillView()
-                        {
-                            Id = Guid.NewGuid(),
-                            CustomerId = customer.Id,
-                            BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
-                            PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
-                            Price = price,
-                            CreateDate = DateTime.Now,
-                            Address = address,
-                            CustomerName = name,
-                            CustomerPhone = phonenumber,
-                        };
-                        //Bill thêm vào db
-                        CreateBill createBill = new CreateBill()
-                        {
-                            Id = bill.Id,
-                            CustomerId = customer.Id,
-                            BillStatusId = bill.BillStatusId,
-                            PaymentId = bill.PaymentId,
-                            Price = bill.Price,
-                            CreateDate = bill.CreateDate,
-                            Address = bill.Address,
-                            CustomerName = bill.CustomerName,
-                            CustomerPhone = bill.CustomerPhone,
-                        };
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", createBill);
-                        Bills.Add(bill);
-                        SessionServices<BillView>.SetObjToSession(HttpContext.Session, "Bill", Bills);
-                        foreach (var item in cartDetails)
-                        {
-                            var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
-
-                            var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
-                            UpdateProduct updateProduct = new UpdateProduct()
-                            {
-                                CategoryID = product.CategoryID,
-                                Name = product.Name,
-                                Pin = product.Pin,
-                                Wrap = product.Wrap,
-                                Rings = product.Rings,
-                                AvailableQuantity = product.AvailableQuantity - item.Quantity,
-                                Sold = product.Sold,
-                                Likes = product.Likes,
-                                CreateDate = product.CreateDate,
-                                Producer = product.Producer,
-                                Status = product.Status,
-                                Description = product.Description,
-                            };
-
-                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
-
-                            CreateBillDetail billDetail = new CreateBillDetail()
-                            {
-                                BillId = bill.Id,
-                                ProductDetailId = productdetail.Id,
-                                Quantity = item.Quantity,
-                                Price = productdetail.Price * item.Quantity,
-                            };
-
-                            await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
-                            result.Clear();
-                            SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
+                            string messagename = "Username này đã tồn tại";
+                            TempData["Messagename"] = messagename;
                         }
-                        return RedirectToAction("Bill");
+                        else
+                        {
+                            //Tạo mới khách hàng
+                            Register Registercustomer = new Register()
+                            {
+                                FullName = name,
+                                Username = name,
+                                Password = "123456",
+                                ConfirmPassword = "123456",
+                                Gender = 0,
+                                DateOfBirth = new DateTime(2003, 10, 20),
+                                Address = address,
+                                PhoneNumber = phonenumber,
+                                Email = $"{name}@gmail.com",
+                                Image = "anhq.png",
+                            };
+                            var AddCus = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
+                            //Nếu ko tạo dc khách hàng mới
+                            if (AddCus.IsSuccessStatusCode == false)
+                            {
+                                string messagename = "Vui lòng nhập usename không dấu và viết liền";
+                                TempData["Messagename"] = messagename;
+                            }
+                            else
+                            {
+                                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{Registercustomer.Username}");
+                                //Bill thêm vào session
+                                BillView bill = new BillView()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    CustomerId = customer.Id,
+                                    BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
+                                    PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
+                                    Price = price,
+                                    CreateDate = DateTime.Now,
+                                    Address = address,
+                                    CustomerName = name,
+                                    CustomerPhone = phonenumber,
+                                };
+                                //Bill thêm vào db
+                                CreateBill createBill = new CreateBill()
+                                {
+                                    Id = bill.Id,
+                                    CustomerId = customer.Id,
+                                    BillStatusId = bill.BillStatusId,
+                                    PaymentId = bill.PaymentId,
+                                    Price = bill.Price,
+                                    CreateDate = bill.CreateDate,
+                                    Address = bill.Address,
+                                    CustomerName = bill.CustomerName,
+                                    CustomerPhone = bill.CustomerPhone,
+                                };
+                                await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", createBill);
+                                Bills.Add(bill);
+                                SessionServices<BillView>.SetObjToSession(HttpContext.Session, "Bill", Bills);
+                                foreach (var item in cartDetails)
+                                {
+                                    var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
+
+                                    var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                                    UpdateProduct updateProduct = new UpdateProduct()
+                                    {
+                                        CategoryID = product.CategoryID,
+                                        Name = product.Name,
+                                        Pin = product.Pin,
+                                        Wrap = product.Wrap,
+                                        Rings = product.Rings,
+                                        AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                                        Sold = product.Sold,
+                                        Likes = product.Likes,
+                                        CreateDate = product.CreateDate,
+                                        Producer = product.Producer,
+                                        Status = product.Status,
+                                        Description = product.Description,
+                                    };
+
+                                    await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+
+                                    CreateBillDetail billDetail = new CreateBillDetail()
+                                    {
+                                        BillId = bill.Id,
+                                        ProductDetailId = productdetail.Id,
+                                        Quantity = item.Quantity,
+                                        Price = productdetail.Price * item.Quantity,
+                                    };
+
+                                    await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
+                                    result.Clear();
+                                    SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
+                                }
+                                return RedirectToAction("Bill");
+                            }
+                        }
+                        
+                        
                     }
 
                     return RedirectToAction("Index", "Cart");
                 }
+                //Nếu điền code
                 else
                 {
                     string giagiam = string.Empty;
@@ -308,96 +334,119 @@ namespace Datn_Client.Controllers
                     }
                     else
                     {
-                        giagiam = voucher.Value.ToString();
-                        TempData["Giagiam"] = giagiam;
-                        if (voucher != null && voucher.Status == 0 && DateTime.Now <= voucher.TimeEnd && DateTime.Now >= voucher.TimeStart)
+                        //Kiểm tra username có tồn tại hay ko
+                        var allcustomer = await _httpClient.GetFromJsonAsync<List<Customer>>($"https://localhost:7033/api/Customer/GetAll");
+                        var usernamecustomer = allcustomer.FirstOrDefault(p => p.UserName == name);
+                        if (usernamecustomer != null)
                         {
-                            price -= voucher.Value;
+                            string messagename = "Username này đã tồn tại";
+                            TempData["Messagename"] = messagename;
                         }
                         else
                         {
-                            price -= 0;
-                        }
-                        //Tạo mới khách hàng
-                        Register Registercustomer = new Register()
-                        {
-                            Username = name,
-                            Password = "123456",
-                            ConfirmPassword = "123456",
-                            Gender = 0,
-                            DateOfBirth = new DateTime(2003, 10, 20),
-                            Address = address,
-                            PhoneNumber = phonenumber,
-                            Email = $"{name}@gmail.com",
-                        };
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
-                        var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{name}");
-                        //Bill thêm vào session
-                        BillView bill = new BillView()
-                        {
-                            Id = Guid.NewGuid(),
-                            CustomerId = customer.Id,
-                            BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
-                            PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
-                            Price = price,
-                            CreateDate = DateTime.Now,
-                            Address = address,
-                            CustomerName = name,
-                            CustomerPhone = phonenumber,
-                        };
-                        //Bill thêm vào db
-                        CreateBill createBill = new CreateBill()
-                        {
-                            Id = bill.Id,
-                            CustomerId = customer.Id,
-                            BillStatusId = bill.BillStatusId,
-                            PaymentId = bill.PaymentId,
-                            Price = bill.Price,
-                            CreateDate = bill.CreateDate,
-                            Address = bill.Address,
-                            CustomerName = bill.CustomerName,
-                            CustomerPhone = bill.CustomerPhone,
-                        };
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", bill);
-                        Bills.Add(bill);
-                        SessionServices<BillView>.SetObjToSession(HttpContext.Session, "Bill", Bills);
-                        foreach (var item in cartDetails)
-                        {
-                            var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
-
-                            var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
-                            UpdateProduct updateProduct = new UpdateProduct()
+                            if (voucher != null && voucher.Status == 0 && DateTime.Now <= voucher.TimeEnd && DateTime.Now >= voucher.TimeStart)
                             {
-                                CategoryID = product.CategoryID,
-                                Name = product.Name,
-                                Pin = product.Pin,
-                                Wrap = product.Wrap,
-                                Rings = product.Rings,
-                                AvailableQuantity = product.AvailableQuantity - item.Quantity,
-                                Sold = product.Sold,
-                                Likes = product.Likes,
-                                CreateDate = product.CreateDate,
-                                Producer = product.Producer,
-                                Status = product.Status,
-                                Description = product.Description,
-                            };
-
-                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
-
-                            CreateBillDetail billDetail = new CreateBillDetail()
+                                price -= voucher.Value;
+                            }
+                            else
                             {
-                                BillId = bill.Id,
-                                ProductDetailId = productdetail.Id,
-                                Quantity = item.Quantity,
-                                Price = productdetail.Price * item.Quantity,
+                                price -= 0;
+                            }
+                            //Tạo mới khách hàng
+                            Register Registercustomer = new Register()
+                            {
+                                FullName = name,
+                                Username = name,
+                                Password = "123456",
+                                ConfirmPassword = "123456",
+                                Gender = 0,
+                                DateOfBirth = new DateTime(2003, 10, 20),
+                                Address = address,
+                                PhoneNumber = phonenumber,
+                                Email = $"{name}@gmail.com",
+                                Image = "anhq.png",
                             };
+                            var AddCus = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
+                            if (AddCus.IsSuccessStatusCode == false)
+                            {
+                                string messagename = "Vui lòng nhập usename không dấu và viết liền";
+                                TempData["Messagename"] = messagename;
+                            }
+                            else
+                            {
+                                giagiam = voucher.Value.ToString();
+                                TempData["Giagiam"] = giagiam;
+                                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{Registercustomer.Username}");
+                                //Bill thêm vào session
+                                BillView bill = new BillView()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    CustomerId = customer.Id,
+                                    BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
+                                    PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
+                                    Price = price,
+                                    CreateDate = DateTime.Now,
+                                    Address = address,
+                                    CustomerName = name,
+                                    CustomerPhone = phonenumber,
+                                };
+                                //Bill thêm vào db
+                                CreateBill createBill = new CreateBill()
+                                {
+                                    Id = bill.Id,
+                                    CustomerId = customer.Id,
+                                    BillStatusId = bill.BillStatusId,
+                                    PaymentId = bill.PaymentId,
+                                    Price = bill.Price,
+                                    CreateDate = bill.CreateDate,
+                                    Address = bill.Address,
+                                    CustomerName = bill.CustomerName,
+                                    CustomerPhone = bill.CustomerPhone,
+                                };
+                                await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", bill);
+                                Bills.Add(bill);
+                                SessionServices<BillView>.SetObjToSession(HttpContext.Session, "Bill", Bills);
+                                foreach (var item in cartDetails)
+                                {
+                                    var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
 
-                            await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
-                            result.Clear();
-                            SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
+                                    var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                                    UpdateProduct updateProduct = new UpdateProduct()
+                                    {
+                                        CategoryID = product.CategoryID,
+                                        Name = product.Name,
+                                        Pin = product.Pin,
+                                        Wrap = product.Wrap,
+                                        Rings = product.Rings,
+                                        AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                                        Sold = product.Sold,
+                                        Likes = product.Likes,
+                                        CreateDate = product.CreateDate,
+                                        Producer = product.Producer,
+                                        Status = product.Status,
+                                        Description = product.Description,
+                                    };
+
+                                    await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+
+                                    CreateBillDetail billDetail = new CreateBillDetail()
+                                    {
+                                        BillId = bill.Id,
+                                        ProductDetailId = productdetail.Id,
+                                        Quantity = item.Quantity,
+                                        Price = productdetail.Price * item.Quantity,
+                                    };
+
+                                    await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
+                                    result.Clear();
+                                    SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
+                                }
+
+                                return RedirectToAction("Index", "Cart");
+                            }
                         }
-
-                        return RedirectToAction("Index", "Cart");
+                        
+                        
                     }
                     return RedirectToAction("Index", "Cart");
                 }

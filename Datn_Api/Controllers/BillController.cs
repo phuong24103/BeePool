@@ -96,7 +96,7 @@ namespace Datn_Api.Controllers
                 Price = price,
                 CreateDate = DateTime.Now,
                 Address = customer.Address,
-                CustomerName = customer.UserName,
+                CustomerName = customer.FullName,
                 CustomerPhone = customer.PhoneNumber,
             };
             await _billService.CreateBill(bill);
@@ -175,7 +175,7 @@ namespace Datn_Api.Controllers
                 Price = price,
                 CreateDate = DateTime.Now,
                 Address = customer.Address,
-                CustomerName = customer.UserName,
+                CustomerName = customer.FullName,
                 CustomerPhone = customer.PhoneNumber,
             };
             await _billService.CreateBill(bill);
