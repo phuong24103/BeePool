@@ -6,6 +6,7 @@
     var tip = (ViewData["Tip"] as List<Tip>);
     var s = (ViewData["Shaft"] as List<Shaft>);
     var w = (ViewData["Weight"] as List<Weight>);
+    var image = (ViewData["Image"] as List<ProductImage>);
     var CheckExistLike = (ViewData["CheckExistLike"] as string);
     <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/productbutton.css" asp-append-version="true" />
@@ -127,71 +128,29 @@
                 <div class="container px-5" style="border-right: 2px solid black; border-bottom: 2px solid black; border-radius: 0 0 10px 0">
                     <div class="carousel pt-5">
                         <input type="radio" name="slides" checked="checked" id="slide-1">
-                        <input type="radio" name="slides" id="slide-2">
-                        <input type="radio" name="slides" id="slide-3">
-                        <input type="radio" name="slides" id="slide-4">
-                        <input type="radio" name="slides" id="slide-5">
-                        <input type="radio" name="slides" id="slide-6">
+                        @for (int i = 1; i < image.Count; i++)
+                        {
+                            <input type="radio" name="slides" id="slide-@(i+1)">
+                        }
                         <ul class="carousel__slides">
-                            <li class="carousel__slide">
-                                <figure>
-                                    <div>
-                                        <img src="~/images/1.png" alt="">
-                                    </div>
-
-                                </figure>
-                            </li>
-                            <li class="carousel__slide">
-                                <figure>
-                                    <div>
-                                        <img src="~/images/2.png" alt="">
-                                    </div>
-
-                                </figure>
-                            </li>
-                            <li class="carousel__slide">
-                                <figure>
-                                    <div>
-                                        <img src="~/images/3.png" alt="">
-                                    </div>
-
-                                </figure>
-                            </li>
-                            <li class="carousel__slide">
-                                <figure>
-                                    <div>
-                                        <img src="~/images/4.png" alt="">
-                                    </div>
-
-                                </figure>
-                            </li>
-                            <li class="carousel__slide">
-                                <figure>
-                                    <div>
-                                        <img src="~/images/5.png" alt="">
-                                    </div>
-
-                                </figure>
-                            </li>
-
+                            @foreach (var item in image)
+                            {
+                                <li class="carousel__slide">
+                                    <figure>
+                                        <div>
+                                            <img src="~/images/products/@item.Name" width="100%" alt="">
+                                        </div>
+                                    </figure>
+                                </li>
+                            }
                         </ul>
                         <ul class="carousel__thumbnails">
-                            <li>
-                                <label for="slide-1"><img src="~/images/1.png" alt="" style="width : 100px;height : 100px"></label>
-                            </li>
-                            <li>
-                                <label for="slide-2"><img src="~/images/2.png" alt="" style="width : 100px;height : 100px"></label>
-                            </li>
-                            <li>
-                                <label for="slide-3"><img src="~/images/3.png" alt="" style="width : 100px;height : 100px"></label>
-                            </li>
-                            <li>
-                                <label for="slide-4"><img src="~/images/4.png" alt="" style="width : 100px;height : 100px"></label>
-                            </li>
-                            <li>
-                                <label for="slide-5"><img src="~/images/5.png" alt="" style="width : 100px;height : 100px"></label>
-                            </li>
-
+                            @for (int i = 0; i < image.Count; i++)
+                            {
+                                <li>
+                                    <label for="slide-@(i+1)"><img src="~/images/products/@image[i].Name" alt="" style="width: 100px; height: auto; cursor: pointer;"></label>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
@@ -200,7 +159,7 @@
                 Description
             </h3>
             <h6 class="mb-5 mx-3">
-                @Model.Description
+                @Model.Product.Description
             </h6>
         </div>
         <div class="col-md-6 my-5" style="text-align : left">
@@ -214,51 +173,54 @@
                 <b>Chọn các phụ kiện Custom</b>
             </div>
             <select asp-for="Tip" style="margin-bottom : 30px">
-                <option selected value="@Model.TipId">@Model.Tip.Name</option>
-                @foreach (var item in tip)
+                @if (tip != null)
                 {
-                    <option value="@item.Id">@item.Name</option>
+                    @foreach (var item in tip)
+                    {
+                        @if (item.Id == Model.TipId)
+                        {
+                            <option selected value="@item.Id">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    }
                 }
-                @*  <option selected value="0">Tip</option>
-                <option value="1">Giá : Tăng Dần</option>
-                <option value="2">Giá : Giảm Dần</option>
-                <option value="3">Tên A-Z</option>
-                <option value="4">Tên Z-A</option>
-                <option value="5">Cũ Nhất</option>
-                <option value="6">Mới Nhất</option>
-                <option value="7">Bán Chạy Nhất</option> *@
             </select>
 
             <select asp-for="Shaft" style="margin-bottom : 30px">
-                <option selected value="@Model.ShaftId">@Model.Shaft.Name</option>
-                @foreach (var item in s)
+                @if (s != null)
                 {
-                    <option value="@item.Id">@item.Name</option>
+                    @foreach (var item in s)
+                    {
+                        @if (item.Id == Model.ShaftId)
+                        {
+                            <option selected value="@item.Id">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    }
                 }
-                @*         <option asp-for = "Shaft" selected value="0">Shaft</option>
-                <option value="1">Giá : Tăng Dần</option>
-                <option value="2">Giá : Giảm Dần</option>
-                <option value="3">Tên A-Z</option>
-                <option value="4">Tên Z-A</option>
-                <option value="5">Cũ Nhất</option>
-                <option value="6">Mới Nhất</option>
-                <option value="7">Bán Chạy Nhất</option> *@
 
             </select>
             <select asp-for="Weight" style="margin-bottom : 30px">
-                <option selected value="@Model.WeightId">@Model.Weight.Name</option>
-                @foreach (var item in w)
+                @if (w != null)
                 {
-                    <option value="@item.Id">@item.Name</option>
+                    @foreach (var item in w)
+                    {
+                        @if (item.Id == Model.WeightId)
+                        {
+                            <option selected value="@item.Id">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    }
                 }
-                @*     <option selected value="0">Weight</option>
-                <option value="1">Giá : Tăng Dần</option>
-                <option value="2">Giá : Giảm Dần</option>
-                <option value="3">Tên A-Z</option>
-                <option value="4">Tên Z-A</option>
-                <option value="5">Cũ Nhất</option>
-                <option value="6">Mới Nhất</option>
-                <option value="7">Bán Chạy Nhất</option> *@
             </select>
             <div class="row">
                 <div class="col-md-3">
@@ -315,7 +277,7 @@
                     <input type="submit" value="Thêm Vào Giỏ Hàng" class="btn btn-danger" />
                 </div>
             </div>
-            <div style="color : darkorange;margin-top : 30px;">
+            @* <div style="color : darkorange;margin-top : 30px;">
                 <h4>Trạng Thái</h4>
             </div>
             <div>
@@ -326,7 +288,7 @@
             </div>
             <div>
                 <h6 style="font-weight: bold">(Mã Giảm Giá)</h6><h8>Details mã giảm giá</h8>
-            </div>
+            </div> *@
             <div class="flip-card" style="position : absolute;left : 1030px;top : 1370px">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -401,11 +363,11 @@
         </div>
     </div>
 </form>
-<div class="wrapper" style="margin-bottom : 100px">
+<div class="wrapper">
     <div class="bg"> Sản Phẩm Tương Tự </div>
     <div class="fg"> Sản Phẩm Tương Tự </div>
 </div>
-<div class="row" style="margin-bottom : 100px;margin-top : 100px">
+<div class="row my-5">
 
     <div class="col-md-4">
         <a asp-area="" asp-controller="ProductDetail" asp-action="ProductDetail">
@@ -513,22 +475,22 @@
         </a>
     </div>
 </div>
-<div class="wrapper" style="margin-bottom : 100px">
+<div class="wrapper">
     <div class="bg"> Hướng Dẫn Đặt Hàng </div>
     <div class="fg"> Hướng Dẫn Đặt Hàng </div>
 </div>
 <script src="https://kit.fontawesome.com/95a02bd20d.js"></script>
-<div class="row" style="margin-bottom : 100px">
-    <div class="col-md-4" style="border : 1px solid black;border-radius : 20px">
+<div class="row my-5">
+    <div class="col-md-4">
         <div class="container">
             <div class="card">
-                <div class="face face1">
+                <div class="face face1 mx-auto">
                     <div class="content">
                         <i class="fab fa-windows"></i>
                         <h3>Windows</h3>
                     </div>
                 </div>
-                <div class="face face2">
+                <div class="face face2 mx-auto">
                     <div class="content">
                         <p>Nếu bạn sử dụng Windows mà chưa biết cách đặt hàng,hãy bấm vào đây,chúng tôi sẽ hỗ trợ bạn !</p>
                         <a href="#" type="button">Read More</a>
@@ -537,15 +499,15 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4" style="border : 1px solid black;border-radius : 20px">
+    <div class="col-md-4">
         <div class="container">
             <div class="card">
-                <div class="face face1">
+                <div class="face face1 mx-auto">
                     <div class="content">
                         <i class="fab fa-android"></i>               <h3>Android</h3>
                     </div>
                 </div>
-                <div class="face face2">
+                <div class="face face2 mx-auto">
                     <div class="content">
                         <p>Nếu bạn sử dụng Android mà chưa biết cách đặt hàng,hãy bấm vào đây,chúng tôi sẽ hỗ trợ bạn !</p>
                         <a href="#" type="button">Read More</a>
@@ -554,16 +516,16 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4" style="border : 1px solid black;border-radius : 20px">
+    <div class="col-md-4">
         <div class="container">
             <div class="card">
-                <div class="face face1">
+                <div class="face face1 mx-auto">
                     <div class="content">
                         <i class="fab fa-apple"></i>
                         <h3>Apple</h3>
                     </div>
                 </div>
-                <div class="face face2">
+                <div class="face face2 mx-auto">
                     <div class="content">
                         <p> Nếu bạn sử dụng Apple mà chưa biết cách đặt hàng,hãy bấm vào đây,chúng tôi sẽ hỗ trợ bạn !</p>
                         <a href="#" type="button">Read More</a>

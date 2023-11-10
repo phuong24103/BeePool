@@ -18,16 +18,19 @@ namespace Datn_Client.Controllers
         public async Task<IActionResult> Index(Guid id)
         {
             var t = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{id}");
-            var tip = await _httpClient.GetFromJsonAsync<List<Tip>>($"https://localhost:7033/api/Tip/GetByAllId/{t.TipId}");
-            var w = await _httpClient.GetFromJsonAsync<List<Weight>>($"https://localhost:7033/api/Weight/GetByAllId/{t.WeightId}");
-            var s = await _httpClient.GetFromJsonAsync<List<Shaft>>($"https://localhost:7033/api/Shaft/GetByAllId/{t.ShaftId}");
+            var tip = await _httpClient.GetFromJsonAsync<List<Tip>>($"https://localhost:7033/api/Tip/GetByProductDetailId/{id}");
+            var w = await _httpClient.GetFromJsonAsync<List<Weight>>($"https://localhost:7033/api/Weight/GetByProductDetailId/{id}");
+            var s = await _httpClient.GetFromJsonAsync<List<Shaft>>($"https://localhost:7033/api/Shaft/GetByProductDetailId/{id}");
+            var image = await _httpClient.GetFromJsonAsync<List<ProductImage>>($"https://localhost:7033/api/ProductImage/GetByProductDetailId/{id}");
 
             ViewData["Tip"] = tip;
             ViewData["Weight"] = w;
             ViewData["Shaft"] = s;
+            ViewData["Image"] = image;
 
             var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userName != null)
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role == null)
             {
                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
                 var isProductLiked = await _httpClient.GetFromJsonAsync<bool>($"https://localhost:7033/api/WishList/CheckExistLike/{customer.Id}/{t.ProductID}");

@@ -1,7 +1,11 @@
 ﻿@model IEnumerable< Datn_Shared.ViewModels.ProductViewModels.ProductView>
+@using Datn_Shared.ViewModels.ProductViewModels;
 
 @{
     ViewData["Title"] = "Home Page";
+    var category = (ViewData["Category"] as List<ProductView>);
+    var coDanh = (ViewData["CoDanh"] as List<ProductView>);
+    var coNhay = (ViewData["CoNhay"] as List<ProductView>);
     <link rel="stylesheet" href="~/css/default.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/productbutton.css" asp-append-version="true" />
@@ -46,36 +50,20 @@
 
 <section class="hero-section">
     <div class="card-grid">
-        <a class="card" href="#">
-            <div class="card__background" style="background-image: url(https://billiardshoanggia.com/wp-content/uploads/2023/07/thuong-hieu-gay-bida-jacoby.jpeg)"></div>
-            <div class="card__content">
-                <p class="card__category">Category</p>
-                <h3 class="card__heading">Jacoby Cues</h3>
-            </div>
-        </a>
-        <a class="card" href="#">
-            <div class="card__background" style="background-image: url(https://billiardshoanggia.com/wp-content/uploads/2023/07/thuong-hieu-gay-bida-noi-tieng-mezz.png)"></div>
-            <div class="card__content">
-                <p class="card__category">Category</p>
-                <h3 class="card__heading">Mezz Cues</h3>
-            </div>
-        </a>
-        <a class="card" href="#">
-            <div class="card__background" style="background-image: url(https://billiardshoanggia.com/wp-content/uploads/2023/07/thuong-hieu-gay-bida-noi-tieng-Schmelke.jpeg)"></div>
-            <div class="card__content">
-                <p class="card__category">Category</p>
-                <h3 class="card__heading">Schmelke Cues</h3>
-            </div>
-            </li>
-            <a class="card" href="#">
-                <div class="card__background" style="background-image: url(https://billiardshoanggia.com/wp-content/uploads/2023/07/thuong-hieu-gay-bida-noi-tieng-predator.jpeg)"></div>
-                <div class="card__content">
-                    <p class="card__category">Category</p>
-                    <h3 class="card__heading">Predator Cues</h3>
-                </div>
-            </a>
-            <div>
-
+        @if (category != null)
+        {
+            @foreach (var item in category)
+            {
+                <a class="card" asp-area="" asp-controller="Product" asp-action="GetByCategory" asp-route-name="@item.CategoryName">
+                    <div class="card__background" style="background-image: url(/images/products/@item.Image)"></div>
+                    <div class="card__content">
+                        <p class="card__category">Danh mục</p>
+                        <h3 class="card__heading">@item.CategoryName</h3>
+                    </div>
+                </a>
+            }
+        }
+    </div>
 </section>
 <div class="row">
     <div class="section-fluid-main">
@@ -149,96 +137,102 @@
 
 </div>
 <div class="wrapper mb-5">
-    <div class="bg"> Gậy Đánh </div>
-    <div class="fg"> Gậy Đánh </div>
+    <div class="bg"> Cơ Đánh </div>
+    <div class="fg"> Cơ Đánh </div>
 </div>
 <div class="row">
-    @foreach (var item in @Model)
+    @if (coDanh != null)
     {
-        @if (@item.ProductDetailId != Guid.Empty)
+        @foreach (var item in coDanh)
         {
-            <div class="col-md-4">
-                <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
-                    <div class="container page-wrapper">
-                        <div class="page-inner">
-                            <div class="row">
-                                <div class="el-wrapper">
-                                    <div class="box-up">
-                                        <img class="img" src="~/images//1.png" alt="">
-                                        <div class="img-info">
-                                            <div class="info-inner">
-                                                <span class="p-name">@item.Name</span>
-                                                <span class="p-company">@item.Producer</span>
+            @if (@item.ProductDetailId != Guid.Empty)
+            {
+                <div class="col-md-4">
+                    <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
+                        <div class="container page-wrapper">
+                            <div class="page-inner">
+                                <div class="row">
+                                    <div class="el-wrapper">
+                                        <div class="box-up">
+                                            <img class="img" src="~/images/products/@item.Image" alt="">
+                                            <div class="img-info">
+                                                <div class="info-inner">
+                                                    <span class="p-name">@item.Name</span>
+                                                    <span class="p-company">@item.Producer</span>
+                                                </div>
+                                                <div class="a-size">Số lượng : <span class="size">@item.AvailableQuantity</span></div>
                                             </div>
-                                            <div class="a-size">Số lượng : <span class="size">@item.AvailableQuantity</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="box-down">
-                                        <div class="h-bg">
-                                            <div class="h-bg-inner"></div>
                                         </div>
 
-                                        <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
-                                            <span class="price">$@item.Price</span>
-                                            <span class="add-to-cart">
-                                                <span class="txt">Thêm vào giỏ hàng</span>
-                                            </span>
-                                        </a>
+                                        <div class="box-down">
+                                            <div class="h-bg">
+                                                <div class="h-bg-inner"></div>
+                                            </div>
+
+                                            <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
+                                                <span class="price">$@item.Price</span>
+                                                <span class="add-to-cart">
+                                                    <span class="txt">Thêm vào giỏ hàng</span>
+                                                </span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
         }
     }
 </div>
 <div class="wrapper my-5">
-    <div class="bg"> Gậy Phá </div>
-    <div class="fg"> Gậy Phá </div>
+    <div class="bg"> Cơ Phá </div>
+    <div class="fg"> Cơ Phá </div>
 </div>
 <div class="row">
-    @foreach (var item in @Model)
+    @if (coNhay != null)
     {
-        @if (@item.ProductDetailId != Guid.Empty)
+        @foreach (var item in coNhay)
         {
-            <div class="col-md-4">
-                <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
-                    <div class="container page-wrapper">
-                        <div class="page-inner">
-                            <div class="row">
-                                <div class="el-wrapper">
-                                    <div class="box-up">
-                                        <img class="img" src="~/images//1.png" alt="">
-                                        <div class="img-info">
-                                            <div class="info-inner">
-                                                <span class="p-name">@item.Name</span>
-                                                <span class="p-company">@item.Producer</span>
+            @if (@item.ProductDetailId != Guid.Empty)
+            {
+                <div class="col-md-4">
+                    <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
+                        <div class="container page-wrapper">
+                            <div class="page-inner">
+                                <div class="row">
+                                    <div class="el-wrapper">
+                                        <div class="box-up">
+                                            <img class="img" src="~/images/products/@item.Image" alt="">
+                                            <div class="img-info">
+                                                <div class="info-inner">
+                                                    <span class="p-name">@item.Name</span>
+                                                    <span class="p-company">@item.Producer</span>
+                                                </div>
+                                                <div class="a-size">Số lượng : <span class="size">@item.AvailableQuantity</span></div>
                                             </div>
-                                            <div class="a-size">Số lượng : <span class="size">@item.AvailableQuantity</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="box-down">
-                                        <div class="h-bg">
-                                            <div class="h-bg-inner"></div>
                                         </div>
 
-                                        <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
-                                            <span class="price">$@item.Price</span>
-                                            <span class="add-to-cart">
-                                                <span class="txt">Thêm vào giỏ hàng</span>
-                                            </span>
-                                        </a>
+                                        <div class="box-down">
+                                            <div class="h-bg">
+                                                <div class="h-bg-inner"></div>
+                                            </div>
+
+                                            <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
+                                                <span class="price">$@item.Price</span>
+                                                <span class="add-to-cart">
+                                                    <span class="txt">Thêm vào giỏ hàng</span>
+                                                </span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
         }
     }
 </div>

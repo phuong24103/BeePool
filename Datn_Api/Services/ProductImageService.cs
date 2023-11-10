@@ -64,6 +64,11 @@ namespace Datn_Api.Services
             return await _context.ProductImages.FindAsync(id);
         }
 
+        public async Task<IEnumerable<ProductImage>> GetProductImageByProductDetail(Guid id)
+        {
+            return await _context.ProductImages.Where(p => p.ProductDetailId == id).ToListAsync();
+        }
+
         public async Task<bool> UpdateProductImage(Guid id, UpdateProductImage updateProductImage)
         {
             var t = await _context.ProductImages.FindAsync(id);

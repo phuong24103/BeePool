@@ -15,6 +15,6 @@ namespace Datn_Shared.Models
         public double Price { get; set; }
 
         public int Status { get; set; }
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public virtual ICollection<ProductDetail>? ProductDetails { get; set; }
     }
 }

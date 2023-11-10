@@ -12,6 +12,6 @@ namespace Datn_Shared.Models
         [Key]
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<Bill>? Bills { get; set; }
     }
 }

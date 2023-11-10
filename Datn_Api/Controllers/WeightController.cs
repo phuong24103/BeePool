@@ -4,6 +4,8 @@ using Datn_Shared.ViewModels.TipViewModels;
 using Datn_Shared.ViewModels.WeightViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Datn_Api.Controllers
 {
@@ -29,6 +31,20 @@ namespace Datn_Api.Controllers
         {
             var mate = await _iweightService.GetWeightById(id);
             return Ok(mate);
+        }
+        [HttpGet]
+        [Route("GetByProductDetailId/{id:Guid}")]
+        public async Task<IActionResult> GetAllWeightByProductDetailId([FromRoute] Guid id)
+        {
+            var mate = await _iweightService.GetAllWeightByProductDetailId(id);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(mate, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
         [HttpPost]
         [Route("Create")]

@@ -7,6 +7,8 @@ using System.Text;
 using Datn_Shared.ViewModels.AccountViewModels;
 using Datn_Shared.Models;
 using System.IdentityModel.Tokens.Jwt;
+using Datn_Shared.ViewModels.CartDetailViewModels;
+using Shopping_Website.Services;
 
 namespace Datn_Client.Controllers
 {
@@ -39,6 +41,15 @@ namespace Datn_Client.Controllers
                 await HttpContext.SignInAsync(principal);
 
                 var check = User.Identity.IsAuthenticated;
+
+                var cartDetails = SessionServices<CartDetailView>.GetObjFromSession(HttpContext.Session, "CartDetail");
+                if(cartDetails != null)
+                {
+                    var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{jwt.Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier).Value}");
+                    await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/CartDetail/CreateBySession/{customer.Id}", cartDetails);
+                    cartDetails.Clear();
+                    SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", cartDetails);
+                }
 
                 return RedirectToAction("Index", "Home");
             }

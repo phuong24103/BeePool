@@ -27,6 +27,8 @@ namespace Datn_Api.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -596,14 +598,14 @@ namespace Datn_Api.Migrations
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "Id", "Name", "Status" },
+                columns: new[] { "Id", "CreatedDate", "Name", "Status", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("357267e8-d162-4844-a660-661f46933d03"), "Cơ Đánh", 0 },
-                    { new Guid("357267e8-d162-4844-a660-661f46933d04"), "Cơ Nhảy", 0 },
-                    { new Guid("357267e8-d162-4844-a660-661f46933d05"), "Cơ Phá", 0 },
-                    { new Guid("357267e8-d162-4844-a660-661f46933d06"), "Cơ Phá + Nhảy", 0 },
-                    { new Guid("357267e8-d162-4844-a660-661f46933d07"), "Cơ ba băng", 0 }
+                    { new Guid("357267e8-d162-4844-a660-661f46933d03"), new DateTime(2022, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cơ Đánh", 0, new DateTime(2022, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { new Guid("357267e8-d162-4844-a660-661f46933d04"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cơ Nhảy", 0, new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { new Guid("357267e8-d162-4844-a660-661f46933d05"), new DateTime(2023, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cơ Phá", 0, new DateTime(2023, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { new Guid("357267e8-d162-4844-a660-661f46933d06"), new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cơ Phá + Nhảy", 0, new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { new Guid("357267e8-d162-4844-a660-661f46933d07"), new DateTime(2023, 11, 10, 21, 47, 56, 184, DateTimeKind.Local).AddTicks(8233), "Cơ ba băng", 0, new DateTime(2023, 11, 10, 21, 47, 56, 184, DateTimeKind.Local).AddTicks(8242) }
                 });
 
             migrationBuilder.InsertData(
@@ -641,8 +643,8 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "95bb894e-db5e-4fe2-9f08-67e10e58b0ee", "Quản lý", "MANAGE" },
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "41e9da1c-621f-4d47-8e1f-da3dbc0077d9", "Nhân viên", "STAFF" }
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "251ba2e1-c300-4125-8e1d-a818a9947cf0", "Quản lý", "MANAGE" },
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "4b512fb7-174a-4fb8-86a7-f87c519e2316", "Nhân viên", "STAFF" }
                 });
 
             migrationBuilder.InsertData(
@@ -709,7 +711,14 @@ namespace Datn_Api.Migrations
                 {
                     { new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"), 1000, new Guid("357267e8-d162-4844-a660-661f46933d03"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Giới thiệu Cue Predator Sneaky Pete, nơi sự khéo léo kết hợp sự sang trọng. Lớp hoàn thiện mờ Purpleheart thể hiện phong cách đặc biệt của nó, với tám điểm màu xanh lam, vàng và đen quyến rũ. Màu xanh bóng mượt với lớp bọc vải lanh Ailen màu trắng tạo thêm nét đẳng cấp và tăng cường khả năng cầm nắm của bạn. Nâng cao trò chơi của bạn với độ chính xác và sự khéo léo của tín hiệu Predator Sneaky Pete.", 1000, "Predator Purpleheart 8-Point Sneaky Pete With Wrap", "Uniloc Quick Release", "PRESP8PW_", "None", 500, 0, "Blue and White Irish Linen" },
                     { new Guid("cc37720a-7e89-463a-9510-1936e6761d8b"), 2000, new Guid("357267e8-d162-4844-a660-661f46933d04"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1000, "Mezz ZZ37 Pool Cue", "Mezz United Joint", "Lucasi", "Silver Rings", 500, 0, "Black Irish Linen" },
-                    { new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"), 2000, new Guid("357267e8-d162-4844-a660-661f46933d05"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1000, "Mezz ZZ37 Pool Cue", "Mezz United Joint", "Lucasi", "Silver Rings", 500, 0, "Black Irish Linen" }
+                    { new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"), 2000, new Guid("357267e8-d162-4844-a660-661f46933d05"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1000, "Summit SUML17 Pool Cue", "Mezz United Joint", "Lucasi", "Silver Rings", 500, 0, "Black Irish Linen" },
+                    { new Guid("cc37720a-7e89-463a-9510-2936e6761d8a"), 2000, new Guid("357267e8-d162-4844-a660-661f46933d06"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1000, "Katana KAT19 Pool Cue", "Mezz United Joint", "Lucasi", "Silver Rings", 500, 0, "Black Irish Linen" },
+                    { new Guid("cc37720a-7e89-463a-9510-3936e6761d8b"), 2000, new Guid("357267e8-d162-4844-a660-661f46933d07"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1000, "Summit SUML13 Pool Cue", "Mezz United Joint", "Lucasi", "Silver Rings", 500, 0, "Black Irish Linen" },
+                    { new Guid("cc37720a-7e89-463a-9510-4936e6761d8c"), 1000, new Guid("357267e8-d162-4844-a660-661f46933d03"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Giới thiệu Cue Predator Sneaky Pete, nơi sự khéo léo kết hợp sự sang trọng. Lớp hoàn thiện mờ Purpleheart thể hiện phong cách đặc biệt của nó, với tám điểm màu xanh lam, vàng và đen quyến rũ. Màu xanh bóng mượt với lớp bọc vải lanh Ailen màu trắng tạo thêm nét đẳng cấp và tăng cường khả năng cầm nắm của bạn. Nâng cao trò chơi của bạn với độ chính xác và sự khéo léo của tín hiệu Predator Sneaky Pete.", 1000, "Cuetec AVID Proof CT326NW Pool Cue", "Uniloc Quick Release", "PRESP8PW_", "None", 500, 0, "Blue and White Irish Linen" },
+                    { new Guid("cc37720a-7e89-463a-9510-5936e6761d8a"), 2000, new Guid("357267e8-d162-4844-a660-661f46933d04"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1000, "Cuetec AVID Proof CT326LTC Pool Cue", "Mezz United Joint", "Lucasi", "Silver Rings", 500, 0, "Black Irish Linen" },
+                    { new Guid("cc37720a-7e89-463a-9510-6936e6761d8b"), 2000, new Guid("357267e8-d162-4844-a660-661f46933d05"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1000, "Meucci Casino MECAS10 Pool Cue", "Mezz United Joint", "Lucasi", "Silver Rings", 500, 0, "Black Irish Linen" },
+                    { new Guid("cc37720a-7e89-463a-9510-7936e6761d8c"), 2000, new Guid("357267e8-d162-4844-a660-661f46933d03"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1000, "Bull Carbon BCSP2 Silver Split Cue W/", "Mezz United Joint", "Lucasi", "Silver Rings", 500, 0, "Black Irish Linen" },
+                    { new Guid("cc37720a-7e89-463a-9510-8936e6761d8a"), 2000, new Guid("357267e8-d162-4844-a660-661f46933d04"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1000, "Balabushka GBT Era Cue", "Mezz United Joint", "Lucasi", "Silver Rings", 500, 0, "Black Irish Linen" }
                 });
 
             migrationBuilder.InsertData(
@@ -925,7 +934,21 @@ namespace Datn_Api.Migrations
                     { new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e7"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d53"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d55") },
                     { new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e8"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d53"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d84"), new Guid("cc37720a-7e89-463a-9510-1936e6761d55") },
                     { new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e9"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d53"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d94"), new Guid("cc37720a-7e89-463a-9510-1936e6761d55") },
+                    { new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c0"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-8936e6761d8a"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") },
                     { new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") },
+                    { new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-2936e6761d8a"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") },
+                    { new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c5"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-3936e6761d8b"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProductDetails",
+                columns: new[] { "Id", "CreateDate", "Description", "ImportPrice", "Price", "ProductID", "Quantity", "ShaftId", "Status", "TipId", "WeightId" },
+                values: new object[,]
+                {
+                    { new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-4936e6761d8c"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") },
+                    { new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-5936e6761d8a"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") },
+                    { new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c8"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-6936e6761d8b"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") },
+                    { new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c9"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-7936e6761d8c"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") },
                     { new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"), new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description", 1500.0, 2000.0, new Guid("cc37720a-7e89-463a-9510-1936e6761d8b"), 1, new Guid("cc37720a-7e89-463a-9510-1936e6761d73"), 0, new Guid("cc37720a-7e89-463a-9510-1936e6761d74"), new Guid("cc37720a-7e89-463a-9510-1936e6761d75") }
                 });
 
@@ -953,7 +976,13 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "Name", "ProductDetailId", "Status" },
                 values: new object[,]
                 {
-                    { new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6423"), "image3", new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"), 0 },
+                    { new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6420"), "2.png", new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c0"), 0 },
+                    { new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6423"), "2.png", new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"), 0 },
+                    { new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6425"), "2.png", new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c5"), 0 },
+                    { new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6426"), "2.png", new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"), 0 },
+                    { new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6427"), "1.png", new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"), 0 },
+                    { new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6428"), "2.png", new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c8"), 0 },
+                    { new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6429"), "1.png", new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c9"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca150bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e0"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca150bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e0"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca150bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e1"), 0 },
@@ -985,13 +1014,7 @@ namespace Datn_Api.Migrations
                     { new Guid("d5c65161-7591-48c1-9198-daca152bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e4"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca152bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e4"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca153bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e5"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca153bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e5"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca153bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e6"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca153bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e6"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca153bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e7"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca153bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e7"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca153bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e8"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca153bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e8"), 0 }
+                    { new Guid("d5c65161-7591-48c1-9198-daca153bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e5"), 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -999,6 +1022,12 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "Name", "ProductDetailId", "Status" },
                 values: new object[,]
                 {
+                    { new Guid("d5c65161-7591-48c1-9198-daca153bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e6"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca153bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e6"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca153bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e7"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca153bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e7"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca153bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e8"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca153bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e8"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca153bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e9"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca153bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e9"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca154bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e0"), 0 },
@@ -1034,13 +1063,7 @@ namespace Datn_Api.Migrations
                     { new Guid("d5c65161-7591-48c1-9198-daca157bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e5"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca157bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e5"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca157bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e6"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca157bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e6"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca157bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e7"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca157bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e7"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca157bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e8"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca157bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e8"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca157bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e9"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca157bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e9"), 0 }
+                    { new Guid("d5c65161-7591-48c1-9198-daca157bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e6"), 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -1048,6 +1071,12 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "Name", "ProductDetailId", "Status" },
                 values: new object[,]
                 {
+                    { new Guid("d5c65161-7591-48c1-9198-daca157bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e7"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca157bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e7"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca157bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e8"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca157bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e8"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca157bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e9"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca157bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e9"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca158bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e0"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca158bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e0"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca158bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e1"), 0 },
@@ -1083,13 +1112,7 @@ namespace Datn_Api.Migrations
                     { new Guid("d5c65161-7591-48c1-9198-daca162bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e6"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca162bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e6"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca162bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e7"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca162bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e7"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca162bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e8"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca162bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e8"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca162bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e9"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca162bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e9"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca163bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e0"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca163bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e0"), 0 }
+                    { new Guid("d5c65161-7591-48c1-9198-daca162bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e7"), 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -1097,6 +1120,12 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "Name", "ProductDetailId", "Status" },
                 values: new object[,]
                 {
+                    { new Guid("d5c65161-7591-48c1-9198-daca162bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e8"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca162bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e8"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca162bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e9"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca162bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e9"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca163bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e0"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca163bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e0"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca163bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e1"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca163bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e1"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca163bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e2"), 0 },
@@ -1132,13 +1161,7 @@ namespace Datn_Api.Migrations
                     { new Guid("d5c65161-7591-48c1-9198-daca167bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e7"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca167bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e7"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca167bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e8"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca167bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e8"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca167bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e9"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca167bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e9"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca168bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e0"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca168bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e0"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca168bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e1"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca168bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e1"), 0 }
+                    { new Guid("d5c65161-7591-48c1-9198-daca167bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e8"), 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -1146,6 +1169,12 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "Name", "ProductDetailId", "Status" },
                 values: new object[,]
                 {
+                    { new Guid("d5c65161-7591-48c1-9198-daca167bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e9"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca167bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e9"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca168bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e0"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca168bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e0"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca168bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e1"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca168bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e1"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca168bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e2"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca168bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e2"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca168bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e3"), 0 },
@@ -1181,13 +1210,7 @@ namespace Datn_Api.Migrations
                     { new Guid("d5c65161-7591-48c1-9198-daca171bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e8"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca171bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e8"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca171bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e9"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca171bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e9"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca172bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e0"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca172bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e0"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca172bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e1"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca172bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e1"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca172bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e2"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca172bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e2"), 0 }
+                    { new Guid("d5c65161-7591-48c1-9198-daca171bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e9"), 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -1195,6 +1218,12 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "Name", "ProductDetailId", "Status" },
                 values: new object[,]
                 {
+                    { new Guid("d5c65161-7591-48c1-9198-daca172bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e0"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca172bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e0"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca172bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e1"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca172bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e1"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca172bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e2"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca172bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e2"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca172bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e3"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca172bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e3"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca172bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e4"), 0 },
@@ -1230,13 +1259,7 @@ namespace Datn_Api.Migrations
                     { new Guid("d5c65161-7591-48c1-9198-daca175bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e9"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca175bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e9"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca176bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e0"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca176bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e0"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca176bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e1"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca176bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e1"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca176bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e2"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca176bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e2"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca176bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e3"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca176bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e3"), 0 }
+                    { new Guid("d5c65161-7591-48c1-9198-daca176bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e0"), 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -1244,6 +1267,12 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "Name", "ProductDetailId", "Status" },
                 values: new object[,]
                 {
+                    { new Guid("d5c65161-7591-48c1-9198-daca176bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e1"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca176bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e1"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca176bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e2"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca176bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e2"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca176bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e3"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca176bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e3"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca176bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e4"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca176bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e4"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca177bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e5"), 0 },
@@ -1279,13 +1308,7 @@ namespace Datn_Api.Migrations
                     { new Guid("d5c65161-7591-48c1-9198-daca180bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e0"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca180bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e0"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca180bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e1"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca180bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e1"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca180bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e2"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca180bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e2"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca180bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e3"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca180bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e3"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca180bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e4"), 0 },
-                    { new Guid("d5c65161-7591-48c1-9198-daca180bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e4"), 0 }
+                    { new Guid("d5c65161-7591-48c1-9198-daca180bce3c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e1"), 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -1293,6 +1316,12 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "Name", "ProductDetailId", "Status" },
                 values: new object[,]
                 {
+                    { new Guid("d5c65161-7591-48c1-9198-daca180bce4c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e2"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca180bce5c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e2"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca180bce6c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e3"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca180bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e3"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca180bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e4"), 0 },
+                    { new Guid("d5c65161-7591-48c1-9198-daca180bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e4"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca181bce0c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e5"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca181bce1c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e5"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca181bce2c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e6"), 0 },
@@ -1323,7 +1352,8 @@ namespace Datn_Api.Migrations
                     { new Guid("d5c65161-7591-48c1-9198-daca183bce7c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e8"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca183bce8c"), "presp8pw_01.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e9"), 0 },
                     { new Guid("d5c65161-7591-48c1-9198-daca183bce9c"), "presp8pw_cat.jpg", new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e9"), 0 },
-                    { new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d1"), "image2", new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"), 0 }
+                    { new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d1"), "1.png", new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"), 0 },
+                    { new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d4"), "1.png", new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"), 0 }
                 });
 
             migrationBuilder.InsertData(

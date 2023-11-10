@@ -104,14 +104,12 @@
 
         </select>
     </div>
-
-
 </div>
-<div class="wrapper" style="margin: 1.5rem 0 2rem 0;">
+<div class="wrapper my-5">
     <div class="bg"> Sản Phẩm </div>
     <div class="fg"> Sản Phẩm </div>
 </div>
-<div class="row" style="margin-bottom : 100px;margin-top : 100px">
+<div class="row my-3">
     @foreach (var item in @Model)
     {
         @if (@item.ProductDetailId != Guid.Empty)
@@ -123,7 +121,7 @@
                             <div class="row">
                                 <div class="el-wrapper">
                                     <div class="box-up">
-                                        <img class="img" src="~/images//1.png" alt="">
+                                        <img class="img" src="~/images/products/@item.Image" alt="">
                                         <div class="img-info">
                                             <div class="info-inner">
                                                 <span class="p-name">@item.Name</span>

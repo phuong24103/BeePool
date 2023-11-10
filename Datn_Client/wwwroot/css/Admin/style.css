@@ -358,11 +358,11 @@ h6 {
 
 .logo img {
     max-height: 46px;
-    /*margin-right: 6px;*/
+    margin-right: 6px;
 }
 
 .img_logo {
-    max-height: 80px !important;
+    max-height: 100px !important;
 }
 
 .logo span {

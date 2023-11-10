@@ -19,6 +19,6 @@ namespace Datn_Shared.Models
         public string Color { get; set; }
 
         public int Status { get; set; }
-        public virtual ICollection <ProductDetail> ProductDetails { get; set; }
+        public virtual ICollection <ProductDetail>? ProductDetails { get; set; }
     }
 }

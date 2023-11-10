@@ -72,6 +72,14 @@ namespace Datn_Api.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("CreateBySession/{customerId:Guid}")]
+        public async Task<ActionResult<CreateCartDetail>> CreateCartDetailBySession(Guid customerId, List<CartDetailView> cartDetail)
+        {
+            await _cartDetailService.CreateCartDetailBySession(customerId, cartDetail);
+            return Ok();
+        }
+
         [HttpPut]
         [Route("Increase/{id:Guid}")]
         public async Task<ActionResult<CartDetail>> IncreaseCartDetail([FromRoute] Guid id)

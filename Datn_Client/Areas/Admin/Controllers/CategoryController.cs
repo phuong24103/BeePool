@@ -1,5 +1,6 @@
 ﻿using Datn_Shared.Models;
 using Datn_Shared.ViewModels.CategoryViewModels;
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Datn_Client.Areas.Admin.Controllers
@@ -13,12 +14,33 @@ namespace Datn_Client.Areas.Admin.Controllers
             _httpClient = httpClient;
         }
 
-        public async Task<IActionResult> Index(Guid id)
+        public async Task<IActionResult> Index(Guid id, string date)
         {
-            if(id == Guid.Empty)
+            if (id == Guid.Empty)
             {
-                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
-                return View(categories);
+                if (date == "today")
+                {
+                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
+                    IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.Day == DateTime.Now.Day && p.CreatedDate.Month == DateTime.Now.Month && p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Day == DateTime.Now.Day && p.UpdatedDate.Month == DateTime.Now.Month && p.UpdatedDate.Year == DateTime.Now.Year));
+                    return View(c);
+                }
+                else if (date == "thisMonth")
+                {
+                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
+                    IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.Month == DateTime.Now.Month && p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Month == DateTime.Now.Month && p.UpdatedDate.Year == DateTime.Now.Year));
+                    return View(c);
+                }
+                else if (date == "thisYear")
+                {
+                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
+                    IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Year == DateTime.Now.Year));
+                    return View(c);
+                }
+                else
+                {
+                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
+                    return View(categories);
+                }
             }
             else
             {
@@ -33,6 +55,10 @@ namespace Datn_Client.Areas.Admin.Controllers
         public async Task<IActionResult> Detail(Guid id)
         {
             return RedirectToAction("Index", new { id = id });
+        }
+        public async Task<IActionResult> Filter(string date)
+        {
+            return RedirectToAction("Index", new { date = date });
         }
         public async Task<IActionResult> Create(CreateCategory category)
         {

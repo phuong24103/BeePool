@@ -76,6 +76,7 @@ namespace Datn_Api.Services
                 double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                 Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                 string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                 proview.Add(new ProductView
                 {
@@ -95,9 +96,48 @@ namespace Datn_Api.Services
                     CreateDate = product.CreateDate,
                     Status = product.Status,
                     Description = product.Description,
-                    Category = product.Category/*,
-                    CategoryName = product.Category.Name*/
-                    
+                    Category = product.Category,
+                    CategoryName = category.Name
+
+                });
+            }
+            return proview;
+        }
+
+        public async Task<IEnumerable<ProductView>> GetProductByCategory(string name)
+        {
+            var products = await _context.Products.Where(p => p.Category.Name == name).Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductView> proview = new List<ProductView>();
+
+            foreach (var product in products)
+            {
+                double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
+
+                proview.Add(new ProductView
+                {
+                    Id = product.Id,
+                    CategoryID = product.CategoryID,
+                    ProductDetailId = productDetailId,
+                    Name = product.Name,
+                    Pin = product.Pin,
+                    Wrap = product.Wrap,
+                    Rings = product.Rings,
+                    AvailableQuantity = product.AvailableQuantity,
+                    Price = price,
+                    Image = image,
+                    Sold = product.Sold,
+                    Likes = product.Likes,
+                    Producer = product.Producer,
+                    CreateDate = product.CreateDate,
+                    Status = product.Status,
+                    Description = product.Description,
+                    Category = product.Category,
+                    CategoryName = category.Name
+
                 });
             }
             return proview;
@@ -115,6 +155,7 @@ namespace Datn_Api.Services
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                     string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
@@ -134,7 +175,8 @@ namespace Datn_Api.Services
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
-                        Category = product.Category
+                        Category = product.Category,
+                        CategoryName = category.Name
                     });
                 }
             }
@@ -153,6 +195,7 @@ namespace Datn_Api.Services
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                     string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
@@ -172,7 +215,8 @@ namespace Datn_Api.Services
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
-                        Category = product.Category
+                        Category = product.Category,
+                        CategoryName = category.Name
                     });
                 }
             }
@@ -209,6 +253,7 @@ namespace Datn_Api.Services
                     Status = a.Status,
                     Description = a.Description,
                     Category = b,
+                    CategoryName = b.Name
                 }).FirstAsync();
             return proview;
         }
@@ -225,6 +270,7 @@ namespace Datn_Api.Services
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                     string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
@@ -244,7 +290,8 @@ namespace Datn_Api.Services
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
-                        Category = product.Category
+                        Category = product.Category,
+                        CategoryName = category.Name
                     });
                 }
             }
@@ -263,6 +310,7 @@ namespace Datn_Api.Services
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                     string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
@@ -282,7 +330,8 @@ namespace Datn_Api.Services
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
-                        Category = product.Category
+                        Category = product.Category,
+                        CategoryName = category.Name
                     });
                 }
             }
@@ -301,6 +350,7 @@ namespace Datn_Api.Services
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                     string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
@@ -320,7 +370,8 @@ namespace Datn_Api.Services
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
-                        Category = product.Category
+                        Category = product.Category,
+                        CategoryName = category.Name
                     });
                 }
             }
@@ -339,6 +390,7 @@ namespace Datn_Api.Services
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                     string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
@@ -358,7 +410,8 @@ namespace Datn_Api.Services
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
-                        Category = product.Category
+                        Category = product.Category,
+                        CategoryName = category.Name
                     });
                 }
                 proview = proview.Where(p => p.Price >= 0 && p.Price <= 2001).ToList();
@@ -378,6 +431,7 @@ namespace Datn_Api.Services
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                     string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
@@ -397,7 +451,8 @@ namespace Datn_Api.Services
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
-                        Category = product.Category
+                        Category = product.Category,
+                        CategoryName = category.Name
                     });
                 }
                 proview = proview.OrderByDescending(p => p.Price).ToList();
@@ -417,6 +472,7 @@ namespace Datn_Api.Services
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                     string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
@@ -436,7 +492,8 @@ namespace Datn_Api.Services
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
-                        Category = product.Category
+                        Category = product.Category,
+                        CategoryName = category.Name
                     });
                 }
                 proview = proview.OrderBy(p => p.Price).ToList();

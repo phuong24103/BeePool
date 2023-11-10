@@ -18,7 +18,8 @@ namespace Datn_Shared.ViewModels.CartDetailViewModels
         public double Price { get; set; }
         public double ProductPrice { get; set; }
         public double TotalMoney { get; set; }
-        public ProductDetail ProductDetail { get; set; }
-        public Cart Cart { get; set; }
+        public string? Image { get; set; }
+        public ProductDetail? ProductDetail { get; set; }
+        public Cart? Cart { get; set; }
     }
 }

@@ -23,10 +23,10 @@ namespace Datn_Shared.Models
         public string Address { get; set; }
         public string CustomerName { get; set; }
         public string CustomerPhone { get; set; }
-        public virtual Customer Customer { get; set; }
-        public virtual UsedVoucher UsedVoucher { get; set; }
-        public virtual BillStatus BillStatus { get; set; }
-        public virtual Payment Payment { get; set; }
-        public virtual ICollection<BillDetail> BillDetails { get; set; }
+        public virtual Customer? Customer { get; set; }
+        public virtual UsedVoucher? UsedVoucher { get; set; }
+        public virtual BillStatus? BillStatus { get; set; }
+        public virtual Payment? Payment { get; set; }
+        public virtual ICollection<BillDetail>? BillDetails { get; set; }
     }
 }

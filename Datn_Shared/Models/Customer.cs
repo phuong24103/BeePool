@@ -23,9 +23,9 @@ namespace Datn_Shared.Models
         public string Address { get; set; }
         public int Point { get; set; }
         public int Status { get; set; }
-        public virtual Rank Rank { get; set; }
-        public virtual Cart Cart { get; set; }
-        public virtual ICollection<WishList> WishLists { get; set; }
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual Rank? Rank { get; set; }
+        public virtual Cart? Cart { get; set; }
+        public virtual ICollection<WishList>? WishLists { get; set; }
+        public virtual ICollection<Bill>? Bills { get; set; }
     }
 }

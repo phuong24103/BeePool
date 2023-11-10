@@ -16,13 +16,12 @@ namespace Datn_Client.Controllers
             _httpClient = httpClient;
         }
 
-        public async Task<IActionResult> Index(int page = 1, int pageSize = 2)
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 6)
         {
             var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
             var wishList = await _httpClient.GetFromJsonAsync<List<WishListView>>($"https://localhost:7033/api/WishList/GetByCustomerId/{customer.Id}");
-            var productsFromApi = await _httpClient.GetFromJsonAsync<List<WishListView>>($"https://localhost:7033/api/WishList/GetByCustomerId/{customer.Id}");
-            var pagedList = new PagedList<WishListView>(productsFromApi, page, pageSize);
+            var pagedList = new PagedList<WishListView>(wishList, page, pageSize);
             return View("Index", pagedList);
         }
 
