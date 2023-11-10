@@ -1,11 +1,11 @@
-﻿using Datn_Shared.Models;
-using Datn_Shared.ViewModels.CartDetailViewModels;
+﻿using Datn_Shared.ViewModels.CartDetailViewModels;
 
 namespace Datn_Api.IServices
 {
     public interface ICartDetailService
     {
         public Task<bool> CreateCartDetail(CreateCartDetail cartDetail);
+        public Task<bool> CreateCartDetailBySession(Guid customerId, List<CartDetailView> cartDetail);
         public Task<bool> IncreaseCartDetail(Guid id);
         public Task<bool> ReduceCartDetail(Guid id);
         public Task<bool> DeleteCartDetail(Guid id);

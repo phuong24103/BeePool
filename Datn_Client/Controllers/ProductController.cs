@@ -5,7 +5,9 @@ using Datn_Shared.ViewModels.ProductDetailViewModels;
 using Datn_Shared.ViewModels.ProductViewModels;
 using Datn_Shared.ViewModels.TipViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing.Printing;
 using X.PagedList;
 
 namespace Datn_Client.Controllers
@@ -20,7 +22,7 @@ namespace Datn_Client.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(int page = 1, int pageSize = 2)
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 6)
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAll");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
@@ -28,96 +30,75 @@ namespace Datn_Client.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Search(string Name)
+        public async Task<IActionResult> Search(string Name, int page = 1, int pageSize = 6)
         {
-            return View("Index", await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByName/{Name}"));
-        }
-
-        public async Task<IActionResult> Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create([FromForm] CreateProduct createProduct)
-        {
-            await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Product/Create", createProduct);
-            return RedirectToAction("Index", "Product");
-        }
-
-        public async Task<IActionResult> Delete(Guid id)
-        {
-            await _httpClient.DeleteAsync($"https://localhost:7033/api/Product/Delete/{id}");
-            return RedirectToAction("Index");
+            var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByName/{Name}");
+            var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
+            return View("Index", pagedList);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Update(Guid id)
+        public async Task<IActionResult> GetByCategory(string name, int page = 1, int pageSize = 6)
         {
-            var t = await _httpClient.GetFromJsonAsync<Product>($"https://localhost:7033/api/Product/GetById/{id}");
-            return View(t);
-        }
-
-        public async Task<IActionResult> Update(Guid id, UpdateProduct updateProduct)
-        {
-            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{id}", updateProduct);
-            return RedirectToAction("Index");
+            var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByCategory/{name}");
+            var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
+            return View("Index", pagedList);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByNameAZ(int page = 1, int pageSize = 2)
+        public async Task<IActionResult> GetByNameAZ(int page = 1, int pageSize = 6)
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByNameAZ");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("GetByNameAZ", pagedList);
+            return View("Index", pagedList);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByNameZA(int page = 1, int pageSize = 2)
+        public async Task<IActionResult> GetByNameZA(int page = 1, int pageSize = 6)
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByNameZA");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("GetByNameZA", pagedList);
+            return View("Index", pagedList);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByCreateDateOld(int page = 1, int pageSize = 2)
+        public async Task<IActionResult> GetByCreateDateOld(int page = 1, int pageSize = 6)
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByCreateDateOld");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("GetByCreateDateOld", pagedList);
+            return View("Index", pagedList);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByCreateDateNew(int page = 1, int pageSize = 2)
+        public async Task<IActionResult> GetByCreateDateNew(int page = 1, int pageSize = 6)
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByCreateDateNew");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("GetByCreateDateNew", pagedList);
+            return View("Index", pagedList);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByPriceMin(int page = 1, int pageSize = 2)
+        public async Task<IActionResult> GetByPriceMin(int page = 1, int pageSize = 6)
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPriceMin");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("GetByPriceMin", pagedList);
+            return View("Index", pagedList);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByPriceMax(int page = 1, int pageSize = 2)
+        public async Task<IActionResult> GetByPriceMax(int page = 1, int pageSize = 6)
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPriceMax");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("GetByPriceMax", pagedList);
+            return View("Index", pagedList);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByPrice2(int page = 1, int pageSize = 2)
+        public async Task<IActionResult> GetByPrice2(int page = 1, int pageSize = 6)
         {
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPrice2");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
-            return View("GetByPrice2", pagedList);
+            return View("Index", pagedList);
         }
     }
 }

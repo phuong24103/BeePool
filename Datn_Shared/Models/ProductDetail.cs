@@ -27,12 +27,12 @@ namespace Datn_Shared.Models
         public DateTime CreateDate { get; set; }
         public int Status { get; set; }
         public string Description { get; set; }
-        public virtual Product Product { get; set; }
-        public virtual Tip Tip { get; set; }
-        public virtual Shaft Shaft { get; set; }
-        public virtual Weight Weight { get; set; } 
-        public virtual ICollection<ProductImage> ProductImages { get; set; }
-        public  virtual ICollection<CartDetail> CartDetails { get; set; }
-        public virtual ICollection<BillDetail> BillDetails { get; set; }
+        public virtual Product? Product { get; set; }
+        public virtual Tip? Tip { get; set; }
+        public virtual Shaft? Shaft { get; set; }
+        public virtual Weight? Weight { get; set; } 
+        public virtual ICollection<ProductImage>? ProductImages { get; set; }
+        public  virtual ICollection<CartDetail>? CartDetails { get; set; }
+        public virtual ICollection<BillDetail>? BillDetails { get; set; }
     }
 }

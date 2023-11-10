@@ -1,7 +1,9 @@
 ﻿using Datn_Client.Models;
+using Datn_Shared.Models;
 using Datn_Shared.ViewModels.ProductViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace Datn_Client.Controllers
 {
@@ -19,7 +21,20 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAll"));
+            var lstProductView = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAll");
+            var category = lstProductView.Where(p => p.Status == 0).GroupBy(p => p.CategoryName).Select(g => g.First()).Take(4).ToList();
+
+            string queryString1 = "Cơ Đánh";
+            var coDanh = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByCategory/{queryString1}");
+
+            string queryString2 = "Cơ Nhảy";
+            var coNhay = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByCategory/{queryString2}");
+
+            ViewData["Category"] = category;
+            ViewData["CoDanh"] = coDanh.Take(3).ToList();
+            ViewData["CoNhay"] = coNhay.Take(3).ToList();
+
+            return View(lstProductView);
         }
 
         public IActionResult Privacy()

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datn_Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231107070409_datn")]
+    [Migration("20231110144756_datn")]
     partial class datn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -254,12 +254,18 @@ namespace Datn_Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -269,32 +275,42 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d03"),
+                            CreatedDate = new DateTime(2022, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Cơ Đánh",
-                            Status = 0
+                            Status = 0,
+                            UpdatedDate = new DateTime(2022, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d04"),
+                            CreatedDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Cơ Nhảy",
-                            Status = 0
+                            Status = 0,
+                            UpdatedDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d05"),
+                            CreatedDate = new DateTime(2023, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Cơ Phá",
-                            Status = 0
+                            Status = 0,
+                            UpdatedDate = new DateTime(2023, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d06"),
+                            CreatedDate = new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Cơ Phá + Nhảy",
-                            Status = 0
+                            Status = 0,
+                            UpdatedDate = new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d07"),
+                            CreatedDate = new DateTime(2023, 11, 10, 21, 47, 56, 184, DateTimeKind.Local).AddTicks(8233),
                             Name = "Cơ ba băng",
-                            Status = 0
+                            Status = 0,
+                            UpdatedDate = new DateTime(2023, 11, 10, 21, 47, 56, 184, DateTimeKind.Local).AddTicks(8242)
                         });
                 });
 
@@ -719,7 +735,119 @@ namespace Datn_Api.Migrations
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
                             Likes = 1000,
-                            Name = "Mezz ZZ37 Pool Cue",
+                            Name = "Summit SUML17 Pool Cue",
+                            Pin = "Mezz United Joint",
+                            Producer = "Lucasi",
+                            Rings = "Silver Rings",
+                            Sold = 500,
+                            Status = 0,
+                            Wrap = "Black Irish Linen"
+                        },
+                        new
+                        {
+                            Id = new Guid("cc37720a-7e89-463a-9510-2936e6761d8a"),
+                            AvailableQuantity = 2000,
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d06"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            Likes = 1000,
+                            Name = "Katana KAT19 Pool Cue",
+                            Pin = "Mezz United Joint",
+                            Producer = "Lucasi",
+                            Rings = "Silver Rings",
+                            Sold = 500,
+                            Status = 0,
+                            Wrap = "Black Irish Linen"
+                        },
+                        new
+                        {
+                            Id = new Guid("cc37720a-7e89-463a-9510-3936e6761d8b"),
+                            AvailableQuantity = 2000,
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d07"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            Likes = 1000,
+                            Name = "Summit SUML13 Pool Cue",
+                            Pin = "Mezz United Joint",
+                            Producer = "Lucasi",
+                            Rings = "Silver Rings",
+                            Sold = 500,
+                            Status = 0,
+                            Wrap = "Black Irish Linen"
+                        },
+                        new
+                        {
+                            Id = new Guid("cc37720a-7e89-463a-9510-4936e6761d8c"),
+                            AvailableQuantity = 1000,
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Giới thiệu Cue Predator Sneaky Pete, nơi sự khéo léo kết hợp sự sang trọng. Lớp hoàn thiện mờ Purpleheart thể hiện phong cách đặc biệt của nó, với tám điểm màu xanh lam, vàng và đen quyến rũ. Màu xanh bóng mượt với lớp bọc vải lanh Ailen màu trắng tạo thêm nét đẳng cấp và tăng cường khả năng cầm nắm của bạn. Nâng cao trò chơi của bạn với độ chính xác và sự khéo léo của tín hiệu Predator Sneaky Pete.",
+                            Likes = 1000,
+                            Name = "Cuetec AVID Proof CT326NW Pool Cue",
+                            Pin = "Uniloc Quick Release",
+                            Producer = "PRESP8PW_",
+                            Rings = "None",
+                            Sold = 500,
+                            Status = 0,
+                            Wrap = "Blue and White Irish Linen"
+                        },
+                        new
+                        {
+                            Id = new Guid("cc37720a-7e89-463a-9510-5936e6761d8a"),
+                            AvailableQuantity = 2000,
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d04"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            Likes = 1000,
+                            Name = "Cuetec AVID Proof CT326LTC Pool Cue",
+                            Pin = "Mezz United Joint",
+                            Producer = "Lucasi",
+                            Rings = "Silver Rings",
+                            Sold = 500,
+                            Status = 0,
+                            Wrap = "Black Irish Linen"
+                        },
+                        new
+                        {
+                            Id = new Guid("cc37720a-7e89-463a-9510-6936e6761d8b"),
+                            AvailableQuantity = 2000,
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d05"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            Likes = 1000,
+                            Name = "Meucci Casino MECAS10 Pool Cue",
+                            Pin = "Mezz United Joint",
+                            Producer = "Lucasi",
+                            Rings = "Silver Rings",
+                            Sold = 500,
+                            Status = 0,
+                            Wrap = "Black Irish Linen"
+                        },
+                        new
+                        {
+                            Id = new Guid("cc37720a-7e89-463a-9510-7936e6761d8c"),
+                            AvailableQuantity = 2000,
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            Likes = 1000,
+                            Name = "Bull Carbon BCSP2 Silver Split Cue W/",
+                            Pin = "Mezz United Joint",
+                            Producer = "Lucasi",
+                            Rings = "Silver Rings",
+                            Sold = 500,
+                            Status = 0,
+                            Wrap = "Black Irish Linen"
+                        },
+                        new
+                        {
+                            Id = new Guid("cc37720a-7e89-463a-9510-8936e6761d8a"),
+                            AvailableQuantity = 2000,
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d04"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            Likes = 1000,
+                            Name = "Balabushka GBT Era Cue",
                             Pin = "Mezz United Joint",
                             Producer = "Lucasi",
                             Rings = "Silver Rings",
@@ -3046,6 +3174,104 @@ namespace Datn_Api.Migrations
                             Status = 0,
                             TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
                             WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 1500.0,
+                            Price = 2000.0,
+                            ProductID = new Guid("cc37720a-7e89-463a-9510-2936e6761d8a"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c5"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 1500.0,
+                            Price = 2000.0,
+                            ProductID = new Guid("cc37720a-7e89-463a-9510-3936e6761d8b"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 1500.0,
+                            Price = 2000.0,
+                            ProductID = new Guid("cc37720a-7e89-463a-9510-4936e6761d8c"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 1500.0,
+                            Price = 2000.0,
+                            ProductID = new Guid("cc37720a-7e89-463a-9510-5936e6761d8a"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c8"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 1500.0,
+                            Price = 2000.0,
+                            ProductID = new Guid("cc37720a-7e89-463a-9510-6936e6761d8b"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c9"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 1500.0,
+                            Price = 2000.0,
+                            ProductID = new Guid("cc37720a-7e89-463a-9510-7936e6761d8c"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c0"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 1500.0,
+                            Price = 2000.0,
+                            ProductID = new Guid("cc37720a-7e89-463a-9510-8936e6761d8a"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
                         });
                 });
 
@@ -5315,15 +5541,64 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d1"),
-                            Name = "image2",
+                            Name = "1.png",
                             ProductDetailId = new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"),
                             Status = 0
                         },
                         new
                         {
                             Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6423"),
-                            Name = "image3",
+                            Name = "2.png",
                             ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d4"),
+                            Name = "1.png",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6425"),
+                            Name = "2.png",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c5"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6426"),
+                            Name = "2.png",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6427"),
+                            Name = "1.png",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6428"),
+                            Name = "2.png",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c8"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6429"),
+                            Name = "1.png",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c9"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6420"),
+                            Name = "2.png",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c0"),
                             Status = 0
                         });
                 });
@@ -5801,14 +6076,14 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"),
-                            ConcurrencyStamp = "95bb894e-db5e-4fe2-9f08-67e10e58b0ee",
+                            ConcurrencyStamp = "251ba2e1-c300-4125-8e1d-a818a9947cf0",
                             Name = "Quản lý",
                             NormalizedName = "MANAGE"
                         },
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"),
-                            ConcurrencyStamp = "41e9da1c-621f-4d47-8e1f-da3dbc0077d9",
+                            ConcurrencyStamp = "4b512fb7-174a-4fb8-86a7-f87c519e2316",
                             Name = "Nhân viên",
                             NormalizedName = "STAFF"
                         });
@@ -6177,8 +6452,7 @@ namespace Datn_Api.Migrations
                 {
                     b.Navigation("BillDetails");
 
-                    b.Navigation("UsedVoucher")
-                        .IsRequired();
+                    b.Navigation("UsedVoucher");
                 });
 
             modelBuilder.Entity("Datn_Shared.Models.BillStatus", b =>
@@ -6200,8 +6474,7 @@ namespace Datn_Api.Migrations
                 {
                     b.Navigation("Bills");
 
-                    b.Navigation("Cart")
-                        .IsRequired();
+                    b.Navigation("Cart");
 
                     b.Navigation("WishLists");
                 });

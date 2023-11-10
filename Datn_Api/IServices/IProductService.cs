@@ -30,5 +30,6 @@ namespace Datn_Api.IServices
         public Task<IEnumerable<ProductView>> GetProductByPriceMin();
 
         public Task<IEnumerable<ProductView>> GetProductByPriceMax();
+        public Task<IEnumerable<ProductView>> GetProductByCategory(string name);
     }
 }

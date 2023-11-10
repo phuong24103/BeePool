@@ -30,6 +30,13 @@ namespace Datn_Api.Controllers
             var mate = await _iproductImageService.GetProductImageById(id);
             return Ok(mate);
         }
+        [HttpGet]
+        [Route("GetByProductDetailId/{id:Guid}")]
+        public async Task<IActionResult> GetProductImageByProductDetail([FromRoute] Guid id)
+        {
+            var mate = await _iproductImageService.GetProductImageByProductDetail(id);
+            return Ok(mate);
+        }
         [HttpPost]
         [Route("Create")]
         public async Task<ActionResult<CreateProductImage>> CreateProductImage(CreateProductImage createProductImage)

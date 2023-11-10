@@ -19,7 +19,7 @@ namespace Datn_Shared.Models
         public DateTime TimeStart { get; set; }
         public DateTime TimeEnd { get; set; }
         public int Status { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual ICollection<UsedVoucher> UsedVouchers { get; set; }
+        public virtual Employee? Employee { get; set; }
+        public virtual ICollection<UsedVoucher>? UsedVouchers { get; set; }
     }
 }

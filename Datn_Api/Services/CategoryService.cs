@@ -20,6 +20,8 @@ namespace Datn_Api.Services
             {
                 Id = Guid.NewGuid(),
                 Name = category.Name,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
                 Status = category.Status,
             };
             try
@@ -68,12 +70,13 @@ namespace Datn_Api.Services
 
         public async Task<bool> UpdateCategory(Guid id, UpdateCategory category)
         {
-            var n = _context.Categories.Find(id);
-            if (n == null) return false;
-            n.Name = category.Name;
-            n.Status = category.Status;
             try
             {
+                var n = _context.Categories.Find(id);
+                if (n == null) return false;
+                n.Name = category.Name;
+                n.UpdatedDate = DateTime.Now;
+                n.Status = category.Status;
                 _context.Categories.Update(n);
                 await _context.SaveChangesAsync();
                 return true;

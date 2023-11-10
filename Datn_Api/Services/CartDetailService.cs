@@ -2,8 +2,6 @@
 using Datn_Api.IServices;
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.CartDetailViewModels;
-using Datn_Shared.ViewModels.CartViewModels;
-using Datn_Shared.ViewModels.ProductViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace Datn_Api.Services
@@ -93,6 +91,7 @@ namespace Datn_Api.Services
             foreach (var cartDetail in cartDetails)
             {
                 var productDetail = await _context.ProductDetails.Include(p => p.Product).FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
+                string image = _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == cartDetail.ProductDetailId).Name;
                 var price = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
                 string name = (productDetail != null && productDetail.Product != null) ? _context.Products.FirstOrDefault(p => p.Id == productDetail.ProductID).Name : null;
                 var cart = await _context.Carts.Include(p => p.CartDetails).FirstOrDefaultAsync(p => p.CustomerId == cartDetail.CustomerId);
@@ -107,6 +106,7 @@ namespace Datn_Api.Services
                     Price = cartDetail.Price,
                     ProductPrice = price.Price,
                     TotalMoney = cart.TotalMoney,
+                    Image = image,
                     Cart = cartDetail.Cart,
                     ProductDetail = cartDetail.ProductDetail
                 });
@@ -121,6 +121,7 @@ namespace Datn_Api.Services
             CartDetailView cartDetailView = new CartDetailView();
 
             var productDetail = await _context.ProductDetails.Include(p => p.Product).FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
+            string image = _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == cartDetail.ProductDetailId).Name;
             var price = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
             string name = (productDetail != null && productDetail.Product != null) ? _context.Products.FirstOrDefault(p => p.Id == productDetail.ProductID).Name : null;
             var cart = await _context.Carts.Include(p => p.CartDetails).FirstOrDefaultAsync(p => p.CustomerId == cartDetail.CustomerId);
@@ -140,6 +141,7 @@ namespace Datn_Api.Services
                      Price = cartDetail.Price,
                      ProductPrice = price.Price,
                      TotalMoney = cart.TotalMoney,
+                     Image = image,
                      Cart = cartDetail.Cart,
                      ProductDetail = cartDetail.ProductDetail
                  }).FirstAsync();
@@ -159,6 +161,7 @@ namespace Datn_Api.Services
             foreach (var cartDetail in cartDetails)
             {
                 var productDetail = await _context.ProductDetails.Include(p => p.Product).FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
+                string image = _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == cartDetail.ProductDetailId).Name;
                 var price = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == cartDetail.ProductDetailId);
                 string name = (productDetail != null && productDetail.Product != null) ? _context.Products.FirstOrDefault(p => p.Id == productDetail.ProductID).Name : null;
                 var cart = await _context.Carts.Include(p => p.CartDetails).FirstOrDefaultAsync(p => p.CustomerId == cartDetail.CustomerId);
@@ -173,6 +176,7 @@ namespace Datn_Api.Services
                     Price = cartDetail.Price,
                     ProductPrice = price.Price,
                     TotalMoney = cart.TotalMoney,
+                    Image = image,
                     Cart = cartDetail.Cart,
                     ProductDetail = cartDetail.ProductDetail,
                 });
@@ -248,6 +252,56 @@ namespace Datn_Api.Services
                 cart.TotalMoney = 0;
                 _context.Carts.Update(cart);
                 await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> CreateCartDetailBySession(Guid customerId, List<CartDetailView> cartDetail)
+        {
+            try
+            {
+                for (int i = 0; i < cartDetail.Count; i++)
+                {
+                    var c = await _context.CartDetails.FirstOrDefaultAsync(p => p.CustomerId == customerId && p.ProductDetailId == cartDetail[i].ProductDetailId);
+                    var cart = await _context.Carts.FirstOrDefaultAsync(p => p.CustomerId == customerId);
+                    if (cart.Quantity == 0)
+                    {
+                        cart.TotalMoney = cartDetail[i].TotalMoney;
+                    }
+                    else
+                    {
+                        cart.TotalMoney += cartDetail[i].TotalMoney;
+                    }
+                    if (c == null)
+                    {
+                        if (cart.Quantity == 0)
+                        {
+                            cart.Status = 0;
+                        }
+                        CartDetail p = new CartDetail()
+                        {
+                            Id = cartDetail[i].Id,
+                            CustomerId = customerId,
+                            ProductDetailId = cartDetail[i].ProductDetailId,
+                            Quantity = cartDetail[i].Quantity,
+                            Price = cartDetail[i].Price,
+                        };
+                        await _context.CartDetails.AddAsync(p);
+                        cart.Quantity++;
+                    }
+                    else
+                    {
+                        c.Quantity += cartDetail[i].Quantity;
+                        c.Price += cartDetail[i].Price;
+                        _context.CartDetails.Update(c);
+                    }
+                    _context.Carts.Update(cart);
+                    await _context.SaveChangesAsync();
+                }
                 return true;
             }
             catch (Exception)

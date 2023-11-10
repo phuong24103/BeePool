@@ -12,7 +12,9 @@ namespace Datn_Shared.Models
         [Key]
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
         public int Status { get; set; }
-        public virtual ICollection<Product> Products { get; set; }    
+        public virtual ICollection<Product>? Products { get; set; }    
     }
 }

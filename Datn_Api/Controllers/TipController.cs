@@ -1,8 +1,11 @@
 ﻿using Datn_Api.IServices;
+using Datn_Api.Services;
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.TipViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Datn_Api.Controllers
 {
@@ -57,6 +60,20 @@ namespace Datn_Api.Controllers
         {
             var mate = await _itisv.GetAllTipById(id);
             return Ok(mate);
+        }
+        [HttpGet]
+        [Route("GetByProductDetailId/{id:Guid}")]
+        public async Task<IActionResult> GetAllTipByProductDetailId([FromRoute] Guid id)
+        {
+            var mate = await _itisv.GetAllTipByProductDetailId(id);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(mate, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
     }
 }
