@@ -75,8 +75,8 @@ namespace Datn_Api.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
-        public async Task<ActionResult<Bill>> CreateBill(List<CartDetail> cartDetails)
+        [Route("Create/{payment}")]
+        public async Task<ActionResult<Bill>> CreateBill(List<CartDetail> cartDetails, string payment)
         {
             double price = 0;
             foreach (var item in cartDetails)
@@ -92,7 +92,7 @@ namespace Datn_Api.Controllers
                 Id = Guid.NewGuid(),
                 CustomerId = customer.Id,
                 BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
-                PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
+                PaymentId = Guid.Parse(payment),
                 Price = price,
                 CreateDate = DateTime.Now,
                 Address = customer.Address,
@@ -142,8 +142,8 @@ namespace Datn_Api.Controllers
         }
 
         [HttpPost]
-        [Route("CreateBillVoucher/{codevoucher}")]
-        public async Task<ActionResult<Bill>> CreateBillVoucher(List<CartDetail> cartDetails,string codevoucher)
+        [Route("CreateBillVoucher/{codevoucher}/{payment}")]
+        public async Task<ActionResult<Bill>> CreateBillVoucher(List<CartDetail> cartDetails,string codevoucher, string payment)
         {
             double price = 0;
             foreach (var item in cartDetails)
@@ -171,7 +171,7 @@ namespace Datn_Api.Controllers
                 Id = Guid.NewGuid(),
                 CustomerId = customer.Id,
                 BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
-                PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
+                PaymentId = Guid.Parse(payment),
                 Price = price,
                 CreateDate = DateTime.Now,
                 Address = customer.Address,

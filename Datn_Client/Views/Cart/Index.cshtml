@@ -104,6 +104,19 @@
                                         </div>
                                     }
                                     <div class="form-group">
+                                        <label class="small text-muted mb-1">Phương thức thanh toán</label>
+                                        <input class="btn-check" value="a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6" type="radio" name="payment" id="btn-1">
+                                        <label class="btn" for="btn-1">Ship(COD)</label>
+                                        <input class="btn-check" value="a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16" type="radio" name="payment" id="btn-2">
+                                        <label class="btn" for="btn-2">Bank transfer</label>                                                   
+                                    </div>
+                                    @if (TempData["Messagepayment"] != null)
+                                    {
+                                        <div id="AlertBox" class="alert alert-warning hide" role="alert">
+                                            @TempData["Messagepayment"]
+                                        </div>
+                                    }
+                                    <div class="form-group">
                                         <label class="small text-muted mb-1">Mã giảm giá</label>
                                         <input class="form-control form-control-sm" name="code">
                                     </div>
@@ -119,8 +132,14 @@
                                             Số tiền được giảm: @TempData["Giagiam"]
                                         </div>
                                     }
+                                    @if (TempData["Thanhcong"] != null)
+                                    {
+                                        <div class="alert alert-success">
+                                            @TempData["Thanhcong"]
+                                        </div>
+                                    }
                                     <div class="my-3 mx-auto" style="width: 7.2rem;">
-                                        <input type="submit" value="Thanh toán" class="btn btn-outline-primary btn-lg">
+                                        <input type="submit" value="Đặt hàng" class="btn btn-outline-primary btn-lg">
                                     </div>
                                 </form>
                             </div>

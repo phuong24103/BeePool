@@ -26,7 +26,8 @@ namespace Datn_Client.Controllers
         public async Task<IActionResult> Bill()
         {
             var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userName != null)
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role == null)
             {
                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
                 var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetByCustomerId/{customer.Id}");
@@ -65,11 +66,12 @@ namespace Datn_Client.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateVoucher(string code, string address, string name, string phonenumber)
+        public async Task<IActionResult> CreateVoucher(string code, string address, string name, string phonenumber, string payment)
         {
             var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
             //Nếu có đăng nhập
-            if(userName != null)
+            if (userName != null && role == null)
             {
                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
                 var result = await _httpClient.GetFromJsonAsync<List<CartDetailView>>($"https://localhost:7033/api/CartDetail/GetByCustomerId/{customer.Id}");
@@ -87,9 +89,23 @@ namespace Datn_Client.Controllers
 
                 
                 if (code == null)
-                {   
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/Create", cartDetails);
-                        return RedirectToAction("Bill");
+                {
+                    if(payment == null)
+                    {
+                        string messagepayment = "Vui lòng chọn phương thức thanh toán";
+                        TempData["Messagepayment"] = messagepayment;
+                        return RedirectToAction("Index", "Cart");
+                    }
+                    else
+                    {
+                        string giagiam = "0";
+                        TempData["Giagiam"] = giagiam;
+                        string thanhcong = "Đặt hàng thành công";
+                        TempData["Thanhcong"] = thanhcong;
+                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/Create/{payment}", cartDetails);
+                        return RedirectToAction("Index", "Cart");
+                    }                       
+                        
                 }
             
                     
@@ -124,11 +140,18 @@ namespace Datn_Client.Controllers
                         TempData["Message"] = message;
 
                     }
+                    else if(payment == null)
+                    {
+                        string messagepayment = "Vui lòng chọn phương thức thanh toán";
+                        TempData["Messagepayment"] = messagepayment;
+                    }
                     else
                     {
                         giagiam = voucher.Value.ToString();
                         TempData["Giagiam"] = giagiam;
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillVoucher/{code}", cartDetails);
+                        string thanhcong = "Đặt hàng thành công";
+                        TempData["Thanhcong"] = thanhcong;
+                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillVoucher/{code}/{payment}", cartDetails);
                         return RedirectToAction("Index", "Cart");
                     }
                     return RedirectToAction("Index", "Cart");
@@ -177,6 +200,11 @@ namespace Datn_Client.Controllers
                         string messageaddress = "Vui lòng nhập địa chỉ nhận";
                         TempData["Messageaddress"] = messageaddress;
                     }
+                    else if (payment == null)
+                    {
+                        string messagepayment = "Vui lòng chọn phương thức thanh toán";
+                        TempData["Messagepayment"] = messagepayment;
+                    }
                     else
                     {
                         //Kiểm tra username có tồn tại hay ko
@@ -212,6 +240,10 @@ namespace Datn_Client.Controllers
                             }
                             else
                             {
+                                string giagiam = "0";
+                                TempData["Giagiam"] = giagiam;
+                                string thanhcong = "Đặt hàng thành công";
+                                TempData["Thanhcong"] = thanhcong;
                                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{Registercustomer.Username}");
                                 //Bill thêm vào session
                                 BillView bill = new BillView()
@@ -219,7 +251,7 @@ namespace Datn_Client.Controllers
                                     Id = Guid.NewGuid(),
                                     CustomerId = customer.Id,
                                     BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
-                                    PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
+                                    PaymentId = Guid.Parse(payment),
                                     Price = price,
                                     CreateDate = DateTime.Now,
                                     Address = address,
@@ -277,7 +309,7 @@ namespace Datn_Client.Controllers
                                     result.Clear();
                                     SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
                                 }
-                                return RedirectToAction("Bill");
+                                return RedirectToAction("Index", "Cart");
                             }
                         }
                         
@@ -308,6 +340,11 @@ namespace Datn_Client.Controllers
                     {
                         string messageaddress = "Vui lòng nhập địa chỉ nhận";
                         TempData["Messageaddress"] = messageaddress;
+                    }
+                    else if (payment == null)
+                    {
+                        string messagepayment = "Vui lòng chọn phương thức thanh toán";
+                        TempData["Messagepayment"] = messagepayment;
                     }
                     else if (voucher == null)
                     {
@@ -376,6 +413,8 @@ namespace Datn_Client.Controllers
                             {
                                 giagiam = voucher.Value.ToString();
                                 TempData["Giagiam"] = giagiam;
+                                string thanhcong = "Đặt hàng thành công";
+                                TempData["Thanhcong"] = thanhcong;
                                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{Registercustomer.Username}");
                                 //Bill thêm vào session
                                 BillView bill = new BillView()
@@ -383,7 +422,7 @@ namespace Datn_Client.Controllers
                                     Id = Guid.NewGuid(),
                                     CustomerId = customer.Id,
                                     BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
-                                    PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
+                                    PaymentId = Guid.Parse(payment),
                                     Price = price,
                                     CreateDate = DateTime.Now,
                                     Address = address,
