@@ -43,10 +43,9 @@ namespace Datn_Api.Services
         {
             var voucher = _context.Vouchers.Find(id);
             if (voucher == null) return false;
-            voucher.Status = 2;
             try
             {
-                _context.Vouchers.Update(voucher);
+                _context.Vouchers.Remove(voucher);
                 await _context.SaveChangesAsync();
                 return true;
             }
