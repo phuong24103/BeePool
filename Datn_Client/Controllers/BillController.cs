@@ -1,4 +1,5 @@
-﻿using Datn_Shared.Models;
+﻿using Datn_Client.Models.Payment;
+using Datn_Shared.Models;
 using Datn_Shared.ViewModels.AccountViewModels;
 using Datn_Shared.ViewModels.BillDetailViewModels;
 using Datn_Shared.ViewModels.BillViewModels;
@@ -86,8 +87,14 @@ namespace Datn_Client.Controllers
                     detail.Price = item.Price;
                     cartDetails.Add(detail);
                 }
+                double price = 0;
+                foreach (var item in cartDetails)
+                {
+                    var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
+                    price += (productdetail.Price * item.Quantity);
+                }
 
-                
+
                 if (code == null)
                 {
                     if(payment == null)
@@ -102,8 +109,64 @@ namespace Datn_Client.Controllers
                         TempData["Giagiam"] = giagiam;
                         string thanhcong = "Đặt hàng thành công";
                         TempData["Thanhcong"] = thanhcong;
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/Create/{payment}", cartDetails);
-                        return RedirectToAction("Index", "Cart");
+                        //await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/Create/{payment}", cartDetails);
+                        //return RedirectToAction("Index", "Cart");
+                        CreateBill bill = new CreateBill()
+                        {
+                            Id = Guid.NewGuid(),
+                            CustomerId = customer.Id,
+                            BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
+                            PaymentId = Guid.Parse(payment),
+                            Price = price,
+                            CreateDate = DateTime.Now,
+                            Address = customer.Address,
+                            CustomerName = customer.FullName,
+                            CustomerPhone = customer.PhoneNumber,
+                        };
+                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", bill);
+                        foreach (var item in cartDetails)
+                        {
+                            var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
+
+                            var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                            UpdateProduct updateProduct = new UpdateProduct()
+                            {
+                                CategoryID = product.CategoryID,
+                                Name = product.Name,
+                                Pin = product.Pin,
+                                Wrap = product.Wrap,
+                                Rings = product.Rings,
+                                AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                                Sold = product.Sold,
+                                Likes = product.Likes,
+                                CreateDate = product.CreateDate,
+                                Producer = product.Producer,
+                                Status = product.Status,
+                                Description = product.Description,
+                            };
+
+                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+
+                            CreateBillDetail billDetail = new CreateBillDetail()
+                            {
+                                BillId = bill.Id,
+                                ProductDetailId = productdetail.Id,
+                                Quantity = item.Quantity,
+                                Price = productdetail.Price * item.Quantity,
+                            };
+
+                            await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
+                            await _httpClient.DeleteAsync($"https://localhost:7033/api/CartDetail/Delete/{item.Id}");
+                        }
+                        if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
+                        {
+                            return Redirect(UrlPayment(bill.Id));
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Cart");
+                        }
+
                     }                       
                         
                 }
@@ -151,8 +214,72 @@ namespace Datn_Client.Controllers
                         TempData["Giagiam"] = giagiam;
                         string thanhcong = "Đặt hàng thành công";
                         TempData["Thanhcong"] = thanhcong;
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillVoucher/{code}/{payment}", cartDetails);
-                        return RedirectToAction("Index", "Cart");
+                        //await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillVoucher/{code}/{payment}", cartDetails);
+                        //return RedirectToAction("Index", "Cart");
+                        if (voucher != null && voucher.Status == 0 && DateTime.Now <= voucher.TimeEnd && DateTime.Now >= voucher.TimeStart)
+                        {
+                            price -= voucher.Value;
+                        }
+                        else
+                        {
+                            price -= 0;
+                        }
+                        CreateBill bill = new CreateBill()
+                        {
+                            Id = Guid.NewGuid(),
+                            CustomerId = customer.Id,
+                            BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
+                            PaymentId = Guid.Parse(payment),
+                            Price = price,
+                            CreateDate = DateTime.Now,
+                            Address = customer.Address,
+                            CustomerName = customer.FullName,
+                            CustomerPhone = customer.PhoneNumber,
+                        };
+                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", bill);
+                        foreach (var item in cartDetails)
+                        {
+                            var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
+
+                            var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                            UpdateProduct updateProduct = new UpdateProduct()
+                            {
+                                CategoryID = product.CategoryID,
+                                Name = product.Name,
+                                Pin = product.Pin,
+                                Wrap = product.Wrap,
+                                Rings = product.Rings,
+                                AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                                Sold = product.Sold,
+                                Likes = product.Likes,
+                                CreateDate = product.CreateDate,
+                                Producer = product.Producer,
+                                Status = product.Status,
+                                Description = product.Description,
+                            };
+
+                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+
+                            CreateBillDetail billDetail = new CreateBillDetail()
+                            {
+                                BillId = bill.Id,
+                                ProductDetailId = productdetail.Id,
+                                Quantity = item.Quantity,
+                                Price = productdetail.Price * item.Quantity,
+                            };
+
+                            await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
+                            await _httpClient.DeleteAsync($"https://localhost:7033/api/CartDetail/Delete/{item.Id}");
+                        }
+                        if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
+                        {
+                            return Redirect(UrlPayment(bill.Id));
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Cart");
+                        }
+
                     }
                     return RedirectToAction("Index", "Cart");
                 }
@@ -309,7 +436,15 @@ namespace Datn_Client.Controllers
                                     result.Clear();
                                     SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
                                 }
-                                return RedirectToAction("Index", "Cart");
+                                if(payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
+                                {
+                                    return Redirect(UrlPayment(bill.Id));
+                                }
+                                else
+                                {
+                                    return RedirectToAction("Index", "Cart");
+                                }
+                                
                             }
                         }
                         
@@ -481,7 +616,14 @@ namespace Datn_Client.Controllers
                                     SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
                                 }
 
-                                return RedirectToAction("Index", "Cart");
+                                if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
+                                {
+                                    return Redirect(UrlPayment(bill.Id));
+                                }
+                                else
+                                {
+                                    return RedirectToAction("Index", "Cart");
+                                }
                             }
                         }
                         
@@ -495,6 +637,44 @@ namespace Datn_Client.Controllers
 
             
         }
+
+        public string UrlPayment(Guid id)
+        {
+            var urlPayment = "";
+            var bill = _httpClient.GetFromJsonAsync<BillView>($"https://localhost:7033/api/Bill/GetById/{id}").Result;
+
+
+            string vnp_Returnurl = "https://localhost:7162/BillDetails/VnpayReturn"; //URL nhan ket qua tra ve
+            string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"; //URL thanh toan cua VNPAY 
+            string vnp_TmnCode = "M5D7W272"; //Ma định danh merchant kết nối (Terminal Id)
+            string vnp_HashSecret = "DGGZJILFSRTUPWIOIBRQXDXJXQPLAOZY"; //Secret Key
+
+            VnPayLibrary vnpay = new VnPayLibrary();
+
+            var price = (long)bill.Price * 100000;
+            vnpay.AddRequestData("vnp_Version", VnPayLibrary.VERSION);
+            vnpay.AddRequestData("vnp_Command", "pay");
+            vnpay.AddRequestData("vnp_TmnCode", vnp_TmnCode);
+            vnpay.AddRequestData("vnp_Amount", price.ToString());
+
+
+            vnpay.AddRequestData("vnp_CreateDate", bill.CreateDate.ToString("yyyyMMddHHmmss"));
+            vnpay.AddRequestData("vnp_CurrCode", "VND");
+            //Lấy địa chỉ ip máy tính
+            vnpay.AddRequestData("vnp_IpAddr", "13.160.92.202");
+            vnpay.AddRequestData("vnp_Locale", "vn");
+            vnpay.AddRequestData("vnp_OrderInfo", "Thanh toan don hang:" + bill.Id);
+            vnpay.AddRequestData("vnp_OrderType", "other"); //default value: other
+
+            vnpay.AddRequestData("vnp_ReturnUrl", vnp_Returnurl);
+            vnpay.AddRequestData("vnp_TxnRef", bill.Id.ToString());
+
+            //Add Params of 2.1.0 Version
+            //Billing
+            urlPayment = vnpay.CreateRequestUrl(vnp_Url, vnp_HashSecret);
+            return urlPayment;
+        }
+
 
     }
 }
