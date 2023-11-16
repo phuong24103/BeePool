@@ -23,6 +23,7 @@ namespace Datn_Api.Services
                 EmPloyeeId = voucher.EmPloyeeId,
                 Code = voucher.Code,
                 Value = voucher.Value,
+                PointCustomer = voucher.PointCustomer,
                 TimeStart = voucher.TimeStart,
                 TimeEnd = voucher.TimeEnd,
                 Status = voucher.Status
@@ -72,6 +73,7 @@ namespace Datn_Api.Services
             v.EmPloyeeId = voucher.EmPloyeeId;
             v.Code = voucher.Code;
             v.Value = voucher.Value;
+            v.PointCustomer = voucher.PointCustomer;
             v.TimeStart = voucher.TimeStart;
             v.TimeEnd = voucher.TimeEnd;
             v.Status = voucher.Status;

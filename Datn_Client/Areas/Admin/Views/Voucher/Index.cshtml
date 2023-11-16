@@ -35,6 +35,7 @@
                                 <tr>
                                     <td>Code</td>
                                     <td>Value</td>
+                                    <td>Point</td>
                                     <td>TimeStart</td>
                                     <td>TimeEnd</td>
                                     <td>Status</td>
@@ -44,6 +45,7 @@
                                     <tr>
                                         <td>@item.Code</td>
                                         <td>@item.Value</td>
+                                        <td>@item.PointCustomer</td>
                                         <td>@item.TimeStart</td>
                                         <td>@item.TimeEnd</td>
                                         <td>
@@ -145,6 +147,14 @@
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">
+                                            PointCustomer
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@voucher.First().PointCustomer" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">
                                             TimeStart
                                         </label>
                                         <div class="col-sm-8">
@@ -204,6 +214,12 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">PointCustomer</label>
+                                    <div class="col-sm-8">
+                                        <input asp-for="@Model.First().PointCustomer" type="text" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">TimeStart</label>
                                     <div class="col-sm-8">
                                         <input asp-for="@Model.First().TimeStart" type="date" class="form-control" value="" />
@@ -238,6 +254,7 @@
                                     <label class="col-sm-4 col-form-label">
                                         <p>Code</p>
                                         <p>Value</p>
+                                        <p>Point</p>
                                         <p>TimeStart</p>
                                         <p>TimeEnd</p>
                                         <p>Status</p>
@@ -247,6 +264,7 @@
                                         {
                                             <p>@item.Code</p>
                                             <p>@item.Value</p>
+                                            <p>@item.PointCustomer</p>
                                             <p>@item.TimeStart</p>
                                             <p>@item.TimeEnd</p>
                                             @if (item.Status == 0)

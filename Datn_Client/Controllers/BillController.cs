@@ -36,8 +36,7 @@ namespace Datn_Client.Controllers
             }
             else
             {
-                var result = SessionServices<BillView>.GetObjFromSession(HttpContext.Session, "Bill");
-                return View(result);
+                return RedirectToAction("Register", "Register");
             }
         }
 
@@ -158,6 +157,12 @@ namespace Datn_Client.Controllers
                             await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
                             await _httpClient.DeleteAsync($"https://localhost:7033/api/CartDetail/Delete/{item.Id}");
                         }
+                        //Cộng điểm cho khách hàng
+                        if (price > 100000)
+                        {
+                            customer.Point += (int)price / 10000;
+                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Customer/UpdatePoint/{customer.Id}", customer);
+                        }
                         if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
                         {
                             return Redirect(UrlPayment(bill.Id));
@@ -202,6 +207,11 @@ namespace Datn_Client.Controllers
                         message = "Voucher này đã hết hạn";
                         TempData["Message"] = message;
 
+                    }
+                    else if (customer.Point < voucher.PointCustomer)
+                    {
+                        message = "Khách hàng không đủ điểm để sử dụng voucher này";
+                        TempData["Message"] = message;
                     }
                     else if(payment == null)
                     {
@@ -270,6 +280,12 @@ namespace Datn_Client.Controllers
 
                             await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
                             await _httpClient.DeleteAsync($"https://localhost:7033/api/CartDetail/Delete/{item.Id}");
+                        }
+                        //Cộng điểm cho khách hàng
+                        if (price > 100000)
+                        {
+                            customer.Point += (int)price / 10000;
+                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Customer/UpdatePoint/{customer.Id}", customer);
                         }
                         if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
                         {
@@ -436,7 +452,13 @@ namespace Datn_Client.Controllers
                                     result.Clear();
                                     SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
                                 }
-                                if(payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
+                                //Cộng điểm cho khách hàng
+                                if (price > 100000)
+                                {
+                                    customer.Point += (int)price / 10000;
+                                    await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Customer/UpdatePoint/{customer.Id}", customer);
+                                }
+                                if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
                                 {
                                     return Redirect(UrlPayment(bill.Id));
                                 }
@@ -503,6 +525,11 @@ namespace Datn_Client.Controllers
                         message = "Voucher này đã hết hạn";
                         TempData["Message"] = message;
 
+                    }
+                    else if (voucher.PointCustomer > 0)
+                    {
+                        message = "Khách hàng không đủ điểm để sử dụng voucher này(Vì chưa đăng nhập nên điểm là 0)";
+                        TempData["Message"] = message;
                     }
                     else
                     {
@@ -615,7 +642,12 @@ namespace Datn_Client.Controllers
                                     result.Clear();
                                     SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
                                 }
-
+                                //Cộng điểm cho khách hàng
+                                if (price > 100000)
+                                {
+                                    customer.Point += (int)price / 10000;
+                                    await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Customer/UpdatePoint/{customer.Id}", customer);
+                                }
                                 if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
                                 {
                                     return Redirect(UrlPayment(bill.Id));
