@@ -34,7 +34,7 @@
                             <table class="table table-hover datatable">
                                 <tr>
                                     <td>tên Sản phẩm</td>
-                                   @*  //<td>Tên danh mục</td> *@
+                                    @*  //<td>Tên danh mục</td> *@
                                     <td>Pin</td>
                                     <td>Wrap</td>
                                     <td>Rings</td>
@@ -50,7 +50,7 @@
                                 {
                                     <tr>
                                         <td>@item.Name</td>
-                                     @*    //<td>@item.CategoryName</td> *@
+                                        @*    //<td>@item.CategoryName</td> *@
                                         <td>@item.Pin</td>
                                         <td>@item.Wrap</td>
                                         <td>@item.Rings</td>
@@ -136,7 +136,7 @@
                                         <div class="col-sm-8">
                                             <input asp-for="@category.First().Name" type="text" class="form-control" />
                                         </div>
-                                    </div>   
+                                    </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">
                                             Pin
@@ -168,6 +168,22 @@
                                         <div class="col-sm-8">
                                             <input asp-for="@category.First().AvailableQuantity" type="text" class="form-control" />
                                         </div>
+                                    </div> 
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">
+                                            Producer
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@category.First().Producer" type="text" class="form-control" />
+                                        </div>
+                                    </div>  
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">
+                                            Description
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@category.First().Description" type="text" class="form-control" />
+                                        </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Status</label>
@@ -192,13 +208,13 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Name</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Name" type="text" class="form-control" value="" />
+                                        <input name="Name" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Tên danh mục</label>
                                     <div class="col-sm-8">
-                                        <select asp-for="@Model.First().Category.Id" class="form-select" aria-label="Default select example">
+                                        <select name="CategoryId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @if (cate != null)
                                             {
@@ -208,78 +224,78 @@
                                                 }
 
                                             }
-                                        
+
                                         </select>
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Pin</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Pin" type="text" class="form-control" value="" />
+                                        <input name="Pin" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Wrap</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Wrap" type="text" class="form-control" value="" />
+                                        <input name="Wrap" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Rings</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Rings" type="text" class="form-control" value="" />
+                                        <input name="Rings" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
-                              
+
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">AvailableQuantity</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().AvailableQuantity" type="text" class="form-control" value="" />
+                                        <input name="AvailableQuantity" type="text" class="form-control" value="" />
                                     </div>
-                        @*         </div> <div class="mb-3 row">
+                                    @*         </div> <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Sold</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Sold" type="text" class="form-control" value="" />
+                                    <input asp-for="@Model.First().Sold" type="text" class="form-control" value="" />
                                     </div>
-                                </div>  *@ 
+                                    </div>  *@
 
-                           @*      <div class="mb-3 row">
+                                    @*      <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Likes</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Likes" type="text" class="form-control" value="" />
+                                    <input asp-for="@Model.First().Likes" type="text" class="form-control" value="" />
                                     </div>
-                                </div> *@
+                                    </div> *@
 
-                                <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Producer</label>
-                                    <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Producer" type="text" class="form-control" value="" />
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Producer</label>
+                                        <div class="col-sm-8">
+                                            <input name="Producer" type="text" class="form-control" value="" />
+                                        </div>
                                     </div>
-                                </div>  
-                            @*     <div class="mb-3 row">
+                                    @*     <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">CreateDate</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().CreateDate" type="datetime" class="form-control" value="" />
+                                    <input asp-for="@Model.First().CreateDate" type="datetime" class="form-control" value="" />
                                     </div>
-                                </div> *@
-                                <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Description</label>
-                                    <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Description" type="text" class="form-control" value="" />
+                                    </div> *@
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Description</label>
+                                        <div class="col-sm-8">
+                                            <input name="Description" type="text" class="form-control" value="" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Status</label>
-                                    <div class="col-sm-8">
-                                        <select asp-for="@Model.First().Status" class="form-select" aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
-                                            <option value="0">Còn hàng</option>
-                                            <option value="1">Hết hàng</option>
-                                        </select>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Status</label>
+                                        <div class="col-sm-8">
+                                            <select name="Status" class="form-select" aria-label="Default select example">
+                                                <option selected>Open this select menu</option>
+                                                <option value="0">Còn hàng</option>
+                                                <option value="1">Hết hàng</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <button class="btn btn-success">Thêm</button>
+                                    <button class="btn btn-success">Thêm</button>
                             </form><!-- End Multi Columns Form -->
                         </div>
 
@@ -290,7 +306,7 @@
                                 <div class="row">
                                     <label class="col-sm-4 col-form-label">
                                         <p>Tên sản phẩm</p>
-                                        <p>Tên danh mục</p>
+                                        @* <p>Tên danh mục</p> *@
                                         <p>Pin</p>
                                         <p>Wrap</p>
                                         <p>Rings</p>
@@ -306,10 +322,21 @@
                                         @foreach (var item in category)
                                         {
                                             <p>@item.Name</p>
+                                            <p>@item.Pin</p>
+                                            <p>@item.Wrap</p>
+                                            <p>@item.Rings</p>
+                                            <p>@item.AvailableQuantity</p>
+                                            <p>@item.Sold</p>
+                                            <p>@item.Likes</p>
+                                            <p>@item.Producer</p>
+                                            <p>@item.CreateDate</p>
+                                            <p>@item.Description</p>
+
                                             @if (item.Status == 0)
                                             {
                                                 <span>Còn hàng</span>
                                             }
+
                                             else if (item.Status == 1)
                                             {
                                                 <span>Hết hàng</span>

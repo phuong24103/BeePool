@@ -452,11 +452,8 @@ namespace Datn_Api.Services
             n.Pin = product.Pin;
             n.Wrap = product.Wrap;
             n.Rings = product.Rings;
-            n.AvailableQuantity = product.AvailableQuantity;
-            n.Sold = product.Sold;
-            n.Likes = product.Likes;
+            n.AvailableQuantity = product.AvailableQuantity;          
             n.Producer = product.Producer;
-            n.CreateDate = product.CreateDate;
             n.Status = product.Status;
             n.Description = product.Description;
             try
