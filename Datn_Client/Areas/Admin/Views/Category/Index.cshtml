@@ -27,43 +27,60 @@
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
 
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Lọc</h6>
+                                </li>
+
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Filter" asp-route-date="today">Hôm nay</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Filter" asp-route-date="thisMonth">Tháng này</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Filter" asp-route-date="thisYear">Năm nay</a></li>
+                            </ul>
+                        </div>
+
                         <div class="card-body">
                             <h5 class="card-title">Danh mục <span>| </span></h5>
 
                             <table class="table table-hover datatable">
-                                <tr>
-                                    <td>Tên</td>
-                                    <td>Trạng thái</td>
-                                    <td></td>
-                                </tr>
-                                @foreach (var item in @Model)
-                                {
+                                <thead>
                                     <tr>
-                                        <td>@item.Name</td>
-                                        <td>
-                                            @if (item.Status == 0)
-                                            {
-                                                <span>Còn hàng</span>
-                                            }
-                                            else if (item.Status == 1)
-                                            {
-                                                <span>Hết hàng</span>
-                                            }
-                                            else
-                                            {
-                                                <span>Ngừng bán</span>
-                                            }
-                                        </td>
-                                        <td>
-                                            <a asp-area="Admin" asp-controller="Category" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success">
-                                                <i class="bx bxs-detail"></i>
-                                            </a>
-                                            <a asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
-                                                <i class="bx bxs-trash-alt"></i>
-                                            </a>
-                                        </td>
+                                        <th>Tên</th>
+                                        <th>Trạng thái</th>
+                                        <th></th>
                                     </tr>
-                                }
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in @Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td>
+                                                @if (item.Status == 0)
+                                                {
+                                                    <span>Còn hàng</span>
+                                                }
+                                                else if (item.Status == 1)
+                                                {
+                                                    <span>Hết hàng</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Ngừng bán</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-area="Admin" asp-controller="Category" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success" title="Chi tiết">
+                                                    <i class="bx bxs-detail"></i>
+                                                </a>
+                                                <a asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" title="Xóa">
+                                                    <i class="bx bxs-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -140,14 +157,14 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Name</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Name" type="text" class="form-control" value=""/>
+                                        <input name="Name" type="text" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Status</label>
                                     <div class="col-sm-8">
-                                        <select asp-for="@Model.First().Status" class="form-select" aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
+                                        <select name="Status" class="form-select" aria-label="Default select example">
+                                            <option value="" selected>Open this select menu</option>
                                             <option value="0">Còn hàng</option>
                                             <option value="1">Hết hàng</option>
                                         </select>

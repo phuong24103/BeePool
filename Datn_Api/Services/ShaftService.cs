@@ -3,6 +3,7 @@ using Datn_Api.IServices;
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.ShaftViewModels;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Datn_Api.Services
 {
@@ -65,6 +66,20 @@ namespace Datn_Api.Services
         public async Task<IEnumerable<Shaft>> GetAllShaftById(Guid id)
         {
             return await _context.Shafts.Where(p=>p.Id == id).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Shaft>> GetAllShaftByProductDetailId(Guid id)
+        {
+            var productDetail = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == id);
+            var productDetails = await _context.ProductDetails.Where(p => p.ProductID == productDetail.ProductID).ToListAsync();
+            List<Shaft> shafts = new List<Shaft>();
+            foreach (var item in productDetails)
+            {
+                var shaft = await _context.Shafts.FirstOrDefaultAsync(p => p.Id == item.ShaftId);
+                if(!shafts.Contains(shaft))
+                    shafts.Add(shaft);
+            }
+            return shafts;
         }
 
         public async Task<Shaft> GetShaftById(Guid id)

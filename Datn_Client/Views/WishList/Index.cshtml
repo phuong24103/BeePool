@@ -1,4 +1,6 @@
-﻿@model IEnumerable< Datn_Shared.ViewModels.WishListViewModels.WishListView>
+﻿@model X.PagedList.PagedList<Datn_Shared.ViewModels.WishListViewModels.WishListView>
+@using AspNetCore.PaginatedList;
+@using X.PagedList.Mvc.Core
 
 @{
     ViewData["Title"] = "WishList";
@@ -7,7 +9,8 @@
     <link rel="stylesheet" href="~/css/productbutton.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/dropdown.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/boder.css" asp-append-version="true" />
-
+    <link rel="stylesheet" href="~/css/text.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/paging.css" asp-append-version="true" />
 }
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -104,7 +107,11 @@
 
 
 </div>
-<div class="row" style="margin-bottom : 100px;margin-top : 100px">
+<div class="wrapper my-5">
+    <div class="bg"> Sản Phẩm Yêu Thích </div>
+    <div class="fg"> Sản Phẩm Yêu Thích </div>
+</div>
+<div class="row my-3">
     @foreach (var item in @Model)
     {
         @if (@item.ProductDetailId != Guid.Empty)
@@ -148,20 +155,7 @@
         }
     }
 </div>
-<div style="text-align :center;position : relative; left : 500px">
-    <nav aria-label="...">
-        <ul class="pagination">
-            <li class="page-item disabled">
-                <a class="page-link">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
+
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = Model.PageSize }))
 </div>

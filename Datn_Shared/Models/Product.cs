@@ -24,10 +24,10 @@ namespace Datn_Shared.Models
         public string Producer { get; set; }
         public DateTime CreateDate { get; set; }
         public int Status { get; set; }
-        public string Description { get; set; }        
-        public virtual Category Category { get; set; }
-        public virtual ICollection <WishList> WishLists { get; set; }
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public string Description { get; set; }
+        public virtual Category? Category { get; set; }
+        public virtual ICollection <WishList>? WishLists { get; set; }
+        public virtual ICollection<ProductDetail>? ProductDetails { get; set; }
 
 
     }

@@ -1,4 +1,6 @@
-﻿using Datn_Shared.Models;
+﻿using Datn_Client.Models.Payment;
+using Datn_Shared.Models;
+using Datn_Shared.ViewModels.AccountViewModels;
 using Datn_Shared.ViewModels.BillDetailViewModels;
 using Datn_Shared.ViewModels.BillViewModels;
 using Datn_Shared.ViewModels.CartDetailViewModels;
@@ -25,7 +27,8 @@ namespace Datn_Client.Controllers
         public async Task<IActionResult> Bill()
         {
             var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userName != null)
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role == null)
             {
                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
                 var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetByCustomerId/{customer.Id}");
@@ -33,8 +36,7 @@ namespace Datn_Client.Controllers
             }
             else
             {
-                var result = SessionServices<BillView>.GetObjFromSession(HttpContext.Session, "Bill");
-                return View(result);
+                return RedirectToAction("Register", "Register");
             }
         }
 
@@ -64,11 +66,12 @@ namespace Datn_Client.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateVoucher(string code, string address, string name, string phonenumber)
+        public async Task<IActionResult> CreateVoucher(string code, string address, string name, string phonenumber, string payment)
         {
             var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
             //Nếu có đăng nhập
-            if(userName != null)
+            if (userName != null && role == null)
             {
                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
                 var result = await _httpClient.GetFromJsonAsync<List<CartDetailView>>($"https://localhost:7033/api/CartDetail/GetByCustomerId/{customer.Id}");
@@ -83,31 +86,94 @@ namespace Datn_Client.Controllers
                     detail.Price = item.Price;
                     cartDetails.Add(detail);
                 }
+                double price = 0;
+                foreach (var item in cartDetails)
+                {
+                    var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
+                    price += (productdetail.Price * item.Quantity);
+                }
 
-                
+
                 if (code == null)
-                {   
-                    if(name == null)
+                {
+                    if(payment == null)
                     {
-                        string messagename = "Vui lòng nhập tên";
-                        TempData["Messagename"] = messagename;
-                    }
-                    else if(phonenumber == null)
-                    {
-                        string messagephone = "Vui lòng nhập số điện thoại";
-                        TempData["Messagephone"] = messagephone;
-                    }
-                    else if (address == null)
-                    {
-                        string messageaddress = "Vui lòng nhập địa chỉ nhận";
-                        TempData["Messageaddress"] = messageaddress;
+                        string messagepayment = "Vui lòng chọn phương thức thanh toán";
+                        TempData["Messagepayment"] = messagepayment;
+                        return RedirectToAction("Index", "Cart");
                     }
                     else
                     {
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/Create/{address}/{name}/{phonenumber}", cartDetails);
-                        return RedirectToAction("Bill");
-                    }
-                    return RedirectToAction("Index", "Cart");
+                        string giagiam = "0";
+                        TempData["Giagiam"] = giagiam;
+                        string thanhcong = "Đặt hàng thành công";
+                        TempData["Thanhcong"] = thanhcong;
+                        //await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/Create/{payment}", cartDetails);
+                        //return RedirectToAction("Index", "Cart");
+                        CreateBill bill = new CreateBill()
+                        {
+                            Id = Guid.NewGuid(),
+                            CustomerId = customer.Id,
+                            BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
+                            PaymentId = Guid.Parse(payment),
+                            Price = price,
+                            CreateDate = DateTime.Now,
+                            Address = customer.Address,
+                            CustomerName = customer.FullName,
+                            CustomerPhone = customer.PhoneNumber,
+                        };
+                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", bill);
+                        foreach (var item in cartDetails)
+                        {
+                            var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
+
+                            var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                            UpdateProduct updateProduct = new UpdateProduct()
+                            {
+                                CategoryID = product.CategoryID,
+                                Name = product.Name,
+                                Pin = product.Pin,
+                                Wrap = product.Wrap,
+                                Rings = product.Rings,
+                                AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                                Sold = product.Sold,
+                                Likes = product.Likes,
+                                CreateDate = product.CreateDate,
+                                Producer = product.Producer,
+                                Status = product.Status,
+                                Description = product.Description,
+                            };
+
+                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+
+                            CreateBillDetail billDetail = new CreateBillDetail()
+                            {
+                                BillId = bill.Id,
+                                ProductDetailId = productdetail.Id,
+                                Quantity = item.Quantity,
+                                Price = productdetail.Price * item.Quantity,
+                            };
+
+                            await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
+                            await _httpClient.DeleteAsync($"https://localhost:7033/api/CartDetail/Delete/{item.Id}");
+                        }
+                        //Cộng điểm cho khách hàng
+                        if (price > 100000)
+                        {
+                            customer.Point += (int)price / 10000;
+                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Customer/UpdatePoint/{customer.Id}", customer);
+                        }
+                        if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
+                        {
+                            return Redirect(UrlPayment(bill.Id));
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Cart");
+                        }
+
+                    }                       
+                        
                 }
             
                     
@@ -118,22 +184,8 @@ namespace Datn_Client.Controllers
                     var allvoucher = await _httpClient.GetFromJsonAsync<List<Voucher>>($"https://localhost:7033/api/Voucher/GetAll");
                     var voucher = allvoucher.FirstOrDefault(p => p.Code == code);
 
-                    if (name == null)
-                    {
-                        string messagename = "Vui lòng nhập tên";
-                        TempData["Messagename"] = messagename;
-                    }
-                    else if (phonenumber == null)
-                    {
-                        string messagephone = "Vui lòng nhập số điện thoại";
-                        TempData["Messagephone"] = messagephone;
-                    }
-                    else if (address == null)
-                    {
-                        string messageaddress = "Vui lòng nhập địa chỉ nhận";
-                        TempData["Messageaddress"] = messageaddress;
-                    }
-                    else if (voucher == null)
+                    
+                    if (voucher == null)
                     {
                         message = "Voucher này không tồn tại";
                         TempData["Message"] = message;
@@ -156,12 +208,94 @@ namespace Datn_Client.Controllers
                         TempData["Message"] = message;
 
                     }
+                    else if (customer.Point < voucher.PointCustomer)
+                    {
+                        message = "Khách hàng không đủ điểm để sử dụng voucher này";
+                        TempData["Message"] = message;
+                    }
+                    else if(payment == null)
+                    {
+                        string messagepayment = "Vui lòng chọn phương thức thanh toán";
+                        TempData["Messagepayment"] = messagepayment;
+                    }
                     else
                     {
                         giagiam = voucher.Value.ToString();
                         TempData["Giagiam"] = giagiam;
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillVoucher/{code}/{address}/{name}/{phonenumber}", cartDetails);
-                        return RedirectToAction("Index", "Cart");
+                        string thanhcong = "Đặt hàng thành công";
+                        TempData["Thanhcong"] = thanhcong;
+                        //await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillVoucher/{code}/{payment}", cartDetails);
+                        //return RedirectToAction("Index", "Cart");
+                        if (voucher != null && voucher.Status == 0 && DateTime.Now <= voucher.TimeEnd && DateTime.Now >= voucher.TimeStart)
+                        {
+                            price -= voucher.Value;
+                        }
+                        else
+                        {
+                            price -= 0;
+                        }
+                        CreateBill bill = new CreateBill()
+                        {
+                            Id = Guid.NewGuid(),
+                            CustomerId = customer.Id,
+                            BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
+                            PaymentId = Guid.Parse(payment),
+                            Price = price,
+                            CreateDate = DateTime.Now,
+                            Address = customer.Address,
+                            CustomerName = customer.FullName,
+                            CustomerPhone = customer.PhoneNumber,
+                        };
+                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", bill);
+                        foreach (var item in cartDetails)
+                        {
+                            var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
+
+                            var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                            UpdateProduct updateProduct = new UpdateProduct()
+                            {
+                                CategoryID = product.CategoryID,
+                                Name = product.Name,
+                                Pin = product.Pin,
+                                Wrap = product.Wrap,
+                                Rings = product.Rings,
+                                AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                                Sold = product.Sold,
+                                Likes = product.Likes,
+                                CreateDate = product.CreateDate,
+                                Producer = product.Producer,
+                                Status = product.Status,
+                                Description = product.Description,
+                            };
+
+                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+
+                            CreateBillDetail billDetail = new CreateBillDetail()
+                            {
+                                BillId = bill.Id,
+                                ProductDetailId = productdetail.Id,
+                                Quantity = item.Quantity,
+                                Price = productdetail.Price * item.Quantity,
+                            };
+
+                            await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
+                            await _httpClient.DeleteAsync($"https://localhost:7033/api/CartDetail/Delete/{item.Id}");
+                        }
+                        //Cộng điểm cho khách hàng
+                        if (price > 100000)
+                        {
+                            customer.Point += (int)price / 10000;
+                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Customer/UpdatePoint/{customer.Id}", customer);
+                        }
+                        if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
+                        {
+                            return Redirect(UrlPayment(bill.Id));
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Cart");
+                        }
+
                     }
                     return RedirectToAction("Index", "Cart");
                 }
@@ -191,6 +325,7 @@ namespace Datn_Client.Controllers
                     var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
                     price += (productdetail.Price * item.Quantity);
                 }
+                //Nếu ko điền code
                 if (code == null)
                 {
                     if (name == null)
@@ -198,9 +333,9 @@ namespace Datn_Client.Controllers
                         string messagename = "Vui lòng nhập tên";
                         TempData["Messagename"] = messagename;
                     }
-                    else if (phonenumber == null)
+                    else if (phonenumber == null || phonenumber.Length > 10)
                     {
-                        string messagephone = "Vui lòng nhập số điện thoại";
+                        string messagephone = "Vui lòng nhập số điện thoại và tối đa là 10";
                         TempData["Messagephone"] = messagephone;
                     }
                     else if (address == null)
@@ -208,77 +343,139 @@ namespace Datn_Client.Controllers
                         string messageaddress = "Vui lòng nhập địa chỉ nhận";
                         TempData["Messageaddress"] = messageaddress;
                     }
+                    else if (payment == null)
+                    {
+                        string messagepayment = "Vui lòng chọn phương thức thanh toán";
+                        TempData["Messagepayment"] = messagepayment;
+                    }
                     else
                     {
-                        //Bill thêm vào session
-                        BillView bill = new BillView()
+                        //Kiểm tra username có tồn tại hay ko
+                        var allcustomer = await _httpClient.GetFromJsonAsync<List<Customer>>($"https://localhost:7033/api/Customer/GetAll");
+                        var usernamecustomer = allcustomer.FirstOrDefault(p => p.UserName == name);
+                        if(usernamecustomer != null)
                         {
-                            Id = Guid.NewGuid(),
-                            CustomerId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
-                            BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
-                            PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
-                            Price = price,
-                            CreateDate = DateTime.Now,
-                            Address = address,
-                            CustomerName = name,
-                            CustomerPhone = phonenumber,
-                        };
-                        //Bill thêm vào db
-                        CreateBill createBill = new CreateBill()
-                        {
-                            Id = bill.Id,
-                            CustomerId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
-                            BillStatusId = bill.BillStatusId,
-                            PaymentId = bill.PaymentId,
-                            Price = bill.Price,
-                            CreateDate = bill.CreateDate,
-                            Address = bill.Address,
-                            CustomerName = bill.CustomerName,
-                            CustomerPhone = bill.CustomerPhone,
-                        };
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", createBill);
-                        Bills.Add(bill);
-                        SessionServices<BillView>.SetObjToSession(HttpContext.Session, "Bill", Bills);
-                        foreach (var item in cartDetails)
-                        {
-                            var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
-
-                            var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
-                            UpdateProduct updateProduct = new UpdateProduct()
-                            {
-                                CategoryID = product.CategoryID,
-                                Name = product.Name,
-                                Pin = product.Pin,
-                                Wrap = product.Wrap,
-                                Rings = product.Rings,
-                                AvailableQuantity = product.AvailableQuantity - item.Quantity,
-                                Sold = product.Sold,
-                                Likes = product.Likes,
-                                CreateDate = product.CreateDate,
-                                Producer = product.Producer,
-                                Status = product.Status,
-                                Description = product.Description,
-                            };
-
-                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
-
-                            CreateBillDetail billDetail = new CreateBillDetail()
-                            {
-                                BillId = bill.Id,
-                                ProductDetailId = productdetail.Id,
-                                Quantity = item.Quantity,
-                                Price = productdetail.Price * item.Quantity,
-                            };
-
-                            await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
-                            result.Clear();
-                            SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
+                            string messagename = "Username này đã tồn tại";
+                            TempData["Messagename"] = messagename;
                         }
-                        return RedirectToAction("Bill");
+                        else
+                        {
+                            //Tạo mới khách hàng
+                            Register Registercustomer = new Register()
+                            {
+                                FullName = name,
+                                Username = name,
+                                Password = "123456",
+                                ConfirmPassword = "123456",
+                                Gender = 0,
+                                DateOfBirth = new DateTime(2003, 10, 20),
+                                Address = address,
+                                PhoneNumber = phonenumber,
+                                Email = $"{name}@gmail.com",
+                                Image = "anhq.png",
+                            };
+                            var AddCus = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
+                            //Nếu ko tạo dc khách hàng mới
+                            if (AddCus.IsSuccessStatusCode == false)
+                            {
+                                string messagename = "Vui lòng nhập usename không dấu và viết liền";
+                                TempData["Messagename"] = messagename;
+                            }
+                            else
+                            {
+                                string giagiam = "0";
+                                TempData["Giagiam"] = giagiam;
+                                string thanhcong = "Đặt hàng thành công";
+                                TempData["Thanhcong"] = thanhcong;
+                                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{Registercustomer.Username}");
+                                //Bill thêm vào session
+                                BillView bill = new BillView()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    CustomerId = customer.Id,
+                                    BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
+                                    PaymentId = Guid.Parse(payment),
+                                    Price = price,
+                                    CreateDate = DateTime.Now,
+                                    Address = address,
+                                    CustomerName = name,
+                                    CustomerPhone = phonenumber,
+                                };
+                                //Bill thêm vào db
+                                CreateBill createBill = new CreateBill()
+                                {
+                                    Id = bill.Id,
+                                    CustomerId = customer.Id,
+                                    BillStatusId = bill.BillStatusId,
+                                    PaymentId = bill.PaymentId,
+                                    Price = bill.Price,
+                                    CreateDate = bill.CreateDate,
+                                    Address = bill.Address,
+                                    CustomerName = bill.CustomerName,
+                                    CustomerPhone = bill.CustomerPhone,
+                                };
+                                await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", createBill);
+                                Bills.Add(bill);
+                                SessionServices<BillView>.SetObjToSession(HttpContext.Session, "Bill", Bills);
+                                foreach (var item in cartDetails)
+                                {
+                                    var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
+
+                                    var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                                    UpdateProduct updateProduct = new UpdateProduct()
+                                    {
+                                        CategoryID = product.CategoryID,
+                                        Name = product.Name,
+                                        Pin = product.Pin,
+                                        Wrap = product.Wrap,
+                                        Rings = product.Rings,
+                                        AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                                        Sold = product.Sold,
+                                        Likes = product.Likes,
+                                        CreateDate = product.CreateDate,
+                                        Producer = product.Producer,
+                                        Status = product.Status,
+                                        Description = product.Description,
+                                    };
+
+                                    await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+
+                                    CreateBillDetail billDetail = new CreateBillDetail()
+                                    {
+                                        BillId = bill.Id,
+                                        ProductDetailId = productdetail.Id,
+                                        Quantity = item.Quantity,
+                                        Price = productdetail.Price * item.Quantity,
+                                    };
+
+                                    await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
+                                    result.Clear();
+                                    SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
+                                }
+                                //Cộng điểm cho khách hàng
+                                if (price > 100000)
+                                {
+                                    customer.Point += (int)price / 10000;
+                                    await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Customer/UpdatePoint/{customer.Id}", customer);
+                                }
+                                if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
+                                {
+                                    return Redirect(UrlPayment(bill.Id));
+                                }
+                                else
+                                {
+                                    return RedirectToAction("Index", "Cart");
+                                }
+                                
+                            }
+                        }
+                        
+                        
                     }
 
                     return RedirectToAction("Index", "Cart");
                 }
+                //Nếu điền code
                 else
                 {
                     string giagiam = string.Empty;
@@ -291,15 +488,20 @@ namespace Datn_Client.Controllers
                         string messagename = "Vui lòng nhập tên";
                         TempData["Messagename"] = messagename;
                     }
-                    else if (phonenumber == null)
+                    else if (phonenumber == null || phonenumber.Length > 10)
                     {
-                        string messagephone = "Vui lòng nhập số điện thoại";
+                        string messagephone = "Vui lòng nhập số điện thoại và tối đa là 10";
                         TempData["Messagephone"] = messagephone;
                     }
                     else if (address == null)
                     {
                         string messageaddress = "Vui lòng nhập địa chỉ nhận";
                         TempData["Messageaddress"] = messageaddress;
+                    }
+                    else if (payment == null)
+                    {
+                        string messagepayment = "Vui lòng chọn phương thức thanh toán";
+                        TempData["Messagepayment"] = messagepayment;
                     }
                     else if (voucher == null)
                     {
@@ -324,84 +526,140 @@ namespace Datn_Client.Controllers
                         TempData["Message"] = message;
 
                     }
+                    else if (voucher.PointCustomer > 0)
+                    {
+                        message = "Khách hàng không đủ điểm để sử dụng voucher này(Vì chưa đăng nhập nên điểm là 0)";
+                        TempData["Message"] = message;
+                    }
                     else
                     {
-                        giagiam = voucher.Value.ToString();
-                        TempData["Giagiam"] = giagiam;
-                        if (voucher != null && voucher.Status == 0 && DateTime.Now <= voucher.TimeEnd && DateTime.Now >= voucher.TimeStart)
+                        //Kiểm tra username có tồn tại hay ko
+                        var allcustomer = await _httpClient.GetFromJsonAsync<List<Customer>>($"https://localhost:7033/api/Customer/GetAll");
+                        var usernamecustomer = allcustomer.FirstOrDefault(p => p.UserName == name);
+                        if (usernamecustomer != null)
                         {
-                            price -= voucher.Value;
+                            string messagename = "Username này đã tồn tại";
+                            TempData["Messagename"] = messagename;
                         }
                         else
                         {
-                            price -= 0;
-                        }
-                        //Bill thêm vào session
-                        BillView bill = new BillView()
-                        {
-                            Id = Guid.NewGuid(),
-                            CustomerId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
-                            BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
-                            PaymentId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
-                            Price = price,
-                            CreateDate = DateTime.Now,
-                            Address = address,
-                            CustomerName = name,
-                            CustomerPhone = phonenumber,
-                        };
-                        //Bill thêm vào db
-                        CreateBill createBill = new CreateBill()
-                        {
-                            Id = bill.Id,
-                            CustomerId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
-                            BillStatusId = bill.BillStatusId,
-                            PaymentId = bill.PaymentId,
-                            Price = bill.Price,
-                            CreateDate = bill.CreateDate,
-                            Address = bill.Address,
-                            CustomerName = bill.CustomerName,
-                            CustomerPhone = bill.CustomerPhone,
-                        };
-                        await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", bill);
-                        Bills.Add(bill);
-                        SessionServices<BillView>.SetObjToSession(HttpContext.Session, "Bill", Bills);
-                        foreach (var item in cartDetails)
-                        {
-                            var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
-
-                            var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
-                            UpdateProduct updateProduct = new UpdateProduct()
+                            if (voucher != null && voucher.Status == 0 && DateTime.Now <= voucher.TimeEnd && DateTime.Now >= voucher.TimeStart)
                             {
-                                CategoryID = product.CategoryID,
-                                Name = product.Name,
-                                Pin = product.Pin,
-                                Wrap = product.Wrap,
-                                Rings = product.Rings,
-                                AvailableQuantity = product.AvailableQuantity - item.Quantity,
-                                Sold = product.Sold,
-                                Likes = product.Likes,
-                                CreateDate = product.CreateDate,
-                                Producer = product.Producer,
-                                Status = product.Status,
-                                Description = product.Description,
-                            };
-
-                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
-
-                            CreateBillDetail billDetail = new CreateBillDetail()
+                                price -= voucher.Value;
+                            }
+                            else
                             {
-                                BillId = bill.Id,
-                                ProductDetailId = productdetail.Id,
-                                Quantity = item.Quantity,
-                                Price = productdetail.Price * item.Quantity,
+                                price -= 0;
+                            }
+                            //Tạo mới khách hàng
+                            Register Registercustomer = new Register()
+                            {
+                                FullName = name,
+                                Username = name,
+                                Password = "123456",
+                                ConfirmPassword = "123456",
+                                Gender = 0,
+                                DateOfBirth = new DateTime(2003, 10, 20),
+                                Address = address,
+                                PhoneNumber = phonenumber,
+                                Email = $"{name}@gmail.com",
+                                Image = "anhq.png",
                             };
+                            var AddCus = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
+                            if (AddCus.IsSuccessStatusCode == false)
+                            {
+                                string messagename = "Vui lòng nhập usename không dấu và viết liền";
+                                TempData["Messagename"] = messagename;
+                            }
+                            else
+                            {
+                                giagiam = voucher.Value.ToString();
+                                TempData["Giagiam"] = giagiam;
+                                string thanhcong = "Đặt hàng thành công";
+                                TempData["Thanhcong"] = thanhcong;
+                                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{Registercustomer.Username}");
+                                //Bill thêm vào session
+                                BillView bill = new BillView()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    CustomerId = customer.Id,
+                                    BillStatusId = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
+                                    PaymentId = Guid.Parse(payment),
+                                    Price = price,
+                                    CreateDate = DateTime.Now,
+                                    Address = address,
+                                    CustomerName = name,
+                                    CustomerPhone = phonenumber,
+                                };
+                                //Bill thêm vào db
+                                CreateBill createBill = new CreateBill()
+                                {
+                                    Id = bill.Id,
+                                    CustomerId = customer.Id,
+                                    BillStatusId = bill.BillStatusId,
+                                    PaymentId = bill.PaymentId,
+                                    Price = bill.Price,
+                                    CreateDate = bill.CreateDate,
+                                    Address = bill.Address,
+                                    CustomerName = bill.CustomerName,
+                                    CustomerPhone = bill.CustomerPhone,
+                                };
+                                await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", bill);
+                                Bills.Add(bill);
+                                SessionServices<BillView>.SetObjToSession(HttpContext.Session, "Bill", Bills);
+                                foreach (var item in cartDetails)
+                                {
+                                    var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
 
-                            await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
-                            result.Clear();
-                            SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
+                                    var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                                    UpdateProduct updateProduct = new UpdateProduct()
+                                    {
+                                        CategoryID = product.CategoryID,
+                                        Name = product.Name,
+                                        Pin = product.Pin,
+                                        Wrap = product.Wrap,
+                                        Rings = product.Rings,
+                                        AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                                        Sold = product.Sold,
+                                        Likes = product.Likes,
+                                        CreateDate = product.CreateDate,
+                                        Producer = product.Producer,
+                                        Status = product.Status,
+                                        Description = product.Description,
+                                    };
+
+                                    await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+
+                                    CreateBillDetail billDetail = new CreateBillDetail()
+                                    {
+                                        BillId = bill.Id,
+                                        ProductDetailId = productdetail.Id,
+                                        Quantity = item.Quantity,
+                                        Price = productdetail.Price * item.Quantity,
+                                    };
+
+                                    await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/BillDetail/Create", billDetail);
+                                    result.Clear();
+                                    SessionServices<CartDetailView>.SetObjToSession(HttpContext.Session, "CartDetail", result);
+                                }
+                                //Cộng điểm cho khách hàng
+                                if (price > 100000)
+                                {
+                                    customer.Point += (int)price / 10000;
+                                    await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Customer/UpdatePoint/{customer.Id}", customer);
+                                }
+                                if (payment == "a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16")
+                                {
+                                    return Redirect(UrlPayment(bill.Id));
+                                }
+                                else
+                                {
+                                    return RedirectToAction("Index", "Cart");
+                                }
+                            }
                         }
-
-                        return RedirectToAction("Index", "Cart");
+                        
+                        
                     }
                     return RedirectToAction("Index", "Cart");
                 }
@@ -411,6 +669,44 @@ namespace Datn_Client.Controllers
 
             
         }
+
+        public string UrlPayment(Guid id)
+        {
+            var urlPayment = "";
+            var bill = _httpClient.GetFromJsonAsync<BillView>($"https://localhost:7033/api/Bill/GetById/{id}").Result;
+
+
+            string vnp_Returnurl = "https://localhost:7162/BillDetails/VnpayReturn"; //URL nhan ket qua tra ve
+            string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"; //URL thanh toan cua VNPAY 
+            string vnp_TmnCode = "M5D7W272"; //Ma định danh merchant kết nối (Terminal Id)
+            string vnp_HashSecret = "DGGZJILFSRTUPWIOIBRQXDXJXQPLAOZY"; //Secret Key
+
+            VnPayLibrary vnpay = new VnPayLibrary();
+
+            var price = (long)bill.Price * 100000;
+            vnpay.AddRequestData("vnp_Version", VnPayLibrary.VERSION);
+            vnpay.AddRequestData("vnp_Command", "pay");
+            vnpay.AddRequestData("vnp_TmnCode", vnp_TmnCode);
+            vnpay.AddRequestData("vnp_Amount", price.ToString());
+
+
+            vnpay.AddRequestData("vnp_CreateDate", bill.CreateDate.ToString("yyyyMMddHHmmss"));
+            vnpay.AddRequestData("vnp_CurrCode", "VND");
+            //Lấy địa chỉ ip máy tính
+            vnpay.AddRequestData("vnp_IpAddr", "13.160.92.202");
+            vnpay.AddRequestData("vnp_Locale", "vn");
+            vnpay.AddRequestData("vnp_OrderInfo", "Thanh toan don hang:" + bill.Id);
+            vnpay.AddRequestData("vnp_OrderType", "other"); //default value: other
+
+            vnpay.AddRequestData("vnp_ReturnUrl", vnp_Returnurl);
+            vnpay.AddRequestData("vnp_TxnRef", bill.Id.ToString());
+
+            //Add Params of 2.1.0 Version
+            //Billing
+            urlPayment = vnpay.CreateRequestUrl(vnp_Url, vnp_HashSecret);
+            return urlPayment;
+        }
+
 
     }
 }

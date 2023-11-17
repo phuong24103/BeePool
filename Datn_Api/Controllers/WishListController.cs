@@ -2,6 +2,8 @@
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.WishListViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Datn_Api.Controllers
 {
@@ -21,7 +23,14 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetAllWishList()
         {
             var wishLists = await _wishListService.GetAllWishList();
-            return Ok(wishLists);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(wishLists, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
 
         [HttpGet]
@@ -29,6 +38,13 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetWishListById([FromRoute] Guid id)
         {
             var wishList = await _wishListService.GetWishListById(id);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(wishList, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
             return Ok(wishList);
         }
 
@@ -37,7 +53,14 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetWishListByCustomerId([FromRoute] Guid id)
         {
             var wishLists = await _wishListService.GetWishListByCustomerId(id);
-            return Ok(wishLists);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(wishLists, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
 
         [HttpGet]

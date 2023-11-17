@@ -66,6 +66,20 @@ namespace Datn_Api.Controllers
             return Ok(formattedJson);
         }
 
+        [HttpGet("GetByCategory/{name}")]
+        public async Task<IActionResult> GetProductByCategory([FromRoute] string name)
+        {
+            var product = await _iprosv.GetProductByCategory(name);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(product, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
+        }
+
         [HttpGet]
         [Route("GetByNameAZ")]
         public async Task<IActionResult> GetProductByNameAZ()

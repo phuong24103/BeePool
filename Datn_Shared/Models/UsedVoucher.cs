@@ -14,7 +14,7 @@ namespace Datn_Shared.Models
         public Guid BillId { get; set; }
         [ForeignKey("VoucherId")]
         public Guid VoucherId { get; set; }
-        public virtual Voucher Voucher { get; set; }
-        public virtual Bill Bill { get; set; }
+        public virtual Voucher? Voucher { get; set; }
+        public virtual Bill? Bill { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace Datn_Shared.ViewModels.WishListViewModels
         public Guid ProductId { get; set; }
         public Guid ProductDetailId { get; set; }
         public double Price { get; set; }
+        public string Image { get; set; }
         public Customer Customer { get; set; }
         public Product Product { get; set; }
     }

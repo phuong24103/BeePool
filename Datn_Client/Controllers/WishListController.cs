@@ -3,6 +3,7 @@ using Datn_Shared.ViewModels.WishListViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
 using System.Security.Claims;
+using X.PagedList;
 
 namespace Datn_Client.Controllers
 {
@@ -15,12 +16,13 @@ namespace Datn_Client.Controllers
             _httpClient = httpClient;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 6)
         {
             var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
             var wishList = await _httpClient.GetFromJsonAsync<List<WishListView>>($"https://localhost:7033/api/WishList/GetByCustomerId/{customer.Id}");
-            return View(wishList);
+            var pagedList = new PagedList<WishListView>(wishList, page, pageSize);
+            return View("Index", pagedList);
         }
 
         public async Task<IActionResult> Like(Guid id)

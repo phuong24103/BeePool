@@ -16,6 +16,6 @@ namespace Datn_Shared.Models
         public Guid ProductDetailId { get; set; }
         public string Name { get; set; } 
         public int Status { get; set; }
-        public virtual ProductDetail ProductDetail { get; set; }
+        public virtual ProductDetail? ProductDetail { get; set; }
     }
 }

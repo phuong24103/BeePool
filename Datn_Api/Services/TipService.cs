@@ -71,6 +71,20 @@ namespace Datn_Api.Services
             return await _db.Tips.Where(p=>p.Id == id).ToListAsync();
         }
 
+        public async Task<IEnumerable<Tip>> GetAllTipByProductDetailId(Guid id)
+        {
+            var productDetail = await _db.ProductDetails.FirstOrDefaultAsync(p => p.Id == id);
+            var productDetails = await _db.ProductDetails.Where(p => p.ProductID == productDetail.ProductID).ToListAsync();
+            List<Tip> tips = new List<Tip>();
+            foreach (var item in productDetails)
+            {
+                var tip = await _db.Tips.FirstOrDefaultAsync(p => p.Id == item.TipId);
+                if (!tips.Contains(tip))
+                    tips.Add(tip);
+            }
+            return tips;
+        }
+
         public async Task<Tip> GetTipById(Guid id)
         {
             return await _db.Tips.FindAsync(id);

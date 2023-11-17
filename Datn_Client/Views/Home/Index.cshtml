@@ -1,7 +1,11 @@
 ﻿@model IEnumerable< Datn_Shared.ViewModels.ProductViewModels.ProductView>
+@using Datn_Shared.ViewModels.ProductViewModels;
 
 @{
     ViewData["Title"] = "Home Page";
+    var category = (ViewData["Category"] as List<ProductView>);
+    var coDanh = (ViewData["CoDanh"] as List<ProductView>);
+    var coNhay = (ViewData["CoNhay"] as List<ProductView>);
     <link rel="stylesheet" href="~/css/default.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/productbutton.css" asp-append-version="true" />
@@ -46,46 +50,28 @@
 
 <section class="hero-section">
     <div class="card-grid">
-        <a class="card" href="#">
-            <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557177324-56c542165309?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)"></div>
-            <div class="card__content">
-                <p class="card__category">Category</p>
-                <h3 class="card__heading">Example Card Heading</h3>
-            </div>
-        </a>
-        <a class="card" href="#">
-            <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557187666-4fd70cf76254?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
-            <div class="card__content">
-                <p class="card__category">Category</p>
-                <h3 class="card__heading">Example Card Heading</h3>
-            </div>
-        </a>
-        <a class="card" href="#">
-            <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1556680262-9990363a3e6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
-            <div class="card__content">
-                <p class="card__category">Category</p>
-                <h3 class="card__heading">Example Card Heading</h3>
-            </div>
-            </li>
-            <a class="card" href="#">
-                <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557004396-66e4174d7bf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
-                <div class="card__content">
-                    <p class="card__category">Category</p>
-                    <h3 class="card__heading">Example Card Heading</h3>
-                </div>
-            </a>
-            <div>
-
+        @if (category != null)
+        {
+            @foreach (var item in category)
+            {
+                <a class="card" asp-area="" asp-controller="Product" asp-action="GetByCategory" asp-route-name="@item.CategoryName">
+                    <div class="card__background" style="background-image: url(/images/products/@item.Image)"></div>
+                    <div class="card__content">
+                        <p class="card__category">Danh mục</p>
+                        <h3 class="card__heading">@item.CategoryName</h3>
+                    </div>
+                </a>
+            }
+        }
+    </div>
 </section>
-<div class="row" style="margin-bottom : 30px">
-
-
+<div class="row">
     <div class="section-fluid-main">
         <div class="section-row">
             <div class="section-col">
                 <div class="section">
                     <div class="section-in">
-                        <img src="https://assets.codepen.io/1462889/sl1.jpg" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/sg-11134201-7rbm6-lmcrik0wqvkbd1" alt="">
                     </div>
                 </div>
             </div>
@@ -95,7 +81,7 @@
             <div class="section-col">
                 <div class="section">
                     <div class="section-in">
-                        <img src="https://assets.codepen.io/1462889/sl2.jpg" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lkaftnchz1k84f" alt="">
                     </div>
                 </div>
             </div>
@@ -105,7 +91,7 @@
             <div class="section-col">
                 <div class="section">
                     <div class="section-in">
-                        <img src="https://assets.codepen.io/1462889/sl3.jpg" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lluerlgt92hrf8" alt="">
                     </div>
                 </div>
             </div>
@@ -115,7 +101,7 @@
             <div class="section-col">
                 <div class="section">
                     <div class="section-in">
-                        <img src="https://assets.codepen.io/1462889/sl4.jpg" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/sg-11134201-7r98o-lkjob2kg35zkc1" alt="">
                     </div>
                 </div>
             </div>
@@ -125,7 +111,7 @@
             <div class="section-col">
                 <div class="section">
                     <div class="section-in">
-                        <img src="https://assets.codepen.io/1462889/sl5.jpg" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-23030-48w9izjtswov13" alt="">
                     </div>
                 </div>
             </div>
@@ -135,7 +121,7 @@
             <div class="section-col">
                 <div class="section">
                     <div class="section-in">
-                        <img src="https://assets.codepen.io/1462889/sl6.jpg" alt="">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lnodrlj0gjjh11" alt="">
                     </div>
                 </div>
             </div>
@@ -150,111 +136,121 @@
     </div>
 
 </div>
-<div class="wrapper">
-    <div class="bg"> Gậy Đánh </div>
-    <div class="fg"> Gậy Đánh </div>
+<div class="wrapper mb-5">
+    <div class="bg"> Cơ Đánh </div>
+    <div class="fg"> Cơ Đánh </div>
 </div>
-<div class="row" style="margin-bottom : 100px;margin-top : 100px">
-    @foreach (var item in @Model)
+<div class="row">
+    @if (coDanh != null)
     {
-        @if (@item.ProductDetailId != Guid.Empty)
+        @foreach (var item in coDanh)
         {
-            <div class="col-md-4">
-                <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
-                    <div class="container page-wrapper">
-                        <div class="page-inner">
-                            <div class="row">
-                                <div class="el-wrapper">
-                                    <div class="box-up">
-                                        <img class="img" src="~/images//1.png" alt="">
-                                        <div class="img-info">
-                                            <div class="info-inner">
-                                                <span class="p-name">@item.Name</span>
-                                                <span class="p-company">@item.Producer</span>
+            @if (@item.ProductDetailId != Guid.Empty)
+            {
+                <div class="col-md-4">
+                    <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
+                        <div class="container page-wrapper">
+                            <div class="page-inner">
+                                <div class="row">
+                                    <div class="el-wrapper">
+                                        <div class="box-up">
+                                            <img class="img" src="~/images/products/@item.Image" alt="">
+                                            <div class="img-info">
+                                                <div class="info-inner">
+                                                    <span class="p-name">@item.Name</span>
+                                                    <span class="p-company">@item.Producer</span>
+                                                </div>
+                                                <div class="a-size">Số lượng : <span class="size">@item.AvailableQuantity</span></div>
                                             </div>
-                                            <div class="a-size">Số lượng : <span class="size">@item.AvailableQuantity</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="box-down">
-                                        <div class="h-bg">
-                                            <div class="h-bg-inner"></div>
                                         </div>
 
-                                        <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
-                                            <span class="price">$@item.Price</span>
-                                            <span class="add-to-cart">
-                                                <span class="txt">Thêm vào giỏ hàng</span>
-                                            </span>
-                                        </a>
+                                        <div class="box-down">
+                                            <div class="h-bg">
+                                                <div class="h-bg-inner"></div>
+                                            </div>
+
+                                            <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
+                                                <span class="price">$@item.Price</span>
+                                                <span class="add-to-cart">
+                                                    <span class="txt">Thêm vào giỏ hàng</span>
+                                                </span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
         }
     }
 </div>
-<div class="wrapper">
-    <div class="bg"> Gậy Phá </div>
-    <div class="fg"> Gậy Phá </div>
+<div class="wrapper my-5">
+    <div class="bg"> Cơ Phá </div>
+    <div class="fg"> Cơ Phá </div>
 </div>
-<div class="row" style="margin-bottom : 100px;margin-top : 100px">
-    @foreach (var item in @Model)
+<div class="row">
+    @if (coNhay != null)
     {
-        @if (@item.ProductDetailId != Guid.Empty)
+        @foreach (var item in coNhay)
         {
-            <div class="col-md-4">
-                <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
-                    <div class="container page-wrapper">
-                        <div class="page-inner">
-                            <div class="row">
-                                <div class="el-wrapper">
-                                    <div class="box-up">
-                                        <img class="img" src="~/images//1.png" alt="">
-                                        <div class="img-info">
-                                            <div class="info-inner">
-                                                <span class="p-name">@item.Name</span>
-                                                <span class="p-company">@item.Producer</span>
+            @if (@item.ProductDetailId != Guid.Empty)
+            {
+                <div class="col-md-4">
+                    <a asp-area="" asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.ProductDetailId">
+                        <div class="container page-wrapper">
+                            <div class="page-inner">
+                                <div class="row">
+                                    <div class="el-wrapper">
+                                        <div class="box-up">
+                                            <img class="img" src="~/images/products/@item.Image" alt="">
+                                            <div class="img-info">
+                                                <div class="info-inner">
+                                                    <span class="p-name">@item.Name</span>
+                                                    <span class="p-company">@item.Producer</span>
+                                                </div>
+                                                <div class="a-size">Số lượng : <span class="size">@item.AvailableQuantity</span></div>
                                             </div>
-                                            <div class="a-size">Số lượng : <span class="size">@item.AvailableQuantity</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="box-down">
-                                        <div class="h-bg">
-                                            <div class="h-bg-inner"></div>
                                         </div>
 
-                                        <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
-                                            <span class="price">$@item.Price</span>
-                                            <span class="add-to-cart">
-                                                <span class="txt">Thêm vào giỏ hàng</span>
-                                            </span>
-                                        </a>
+                                        <div class="box-down">
+                                            <div class="h-bg">
+                                                <div class="h-bg-inner"></div>
+                                            </div>
+
+                                            <a asp-action="CreateOne" asp-controller="Cart" asp-route-id="@item.ProductDetailId" class="cart">
+                                                <span class="price">$@item.Price</span>
+                                                <span class="add-to-cart">
+                                                    <span class="txt">Thêm vào giỏ hàng</span>
+                                                </span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
         }
     }
 </div>
-<section class="articles">
+<div class="wrapper my-5">
+    <div class="bg"> Tin Tức </div>
+    <div class="fg"> Tin Tức </div>
+</div>
+<section class="articles mb-5">
     <article>
         <div class="article-wrapper">
             <figure>
-                <img src="https://picsum.photos/id/1011/800/450" alt="" />
+                <img src="~/images/tintuchome1.jpg" alt="" />
             </figure>
             <div class="article-body">
                 <h2>Tin tức</h2>
-                <h6>sdgsdfdsfsdfdsf</h6>
+                <h6>Chiêm Hồng Thái dừng bước ở tứ kết World Cup Veghel 2023</h6>
                 <a href="#" class="read-more">
-                    Read more <span class="sr-only">about this is some title</span>
+                    Xem thêm <span class="sr-only">about this is some title</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
@@ -266,13 +262,13 @@
 
         <div class="article-wrapper">
             <figure>
-                <img src="https://picsum.photos/id/1005/800/450" alt="" />
+                <img src="~/images/tintuchome2.jpg" alt="" />
             </figure>
             <div class="article-body">
                 <h2>Tin tức</h2>
-                <h6>sdgsdfdsfsdfdsf</h6>
+                <h6>Cơ thủ Nguyễn Anh Tuấn ‘Tkon’ quyết sang Mỹ dự giải dù bị sốt xuất huyết</h6>
                 <a href="#" class="read-more">
-                    Read more <span class="sr-only">about this is some title</span>
+                    Xem thêm <span class="sr-only">about this is some title</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
@@ -284,13 +280,13 @@
 
         <div class="article-wrapper">
             <figure>
-                <img src="https://picsum.photos/id/103/800/450" alt="" />
+                <img src="~/images/tintuchome3.jpg" alt="" />
             </figure>
             <div class="article-body">
                 <h2>Tin tức</h2>
-                <h6>sdgsdfdsfsdfdsf</h6>
+                <h6>Anh Chiến, Minh Cẩm giữ phong độ cao, tiến sâu ở chặng 5 PBA Tour</h6>
                 <a href="#" class="read-more">
-                    Read more <span class="sr-only">about this is some title</span>
+                    Xem thêm <span class="sr-only">about this is some title</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
@@ -299,27 +295,23 @@
         </div>
     </article>
 </section>
-<div class="bg-imggggg" style="margin-top : 100px">
-    <form action="/action_page.php" class="containerrrrr">
-        <h1>Đăng nhập</h1>
 
-        <label for="usn"><b>Tài Khoản</b></label>
-        <input type="text" placeholder="Nhập Tài Khoản" name="usn" required>
+@if (!User.Identity.IsAuthenticated || User.IsInRole("Quản lý") || User.IsInRole("Nhân viên"))
+{
+    <div class="bg-imggggg">
+        <form asp-controller="Login" asp-action="Login" class="containerrrrr">
+            <h1>Đăng nhập</h1>
 
-        <label for="psw"><b>Mật Khẩu</b></label>
-        <input type="password" placeholder="Nhập Mật Khẩu" name="psw" required>
+            <label for="usn"><b>Tài Khoản</b></label>
+            <input type="text" name="Username" placeholder="Nhập Tài Khoản" required>
 
-        <button type="submit" class="btnnnnn">Đăng Nhập</button>
-    </form>
-</div>
+            <label for="psw"><b>Mật Khẩu</b></label>
+            <input type="password" name="Password" placeholder="Nhập Mật Khẩu" required>
 
-<p style="font-weight : bold;text-align : center;">Nếu chưa có tài khoản,hãy đăng ký để nhận thêm thông tin về chúng tôi </p><a asp-area="" asp-controller="Login" asp-action="Login"><p style="text-align:center;margin-bottom : 150px"> <button type="submit" class="btnnnnn" style="width : 200px">Đăng Ký</button></p></a>
+            <button type="submit" class="btnnnnn">Đăng Nhập</button>
+        </form>
+    </div>
+    <p style="font-weight : bold;text-align : center;">Nếu chưa có tài khoản,hãy đăng ký để nhận thêm thông tin về chúng tôi </p>
 
-
-
-
-
-
-
-
-
+    <a asp-area="" asp-controller="Register" asp-action="Register"><p style="text-align:center;margin-bottom : 100px"> <button type="submit" class="btnnnnn" style="width : 200px">Đăng Ký</button></p></a>
+}

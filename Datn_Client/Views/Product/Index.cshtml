@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/productbutton.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/dropdown.css" asp-append-version="true" />
-
-
+    <link rel="stylesheet" href="~/css/text.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/paging.css" asp-append-version="true" />
 }
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,10 +104,12 @@
 
         </select>
     </div>
-
-
 </div>
-<div class="row" style="margin-bottom : 100px;margin-top : 100px">
+<div class="wrapper my-5">
+    <div class="bg"> Sản Phẩm </div>
+    <div class="fg"> Sản Phẩm </div>
+</div>
+<div class="row my-3">
     @foreach (var item in @Model)
     {
         @if (@item.ProductDetailId != Guid.Empty)
@@ -119,7 +121,7 @@
                             <div class="row">
                                 <div class="el-wrapper">
                                     <div class="box-up">
-                                        <img class="img" src="~/images//1.png" alt="">
+                                        <img class="img" src="~/images/products/@item.Image" alt="">
                                         <div class="img-info">
                                             <div class="info-inner">
                                                 <span class="p-name">@item.Name</span>
@@ -150,10 +152,8 @@
         }
     }
 </div>
-<div style="text-align : center;margin-left : 600px;font-weight : bold;font-size : 20px">
-    <div class="pagination">
-        <span style="text-align : center;margin-left : 30px;margin-right : 30px">@Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = Model.PageSize }))</span>
-    </div>
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = Model.PageSize }))
 </div>
 <script>
     document.getElementById("productSelect").addEventListener("change", function () {

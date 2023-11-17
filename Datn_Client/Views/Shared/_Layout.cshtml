@@ -6,8 +6,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BeePool</title>
-    <link href="~/images/logo.png" rel="icon">
+    <link href="~/images/favicons.png" rel="icon">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @* <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> *@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Datn_Client.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/nav.css" asp-append-version="true" />
@@ -15,12 +16,12 @@
     <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <script src="~/js/imagedetail.js"></script>
 </head>
-<body style="background:-webkit-linear-gradient(left, #E6E6FA, #E6E6FA);">
+<body>
     <header style="text-align : center;">
         <nav class="navbar navbar-expand-lg fixed-top navbar-scroll">
             <div class="container">
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link px-2">
-                    <img src="~/images/logo.png" alt="" style="height : 80px">
+                    <img src="~/images/favicons.png" alt="" style="height : 60px">
                 </a>
                 <ul class="navbar-nav mx-auto mb-lg-0">
                     <li class="nav-item">
@@ -73,20 +74,25 @@
                 <div id="results">
                 </div>
                 <ul class="navbar-nav mb-lg-0">
-                    <li class="nav-item">
-                        <a asp-controller="Cart" asp-action="Index">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                            </svg>
-                        </a>
-                    </li>
+
                     @if (!User.Identity.IsAuthenticated || User.IsInRole("Quản lý") || User.IsInRole("Nhân viên"))
                     {
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
+                            <a class="nav-link" aria-current="page" asp-area="Cart" asp-controller="Cart" asp-action="Index">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-basket-fill" viewBox="0 0 16 16">
+                                    <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717L5.07 1.243zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3z" />
+                                </svg>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="Login" asp-action="Login">
+                            <a class="nav-link" aria-current="page" asp-area="Admin" asp-controller="Home" asp-action="Index">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
+                                    <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382l.045-.148ZM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" asp-area="Register" asp-controller="Register" asp-action="Register">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                                 </svg>
@@ -96,15 +102,31 @@
                     else
                     {
                         <li class="nav-item">
-                            <a asp-controller="Customer" asp-action="Index">
+                            <a class="nav-link" aria-current="page" asp-area="Cart" asp-controller="Cart" asp-action="Index">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-basket-fill" viewBox="0 0 16 16">
+                                    <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717L5.07 1.243zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" asp-area="Customer" asp-controller="Customer" asp-action="Index">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                                 </svg>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Login" asp-action="Logout">
-                                Sign Out
+                            <a class="nav-link" aria-current="page" asp-area="WishList" asp-controller="WishList" asp-action="Index">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag-heart-fill" viewBox="0 0 16 16">
+                                    <path d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5ZM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1Zm0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" asp-area="Login" asp-controller="Login" asp-action="Logout">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+                                    <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
+                                </svg>
                             </a>
                         </li>
                     }
@@ -120,26 +142,8 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" asp-area="" asp-controller="Product" asp-action="Index">Sản phẩm</a>
                     </li>
-                    @if (User.Identity.IsAuthenticated && !User.IsInRole("Quản lý") && !User.IsInRole("Nhân viên"))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" asp-area="" asp-controller="WishList" asp-action="Index">WishList</a>
-                        </li>
-                    }
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" asp-area="" asp-controller="Bill" asp-action="Bill">Hóa đơn</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" asp-area="" asp-controller="Tip" asp-action="Index">Tip</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" asp-area="" asp-controller="Shaft" asp-action="Index">Shaft</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" asp-area="" asp-controller="Weight" asp-action="Index">Weight</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Liên hệ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" asp-area="" asp-controller="News" asp-action="Index">Tin tức</a>
@@ -147,7 +151,7 @@
                 </ul>
             </div>
         </nav>
-        <div style="height: 155px"></div>
+        <div style="height: 135px"></div>
         <div id="carouselExample" class="carousel slide" style="text-align: center; background-color: #1e73be; margin: 30px 0; color: white">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -172,145 +176,21 @@
 
         </div>
         <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link px-2">
-            <div style="margin-bottom : 50px;border : 2px black solid;border-radius : 200px">
+            <div style="margin-bottom : 30px;border : 2px black solid;border-radius : 200px">
                 <div style="text-align : center;margin-top : 20px;margin-bottom : 20px">
                     <img src="~/images/logo.png" alt="" style="height : 175px">
                 </div>
             </div>
         </a>
-        @* <nav class="navbar navbar-expand-lg fixed-top navbar-scroll">
-            <div class="container">
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link px-2">
-            <img src="~/images/logo.png" alt="" style="height : 50px">
-            </a>
-            <button class="navbar-toggler ps-0" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon d-flex justify-content-start align-items-center">
-            <i class="fas fa-bars"></i>
-            </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarExample01">
-            <ul class="navbar-nav mx-auto mb-lg-0">
-            <li class="nav-item active">
-            <a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" asp-area="" asp-controller="Product" asp-action="Index">Sản Phẩm</a>
-            </li>
-            @if (User.Identity.IsAuthenticated && !User.IsInRole("Quản lý") && !User.IsInRole("Nhân viên"))
-            {
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" asp-area="" asp-controller="WishList" asp-action="Index">Danh Sách Yêu Thích</a>
-            </li>
-            }
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" asp-area="" asp-controller="Tip" asp-action="Index">Tip</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" asp-area="" asp-controller="Shaft" asp-action="Index">Shaft</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" asp-area="" asp-controller="Weight" asp-action="Index">weight</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Liên Hệ</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Tin Tức</a>
-            </li>
-
-            <li class="nav-item" style="margin-left : 200px">
-            <form asp-area="" asp-controller="Product" asp-action="Search" method="get">
-            <div id="search">
-            <svg viewBox="0 0 420 60" xmlns="http://www.w3.org/2000/svg">
-            <rect class="bar" />
-
-            <g class="magnifier">
-            <circle class="glass" />
-            <line class="handle" x1="32" y1="32" x2="44" y2="44"></line>
-            </g>
-
-            <g class="sparks">
-            <circle class="spark" />
-            <circle class="spark" />
-            <circle class="spark" />
-            </g>
-
-            <g class="burst pattern-one">
-            <circle class="particle circle" />
-            <path class="particle triangle" />
-            <circle class="particle circle" />
-            <path class="particle plus" />
-            <rect class="particle rect" />
-            <path class="particle triangle" />
-            </g>
-            <g class="burst pattern-two">
-            <path class="particle plus" />
-            <circle class="particle circle" />
-            <path class="particle triangle" />
-            <rect class="particle rect" />
-            <circle class="particle circle" />
-            <path class="particle plus" />
-            </g>
-            <g class="burst pattern-three">
-            <circle class="particle circle" />
-            <rect class="particle rect" />
-            <path class="particle plus" />
-            <path class="particle triangle" />
-            <rect class="particle rect" />
-            <path class="particle plus" />
-            </g>
-            </svg>
-            <input type=search name=Name aria-label="Search for inspiration" />
-            </div>
-            </form>
-            </li>
-            </div>
-            <div id="results">
-            </div>
-            </li>
-            </ul>
-            <ul class="navbar-nav ms-auto mb-lg-0">
-            @if (!User.Identity.IsAuthenticated || User.IsInRole("Quản lý") || User.IsInRole("Nhân viên"))
-            {
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
-            </li>
-            <li class="nav-item">
-            <a asp-controller="Login" asp-action="Login">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-            </svg>
-            </a>
-            </li>
-            }
-            else
-            {
-            <li class="nav-item">
-            <a asp-controller="Cart" asp-action="Index">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </svg>
-            </a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" asp-controller="Login" asp-action="Logout">
-            Sign Out
-            </a>
-            </li>
-            }
-            </ul>
-            </div>
-            </div>
-            </nav> *@
     </header>
+
     <div class="container">
         <main>
             @RenderBody()
         </main>
     </div>
 
-    <footer class="bd-footer py-4 py-md-5 bg-body-tertiary" style="clear: both; margin: 0; background-color : #778899">
+    <footer class="py-4 py-md-5" style="clear: both; margin: 0; background-color : #778899">
         <div class="container">
             <h2 style="color : white">
                 BeePool. Access the Now.
@@ -324,7 +204,6 @@
                         <h6>
                             BeePool với sứ mệnh trở thành nhà cung cấp gậy Bida hàng đầu Việt Nam. Cùng với sản phẩm đa dạng và đội ngũ bán hàng được đào tạo chuyên sâu sẽ đem đến cho bạn trải nghiệm tốt nhất với giá tốt nhất thị trường
                         </h6>
-
                     </h4>
                 </div>
                 <div class="col-md-3">
@@ -350,12 +229,9 @@
                         <h6>
                             0909.041.462
                         </h6>
-
                         <h6 style="font-weight : bold">
                             Email: podsuppliervn@gmail.com
-
                         </h6>
-
                     </h4>
                 </div>
                 <div class="col-md-3">
@@ -367,7 +243,7 @@
                             <a href="">Giới thiệu</a>
                         </h6>
                         <h6>
-                            <a href="">Chính sách thành viênu</a>
+                            <a href="">Chính sách thành viên</a>
                         </h6>
                         <h6>
                             <a href="">Chính sách vận chuyển</a>
@@ -394,18 +270,19 @@
                         <h6>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-inbound-fill" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0z" />
-                            </svg>0909.524.062
+                            </svg> 0909.524.062
                         </h6>
                         <h6>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-inbound-fill" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0z" />
-                            </svg>0946.141.901
+                            </svg> 0946.141.901
                         </h6>
                         <h6>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-paper-heart-fill" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="m3 7.5 3.5 2L8 8.75l1.5.75 3.5-2v-6A1.5 1.5 0 0 0 11.5 0h-7A1.5 1.5 0 0 0 3 1.5v6ZM2 3.133l-.941.502A2 2 0 0 0 0 5.4v.313l2 1.173V3.133Zm12 3.753 2-1.173V5.4a2 2 0 0 0-1.059-1.765L14 3.133v3.753Zm-3.693 3.324L16 6.873v6.5l-5.693-3.163Zm5.634 4.274L8 10.072.059 14.484A2 2 0 0 0 2 16h12a2 2 0 0 0 1.941-1.516ZM5.693 10.21 0 13.372v-6.5l5.693 3.338ZM8 1.982C9.664.309 13.825 3.236 8 7 2.175 3.236 6.336.31 8 1.982Z" />
-                            </svg>BeePool@gmail.com
+                            </svg> BeePool@gmail.com
                         </h6>
+                        <br />
                         <h4 style="font-weight : bold">
                             Follow Us
                         </h4>
@@ -473,6 +350,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/imagedetail.js" asp-append-version="true"></script>
+    @* <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> *@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

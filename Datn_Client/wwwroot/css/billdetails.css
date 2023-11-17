@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+.wrapper {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.bg {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.fg {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Content styles */
+.row p {
+    font-weight: bold;
+    color: #333;
+}
+
+.col-xl-2 p {
+    font-weight: normal;
+    color: #333;
+}
+
+/* Table styles */
+.table {
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+    .table th {
+        background-color: #84B0CA;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .table td {
+        background-color: #fff;
+        color: #333;
+    }
+
+/* Button styles */
+
+/* Add margin to buttons */
+.text-center a {
+    margin: 20px 10px;
+}
+
+/* Add a border under each section */
+hr {
+    border: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}

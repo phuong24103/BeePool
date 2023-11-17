@@ -9,7 +9,6 @@
 }
 
 .wrapper {
-    background: -webkit-linear-gradient(left, #E6E6FA, #E6E6FA);
     display: grid;
     grid-template-areas: 'overlap';
     place-content: center;

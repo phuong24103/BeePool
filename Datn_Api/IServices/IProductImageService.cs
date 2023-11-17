@@ -14,6 +14,7 @@ namespace Datn_Api.IServices
 
         public Task<ProductImage> GetProductImageById(Guid id);
 
+        public Task<IEnumerable<ProductImage>> GetProductImageByProductDetail(Guid id);
         public Task<IEnumerable<ProductImage>> GetAllProductImage();
     }
 }

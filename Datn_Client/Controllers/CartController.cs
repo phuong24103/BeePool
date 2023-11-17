@@ -26,6 +26,10 @@ namespace Datn_Client.Controllers
             {
                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
                 var result = await _httpClient.GetFromJsonAsync<List<CartDetailView>>($"https://localhost:7033/api/CartDetail/GetByCustomerId/{customer.Id}");
+
+                ViewData["ReceiverName"] = customer.FullName;
+                ViewData["CustomerPhone"] = customer.PhoneNumber;
+                ViewData["AddressDelivery"] = customer.Address;
                 return View(result);
             }
             else
@@ -55,6 +59,7 @@ namespace Datn_Client.Controllers
             {
                 var cartDetails = SessionServices<CartDetailView>.GetObjFromSession(HttpContext.Session, "CartDetail");
                 var product = await _httpClient.GetFromJsonAsync<ProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{cartDetailFE.Id}");
+                var images = await _httpClient.GetFromJsonAsync<IEnumerable<ProductImage>>($"https://localhost:7033/api/ProductImage/GetByProductDetailId/{product.Id}");
 
                 if (SessionServices<CartDetailView>.CheckExistCartDetail(cartDetailFE.Id, cartDetails))
                 {
@@ -70,6 +75,7 @@ namespace Datn_Client.Controllers
                             Price = a.Price,
                             ProductPrice = a.ProductPrice,
                             TotalMoney = a.TotalMoney,
+                            Image = images.First().Name,
                             ProductDetail = a.ProductDetail,
                         };
                         var b = cartDetails.Find(p => p.Id == cartDetail.Id);
@@ -104,6 +110,7 @@ namespace Datn_Client.Controllers
                         Quantity = cartDetailFE.Quantity,
                         Price = product.Price * cartDetailFE.Quantity,
                         ProductPrice = product.Price,
+                        Image = images.First().Name,
                         ProductDetail = product,
                     };
                     if (cartDetails.Count > 0)
@@ -145,6 +152,7 @@ namespace Datn_Client.Controllers
             {
                 var cartDetails = SessionServices<CartDetailView>.GetObjFromSession(HttpContext.Session, "CartDetail");
                 var product = await _httpClient.GetFromJsonAsync<ProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{id}");
+                var images = await _httpClient.GetFromJsonAsync<IEnumerable<ProductImage>>($"https://localhost:7033/api/ProductImage/GetByProductDetailId/{id}");
 
                 if (SessionServices<CartDetailView>.CheckExistCartDetail(id, cartDetails))
                 {
@@ -160,6 +168,7 @@ namespace Datn_Client.Controllers
                             Price = a.Price,
                             ProductPrice = a.ProductPrice,
                             TotalMoney = a.TotalMoney,
+                            Image = images.First().Name,
                             ProductDetail = a.ProductDetail,
                         };
                         var b = cartDetails.Find(p => p.Id == cartDetail.Id);
@@ -194,6 +203,7 @@ namespace Datn_Client.Controllers
                         Quantity = 1,
                         Price = product.Price,
                         ProductPrice = product.Price,
+                        Image = images.First().Name,
                         ProductDetail = product
                     };
                     if (cartDetails.Count > 0)

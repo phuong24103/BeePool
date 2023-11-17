@@ -54,9 +54,15 @@ namespace Datn_Api.Extensions
             new Employee()
             {
                 Id = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
+                FullName = "Phạm Nguyễn Quốc Phương",
                 Gender = 0,
                 DateOfBirth = new DateTime(2003, 8, 20),
                 Address = "Hoa Thanh Quế",
+                Image = "phuongpnq.png",
+                Twitter = "https://twitter.com/#",
+                Facebook = "https://facebook.com/#",
+                Instagram = "https://instagram.com/#",
+                Linkedin = "https://linkedin.com/#",
                 CreateDate = new DateTime(2020, 10, 23),
                 Status = 0,
                 UserName = "QuocPhuong",
@@ -72,9 +78,15 @@ namespace Datn_Api.Extensions
             new Employee()
             {
                 Id = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
+                FullName = "Mai Văn Phương",
                 Gender = 0,
                 DateOfBirth = new DateTime(2000, 10, 26),
                 Address = "Hoa Thanh Quế",
+                Image = "phuongmv.png",
+                Twitter = "https://twitter.com/#",
+                Facebook = "https://facebook.com/#",
+                Instagram = "https://instagram.com/#",
+                Linkedin = "https://linkedin.com/#",
                 CreateDate = new DateTime(2020, 12, 23),
                 Status = 0,
                 UserName = "VanPhuong",
@@ -105,9 +117,11 @@ namespace Datn_Api.Extensions
             {
                 Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
                 RankId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"),
+                FullName = "Hoàng Thanh Tùng",
                 Gender = 0,
                 DateOfBirth = new DateTime(2003, 10, 20),
                 Address = "Hoa Thanh Quế",
+                Image = "tunght.png",
                 Point = 12000,
                 Status = 0,
                 UserName = "ThanhTung",
@@ -124,9 +138,11 @@ namespace Datn_Api.Extensions
             {
                 Id = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
                 RankId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9236"),
+                FullName = "Quỳnh Anh",
                 Gender = 1,
                 DateOfBirth = new DateTime(2003, 11, 11),
                 Address = "Hoa Thanh Quế",
+                Image = "anhq.png",
                 Point = 12000,
                 Status = 0,
                 UserName = "QuynhAnh",
@@ -189,9 +205,9 @@ namespace Datn_Api.Extensions
             modelBuilder.Entity<Tip>().HasData(
             new Tip()
             {
-                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
-                Name = "F1 CLEAR",
-                Price = 100,
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                Name = "Kamui Clear Black - Super Soft",
+                Price = 28.3,
                 Size = 1,
                 Length = 1,
                 Material = "Gỗ",
@@ -200,9 +216,97 @@ namespace Datn_Api.Extensions
             },
             new Tip()
             {
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                Name = "Kamui Clear Black - Soft",
+                Price = 28.3,
+                Size = 2,
+                Length = 2,
+                Material = "Gỗ",
+                Color = "Xanh",
+                Status = 0,
+            },
+            new Tip()
+            {
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                Name = "Kamui Clear Black - Medium",
+                Price = 28.3,
+                Size = 2,
+                Length = 2,
+                Material = "Gỗ",
+                Color = "Xanh",
+                Status = 0,
+            },
+            new Tip()
+            {
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                Name = "Kamui Clear Black - Hard",
+                Price = 28.3,
+                Size = 2,
+                Length = 2,
+                Material = "Gỗ",
+                Color = "Xanh",
+                Status = 0,
+            },
+            new Tip()
+            {
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                Name = "Kamui Black - Hard",
+                Price = 26.8,
+                Size = 2,
+                Length = 2,
+                Material = "Gỗ",
+                Color = "Xanh",
+                Status = 0,
+            },
+            new Tip()
+            {
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                Name = "Kamui Black - Medium",
+                Price = 26.8,
+                Size = 2,
+                Length = 2,
+                Material = "Gỗ",
+                Color = "Xanh",
+                Status = 0,
+            },
+            new Tip()
+            {
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                Name = "Kamui Black - Soft",
+                Price = 26.8,
+                Size = 2,
+                Length = 2,
+                Material = "Gỗ",
+                Color = "Xanh",
+                Status = 0,
+            },
+            new Tip()
+            {
                 Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
-                Name = "F1 france",
-                Price = 140,
+                Name = "Kamui Black  - Super Soft",
+                Price = 26.8,
+                Size = 2,
+                Length = 2,
+                Material = "Gỗ",
+                Color = "Xanh",
+                Status = 0,
+            },
+            new Tip()
+            {
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                Name = "Kamui Original Clear Super Soft",
+                Price = 24.8,
+                Size = 2,
+                Length = 2,
+                Material = "Gỗ",
+                Color = "Xanh",
+                Status = 0,
+            },
+            new Tip()
+            {
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                Name = "Kamui Original Clear Soft",
+                Price = 24.8,
                 Size = 2,
                 Length = 2,
                 Material = "Gỗ",
@@ -214,15 +318,29 @@ namespace Datn_Api.Extensions
             new Weight()
             {
                 Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
-                Name = "CW4",
-                Price = 100,
+                Name = "18oz",
+                Price = 0,
                 Status = 0,
             },
             new Weight()
             {
                 Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
-                Name = "CW3",
-                Price = 120,
+                Name = "19oz",
+                Price = 0,
+                Status = 0,
+            },
+            new Weight()
+            {
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                Name = "20oz",
+                Price = 0,
+                Status = 0,
+            },
+            new Weight()
+            {
+                Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                Name = "21oz",
+                Price = 0,
                 Status = 0,
             });
 
@@ -230,79 +348,41 @@ namespace Datn_Api.Extensions
                 new Category()
                 {
                     Id = new Guid("357267e8-d162-4844-a660-661f46933d03"),
-                    Name = "BK",
+                    Name = "Cơ Đánh",
+                    CreatedDate = new DateTime(2022, 09, 11),
+                    UpdatedDate = new DateTime(2022, 09, 11),
                     Status = 0
                 },
                 new Category()
                 {
                     Id = new Guid("357267e8-d162-4844-a660-661f46933d04"),
-                    Name = "Cuetec",
+                    Name = "Cơ Nhảy",
+                    CreatedDate = new DateTime(2023, 09, 11),
+                    UpdatedDate = new DateTime(2023, 09, 11),
                     Status = 0
                 },
                 new Category()
                 {
                     Id = new Guid("357267e8-d162-4844-a660-661f46933d05"),
-                    Name = "Demon",
+                    Name = "Cơ Phá",
+                    CreatedDate = new DateTime(2023, 10, 10),
+                    UpdatedDate = new DateTime(2023, 09, 10),
                     Status = 0
                 },
                 new Category()
                 {
                     Id = new Guid("357267e8-d162-4844-a660-661f46933d06"),
-                    Name = "EXCEED",
+                    Name = "Cơ Phá + Nhảy",
+                    CreatedDate = new DateTime(2023, 11, 05),
+                    UpdatedDate = new DateTime(2023, 11, 05),
                     Status = 0
                 },
                 new Category()
                 {
                     Id = new Guid("357267e8-d162-4844-a660-661f46933d07"),
-                    Name = "Fury",
-                    Status = 0
-                },
-                new Category()
-                {
-                    Id = new Guid("357267e8-d162-4844-a660-661f46933d08"),
-                    Name = "Peri Pool",
-                    Status = 0
-                },
-                new Category()
-                {
-                    Id = new Guid("357267e8-d162-4844-a660-661f46933d09"),
-                    Name = "Predator",
-                    Status = 0
-                },
-                new Category()
-                {
-                    Id = new Guid("357267e8-d162-4844-a660-661f46933d00"),
-                    Name = "HOW",
-                    Status = 0
-                },
-                new Category()
-                {
-                    Id = new Guid("357267e8-d162-4844-a660-661f46933d10"),
-                    Name = "Mezz",
-                    Status = 0
-                },
-                new Category()
-                {
-                    Id = new Guid("357267e8-d162-4844-a660-661f46933d11"),
-                    Name = "Mit",
-                    Status = 0
-                },
-                new Category()
-                {
-                    Id = new Guid("357267e8-d162-4844-a660-661f46933d12"),
-                    Name = "Cơ Lỗ Cho Người Mới",
-                    Status = 0
-                },
-                new Category()
-                {
-                    Id = new Guid("357267e8-d162-4844-a660-661f46933d13"),
-                    Name = "Rhino",
-                    Status = 0
-                },
-                new Category()
-                {
-                    Id = new Guid("357267e8-d162-4844-a660-661f46933d14"),
-                    Name = "The Rack",
+                    Name = "Cơ ba băng",
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
                     Status = 0
                 });
 
@@ -311,26 +391,26 @@ namespace Datn_Api.Extensions
                 {
                     Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                     CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
-                    Name = "Gậy bida sành điệu 1",
-                    Pin = "pin1",
-                    Wrap = "wrap1",
-                    Rings = "ring1",
+                    Name = "Predator Purpleheart 8-Point Sneaky Pete With Wrap",
+                    Pin = "Uniloc Quick Release",
+                    Wrap = "Blue and White Irish Linen",
+                    Rings = "None",
                     AvailableQuantity = 1000,
                     Sold = 500,
                     Likes = 1000,
                     CreateDate = new DateTime(2023, 09, 11),
-                    Producer = "Lucasi",
+                    Producer = "PRESP8PW_",
                     Status = 0,
-                    Description = "Description",
+                    Description = "Giới thiệu Cue Predator Sneaky Pete, nơi sự khéo léo kết hợp sự sang trọng. Lớp hoàn thiện mờ Purpleheart thể hiện phong cách đặc biệt của nó, với tám điểm màu xanh lam, vàng và đen quyến rũ. Màu xanh bóng mượt với lớp bọc vải lanh Ailen màu trắng tạo thêm nét đẳng cấp và tăng cường khả năng cầm nắm của bạn. Nâng cao trò chơi của bạn với độ chính xác và sự khéo léo của tín hiệu Predator Sneaky Pete.",
                 },
                 new Product()
                 {
                     Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8b"),
                     CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d04"),
-                    Name = "Gậy bida sành điệu 2",
-                    Pin = "pin2",
-                    Wrap = "wrap2",
-                    Rings = "ring2",
+                    Name = "Mezz ZZ37 Pool Cue",
+                    Pin = "Mezz United Joint",
+                    Wrap = "Black Irish Linen",
+                    Rings = "Silver Rings",
                     AvailableQuantity = 2000,
                     Sold = 500,
                     Likes = 1000,
@@ -343,10 +423,122 @@ namespace Datn_Api.Extensions
                 {
                     Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"),
                     CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d05"),
-                    Name = "Gậy bida sành điệu 3",
-                    Pin = "pin3",
-                    Wrap = "wrap3",
-                    Rings = "ring3",
+                    Name = "Summit SUML17 Pool Cue",
+                    Pin = "Mezz United Joint",
+                    Wrap = "Black Irish Linen",
+                    Rings = "Silver Rings",
+                    AvailableQuantity = 2000,
+                    Sold = 500,
+                    Likes = 1000,
+                    CreateDate = new DateTime(2023, 09, 11),
+                    Producer = "Lucasi",
+                    Status = 0,
+                    Description = "Description",
+                },
+                new Product()
+                {
+                    Id = new Guid("cc37720a-7e89-463a-9510-2936e6761d8a"),
+                    CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d06"),
+                    Name = "Katana KAT19 Pool Cue",
+                    Pin = "Mezz United Joint",
+                    Wrap = "Black Irish Linen",
+                    Rings = "Silver Rings",
+                    AvailableQuantity = 2000,
+                    Sold = 500,
+                    Likes = 1000,
+                    CreateDate = new DateTime(2023, 09, 11),
+                    Producer = "Lucasi",
+                    Status = 0,
+                    Description = "Description",
+                },
+                new Product()
+                {
+                    Id = new Guid("cc37720a-7e89-463a-9510-3936e6761d8b"),
+                    CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d07"),
+                    Name = "Summit SUML13 Pool Cue",
+                    Pin = "Mezz United Joint",
+                    Wrap = "Black Irish Linen",
+                    Rings = "Silver Rings",
+                    AvailableQuantity = 2000,
+                    Sold = 500,
+                    Likes = 1000,
+                    CreateDate = new DateTime(2023, 09, 11),
+                    Producer = "Lucasi",
+                    Status = 0,
+                    Description = "Description",
+                },
+                new Product()
+                {
+                    Id = new Guid("cc37720a-7e89-463a-9510-4936e6761d8c"),
+                    CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
+                    Name = "Cuetec AVID Proof CT326NW Pool Cue",
+                    Pin = "Uniloc Quick Release",
+                    Wrap = "Blue and White Irish Linen",
+                    Rings = "None",
+                    AvailableQuantity = 1000,
+                    Sold = 500,
+                    Likes = 1000,
+                    CreateDate = new DateTime(2023, 09, 11),
+                    Producer = "PRESP8PW_",
+                    Status = 0,
+                    Description = "Giới thiệu Cue Predator Sneaky Pete, nơi sự khéo léo kết hợp sự sang trọng. Lớp hoàn thiện mờ Purpleheart thể hiện phong cách đặc biệt của nó, với tám điểm màu xanh lam, vàng và đen quyến rũ. Màu xanh bóng mượt với lớp bọc vải lanh Ailen màu trắng tạo thêm nét đẳng cấp và tăng cường khả năng cầm nắm của bạn. Nâng cao trò chơi của bạn với độ chính xác và sự khéo léo của tín hiệu Predator Sneaky Pete.",
+                },
+                new Product()
+                {
+                    Id = new Guid("cc37720a-7e89-463a-9510-5936e6761d8a"),
+                    CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d04"),
+                    Name = "Cuetec AVID Proof CT326LTC Pool Cue",
+                    Pin = "Mezz United Joint",
+                    Wrap = "Black Irish Linen",
+                    Rings = "Silver Rings",
+                    AvailableQuantity = 2000,
+                    Sold = 500,
+                    Likes = 1000,
+                    CreateDate = new DateTime(2023, 09, 11),
+                    Producer = "Lucasi",
+                    Status = 0,
+                    Description = "Description",
+                },
+                new Product()
+                {
+                    Id = new Guid("cc37720a-7e89-463a-9510-6936e6761d8b"),
+                    CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d05"),
+                    Name = "Meucci Casino MECAS10 Pool Cue",
+                    Pin = "Mezz United Joint",
+                    Wrap = "Black Irish Linen",
+                    Rings = "Silver Rings",
+                    AvailableQuantity = 2000,
+                    Sold = 500,
+                    Likes = 1000,
+                    CreateDate = new DateTime(2023, 09, 11),
+                    Producer = "Lucasi",
+                    Status = 0,
+                    Description = "Description",
+                },
+                new Product()
+                {
+                    Id = new Guid("cc37720a-7e89-463a-9510-7936e6761d8c"),
+                    CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
+                    Name = "Bull Carbon BCSP2 Silver Split Cue W/",
+                    Pin = "Mezz United Joint",
+                    Wrap = "Black Irish Linen",
+                    Rings = "Silver Rings",
+                    AvailableQuantity = 2000,
+                    Sold = 500,
+                    Likes = 1000,
+                    CreateDate = new DateTime(2023, 09, 11),
+                    Producer = "Lucasi",
+                    Status = 0,
+                    Description = "Description",
+                },
+                new Product()
+                {
+                    Id = new Guid("cc37720a-7e89-463a-9510-8936e6761d8a"),
+                    CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d04"),
+                    Name = "Balabushka GBT Era Cue",
+                    Pin = "Mezz United Joint",
+                    Wrap = "Black Irish Linen",
+                    Rings = "Silver Rings",
                     AvailableQuantity = 2000,
                     Sold = 500,
                     Likes = 1000,
@@ -359,11 +551,2237 @@ namespace Datn_Api.Extensions
             modelBuilder.Entity<ProductDetail>().HasData(
                 new ProductDetail()
                 {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
                     Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e8"),
                     ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                     TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
                     ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
                     WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d85"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d65"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d04"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e1"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d14"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e2"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e3"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d34"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d44"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d64"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d84"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d94"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d55"),
                     Quantity = 1,
                     ImportPrice = 1500,
                     Price = 2000,
@@ -389,6 +2807,104 @@ namespace Datn_Api.Extensions
                 {
                     Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
                     ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-2936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c5"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-3936e6761d8b"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-4936e6761d8c"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-5936e6761d8a"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c8"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-6936e6761d8b"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c9"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-7936e6761d8c"),
+                    TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                    ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                    WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
+                    Quantity = 1,
+                    ImportPrice = 1500,
+                    Price = 2000,
+                    CreateDate = new DateTime(2023, 09, 12),
+                    Status = 0,
+                    Description = "Description",
+                },
+                new ProductDetail()
+                {
+                    Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c0"),
+                    ProductID = new Guid("cc37720a-7e89-463a-9510-8936e6761d8a"),
                     TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
                     ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
                     WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
@@ -436,18 +2952,28 @@ namespace Datn_Api.Extensions
             {
                 Id = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
                 Name = "Chờ xác nhận"
+            },
+            new BillStatus()
+            {
+                Id = new Guid("b392b872-712a-41a7-8542-83fb58249c23"),
+                Name = "Đang lấy hàng"
+            },
+            new BillStatus()
+            {
+                Id = new Guid("00357f21-9356-468b-8c0c-b590e3d1bc0a"),
+                Name = "Đang giao hàng"
             });
 
             modelBuilder.Entity<Payment>().HasData(
             new Payment()
             {
                 Id = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
-                Name = "Offline",
+                Name = "Ship COD (Thanh toán khi nhận hàng)",
             },
             new Payment()
             {
                 Id = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16"),
-                Name = "Online",
+                Name = "Chuyển khoản ngân hàng",
             });
 
             modelBuilder.Entity<Voucher>().HasData(
@@ -457,6 +2983,7 @@ namespace Datn_Api.Extensions
                 EmPloyeeId = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
                 Code = "DEMACIA",
                 Value = 30,
+                PointCustomer = 2000,
                 TimeStart = new DateTime(2023, 09, 11),
                 TimeEnd = new DateTime(2023, 10, 11),
                 Status = 0,
@@ -467,6 +2994,7 @@ namespace Datn_Api.Extensions
                 EmPloyeeId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
                 Code = "Pitover",
                 Value = 50,
+                PointCustomer = 1000,
                 TimeStart = new DateTime(2023, 09, 11),
                 TimeEnd = new DateTime(2023, 09, 18),
                 Status = 1,
@@ -534,23 +3062,2305 @@ namespace Datn_Api.Extensions
             modelBuilder.Entity<ProductImage>().HasData(
             new ProductImage()
             {
-                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce7c"),
+                Id = new Guid("d5c65161-7591-48c1-9198-daca150bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca150bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca150bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca150bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca150bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca150bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca150bce6c"),
                 ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"),
-                Name = "image1",
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca150bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca150bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca150bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca151bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca152bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca152bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca152bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca152bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca152bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca152bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca152bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca152bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca152bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca152bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca153bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca153bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca153bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca153bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca153bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca153bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca153bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca153bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca153bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca153bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca154bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca154bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca154bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca154bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca154bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca154bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca154bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca154bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca154bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca154bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca155bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca155bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca155bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca155bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca155bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca155bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca155bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca155bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca155bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca155bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca156bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca156bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca156bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca156bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca156bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca156bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca156bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca156bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca156bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca156bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca157bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca157bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca157bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca157bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca157bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca157bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca157bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca157bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca157bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca157bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca158bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca158bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca158bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca158bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca158bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca158bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca158bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca158bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca158bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca158bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca159bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca159bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca159bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca159bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca159bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca159bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca159bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca159bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca159bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca159bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca161bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca161bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca161bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca161bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca161bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca161bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca161bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca161bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca161bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca161bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca162bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca162bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca162bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca162bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca162bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca162bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca162bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca162bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca162bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca162bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca163bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca163bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca163bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca163bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca163bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca163bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca163bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca163bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca163bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca163bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca164bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca164bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca164bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca164bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca164bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca164bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca164bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca164bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca164bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca164bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca165bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca165bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca165bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca165bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca165bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca165bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca165bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca166bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca166bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca166bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca167bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca167bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca167bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca167bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca167bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca167bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca167bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca167bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca167bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca167bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca168bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca168bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca168bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca168bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca168bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca168bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca168bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca168bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca168bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca168bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca169bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca169bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca169bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca169bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca169bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca169bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca169bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca169bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca169bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca169bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca170bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca170bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca170bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca170bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca170bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca170bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca170bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca170bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca170bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca170bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca171bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca171bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca171bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca171bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca171bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca171bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca171bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca171bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca171bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca171bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca172bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca172bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca172bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca172bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca172bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca172bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca172bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca172bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca172bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca172bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca173bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca173bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca173bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca173bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca173bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca173bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca173bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca173bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca173bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca173bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca174bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca174bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca174bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca174bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca174bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca174bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca174bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca174bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca174bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca174bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca175bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca175bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca175bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca175bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca175bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca175bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca175bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca175bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca175bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca175bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca176bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca176bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca176bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca176bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca176bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca176bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca176bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca176bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca176bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca176bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca177bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca177bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca177bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca177bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca177bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca177bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca177bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca177bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca177bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca177bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca178bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca178bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca178bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca178bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca178bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca178bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca178bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca178bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca178bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca178bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca179bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca179bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca179bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca179bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca179bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca179bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca179bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca179bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca179bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca179bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca180bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca180bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca180bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca180bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca180bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca180bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca180bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca180bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca180bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca180bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca181bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca181bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca181bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca181bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca181bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca181bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca181bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca181bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca181bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca181bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e9"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca182bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e0"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca182bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e0"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca182bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e1"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca182bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e1"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca182bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e2"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca182bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e2"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca182bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e3"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca182bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e3"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca182bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e4"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca182bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e4"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca183bce0c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e5"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca183bce1c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e5"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca183bce2c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e6"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca183bce3c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e6"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca183bce4c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e7"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca183bce5c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e7"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca183bce6c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e8"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca183bce7c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e8"),
+                Name = "presp8pw_cat.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca183bce8c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e9"),
+                Name = "presp8pw_01.jpg",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("d5c65161-7591-48c1-9198-daca183bce9c"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e9"),
+                Name = "presp8pw_cat.jpg",
                 Status = 0,
             },
             new ProductImage()
             {
                 Id = new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d1"),
                 ProductDetailId = new Guid("979a227c-41b7-4644-8ab1-e1c8d092f79f"),
-                Name = "image2",
+                Name = "1.png",
                 Status = 0,
             },
             new ProductImage()
             {
                 Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6423"),
                 ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
-                Name = "image3",
+                Name = "2.png",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d4"),
+                ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"),
+                Name = "1.png",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6425"),
+                ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c5"),
+                Name = "2.png",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6426"),
+                ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"),
+                Name = "2.png",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6427"),
+                ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"),
+                Name = "1.png",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6428"),
+                ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c8"),
+                Name = "2.png",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6429"),
+                ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c9"),
+                Name = "1.png",
+                Status = 0,
+            },
+            new ProductImage()
+            {
+                Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6420"),
+                ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c0"),
+                Name = "2.png",
                 Status = 0,
             });
         }

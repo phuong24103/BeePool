@@ -1,5 +1,4 @@
 ﻿using Datn_Shared.Models;
-using Datn_Shared.ViewModels.TipViewModels;
 using Datn_Shared.ViewModels.WeightViewModels;
 
 namespace Datn_Api.IServices
@@ -16,5 +15,6 @@ namespace Datn_Api.IServices
 
         public Task<IEnumerable<Weight>> GetAllWeight();
         public Task<IEnumerable<Weight>> GetAllWeightById(Guid id);
+        public Task<IEnumerable<Weight>> GetAllWeightByProductDetailId(Guid id);
     }
 }
