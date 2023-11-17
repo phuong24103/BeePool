@@ -188,7 +188,6 @@ namespace Datn_Api.Services
             n.Quantity = product.Quantity;
             n.ImportPrice = product.ImportPrice;
             n.Price = product.Price;
-            n.CreateDate = product.CreateDate;
             n.Status = product.Status;
             n.Description = product.Description;
             try

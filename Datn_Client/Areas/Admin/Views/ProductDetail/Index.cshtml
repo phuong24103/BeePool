@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Datn_Shared.ViewModels.ProductDetailViewModels.ViewProductDetail>
 @using Datn_Shared.Models;
 @using Datn_Shared.ViewModels.ProductDetailViewModels;
+@using Datn_Shared.ViewModels.ProductViewModels;
 
 @{
     ViewData["Title"] = "Index";
@@ -8,7 +9,7 @@
     var shaft = (ViewData["s"] as List<Shaft>);
     var weight = (ViewData["w"] as List<Weight>);
     var productdt = (ViewData["pdt"] as List<ViewProductDetail>);
-    var category = (ViewData["p"] as List<Product>);
+    var category = (ViewData["p"] as List<ProductView>);
 
 }
 <div class="pagetitle">
@@ -133,7 +134,7 @@
                                 <form asp-area="Admin" asp-controller="ProductDetail" asp-action="Update" asp-route-id="@productdt.First().Id">
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Tên sản phẩm</label>
-                                        <select asp-for="@productdt.First().ProductID" class="form-select" aria-label="Default select example">
+                                        <select name="ProductID" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in category)
                                             {
@@ -146,7 +147,7 @@
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Tên tip</label>
-                                        <select asp-for="@productdt.First().TipId" class="form-select" aria-label="Default select example">
+                                        <select name="TipId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in tip)
                                             {
@@ -157,7 +158,7 @@
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Tên shaft</label>
-                                        <select asp-for="@productdt.First().ShaftId" class="form-select" aria-label="Default select example">
+                                        <select name="ShaftId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in shaft)
                                             {
@@ -167,7 +168,7 @@
                                       
                                     </div>   <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Tên weight</label>
-                                        <select asp-for="@productdt.First().WeightId" class="form-select" aria-label="Default select example">
+                                        <select name="WeightId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in weight)
                                             {
@@ -179,19 +180,19 @@
                                     <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Quantity</label>
                                         <div class="col-sm-8">
-                                        <input asp-for="@productdt.First().Quantity" type="text" class="form-control" />
+                                        <input name="Quantity" type="text" class="form-control" />
                                         </div>
                                     </div>    
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">ImportPrice</label>
                                         <div class="col-sm-8">
-                                            <input asp-for="@productdt.First().ImportPrice" type="text" class="form-control" />
+                                            <input name="ImportPrice" type="text" class="form-control" />
                                         </div>
                                     </div>  
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Price</label>
                                         <div class="col-sm-8">
-                                            <input asp-for="@productdt.First().Price" type="text" class="form-control" />
+                                            <input name="Price" type="text" class="form-control" />
                                         </div>
                                     </div>   
                                  @*    <div class="mb-3 row">
@@ -203,13 +204,13 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Description</label>
                                         <div class="col-sm-8">
-                                            <input asp-for="@productdt.First().Description" type="text" class="form-control" />
+                                            <input name="Description" type="text" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Status</label>
                                         <div class="col-sm-8">
-                                            <select asp-for="@category.First().Status" class="form-select" aria-label="Default select example">
+                                            <select name="Status" class="form-select" aria-label="Default select example">
                                                 <option selected>Open this select menu</option>
                                                 <option value="0">Còn hàng</option>
                                                 <option value="1">Hết hàng</option>
@@ -342,11 +343,11 @@
 
                         @* Detail *@
                         <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                            @if (category != null)
+                            @if (productdt != null)
                             {
                                 <div class="row">
                                     <label class="col-sm-4 col-form-label">
-                                        <p>Tên sản phẩm</p>
+                                        <p>sản phẩm</p>
                                         <p>Tên tip</p>
                                         <p>Tên shaft</p>
                                         <p>Tên weight</p>
@@ -358,9 +359,16 @@
                                         <span>Trạng thái</span>
                                     </label>
                                     <label class="col-sm-8 col-form-label">
-                                        @foreach (var item in category)
+                                        @foreach (var item in productdt)
                                         {
-                                            <p>@item.Name</p>
+                                            <p>@item.Product.Name</p>
+                                            <p>@item.Tip.Name</p>
+                                            <p>@item.Shaft.Name</p>
+                                            <p>@item.Weight.Name</p>
+                                            <p>@item.Quantity</p>
+                                            <p>@item.ImportPrice</p>
+                                            <p>@item.Price</p>
+                                            <p>@item.Description</p>
                                             @if (item.Status == 0)
                                             {
                                                 <span>Còn hàng</span>
