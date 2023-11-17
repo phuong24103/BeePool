@@ -41,8 +41,8 @@
                                 @foreach (var item in @Model)
                                 {
                                     <tr>
-                                        <td>Tên</td>
-                                        <td>giá</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Price</td>
                                        
                                         <td>
                                             @if (item.Status == 0)
@@ -188,7 +188,7 @@
                                         @foreach (var item in tip)
                                         {
                                             <p>@item.Name</p>
-                                            <td>giá</td>
+                                            <p>@item.Price</p>
                                             @if (item.Status == 0)
                                             {
                                                 <span>Còn hàng</span>

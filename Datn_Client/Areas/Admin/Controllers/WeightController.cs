@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Datn_Client.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class WeightController : Controller
     {
         private readonly HttpClient _httpClient;
@@ -30,10 +31,7 @@ namespace Datn_Client.Areas.Admin.Controllers
                 return View(categories);
             }
         }
-        public async Task<IActionResult> Create()
-        {
-            return View();
-        }
+     
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateWeight createWeight)
         {
@@ -46,17 +44,14 @@ namespace Datn_Client.Areas.Admin.Controllers
             await _httpClient.DeleteAsync($"https://localhost:7033/api/Weight/Delete/{id}");
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        public async Task<IActionResult> Update(Guid id)
-        {
-            var t = await _httpClient.GetFromJsonAsync<Weight>($"https://localhost:7033/api/Weight/GetById/{id}");
-            return View(t);
-        }
-
         public async Task<IActionResult> Update(Guid id, UpdateWeight updateWeight)
         {
             await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Weight/Update/{id}", updateWeight);
             return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> Detail(Guid id)
+        {
+            return RedirectToAction("Index",new {id = id});
         }
     }
 }

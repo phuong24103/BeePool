@@ -45,7 +45,7 @@ namespace Datn_Client.Areas.Admin.Controllers
         public async Task<IActionResult> Create( CreateProductDetail create)
         {
             await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/ProductDetail/Create", create);
-            return RedirectToAction("Index", "ProductDetail");
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Delete(Guid id)
