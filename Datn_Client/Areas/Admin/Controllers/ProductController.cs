@@ -36,7 +36,7 @@ namespace Datn_Client.Areas.Admin.Controllers
                 return View(categories);
             }
         }
-
+        
         public async Task<IActionResult> Detail(Guid id)
         {
             return RedirectToAction("Index",new {id = id});

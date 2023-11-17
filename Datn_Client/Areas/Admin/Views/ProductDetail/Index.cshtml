@@ -229,7 +229,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Tên sản phẩm</label>
                                     <div class="col-sm-8">
-                                        <select asp-for="@Model.First().ProductID" class="form-select" aria-label="Default select example">
+                                        <select name="ProductID" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @if (category != null)
                                             {
@@ -246,7 +246,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Tên tip</label>
                                     <div class="col-sm-8">
-                                        <select asp-for="@Model.First().TipId" class="form-select" aria-label="Default select example">
+                                        <select name="TipId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @if (tip != null)
                                             {
@@ -263,7 +263,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Tên shaft</label>
                                     <div class="col-sm-8">
-                                        <select asp-for="@Model.First().ShaftId" class="form-select" aria-label="Default select example">
+                                        <select name="ShaftId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @if (shaft !=null)
                                             {
@@ -280,7 +280,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Tên Weight</label>
                                     <div class="col-sm-8">
-                                        <select asp-for="@Model.First().WeightId" class="form-select" aria-label="Default select example">
+                                        <select name="WeightId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @if (weight != null)
                                             {
@@ -298,19 +298,19 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Quantity</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Quantity" type="text" class="form-control" value="" />
+                                        <input name="Quantity" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">ImportPrice</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().ImportPrice" type="text" class="form-control" value="" />
+                                        <input name="ImportPrice" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Price</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Price" type="text" class="form-control" value="" />
+                                        <input name="Price" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
 
@@ -322,13 +322,13 @@
                                 </div> *@ <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Description</label>
                                     <div class="col-sm-8">
-                                        <input asp-for="@Model.First().Description" type="text" class="form-control" value="" />
+                                        <input name="Description" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Status</label>
                                     <div class="col-sm-8">
-                                        <select asp-for="@Model.First().Status" class="form-select" aria-label="Default select example">
+                                        <select name="Status" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             <option value="0">Còn hàng</option>
                                             <option value="1">Hết hàng</option>

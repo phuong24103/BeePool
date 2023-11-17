@@ -39,7 +39,7 @@ namespace Datn_Api.Controllers
 
         [HttpGet]
         [Route("GetById/{id:Guid}")]
-        public async Task<IActionResult> GetProductById([FromRoute] Guid id)
+        public async Task<IActionResult> GetProductById(Guid id)
         {
             var mate = await _iprosv.GetProductById(id);
             JsonSerializerSettings settings = new JsonSerializerSettings
