@@ -38,8 +38,8 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center">
-                <img src="~/images/logoAdmin.png" alt="">
-                @* <span class="d-none d-lg-block">BeePool</span> *@
+                <img src="~/images/favicons.png" alt="">
+                <span class="d-none d-lg-block">BeePool</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -131,9 +131,15 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link collapsed">
+                    <i class="bx bx-home-circle"></i>
+                    <span>Quay lại Trang chủ</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link">
                     <i class="bi bi-grid"></i>
-                    <span>Trang chủ</span>
+                    <span>Bảng điều khiển</span>
                 </a>
             </li><!-- End Dashboard Nav -->
             @if (User.IsInRole("Quản lý") || User.IsInRole("Nhân viên"))

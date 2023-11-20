@@ -11,5 +11,11 @@ namespace Datn_Api.IServices
         public Task<BillDetailView> GetBillDetailsById(Guid id);
         public Task<IEnumerable<BillDetailView>> GetBillDetailsByIdBill(Guid id);
         public Task<IEnumerable<BillDetailView>> GetAllBillDetails();
+        public Task<int> GetSales();
+        public Task<int> GetSalesFilter(string date);
+        public Task<string> GetReportSales();
+        public Task<double> GetRevenue();
+        public Task<double> GetRevenueFilter(string date);
+        public Task<string> GetReportRevenue();
     }
 }

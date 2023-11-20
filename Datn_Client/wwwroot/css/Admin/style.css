@@ -911,6 +911,22 @@ h6 {
     margin-left: 95px;
 }
 
+.title-news {
+    word-wrap: break-word;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.content-news {
+    word-wrap: break-word;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
 /* Recent Sales */
 .dashboard .recent-sales {
     font-size: 14px;

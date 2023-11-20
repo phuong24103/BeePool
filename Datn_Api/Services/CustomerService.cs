@@ -1,16 +1,18 @@
 ﻿using Datn_Api.Data;
 using Datn_Api.IServices;
+using Datn_Api.Migrations;
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.AccountViewModels;
 using Datn_Shared.ViewModels.CustomerViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Datn_Api.Services
 {
     public class CustomerService : ICustomerService
-	{
-		private readonly MyDbContext _context;
+    {
+        private readonly MyDbContext _context;
         private readonly UserManager<Customer> _customerManager;
 
         public CustomerService(MyDbContext context, UserManager<Customer> customerManager)
@@ -20,8 +22,8 @@ namespace Datn_Api.Services
         }
 
         public async Task<List<Customer>> GetAllCustomer()
-		{
-			return await _context.Customers.ToListAsync();
+        {
+            return await _context.Customers.ToListAsync();
         }
 
         public async Task<CustomerView> GetCustomerByNameWithViewModel(string name)
@@ -33,17 +35,17 @@ namespace Datn_Api.Services
                  join c in _context.Carts on a.Id equals c.CustomerId
                  select new CustomerView()
                  {
-					 Customer = a,
-					 Rank = b,
-					 Cart = c,
+                     Customer = a,
+                     Rank = b,
+                     Cart = c,
                  }).Where(p => p.Customer.UserName.ToLower().Contains(name.ToLower())).FirstAsync();
             return customerView;
         }
 
         public async Task<Customer> GetCustomerbyId(Guid id)
-		{
-			return await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);
-		}
+        {
+            return await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);
+        }
 
         public async Task<Customer> GetCustomerbyName(string name)
         {
@@ -51,23 +53,23 @@ namespace Datn_Api.Services
         }
 
         public async Task<bool> UpdateCustomer(Guid id, Customer customer)
-		{
-			var n = _context.Customers.Find(id);
-			if (n == null) return false;
-			n.RankId = customer.RankId;
-			try
-			{
-				_context.Customers.Update(customer);
-				await _context.SaveChangesAsync();
-				return true;
+        {
+            var n = _context.Customers.Find(id);
+            if (n == null) return false;
+            n.RankId = customer.RankId;
+            try
+            {
+                _context.Customers.Update(customer);
+                await _context.SaveChangesAsync();
+                return true;
 
-			}
-			catch (Exception)
-			{
+            }
+            catch (Exception)
+            {
 
-				return false;
-			}
-		}
+                return false;
+            }
+        }
 
         public async Task<bool> UpdateImageCustomer(string userName, string image)
         {
@@ -157,7 +159,8 @@ namespace Datn_Api.Services
                 return false;
             }
         }
-
+        
+        
         public async Task<bool> UpdatePointCustomer(Guid id, Customer customer)
         {
             try
@@ -197,5 +200,81 @@ namespace Datn_Api.Services
             }
         }
 
+        public async Task<int> GetTotalCustomer()
+        {
+            var customers = await _context.Customers.ToListAsync();
+            if (customers != null)
+            {
+                return customers.Count;
+            }
+            return 0;
+        }
+
+        public async Task<int> GetTotalCustomerFilter(string date)
+        {
+            var customers = await _context.Customers.ToListAsync();
+            if (customers != null)
+            {
+                if (date == "today" || date == "thisMonth" || date == "thisYear")
+                {
+                    int total = 0;
+                    foreach (var customer in customers)
+                    {
+                        if (date == "today")
+                        {
+                            if (customer.CreateDate.DayOfYear == DateTime.Now.DayOfYear)
+                            {
+                                total++;
+                            }
+                        }
+                        else if (date == "thisYear")
+                        {
+                            if (customer.CreateDate.Year == DateTime.Now.Year)
+                            {
+                                total++;
+                            }
+                        }
+                        else if (date == "thisMonth")
+                        {
+                            if (customer.CreateDate.Year == DateTime.Now.Year && customer.CreateDate.Month == DateTime.Now.Month)
+                            {
+                                total++;
+                            }
+                        }
+                    }
+                    return total;
+                }
+                return customers.Count;
+            }
+            return 0;
+        }
+
+        public async Task<string> GetReportTotalCustomer()
+        {
+            var customers = await _context.Customers.ToListAsync();
+            if (customers != null)
+            {
+                string customer = "";
+                List<Customer> total = new List<Customer>();
+                for (int i = 0; i < customers.Count; i++)
+                {
+                    if (customers[i].FullName != null)
+                    {
+                        /*if (customers[i].CreateDate.DayOfYear == DateTime.Now.AddHours(-i).DayOfYear)
+                        {*/
+                            total.Add(customers[i]);
+                        /*}*/
+                    }
+                    customer += total.Count;
+                    total.Clear();
+                    if (i > 1)
+                    {
+                        customer += ", ";
+                    }
+                }
+                return customer;
+            }
+            return "";
+        }
     }
 }
