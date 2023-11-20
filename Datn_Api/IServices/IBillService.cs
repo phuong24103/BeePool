@@ -11,5 +11,7 @@ namespace Datn_Api.IServices
         public Task<BillView> GetBillById(Guid id);
         public Task<IEnumerable<BillView>> GetBillByCustomerId(Guid id);
         public Task<IEnumerable<BillView>> GetAllBills();
+        public Task<IEnumerable<BillAdminView>> GetRecentSales();
+        public Task<IEnumerable<BillAdminView>> GetRecentSales(string date);
     }
 }

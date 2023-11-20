@@ -65,5 +65,53 @@ namespace Datn_Api.Controllers
             await _billDetailService.DeleteBillDetails(id);
             return Ok();
         }
+
+        [HttpGet]
+        [Route("GetSales")]
+        public async Task<IActionResult> GetSales()
+        {
+            var sales = await _billDetailService.GetSales();
+            return Ok(sales);
+        }
+
+        [HttpGet]
+        [Route("GetSales/{date}")]
+        public async Task<IActionResult> GetSalesFilter(string date)
+        {
+            var sales = await _billDetailService.GetSalesFilter(date);
+            return Ok(sales);
+        }
+
+        [HttpGet]
+        [Route("GetReportSales")]
+        public async Task<IActionResult> GetReportSales()
+        {
+            var sales = await _billDetailService.GetReportSales();
+            return Ok(sales);
+        }
+
+        [HttpGet]
+        [Route("GetRevenue")]
+        public async Task<IActionResult> GetRevenue()
+        {
+            var revenue = await _billDetailService.GetRevenue();
+            return Ok(revenue);
+        }
+
+        [HttpGet]
+        [Route("GetRevenue/{date}")]
+        public async Task<IActionResult> GetRevenueFilter(string date)
+        {
+            var revenue = await _billDetailService.GetRevenueFilter(date);
+            return Ok(revenue);
+        }
+
+        [HttpGet]
+        [Route("GetReportRevenue")]
+        public async Task<IActionResult> GetReportRevenue()
+        {
+            var revenue = await _billDetailService.GetReportRevenue();
+            return Ok(revenue);
+        }
     }
 }

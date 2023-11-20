@@ -185,6 +185,36 @@ namespace Datn_Api.Controllers
             return Ok(formattedJson);
         }
 
+        [HttpGet]
+        [Route("GetProductStatistics")]
+        public async Task<IActionResult> GetProductStatistics()
+        {
+            var mate = await _iprosv.GetProductStatistics();
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(mate, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
+        }
+
+        [HttpGet]
+        [Route("GetProductStatistics/{date}")]
+        public async Task<IActionResult> GetProductStatisticsFilter(string date)
+        {
+            var mate = await _iprosv.GetProductStatisticsFilter(date);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(mate, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
+        }
+
         [HttpPost]
         [Route("Create")]
         public async Task<ActionResult<CreateProduct>> CreateProduct(CreateProduct createProduct)

@@ -1,9 +1,25 @@
-﻿<div class="pagetitle">
-    <h1>Dashboard</h1>
+﻿@{
+    string date = "[";
+
+    for (int i = 0; i < ViewBag.DateTimes.Count; i++)
+    {
+        date += $"'{ViewBag.DateTimes[i]}'";
+
+        if (i < ViewBag.DateTimes.Count - 1)
+        {
+            date += ", ";
+        }
+    }
+
+    date += "]";
+}
+
+<div class="pagetitle">
+    <h1>Bảng điều khiển</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Bảng điều khiển</li>
         </ol>
     </nav>
 </div><!-- End Page Title -->
@@ -23,24 +39,44 @@
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
+                                    <h6>Lọc</h6>
                                 </li>
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterSales" asp-route-date="today">Hôm nay</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterSales" asp-route-date="thisMonth">Tháng này</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterSales" asp-route-date="thisYear">Năm nay</a></li>
                             </ul>
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Sales <span>| Today</span></h5>
+                            <h5 class="card-title">
+                                Doanh số
+                                <span>
+                                    | @if (ViewBag.DateSales == "today")
+                                    {
+                                        <span>Hôm nay</span>
+                                    }
+                                    else if (ViewBag.DateSales == "thisMonth")
+                                    {
+                                        <span>Tháng này</span>
+                                    }
+                                    else if (ViewBag.DateSales == "thisYear")
+                                    {
+                                        <span>Năm nay</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Toàn bộ</span>
+                                    }
+                                </span>
+                            </h5>
 
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                     <i class="bi bi-cart"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>145</h6>
+                                    <h6>@ViewBag.Sales</h6>
                                     <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                                 </div>
@@ -57,24 +93,44 @@
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
+                                    <h6>Lọc</h6>
                                 </li>
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterRevenue" asp-route-date="today">Hôm nay</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterRevenue" asp-route-date="thisMonth">Tháng này</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterRevenue" asp-route-date="thisYear">Năm nay</a></li>
                             </ul>
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                            <h5 class="card-title">
+                                Doanh thu
+                                <span>
+                                    | @if (ViewBag.DateRevenue == "today")
+                                    {
+                                        <span>Hôm nay</span>
+                                    }
+                                    else if (ViewBag.DateRevenue == "thisMonth")
+                                    {
+                                        <span>Tháng này</span>
+                                    }
+                                    else if (ViewBag.DateRevenue == "thisYear")
+                                    {
+                                        <span>Năm nay</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Toàn bộ</span>
+                                    }
+                                </span>
+                            </h5>
 
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                     <i class="bi bi-currency-dollar"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>$3,264</h6>
+                                    <h6>@ViewBag.Revenue</h6>
                                     <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                                 </div>
@@ -92,24 +148,44 @@
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
+                                    <h6>Lọc</h6>
                                 </li>
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterCustomer" asp-route-date="today">Hôm nay</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterCustomer" asp-route-date="thisMonth">Tháng này</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterCustomer" asp-route-date="thisYear">Năm nay</a></li>
                             </ul>
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Customers <span>| This Year</span></h5>
+                            <h5 class="card-title">
+                                Khách hàng
+                                <span>
+                                    | @if (ViewBag.DateTotalCustomer == "today")
+                                    {
+                                        <span>Hôm nay</span>
+                                    }
+                                    else if (ViewBag.DateTotalCustomer == "thisMonth")
+                                    {
+                                        <span>Tháng này</span>
+                                    }
+                                    else if (ViewBag.DateTotalCustomer == "thisYear")
+                                    {
+                                        <span>Năm nay</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Toàn bộ</span>
+                                    }
+                                </span>
+                            </h5>
 
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                     <i class="bi bi-people"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>1244</h6>
+                                    <h6>@ViewBag.TotalCustomer</h6>
                                     <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
 
                                 </div>
@@ -127,17 +203,17 @@
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
+                                    <h6>Lọc</h6>
                                 </li>
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                <li><a class="dropdown-item" href="#">Hôm nay</a></li>
+                                <li><a class="dropdown-item" href="#">Tháng này</a></li>
+                                <li><a class="dropdown-item" href="#">Năm nay</a></li>
                             </ul>
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Reports <span>/Today</span></h5>
+                            <h5 class="card-title">Báo cáo <span>/ Hôm nay</span></h5>
 
                             <!-- Line Chart -->
                             <div id="reportsChart"></div>
@@ -146,14 +222,14 @@
                                 document.addEventListener("DOMContentLoaded", () => {
                                     new ApexCharts(document.querySelector("#reportsChart"), {
                                         series: [{
-                                            name: 'Sales',
-                                            data: [31, 40, 28, 51, 42, 82, 56],
+                                            name: 'Doanh số',
+                                            data: [@Html.Raw(ViewBag.ReportSales)],
                                         }, {
-                                            name: 'Revenue',
-                                            data: [11, 32, 45, 32, 34, 52, 41]
+                                            name: 'Doanh thu',
+                                            data: [@Html.Raw(ViewBag.ReportRevenue)]
                                         }, {
-                                            name: 'Customers',
-                                            data: [15, 11, 32, 18, 9, 24, 11]
+                                            name: 'Khách hàng',
+                                            data: [@Html.Raw(ViewBag.ReportTotalCustomer)]
                                         }],
                                         chart: {
                                             height: 350,
@@ -184,7 +260,7 @@
                                         },
                                         xaxis: {
                                             type: 'datetime',
-                                            categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                                            categories: @Html.Raw(date)
                                         },
                                         tooltip: {
                                             x: {
@@ -200,6 +276,7 @@
 
                     </div>
                 </div><!-- End Reports -->
+                
                 <!-- Recent Sales -->
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
@@ -208,64 +285,69 @@
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
+                                    <h6>Lọc</h6>
                                 </li>
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterRecentSale" asp-route-date="today">Hôm nay</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterRecentSale" asp-route-date="thisMonth">Tháng này</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterRecentSale" asp-route-date="thisYear">Năm nay</a></li>
                             </ul>
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                            <h5 class="card-title">
+                                Doanh thu gần đây <span>
+                                    | @if (ViewBag.DateRecentSale == "today")
+                                    {
+                                        <span>Hôm nay</span>
+                                    }
+                                    else if (ViewBag.DateRecentSale == "thisMonth")
+                                    {
+                                        <span>Tháng này</span>
+                                    }
+                                    else if (ViewBag.DateRecentSale == "thisYear")
+                                    {
+                                        <span>Năm nay</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Toàn bộ</span>
+                                    }
+                                </span>
+                            </h5>
 
                             <table class="table table-borderless datatable">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Customer</th>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Người mua</th>
+                                        <th scope="col">Sẳn phẩm</th>
+                                        <th scope="col">Giá</th>
+                                        <th scope="col">Trạng thái</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2457</a></th>
-                                        <td>Brandon Jacob</td>
-                                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                        <td>$64</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2147</a></th>
-                                        <td>Bridie Kessler</td>
-                                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                        <td>$47</td>
-                                        <td><span class="badge bg-warning">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2049</a></th>
-                                        <td>Ashleigh Langosh</td>
-                                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                        <td>$147</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2644</a></th>
-                                        <td>Angus Grady</td>
-                                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                        <td>$67</td>
-                                        <td><span class="badge bg-danger">Rejected</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2644</a></th>
-                                        <td>Raheem Lehner</td>
-                                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                        <td>$165</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
-                                    </tr>
+                                    @foreach (var item in ViewBag.RecentSale)
+                                    {
+                                        <tr>
+                                            <th scope="row"><a href="#">#@item.STT</a></th>
+                                            <td>@item.CustomerName</td>
+                                            <td><a href="#" class="text-primary">@item.ProductName</a></td>
+                                            <td>@item.Price VND</td>
+                                            @if (item.Status == "Đã xác nhận")
+                                            {
+                                                <td><span class="badge bg-danger">@item.Status</span></td>
+                                            }
+                                            else if (item.Status == "Đang lấy hàng")
+                                            {
+                                                <td><span class="badge bg-warning">@item.Status</span></td>
+                                            }
+                                            else if (item.Status == "Đang giao hàng")
+                                            {
+                                                <td><span class="badge bg-success">@item.Status</span></td>
+                                            }
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
 
@@ -281,64 +363,58 @@
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
+                                    <h6>Lọc</h6>
                                 </li>
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterTopSelling" asp-route-date="today">Hôm nay</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterTopSelling" asp-route-date="thisMonth">Tháng này</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterTopSelling" asp-route-date="thisYear">Năm nay</a></li>
                             </ul>
                         </div>
 
                         <div class="card-body pb-0">
-                            <h5 class="card-title">Top Selling <span>| Today</span></h5>
+                            <h5 class="card-title">
+                                Bán chạy nhất
+                                <span>
+                                    | @if (ViewBag.DateTopSelling == "today")
+                                    {
+                                        <span>Hôm nay</span>
+                                    }
+                                    else if (ViewBag.DateTopSelling == "thisMonth")
+                                    {
+                                        <span>Tháng này</span>
+                                    }
+                                    else if (ViewBag.DateTopSelling == "thisYear")
+                                    {
+                                        <span>Năm nay</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Toàn bộ</span>
+                                    }
+                                </span>
+                            </h5>
 
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Preview</th>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Sold</th>
-                                        <th scope="col">Revenue</th>
+                                        <th scope="col" colspan="2">Sản phẩm</th>
+                                        <th scope="col">Giá</th>
+                                        <th scope="col">Số lượng tồn</th>
+                                        <th scope="col">Doanh thu</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                                        <td>$64</td>
-                                        <td class="fw-bold">124</td>
-                                        <td>$5,828</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                                        <td>$46</td>
-                                        <td class="fw-bold">98</td>
-                                        <td>$4,508</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                                        <td>$59</td>
-                                        <td class="fw-bold">74</td>
-                                        <td>$4,366</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                                        <td>$32</td>
-                                        <td class="fw-bold">63</td>
-                                        <td>$2,016</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                                        <td>$79</td>
-                                        <td class="fw-bold">41</td>
-                                        <td>$3,239</td>
-                                    </tr>
+                                    @foreach (var item in ViewBag.TopSelling)
+                                    {
+                                        <tr>
+                                            <th scope="row"><a href="#"><img src="images/products/@item.Image" alt=""></a></th>
+                                            <td style="max-width: 200px;"><a href="#" class="text-primary fw-bold">@item.Name</a></td>
+                                            <td>@item.Price VND</td>
+                                            <td class="fw-bold">@item.Sold</td>
+                                            <td>@item.Revenue VND</td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
 
@@ -352,95 +428,76 @@
         <!-- Right side columns -->
         <div class="col-lg-4">
 
-            <!-- Recent Activity -->
+            <!-- News & Updates Traffic -->
             <div class="card">
                 <div class="filter">
                     <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                         <li class="dropdown-header text-start">
-                            <h6>Filter</h6>
+                            <h6>Lọc</h6>
                         </li>
 
-                        <li><a class="dropdown-item" href="#">Today</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                        <li><a class="dropdown-item" href="#">Hôm nay</a></li>
+                        <li><a class="dropdown-item" href="#">Tháng này</a></li>
+                        <li><a class="dropdown-item" href="#">Năm nay</a></li>
                     </ul>
                 </div>
 
-                <div class="card-body">
-                    <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+                <div class="card-body pb-0">
+                    <h5 class="card-title">Tin tức &amp; Cập nhật <span>| Hôm nay</span></h5>
 
-                    <div class="activity">
+                    <div class="news">
+                        <div class="post-item clearfix">
+                            <img src="/images/slidenews1.jpg" alt="">
+                            <h4><a href="#" class="title-news">Nóng bảng xếp hạng bi-a thế giới: Hồng Thái “bay cao”, “thần đồng” Hàn Quốc lên số 1</a></h4>
+                            <p class="content-news">Giải carom 3 băng Veghel World Cup 2023 kết thúc khuya ngày 28/10 mới đây chứng kiến màn lên ngôi rất thuyết phục của Dick Jaspers. Với phong độ ấn tượng, siêu sao người Hà Lan chỉ mất đúng 12 lượt cơ để đánh bại cơ thủ số 1 nước Đức Martin Horn với cách biệt 50-22 để giành chức vô địch.</p>
+                        </div>
 
-                        <div class="activity-item d-flex">
-                            <div class="activite-label">32 min</div>
-                            <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                            <div class="activity-content">
-                                Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                            </div>
-                        </div><!-- End activity item-->
+                        <div class="post-item clearfix">
+                            <img src="https://cdn.tcdulichtphcm.vn/upload//4-2023/images/2023-10-21/Co-thu-so-1-the-gioi-tien-cu-dokhai1-1697865720-936-width740height493.jpg" alt="">
+                            <h4><a href="#" class="title-news">Cơ thủ bi-a số 1 thế giới tiến cử "Khải tóc dài" thi đấu cho tuyển châu Âu</a></h4>
+                            <p class="content-news">Hanoi Pool Open Championship 2023 đã kết thúc tại Hà Nội vào 15/10 nhưng dư âm về sự kiện này vẫn đang kéo dài. Giải đấu pool quốc tế lần đầu tiên tổ chức tại Thủ đô giúp khán giả Việt Nam tới gần hơn với những cơ thủ hàng đầu thế giới, hay huyền thoại lừng danh thế giới, các tay cơ chủ nhà cũng có dịp thi đấu, cọ xát với đối thủ lớn.</p>
+                        </div>
 
-                        <div class="activity-item d-flex">
-                            <div class="activite-label">56 min</div>
-                            <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                            <div class="activity-content">
-                                Voluptatem blanditiis blanditiis eveniet
-                            </div>
-                        </div><!-- End activity item-->
+                        <div class="post-item clearfix">
+                            <img src="https://baohagiang.vn/file/4028eaa4679b32c401679c0c74382a7e/102023/nu-than-bi-a-trung-quoc-dua-tai-khoe-sac-o-giai-vo-dich-the-gioi-2023-panxiaoting1-1697779201-210-width740height449_20231021082648.jpg" alt="">
+                            <h4><a href="#" class="title-news">"Nữ thần" bi-a Trung Quốc đua tài, khoe sắc ở giải vô địch thế giới 2023</a></h4>
+                            <p class="content-news">Sau giải bi-a quốc tế diễn ra ở Hà Nội, lúc này làng bi-a pool đang hướng sự tập trung vào giải vô địch 10 bi nữ thế giới 2023 diễn ra tại Áo từ 18 tới 22/10.</p>
+                        </div>
 
-                        <div class="activity-item d-flex">
-                            <div class="activite-label">2 hrs</div>
-                            <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                            <div class="activity-content">
-                                Voluptates corrupti molestias voluptatem
-                            </div>
-                        </div><!-- End activity item-->
+                        <div class="post-item clearfix">
+                            <img src="https://icdn.24h.com.vn/upload/4-2023/images/2023-10-15/Reyes-danh-bai-reyeskhaitocdai1-1697386900-253-width740height596.jpg" alt="">
+                            <h4><a href="#" class="title-news">Reyes đánh bại "Khải tóc dài", Jayson Shaw vô địch nghẹt thở giải bi-a ở Hà Nội</a></h4>
+                            <p class="content-news">Hanoi Open Pool Championship 2023 tổ chức tại Hà Nội từ 10 tới 15/10 tại Hà Nội mang tới cho khán giả Việt Nam quá nhiều kỷ niệm đáng nhớ. Ở sự kiện bi-a quốc tế tầm cỡ lần đầu tiên diễn ra tại Việt Nam, quy tụ những cơ thủ hàng đầu thế giới, cơ cấu giải thưởng lớn và có cả sự xuất hiện của "Phù thủy" Efren Reyes (Philippines).</p>
+                        </div>
 
-                        <div class="activity-item d-flex">
-                            <div class="activite-label">1 day</div>
-                            <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                            <div class="activity-content">
-                                Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                            </div>
-                        </div><!-- End activity item-->
+                        <div class="post-item clearfix">
+                            <img src="https://icdn.24h.com.vn/upload/4-2023/images/2023-10-14/reyes9-1697290999-949-width740height555.jpg" alt="">
+                            <h4><a href="#" class="title-news">"Phù thủy bi-a" Reyes tri ân khán giả Việt bằng cơ 4 băng kinh điển</a></h4>
+                            <p class="content-news">Hanoi Open Pool Championship 2023, giải bi-a quốc tế tầm cỡ đầu tiên được tổ chức tại Hà Nội từ 10 tới 15/10 dần bước vào những trận đấu cuối cùng. Không chỉ có những cơ thủ hàng đầu tới tranh tài, sự kiện còn "nóng" hơn khi huyền thoại 69 tuổi, Efren Reyes xuất hiện vào chiều 14/10.</p>
+                        </div>
 
-                        <div class="activity-item d-flex">
-                            <div class="activite-label">2 days</div>
-                            <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                            <div class="activity-content">
-                                Est sit eum reiciendis exercitationem
-                            </div>
-                        </div><!-- End activity item-->
-
-                        <div class="activity-item d-flex">
-                            <div class="activite-label">4 weeks</div>
-                            <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                            <div class="activity-content">
-                                Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                            </div>
-                        </div><!-- End activity item-->
-
-                    </div>
+                    </div><!-- End sidebar recent posts-->
 
                 </div>
-            </div><!-- End Recent Activity -->
+            </div><!-- End News & Updates -->
             <!-- Budget Report -->
             <div class="card">
                 <div class="filter">
                     <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                         <li class="dropdown-header text-start">
-                            <h6>Filter</h6>
+                            <h6>Lọc</h6>
                         </li>
 
-                        <li><a class="dropdown-item" href="#">Today</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                        <li><a class="dropdown-item" href="#">Hôm nay</a></li>
+                        <li><a class="dropdown-item" href="#">Tháng này</a></li>
+                        <li><a class="dropdown-item" href="#">Năm nay</a></li>
                     </ul>
                 </div>
 
                 <div class="card-body pb-0">
-                    <h5 class="card-title">Budget Report <span>| This Month</span></h5>
+                    <h5 class="card-title">Báo cáo ngân sách <span>| Hôm nay</span></h5>
 
                     <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
 
@@ -448,32 +505,32 @@
                         document.addEventListener("DOMContentLoaded", () => {
                             var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
                                 legend: {
-                                    data: ['Allocated Budget', 'Actual Spending']
+                                    data: ['Ngân sách phân bổ', 'Chi tiêu thực tế']
                                 },
                                 radar: {
                                     // shape: 'circle',
                                     indicator: [{
-                                        name: 'Sales',
+                                        name: 'Công nghệ thông tin',
                                         max: 6500
                                     },
                                     {
-                                        name: 'Administration',
+                                        name: 'Quản lý',
                                         max: 16000
                                     },
                                     {
-                                        name: 'Information Technology',
+                                        name: 'Doanh số',
                                         max: 30000
                                     },
                                     {
-                                        name: 'Customer Support',
+                                        name: 'Hỗ trợ khách hàng',
                                         max: 38000
                                     },
                                     {
-                                        name: 'Development',
+                                        name: 'Phát triển',
                                         max: 52000
                                     },
                                     {
-                                        name: 'Marketing',
+                                        name: 'Tiếp thị',
                                         max: 25000
                                     }
                                     ]
@@ -483,11 +540,11 @@
                                     type: 'radar',
                                     data: [{
                                         value: [4200, 3000, 20000, 35000, 50000, 18000],
-                                        name: 'Allocated Budget'
+                                        name: 'Ngân sách phân bổ'
                                     },
                                     {
                                         value: [5000, 14000, 28000, 26000, 42000, 21000],
-                                        name: 'Actual Spending'
+                                        name: 'Chi tiêu thực tế'
                                     }
                                     ]
                                 }]
@@ -503,17 +560,17 @@
                     <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                         <li class="dropdown-header text-start">
-                            <h6>Filter</h6>
+                            <h6>Lọc</h6>
                         </li>
 
-                        <li><a class="dropdown-item" href="#">Today</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                        <li><a class="dropdown-item" href="#">Hôm nay</a></li>
+                        <li><a class="dropdown-item" href="#">Tháng này</a></li>
+                        <li><a class="dropdown-item" href="#">Năm nay</a></li>
                     </ul>
                 </div>
 
                 <div class="card-body pb-0">
-                    <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+                    <h5 class="card-title">Lưu lượng truy cập <span>| Hôm nay</span></h5>
 
                     <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 
@@ -528,7 +585,7 @@
                                     left: 'center'
                                 },
                                 series: [{
-                                    name: 'Access From',
+                                    name: 'Truy cập từ',
                                     type: 'pie',
                                     radius: ['40%', '70%'],
                                     avoidLabelOverlap: false,
@@ -548,11 +605,11 @@
                                     },
                                     data: [{
                                         value: 1048,
-                                        name: 'Search Engine'
+                                        name: 'Máy tìm kiếm'
                                     },
                                     {
                                         value: 735,
-                                        name: 'Direct'
+                                        name: 'Trực tiếp'
                                     },
                                     {
                                         value: 580,
@@ -560,11 +617,11 @@
                                     },
                                     {
                                         value: 484,
-                                        name: 'Union Ads'
+                                        name: 'Quảng cáo'
                                     },
                                     {
                                         value: 300,
-                                        name: 'Video Ads'
+                                        name: 'Quảng cáo video'
                                     }
                                     ]
                                 }]
@@ -574,59 +631,6 @@
 
                 </div>
             </div><!-- End Website Traffic -->
-            <!-- News & Updates Traffic -->
-            <div class="card">
-                <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        <li class="dropdown-header text-start">
-                            <h6>Filter</h6>
-                        </li>
-
-                        <li><a class="dropdown-item" href="#">Today</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                </div>
-
-                <div class="card-body pb-0">
-                    <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
-
-                    <div class="news">
-                        <div class="post-item clearfix">
-                            <img src="assets/img/news-1.jpg" alt="">
-                            <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                            <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                        </div>
-
-                        <div class="post-item clearfix">
-                            <img src="assets/img/news-2.jpg" alt="">
-                            <h4><a href="#">Quidem autem et impedit</a></h4>
-                            <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                        </div>
-
-                        <div class="post-item clearfix">
-                            <img src="assets/img/news-3.jpg" alt="">
-                            <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                            <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                        </div>
-
-                        <div class="post-item clearfix">
-                            <img src="assets/img/news-4.jpg" alt="">
-                            <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                            <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                        </div>
-
-                        <div class="post-item clearfix">
-                            <img src="assets/img/news-5.jpg" alt="">
-                            <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                            <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-                        </div>
-
-                    </div><!-- End sidebar recent posts-->
-
-                </div>
-            </div><!-- End News & Updates -->
 
         </div><!-- End Right side columns -->
 

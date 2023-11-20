@@ -501,6 +501,105 @@ namespace Datn_Api.Services
             return proview;
         }
 
+        public async Task<IEnumerable<ProductAdminView>> GetProductStatistics()
+        {
+            var products = await _context.Products.OrderByDescending(p => p.Name).Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductAdminView> proview = new List<ProductAdminView>();
+            if (products != null)
+            {
+                foreach (var product in products)
+                {
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                    Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    var billDetails = _context.BillDetails.Where(p => p.ProductDetailId == productDetailId).ToListAsync().Result;
+                    double revenue = 0;
+                    foreach (var item in billDetails)
+                    {
+                        revenue += item.Price;
+                    }
+
+                    proview.Add(new ProductAdminView
+                    {
+                        Id = product.Id,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Revenue = revenue,
+                    });
+                }
+            }
+            return proview.OrderByDescending(p => p.Revenue).Take(5).ToList();
+        }
+
+        public async Task<IEnumerable<ProductAdminView>> GetProductStatisticsFilter(string date)
+        {
+            var products = await _context.Products.OrderByDescending(p => p.Name).Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductAdminView> proview = new List<ProductAdminView>();
+            if (products != null)
+            {
+                foreach (var product in products)
+                {
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                    Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    var billDetails = await _context.BillDetails.Where(p => p.ProductDetailId == productDetailId).ToListAsync();
+                    double revenue = 0;
+                    if (date == "today" || date == "thisYear" || date == "thisMonth")
+                    {
+                        foreach (var item in billDetails)
+                        {
+                            var bill = await _context.Bills.Where(p => p.Id == item.BillId).FirstOrDefaultAsync();
+                            if (date == "today")
+                            {
+                                if (bill.CreateDate.DayOfYear == DateTime.Now.DayOfYear)
+                                {
+                                    revenue += item.Price;
+                                }
+                            }
+                            else if (date == "thisYear")
+                            {
+                                if (bill.CreateDate.Year == DateTime.Now.Year)
+                                {
+                                    revenue += item.Price;
+                                }
+                            }
+                            else if (date == "thisMonth")
+                            {
+                                if (bill.CreateDate.Year == DateTime.Now.Year && bill.CreateDate.Month == DateTime.Now.Month)
+                                {
+                                    revenue += item.Price;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in billDetails)
+                        {
+                            revenue += item.Price;
+                        }
+                    }
+
+                    proview.Add(new ProductAdminView
+                    {
+                        Id = product.Id,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Revenue = revenue,
+                    });
+                }
+            }
+            return proview.OrderByDescending(p => p.Revenue).Take(5).ToList();
+        }
+
         public async Task<bool> UpdateProduct(Guid id, UpdateProduct product)
         {
             var n = _context.Products.Find(id);

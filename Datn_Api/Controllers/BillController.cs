@@ -65,6 +65,21 @@ namespace Datn_Api.Controllers
             return Ok(bill);
         }
 
+        [HttpGet]
+        [Route("GetRecentSales")]
+        public async Task<IActionResult> GetRecentSales()
+        {
+            var bill = await _billService.GetRecentSales();
+            return Ok(bill);
+        }
+
+        [HttpGet]
+        [Route("GetRecentSales/{date}")]
+        public async Task<IActionResult> GetRecentSales(string date)
+        {
+            var bill = await _billService.GetRecentSales(date);
+            return Ok(bill);
+        }
 
         [HttpPost]
         [Route("CreateBillBT")]

@@ -97,5 +97,29 @@ namespace Datn_Api.Controllers
             await _customerService.UpdateImageCustomer(userName, image);
             return Ok(image);
         }
+
+        [HttpGet]
+        [Route("GetTotalCustomer")]
+        public async Task<IActionResult> GetTotalCustomer()
+        {
+            var sales = await _customerService.GetTotalCustomer();
+            return Ok(sales);
+        }
+
+        [HttpGet]
+        [Route("GetTotalCustomer/{date}")]
+        public async Task<IActionResult> GetTotalCustomerFilter(string date)
+        {
+            var sales = await _customerService.GetTotalCustomerFilter(date);
+            return Ok(sales);
+        }
+
+        [HttpGet]
+        [Route("GetReportTotalCustomer")]
+        public async Task<IActionResult> GetReportTotalCustomer()
+        {
+            var customers = await _customerService.GetReportTotalCustomer();
+            return Ok(customers);
+        }
     }
 }
