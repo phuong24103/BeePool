@@ -47,11 +47,11 @@
                                     <tr>
                                         <td>@item.Name</td>
                              
-                                        <td>giá</td>
-                                        <td>size</td>
-                                        <td>lenght</td>
-                                        <td>Material</td>
-                                        <td>Color</td>
+                                        <td>@item.Price</td>
+                                        <td>@item.Size</td>
+                                        <td>@item.Length</td>
+                                        <td>@item.Material</td>
+                                        <td>@item.Color</td>
                                         <td>
                                             @if (item.Status == 0)
                                             {
@@ -124,10 +124,15 @@
                             {
                                 <form asp-area="Admin" asp-controller="Shaft" asp-action="Update" asp-route-id="@category.First().Id">
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Name</label>
-                                        <div class="col-sm-8">
-                                            <input asp-for="@category.First().Name" type="text" class="form-control" />
-                                        </div>
+                                        <label class="col-sm-4 col-form-label">Tên </label>
+                                        <select asp-for="@category.First().Name" class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            @foreach (var item in category)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Price</label>
@@ -150,7 +155,7 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Material</label>
                                         <div class="col-sm-8">
-                                            <input asp-for="@category.First().Material" type="text" class="form-control" />
+                                            <input asp-for ="@category.First().Material" type="text" class="form-control" />
                                         </div>
                                     </div> 
                                     <div class="mb-3 row">
@@ -248,6 +253,11 @@
                                         @foreach (var item in category)
                                         {
                                             <p>@item.Name</p>
+                                            <p>@item.Price</p>
+                                            <p>@item.Size</p>
+                                            <p>@item.Length</p>
+                                            <p>@item.Material</p>
+                                            <p>@item.Color</p>
                                             @if (item.Status == 0)
                                             {
                                                 <span>Còn hàng</span>

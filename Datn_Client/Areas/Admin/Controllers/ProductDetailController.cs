@@ -1,5 +1,6 @@
 ﻿using Datn_Shared.Models;
 using Datn_Shared.ViewModels.ProductDetailViewModels;
+using Datn_Shared.ViewModels.ProductViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -23,9 +24,9 @@ namespace Datn_Client.Areas.Admin.Controllers
             ViewData["s"] = shaft;
             var weight = await _httpClient.GetFromJsonAsync<List<Weight>>("https://localhost:7033/api/Weight/GetAll");
             ViewData["w"] = weight;
-            var product = await _httpClient.GetFromJsonAsync<List<Product>>("https://localhost:7033/api/Product/GetAll");
+            var product = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAll");
             ViewData["p"] = product;
-            if (id == Guid.Empty)
+            if (id == Guid.Empty)   
             {
                 var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ViewProductDetail>>("https://localhost:7033/api/ProductDetail/GetAll");
                 return View(categories);
@@ -44,7 +45,7 @@ namespace Datn_Client.Areas.Admin.Controllers
         public async Task<IActionResult> Create( CreateProductDetail create)
         {
             await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/ProductDetail/Create", create);
-            return RedirectToAction("Index", "ProductDetail");
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Delete(Guid id)

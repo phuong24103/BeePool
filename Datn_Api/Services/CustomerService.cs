@@ -159,6 +159,46 @@ namespace Datn_Api.Services
                 return false;
             }
         }
+        
+        
+        public async Task<bool> UpdatePointCustomer(Guid id, Customer customer)
+        {
+            try
+            {
+                var n = _context.Customers.Find(id);
+                if (n == null) return false;
+                n.Point = customer.Point;
+                if(customer.Point >= 12000)
+                {
+                    n.RankId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9236");
+                }
+                else if(customer.Point >= 8000)
+                {
+                    n.RankId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9235");
+                }
+                else if (customer.Point >= 5000)
+                {
+                    n.RankId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9234");
+                }
+                else if (customer.Point >= 2000)
+                {
+                    n.RankId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9233");
+                }
+                else if (customer.Point >= 1000)
+                {
+                    n.RankId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9232");
+                }
+
+                _context.Customers.Update(n);
+                await _context.SaveChangesAsync();
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         public async Task<int> GetTotalCustomer()
         {

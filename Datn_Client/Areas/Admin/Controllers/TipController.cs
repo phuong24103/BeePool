@@ -19,28 +19,25 @@ namespace Datn_Client.Areas.Admin.Controllers
         {
             if (id == Guid.Empty)
             {
-                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Tip>>("https://localhost:7033/api/Tip/GetAll");
+                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Tip>>("\"https://localhost:7033/api/Tip/GetAll");
                 return View(categories);
             }
             else
             {
-                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Tip>>("https://localhost:7033/api/Tip/GetAll");
-                var category = await _httpClient.GetFromJsonAsync<Tip>($"https://localhost:7033/api/Tip/GetById/{id}");
+                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Tip>>("\"https://localhost:7033/api/Tip/GetAll");
+                var category = await _httpClient.GetFromJsonAsync<Tip>($"\"https://localhost:7033/api/Tip/GetById/{id}");
                 List<Tip> c = new List<Tip>();
                 c.Add(category);
                 ViewData["Tip"] = c;
                 return View(categories);
             }
         }
-        public async Task<IActionResult> Create()
-        {
-            return View();
-        }
+    
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateTip createTip)
         {
             await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Tip/Create", createTip);
-            return RedirectToAction("Index", "Tip");
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Delete(Guid id)
@@ -59,6 +56,9 @@ namespace Datn_Client.Areas.Admin.Controllers
         {
             await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Tip/Update/{id}", updateTip);
             return RedirectToAction("Index");
+        } public async Task<IActionResult> Detail(Guid id)
+        {
+            return RedirectToAction("Index", new {id = id});
         }
     }
 }

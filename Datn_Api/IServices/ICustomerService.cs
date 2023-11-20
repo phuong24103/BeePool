@@ -15,6 +15,7 @@ namespace Datn_Api.IServices
         public Task<bool> UpdateProfileCustomer(string userName, UpdateProfileCustomer customer);
         public Task<Response> UpdatePasswordCustomer(string userName, UpdatePasswordCustomer customer);
         public Task<bool> UpdateImageCustomer(string userName, string image);
+		    public Task<bool> UpdatePointCustomer(Guid id, Customer customer);
         public Task<int> GetTotalCustomer();
         public Task<int> GetTotalCustomerFilter(string date);
         public Task<string> GetReportTotalCustomer();

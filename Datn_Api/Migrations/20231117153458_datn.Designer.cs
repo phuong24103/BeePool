@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datn_Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231110144756_datn")]
+    [Migration("20231117153458_datn")]
     partial class datn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -307,10 +307,10 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d07"),
-                            CreatedDate = new DateTime(2023, 11, 10, 21, 47, 56, 184, DateTimeKind.Local).AddTicks(8233),
+                            CreatedDate = new DateTime(2023, 11, 17, 22, 34, 58, 171, DateTimeKind.Local).AddTicks(861),
                             Name = "Cơ ba băng",
                             Status = 0,
-                            UpdatedDate = new DateTime(2023, 11, 10, 21, 47, 56, 184, DateTimeKind.Local).AddTicks(8242)
+                            UpdatedDate = new DateTime(2023, 11, 17, 22, 34, 58, 171, DateTimeKind.Local).AddTicks(882)
                         });
                 });
 
@@ -5924,6 +5924,9 @@ namespace Datn_Api.Migrations
                     b.Property<Guid>("EmPloyeeId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("PointCustomer")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -5948,6 +5951,7 @@ namespace Datn_Api.Migrations
                             Id = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf4"),
                             Code = "DEMACIA",
                             EmPloyeeId = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
+                            PointCustomer = 2000,
                             Status = 0,
                             TimeEnd = new DateTime(2023, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TimeStart = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -5958,6 +5962,7 @@ namespace Datn_Api.Migrations
                             Id = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b14"),
                             Code = "Pitover",
                             EmPloyeeId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
+                            PointCustomer = 1000,
                             Status = 1,
                             TimeEnd = new DateTime(2023, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TimeStart = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -6076,14 +6081,14 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"),
-                            ConcurrencyStamp = "251ba2e1-c300-4125-8e1d-a818a9947cf0",
+                            ConcurrencyStamp = "a567e8d2-4cb3-44fe-bfa1-1184f246a9ec",
                             Name = "Quản lý",
                             NormalizedName = "MANAGE"
                         },
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"),
-                            ConcurrencyStamp = "4b512fb7-174a-4fb8-86a7-f87c519e2316",
+                            ConcurrencyStamp = "83723f9b-20f7-439d-b51b-8b7cc0761e97",
                             Name = "Nhân viên",
                             NormalizedName = "STAFF"
                         });

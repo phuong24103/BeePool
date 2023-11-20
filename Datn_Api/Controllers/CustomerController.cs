@@ -97,6 +97,14 @@ namespace Datn_Api.Controllers
             await _customerService.UpdateImageCustomer(userName, image);
             return Ok(image);
         }
+        
+        [HttpPut]
+        [Route("UpdatePoint/{id:Guid}")]
+        public async Task<IActionResult> UpdatePointCustomer(Guid id, Customer customer)
+        {
+            await _customerService.UpdatePointCustomer(id, customer);
+            return Ok(customer);
+        }
 
         [HttpGet]
         [Route("GetTotalCustomer")]

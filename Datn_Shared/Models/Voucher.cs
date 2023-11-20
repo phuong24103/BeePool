@@ -16,6 +16,7 @@ namespace Datn_Shared.Models
         public Guid EmPloyeeId { get; set; }
         public string Code { get; set; }
         public double Value { get; set; }
+        public int PointCustomer { get; set; }
         public DateTime TimeStart { get; set; }
         public DateTime TimeEnd { get; set; }
         public int Status { get; set; }

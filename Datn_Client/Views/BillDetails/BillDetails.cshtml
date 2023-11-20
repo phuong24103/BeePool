@@ -34,32 +34,42 @@
                     </div>
 
                 </div>
-                @*<div class="row">
+                <div class="row">
                     <div class="col-xl-8">
                     <ul class="list-unstyled">
-                    <li class="text-muted">Tên: @item.Bill.Customer.UserName</li>
-                    <li class="text-muted">Địa chỉ: <span style="color:#5d9fc5 ;">@item.Bill.Customer.Address</span></li>
+                    <li class="text-muted">Tên: @Model.First().Bill.CustomerName</li>
+                    <li class="text-muted">Địa chỉ: <span style="color:#5d9fc5 ;">@Model.First().Bill.Address</span></li>
 
-                    <li class="text-muted"><i class="fas fa-phone"></i>Số điện thoại: <span style="color:#5d9fc5 ;">@item.Bill.Customer.PhoneNumber</span></li>
+                    <li class="text-muted"><i class="fas fa-phone"></i>Số điện thoại: <span style="color:#5d9fc5 ;">@Model.First().Bill.CustomerPhone</span></li>
                     </ul>
                     </div>
                     <div class="col-xl-4">
-                    <p class="text-muted">Thông Tin</p>
                     <ul class="list-unstyled">
                     <li class="text-muted">
-                    <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">ID:</span>#123-456
+                    <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">Creation Date: @Model.First().Bill.CreateDate</span>
                     </li>
                     <li class="text-muted">
-                    <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">Creation Date: @item.Bill.CreateDate</span>
-                    </li>
-                    <li class="text-muted">
-                    <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="me-1 fw-bold">Status:</span><span class="badge bg-warning text-black fw-bold">
-                    @item.Bill.BillStatus.Name
-                    </span>
+                    <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="me-1 fw-bold">Status:</span>
+                                @if (Model.First().Bill.BillStatusId == Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5"))
+                                {
+                                    <span>Đã xác Nhận</span>
+                                }
+                                else if (Model.First().Bill.BillStatusId == Guid.Parse("b392b872-712a-41a7-8542-83fb58249c23"))
+                                {
+                                    <span>Đang lấy hàng</span>
+                                }
+                                else if (Model.First().Bill.BillStatusId == Guid.Parse("00357f21-9356-468b-8c0c-b590e3d1bc0a"))
+                                {
+                                    <span>Đang giao hàng</span>
+                                }
+                                else
+                                {
+                                    <span>Chờ xác nhận</span>
+                                }
                     </li>
                     </ul>
                     </div>
-                    </div>*@
+                    </div>
 
                 <div class="row my-2 mx-1 justify-content-center">
                     <table class="table table-striped table-borderless">
@@ -83,10 +93,6 @@
 
                     </table>
                 </div>
-                <div class="text-center" style="margin-top: 30px;">
-                    <a asp-controller="BillDetails" asp-action="BillDetails"> <button class="btn btn-block btn-outline-primary btn-lg" type="button">Thanh Toán</button></a>
-                </div>
-                <hr>
             </div>
         </div>
 

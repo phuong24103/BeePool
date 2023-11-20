@@ -260,6 +260,7 @@ namespace Datn_Api.Migrations
                     EmPloyeeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Value = table.Column<double>(type: "float", nullable: false),
+                    PointCustomer = table.Column<int>(type: "int", nullable: false),
                     TimeStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TimeEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
@@ -605,7 +606,7 @@ namespace Datn_Api.Migrations
                     { new Guid("357267e8-d162-4844-a660-661f46933d04"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cơ Nhảy", 0, new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified) },
                     { new Guid("357267e8-d162-4844-a660-661f46933d05"), new DateTime(2023, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cơ Phá", 0, new DateTime(2023, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) },
                     { new Guid("357267e8-d162-4844-a660-661f46933d06"), new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cơ Phá + Nhảy", 0, new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { new Guid("357267e8-d162-4844-a660-661f46933d07"), new DateTime(2023, 11, 10, 21, 47, 56, 184, DateTimeKind.Local).AddTicks(8233), "Cơ ba băng", 0, new DateTime(2023, 11, 10, 21, 47, 56, 184, DateTimeKind.Local).AddTicks(8242) }
+                    { new Guid("357267e8-d162-4844-a660-661f46933d07"), new DateTime(2023, 11, 17, 22, 34, 58, 171, DateTimeKind.Local).AddTicks(861), "Cơ ba băng", 0, new DateTime(2023, 11, 17, 22, 34, 58, 171, DateTimeKind.Local).AddTicks(882) }
                 });
 
             migrationBuilder.InsertData(
@@ -643,8 +644,8 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "251ba2e1-c300-4125-8e1d-a818a9947cf0", "Quản lý", "MANAGE" },
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "4b512fb7-174a-4fb8-86a7-f87c519e2316", "Nhân viên", "STAFF" }
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "a567e8d2-4cb3-44fe-bfa1-1184f246a9ec", "Quản lý", "MANAGE" },
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "83723f9b-20f7-439d-b51b-8b7cc0761e97", "Nhân viên", "STAFF" }
                 });
 
             migrationBuilder.InsertData(
@@ -723,11 +724,11 @@ namespace Datn_Api.Migrations
 
             migrationBuilder.InsertData(
                 table: "Vouchers",
-                columns: new[] { "Id", "Code", "EmPloyeeId", "Status", "TimeEnd", "TimeStart", "Value" },
+                columns: new[] { "Id", "Code", "EmPloyeeId", "PointCustomer", "Status", "TimeEnd", "TimeStart", "Value" },
                 values: new object[,]
                 {
-                    { new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b14"), "Pitover", new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"), 1, new DateTime(2023, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 50.0 },
-                    { new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf4"), "DEMACIA", new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"), 0, new DateTime(2023, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 30.0 }
+                    { new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b14"), "Pitover", new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"), 1000, 1, new DateTime(2023, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 50.0 },
+                    { new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf4"), "DEMACIA", new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"), 2000, 0, new DateTime(2023, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 30.0 }
                 });
 
             migrationBuilder.InsertData(
