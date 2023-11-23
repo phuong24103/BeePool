@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
 
 .card {
-    background-color: #222831;
+    background-color: #191970;
     height: 37rem;
-    border-radius: 5px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
