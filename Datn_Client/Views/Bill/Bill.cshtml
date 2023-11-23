@@ -5,10 +5,11 @@
     <link rel="stylesheet" href="~/css/bill.css" asp-append-version="true" />
 }
 
-<div class="card" style = "margin-bottom : 100px">
-    <div class="card-body mx-4">
-        @foreach (var item in @Model)
-        {
+@foreach (var item in @Model)
+{
+
+    <div class="card" style="margin-bottom : 100px">
+        <div class="card-body mx-4">
             <div class="wrapper" style="background-color : white">
                 <div class="bg"> Bill </div>
                 <div class="fg"> Bill </div>
@@ -52,7 +53,7 @@
                         </p>
                     </div>
                     <hr>
-                    <div class="col-xl-10" style = "text-align : left">
+                    <div class="col-xl-10" style="text-align : left">
                         <p>Trạng thái</p>
                     </div>
                     <div class="col-xl-2">
@@ -78,14 +79,15 @@
                             Tổng tiền: @item.Price
                         </p>
                     </div>
-                    <div class="text-center" style="margin-top: 30px;">
+                    <div class="text-center" style="margin-top: 30px;margin-bottom : 30px">
                         <a asp-controller="BillDetails" asp-action="BillDetails" asp-route-id="@item.Id"> <button class="btn btn-block btn-outline-primary btn-lg" type="button">Hóa đơn chi tiết</button></a>
                     </div>
                     <hr style="border: 2px solid black;">
                 </div>
 
             </div>
-        }
+        </div>
     </div>
-</div>
+}
+
 
