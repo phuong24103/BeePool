@@ -38,7 +38,7 @@
                     </form>
                 </div>
                 <div class="sign-up-htm">
-                    <form asp-controller="Register" asp-action="Register" method="post" enctype="multipart/form-data">
+                    <form asp-controller="Register" asp-action="Register" method="post">
                         <div class="group">
                             <label class="label">Họ tên</label>
                             <input asp-for="FullName" type="text" class="input">
@@ -86,11 +86,6 @@
                             <label class="label">Địa chỉ</label>
                             <input asp-for="Address" type="text" class="input">
                             <span asp-validation-for="Address" class="text-danger"></span>
-                        </div>
-                        <div class="group">
-                            <label class="label">Ảnh</label>
-                            <input asp-for="Image" type="file" name="imageFile" accept="image/*" class="input">
-                            <span asp-validation-for="Image" class="text-danger"></span>
                         </div>
                         <div class="group">
                             <input type="submit" class="button" value="Đăng Ký">

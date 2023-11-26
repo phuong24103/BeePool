@@ -25,6 +25,7 @@ namespace Datn_Shared.Models
         public DateTime CreateDate { get; set;}
         public int Status{ get; set;}
         public virtual ICollection<Voucher>? Vouchers { get; set;}
+        public virtual ICollection<Post>? Posts { get; set;}
 
     }
 }

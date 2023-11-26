@@ -3,6 +3,7 @@ using Datn_Api.IServices;
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.CategoryViewModels;
 using Microsoft.EntityFrameworkCore;
+using System.Xml.Linq;
 
 namespace Datn_Api.Services
 {
@@ -22,7 +23,7 @@ namespace Datn_Api.Services
                 Name = category.Name,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                Status = category.Status,
+                Status = 0,
             };
             try
             {
@@ -55,17 +56,17 @@ namespace Datn_Api.Services
 
         public async Task<List<Category>> GetAllCategory()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Categories.Where(p => p.Status != 2).ToListAsync();
         }
 
         public async Task<Category> GetCategoryById(Guid id)
         {
-            return await _context.Categories.FindAsync(id);
+            return await _context.Categories.Where(p => p.Status != 2 && p.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task<List<Category>> GetCategoryByName(string name)
         {
-            return await _context.Categories.Where(p => p.Name.ToLower().Contains(name.ToLower())).ToListAsync();
+            return await _context.Categories.Where(p => p.Status != 2 && p.Name.ToLower().Contains(name.ToLower())).ToListAsync();
         }
 
         public async Task<bool> UpdateCategory(Guid id, UpdateCategory category)
@@ -76,7 +77,7 @@ namespace Datn_Api.Services
                 if (n == null) return false;
                 n.Name = category.Name;
                 n.UpdatedDate = DateTime.Now;
-                n.Status = category.Status;
+                n.Status = 1;
                 _context.Categories.Update(n);
                 await _context.SaveChangesAsync();
                 return true;

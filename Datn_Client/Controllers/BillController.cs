@@ -372,7 +372,6 @@ namespace Datn_Client.Controllers
                                 Address = address,
                                 PhoneNumber = phonenumber,
                                 Email = $"{name}@gmail.com",
-                                Image = "anhq.png",
                             };
                             var AddCus = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
                             //Nếu ko tạo dc khách hàng mới
@@ -563,7 +562,6 @@ namespace Datn_Client.Controllers
                                 Address = address,
                                 PhoneNumber = phonenumber,
                                 Email = $"{name}@gmail.com",
-                                Image = "anhq.png",
                             };
                             var AddCus = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
                             if (AddCus.IsSuccessStatusCode == false)

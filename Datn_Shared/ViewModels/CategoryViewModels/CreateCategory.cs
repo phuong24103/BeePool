@@ -11,6 +11,5 @@ namespace Datn_Shared.ViewModels.CategoryViewModels
     {
         [Required(ErrorMessage = "Vui lòng nhập tên")]
         public string Name { get; set; }
-        public int Status { get; set; }
     }
 }

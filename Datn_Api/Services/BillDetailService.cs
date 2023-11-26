@@ -1,6 +1,5 @@
 ﻿using Datn_Api.Data;
 using Datn_Api.IServices;
-using Datn_Api.Migrations;
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.BillDetailViewModels;
 using Datn_Shared.ViewModels.BillViewModels;
@@ -26,6 +25,7 @@ namespace Datn_Api.Services
                 ProductDetailId = billDetail.ProductDetailId,
                 Quantity = billDetail.Quantity,
                 Price = billDetail.Price,
+                CreateDate = DateTime.Now,
             };
             try
             {
@@ -121,41 +121,51 @@ namespace Datn_Api.Services
 
         public async Task<string> GetReportRevenue()
         {
-            var billDetail = await _context.BillDetails.ToListAsync();
-            if (billDetail != null)
-            {
-                string revenue = "";
-                for (int i = 0; i < billDetail.Count; i++)
-                {
-                    revenue += $"'{billDetail[i].Price}'";
+            var billDetails = await _context.BillDetails.ToListAsync();
 
-                    if (i < billDetail.Count - 1)
-                    {
-                        revenue += ", ";
-                    }
+            if (billDetails != null)
+            {
+                List<double> revenue = new List<double>();
+
+                for (int i = 6; i >= 0; i--)
+                {
+                    DateTime targetDate = DateTime.Now.AddDays(-i).Date;
+
+                    double price = billDetails
+                        .Where(b => b.CreateDate.Date == targetDate)
+                        .Sum(b => b.Price);
+
+                    revenue.Add(price);
                 }
-                return revenue;
+
+                return string.Join(", ", revenue);
             }
+
             return "";
         }
-
+         
         public async Task<string> GetReportSales()
         {
-            var billDetail = await _context.BillDetails.ToListAsync();
-            if (billDetail != null)
-            {
-                string sales = "";
-                for (int i = 0; i < billDetail.Count; i++)
-                {
-                    sales += $"'{billDetail[i].Quantity}'";
+            var billDetails = await _context.BillDetails.ToListAsync();
 
-                    if (i < billDetail.Count - 1)
-                    {
-                        sales += ", ";
-                    }
+            if (billDetails != null)
+            {
+                List<int> salesQuantities = new List<int>();
+
+                for (int i = 6; i >= 0; i--)
+                {
+                    DateTime targetDate = DateTime.Now.AddDays(-i).Date;
+
+                    int quantity = billDetails
+                        .Where(b => b.CreateDate.Date == targetDate)
+                        .Sum(b => b.Quantity);
+
+                    salesQuantities.Add(quantity);
                 }
-                return sales;
+
+                return string.Join(", ", salesQuantities);
             }
+
             return "";
         }
 
@@ -216,7 +226,7 @@ namespace Datn_Api.Services
 
         public async Task<int> GetSales()
         {
-            var billDetail = await _context.BillDetails.ToListAsync();
+            var billDetail = await _context.BillDetails.AsQueryable().ToListAsync();
             if (billDetail != null)
             {
                 int sales = 0;

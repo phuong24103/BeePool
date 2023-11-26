@@ -21,19 +21,22 @@ namespace Datn_Client.Areas.Admin.Controllers
                 if (date == "today")
                 {
                     var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
-                    IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.Day == DateTime.Now.Day && p.CreatedDate.Month == DateTime.Now.Month && p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Day == DateTime.Now.Day && p.UpdatedDate.Month == DateTime.Now.Month && p.UpdatedDate.Year == DateTime.Now.Year));
+                    IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.DayOfYear == DateTime.Now.DayOfYear) || (p.UpdatedDate.DayOfYear == DateTime.Now.DayOfYear));
+                    ViewBag.DateCategory = date;
                     return View(c);
                 }
                 else if (date == "thisMonth")
                 {
                     var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
                     IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.Month == DateTime.Now.Month && p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Month == DateTime.Now.Month && p.UpdatedDate.Year == DateTime.Now.Year));
+                    ViewBag.DateCategory = date;
                     return View(c);
                 }
                 else if (date == "thisYear")
                 {
                     var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
                     IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Year == DateTime.Now.Year));
+                    ViewBag.DateCategory = date;
                     return View(c);
                 }
                 else
