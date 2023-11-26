@@ -63,7 +63,7 @@ namespace Datn_Api.Services
                 DateOfBirth = Convert.ToDateTime(registerCustomer.DateOfBirth),
                 Address = registerCustomer.Address,
                 CreateDate = DateTime.Now,
-                Image = registerCustomer.Image,
+                Image = "default.png",
                 Point = 0,
                 Status = 0,
                 RankId = Guid.Parse("a77f8ae9-af3d-4288-bbf3-8f77776f9232"),

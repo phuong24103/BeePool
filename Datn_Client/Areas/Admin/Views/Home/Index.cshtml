@@ -199,7 +199,7 @@
                 <div class="col-12">
                     <div class="card">
 
-                        <div class="filter">
+                        @* <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
@@ -210,7 +210,7 @@
                                 <li><a class="dropdown-item" href="#">Tháng này</a></li>
                                 <li><a class="dropdown-item" href="#">Năm nay</a></li>
                             </ul>
-                        </div>
+                        </div> *@
 
                         <div class="card-body">
                             <h5 class="card-title">Báo cáo <span>/ Hôm nay</span></h5>
@@ -437,46 +437,42 @@
                             <h6>Lọc</h6>
                         </li>
 
-                        <li><a class="dropdown-item" href="#">Hôm nay</a></li>
-                        <li><a class="dropdown-item" href="#">Tháng này</a></li>
-                        <li><a class="dropdown-item" href="#">Năm nay</a></li>
+                        <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterPost" asp-route-date="today">Hôm nay</a></li>
+                        <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterPost" asp-route-date="thisMonth">Tháng này</a></li>
+                        <li><a class="dropdown-item" asp-area="Admin" asp-controller="Home" asp-action="FilterPost" asp-route-date="thisYear">Năm nay</a></li>
                     </ul>
                 </div>
 
                 <div class="card-body pb-0">
-                    <h5 class="card-title">Tin tức &amp; Cập nhật <span>| Hôm nay</span></h5>
+                    <h5 class="card-title">Tin tức &amp; Cập nhật 
+                        <span>
+                            | @if (ViewBag.DatePost == "today")
+                            {
+                                <span>Hôm nay</span>
+                            }
+                            else if (ViewBag.DatePost == "thisMonth")
+                            {
+                                <span>Tháng này</span>
+                            }
+                            else if (ViewBag.DatePost == "thisYear")
+                            {
+                                <span>Năm nay</span>
+                            }
+                            else
+                            {
+                                <span>Toàn bộ</span>
+                            }
+                        </span>
+                    </h5>
 
-                    <div class="news">
-                        <div class="post-item clearfix">
-                            <img src="/images/slidenews1.jpg" alt="">
-                            <h4><a href="#" class="title-news">Nóng bảng xếp hạng bi-a thế giới: Hồng Thái “bay cao”, “thần đồng” Hàn Quốc lên số 1</a></h4>
-                            <p class="content-news">Giải carom 3 băng Veghel World Cup 2023 kết thúc khuya ngày 28/10 mới đây chứng kiến màn lên ngôi rất thuyết phục của Dick Jaspers. Với phong độ ấn tượng, siêu sao người Hà Lan chỉ mất đúng 12 lượt cơ để đánh bại cơ thủ số 1 nước Đức Martin Horn với cách biệt 50-22 để giành chức vô địch.</p>
-                        </div>
-
-                        <div class="post-item clearfix">
-                            <img src="https://cdn.tcdulichtphcm.vn/upload//4-2023/images/2023-10-21/Co-thu-so-1-the-gioi-tien-cu-dokhai1-1697865720-936-width740height493.jpg" alt="">
-                            <h4><a href="#" class="title-news">Cơ thủ bi-a số 1 thế giới tiến cử "Khải tóc dài" thi đấu cho tuyển châu Âu</a></h4>
-                            <p class="content-news">Hanoi Pool Open Championship 2023 đã kết thúc tại Hà Nội vào 15/10 nhưng dư âm về sự kiện này vẫn đang kéo dài. Giải đấu pool quốc tế lần đầu tiên tổ chức tại Thủ đô giúp khán giả Việt Nam tới gần hơn với những cơ thủ hàng đầu thế giới, hay huyền thoại lừng danh thế giới, các tay cơ chủ nhà cũng có dịp thi đấu, cọ xát với đối thủ lớn.</p>
-                        </div>
-
-                        <div class="post-item clearfix">
-                            <img src="https://baohagiang.vn/file/4028eaa4679b32c401679c0c74382a7e/102023/nu-than-bi-a-trung-quoc-dua-tai-khoe-sac-o-giai-vo-dich-the-gioi-2023-panxiaoting1-1697779201-210-width740height449_20231021082648.jpg" alt="">
-                            <h4><a href="#" class="title-news">"Nữ thần" bi-a Trung Quốc đua tài, khoe sắc ở giải vô địch thế giới 2023</a></h4>
-                            <p class="content-news">Sau giải bi-a quốc tế diễn ra ở Hà Nội, lúc này làng bi-a pool đang hướng sự tập trung vào giải vô địch 10 bi nữ thế giới 2023 diễn ra tại Áo từ 18 tới 22/10.</p>
-                        </div>
-
-                        <div class="post-item clearfix">
-                            <img src="https://icdn.24h.com.vn/upload/4-2023/images/2023-10-15/Reyes-danh-bai-reyeskhaitocdai1-1697386900-253-width740height596.jpg" alt="">
-                            <h4><a href="#" class="title-news">Reyes đánh bại "Khải tóc dài", Jayson Shaw vô địch nghẹt thở giải bi-a ở Hà Nội</a></h4>
-                            <p class="content-news">Hanoi Open Pool Championship 2023 tổ chức tại Hà Nội từ 10 tới 15/10 tại Hà Nội mang tới cho khán giả Việt Nam quá nhiều kỷ niệm đáng nhớ. Ở sự kiện bi-a quốc tế tầm cỡ lần đầu tiên diễn ra tại Việt Nam, quy tụ những cơ thủ hàng đầu thế giới, cơ cấu giải thưởng lớn và có cả sự xuất hiện của "Phù thủy" Efren Reyes (Philippines).</p>
-                        </div>
-
-                        <div class="post-item clearfix">
-                            <img src="https://icdn.24h.com.vn/upload/4-2023/images/2023-10-14/reyes9-1697290999-949-width740height555.jpg" alt="">
-                            <h4><a href="#" class="title-news">"Phù thủy bi-a" Reyes tri ân khán giả Việt bằng cơ 4 băng kinh điển</a></h4>
-                            <p class="content-news">Hanoi Open Pool Championship 2023, giải bi-a quốc tế tầm cỡ đầu tiên được tổ chức tại Hà Nội từ 10 tới 15/10 dần bước vào những trận đấu cuối cùng. Không chỉ có những cơ thủ hàng đầu tới tranh tài, sự kiện còn "nóng" hơn khi huyền thoại 69 tuổi, Efren Reyes xuất hiện vào chiều 14/10.</p>
-                        </div>
-
+                    <div class="news mb-3">
+                        @foreach (var item in ViewBag.Posts)
+                        {
+                            <div class="post-item clearfix">
+                                <img src="/images/posts/@item.Image" alt="">
+                                <h4><a asp-area="Admin" asp-controller="Post" asp-action="Index" asp-route-id="@item.Id" class="title-news">@item.Title</a></h4>
+                            </div>
+                        }
                     </div><!-- End sidebar recent posts-->
 
                 </div>
