@@ -1,12 +1,31 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Datn_Shared.ViewModels.PostViewModels;
+using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace Datn_Client.Controllers
 {
     public class NewsController : Controller
     {
-        public IActionResult Index()
+        private readonly HttpClient _httpClient;
+
+        public NewsController(HttpClient httpClient)
         {
-            return View();
+            _httpClient = httpClient;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 6)
+        {
+            var postsFromApi = await _httpClient.GetFromJsonAsync<List<PostView>>("https://localhost:7033/api/Post/GetAll");
+            var pagedList = new PagedList<PostView>(postsFromApi, page, pageSize);
+            return View("Index", pagedList);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Detail(Guid id)
+        {
+            var postsFromApi = await _httpClient.GetFromJsonAsync<PostView>($"https://localhost:7033/api/Post/GetById/{id}");
+            return View(postsFromApi);
         }
     }
 }
