@@ -64,7 +64,7 @@ namespace Datn_Api.Services
                 Gender = Convert.ToInt32(registerEmployee.Gender),
                 DateOfBirth = Convert.ToDateTime(registerEmployee.DateOfBirth),
                 Address = registerEmployee.Address,
-                Image = registerEmployee.Image,
+                Image = "default.png",
                 CreateDate = DateTime.Now,
                 Status = 0
             };

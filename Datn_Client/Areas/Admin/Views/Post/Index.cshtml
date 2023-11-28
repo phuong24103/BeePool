@@ -1,0 +1,271 @@
+﻿@model IEnumerable<Datn_Shared.ViewModels.PostViewModels.PostView>
+@using Datn_Shared.ViewModels.PostViewModels;
+
+@{
+    ViewData["Title"] = "Index";
+    var post = (ViewData["Post"] as List<PostView>);
+}
+
+<style>
+    .table td{
+        max-width: 300px;
+    }
+
+    .form-control {
+        white-space: pre-line;
+    }
+</style>
+
+<div class="pagetitle">
+    <h1>Quản lý Tin tức &amp; Cập nhật</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Tổng quan</li>
+            <li class="breadcrumb-item active">Tin tức &amp; Cập nhật</li>
+        </ol>
+    </nav>
+</div>
+<!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+            <div class="row">
+                <!-- Recent Sales -->
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Lọc</h6>
+                                </li>
+
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Post" asp-action="Filter" asp-route-date="today">Hôm nay</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Post" asp-action="Filter" asp-route-date="thisMonth">Tháng này</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Post" asp-action="Filter" asp-route-date="thisYear">Năm nay</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Tin tức &amp; Cập nhật 
+                                <span>
+                                    | @if (ViewBag.DatePost == "today")
+                                    {
+                                        <span>Hôm nay</span>
+                                    }
+                                    else if (ViewBag.DatePost == "thisMonth")
+                                    {
+                                        <span>Tháng này</span>
+                                    }
+                                    else if (ViewBag.DatePost == "thisYear")
+                                    {
+                                        <span>Năm nay</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Toàn bộ</span>
+                                    }
+                                </span>
+                            </h5>
+
+                            <table class="table table-hover datatable">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Tiêu đề</th>
+                                        <th>Tác giả</th>
+                                        <th>Ngày tạo</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in @Model)
+                                    {
+                                        <tr>
+                                            <td><img src="/images/posts/@item.Image" width="100" alt=""></td>
+                                            <td>@item.Title</td>
+                                            <td>@item.EmployeeName</td>
+                                            <td>@item.CreatedDate</td>
+                                            <td>
+                                                <a asp-area="Admin" asp-controller="Post" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success mb-1" title="Chi tiết">
+                                                    <i class="bx bxs-detail"></i>
+                                                </a>
+                                                <a asp-area="Admin" asp-controller="Post" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mb-1" title="Xóa">
+                                                    <i class="bx bxs-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div><!-- End Recent Sales -->
+            </div>
+
+        </div><!-- End Left side columns -->
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+            <!-- Recent Activity -->
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Sửa <span>| xx</span></h5>
+                    <!-- Default Tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="contact-tab" data-bs-toggle="tab"
+                                    data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
+                                    aria-selected="false">
+                                Chi tiết
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link " id="home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">
+                                Cập nhật
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    aria-selected="false">
+                                Tạo mới
+                            </button>
+                        </li>
+                    </ul>
+
+                    @* Update *@
+                    <div class="tab-content pt-2" id="myTabContent">
+                        <div class="tab-pane fade" id="home" role="tabpanel"
+                             aria-labelledby="home-tab">
+                            @if (post != null)
+                            {
+                                <form asp-area="Admin" asp-controller="Post" asp-action="Update" asp-route-id="@post.First().Id" enctype="multipart/form-data">
+                                    <input asp-for="@post.First().EmployeeId" hidden>
+                                    <div class="mb-3">
+                                        <label class="form-label">Tiêu đề</label>
+                                        <div>
+                                            <textarea asp-for="@post.First().Title" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nội dung</label>
+                                        <div>
+                                            <textarea asp-for="@post.First().Content" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Mô tả</label>
+                                        <div>
+                                            <textarea asp-for="@post.First().Description" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div>
+                                            <input type="file" name="imageFile" accept="image/*" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-warning">Lưu</button>
+                                </form>
+                            }
+                        </div>
+                        
+                        @* Create *@
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <form asp-area="Admin" asp-controller="Post" asp-action="Create" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label class="form-label">Tiêu đề</label>
+                                    <div>
+                                        <textarea name="Title" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nội dung</label>
+                                    <div>
+                                        <textarea name="Content" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Mô tả</label>
+                                    <div>
+                                        <textarea name="Description" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Chọn ảnh</label>
+                                    <div>
+                                        <input type="file" name="imageFile" accept="image/*" class="form-control">
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-success">Thêm</button>
+                            </form><!-- End Multi Columns Form -->
+                        </div>
+
+                        @* Detail *@
+                        <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            @if (post != null)
+                            {
+                                <div class="mb-3">
+                                    <label class="form-label">Tiêu đề</label>
+                                    <div>
+                                        <p class="form-control">@post.First().Title</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-3 col-form-label">Tác giả</label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control">@post.First().EmployeeName</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Ngày tạo</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control">@post.First().CreatedDate</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Ngày sửa</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control">@post.First().UpdatedDate</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Hình ảnh</label>
+                                    <div>
+                                        <img src="/images/posts/@post.First().Image" width="100%">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nội dung</label>
+                                    <div>
+                                        <p class="form-control">@post.First().Content</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Mô tả</label>
+                                    <div>
+                                        <p class="form-control">@post.First().Description</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div><!-- End Default Tabs -->
+
+                </div>
+
+            </div>
+        </div><!-- End Recent Activity -->
+
+
+    </div><!-- End Right side columns -->
+
+</section>

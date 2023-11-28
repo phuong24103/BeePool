@@ -27,6 +27,7 @@
                                 <th scope="col">Phương thức thanh toán</th>
                                 <th scope="col">Trạng thái</th>
                                 <th scope="col">Đổi trạng thái</th>
+                                <th scope="col">Hdct</th>
                                 <th scope="col">Xóa</th>
                             </tr>
                         </thead>
@@ -63,6 +64,14 @@
                                         else
                                         {
                                             <span>Đã là trạng thái cuối</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.BillStatusId == Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"))
+                                        {
+                                            <a asp-area="Admin" asp-controller="BillDetail" asp-action="BillDetail" asp-route-id="@item.Id" class="btn btn-success">
+                                                <i class="bx bxs-detail"></i>
+                                            </a>
                                         }
                                     </td>
                                     <td>

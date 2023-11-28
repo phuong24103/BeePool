@@ -1,9 +1,13 @@
-﻿@{
+﻿@model X.PagedList.PagedList<Datn_Shared.ViewModels.PostViewModels.PostView>
+@using AspNetCore.PaginatedList;
+@using X.PagedList.Mvc.Core
+@{
     ViewData["Title"] = "Index";
     <link rel="stylesheet" href="~/css/text.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/slidenews.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/cardnews.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/article.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/paging.css" asp-append-version="true" />
 }
 
 <div class="wrapper" style="margin-bottom : 20px">
@@ -59,170 +63,30 @@
     <div class="fg"> Tin Tức </div>
 </div>
 <section class="articles mb-5">
-    <article>
-        <div class="article-wrapper">
-            <figure>
-                <img src="~/images/tintuchome1.jpg" alt="" />
-            </figure>
-            <div class="article-body">
-                <h2>Tin tức</h2>
-                <h6>Chiêm Hồng Thái dừng bước ở tứ kết World Cup Veghel 2023</h6>
-                <a href="#" class="read-more">
-                    Xem thêm <span class="sr-only">about this is some title</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
+    @foreach (var item in @Model)
+    {
+        <article>
+            <div class="article-wrapper">
+                <figure>
+                    <img src="~/images/posts/@item.Image" alt="" />
+                </figure>
+                <div class="article-body">
+                    <h2>Tin tức</h2>
+                    <h6>@item.Title</h6>
+                    <a asp-action="Detail" asp-route-id="@item.Id" class="read-more">
+                        Xem thêm <span class="sr-only">about this is some title</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
             </div>
-        </div>
-    </article>
-    <article>
-
-        <div class="article-wrapper">
-            <figure>
-                <img src="~/images/tintuchome2.jpg" alt="" />
-            </figure>
-            <div class="article-body">
-                <h2>Tin tức</h2>
-                <h6>Cơ thủ Nguyễn Anh Tuấn ‘Tkon’ quyết sang Mỹ dự giải dù bị sốt xuất huyết</h6>
-                <a href="#" class="read-more">
-                    Xem thêm <span class="sr-only">about this is some title</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </article>
-    <article>
-
-        <div class="article-wrapper">
-            <figure>
-                <img src="~/images/tintuchome3.jpg" alt="" />
-            </figure>
-            <div class="article-body">
-                <h2>Tin tức</h2>
-                <h6>Anh Chiến, Minh Cẩm giữ phong độ cao, tiến sâu ở chặng 5 PBA Tour</h6>
-                <a href="#" class="read-more">
-                    Xem thêm <span class="sr-only">about this is some title</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </article>
+        </article>
+    }
 </section>
-<section class="articles mb-5">
-    <article>
-        <div class="article-wrapper">
-            <figure>
-                <img src="~/images/tintuchome1.jpg" alt="" />
-            </figure>
-            <div class="article-body">
-                <h2>Tin tức</h2>
-                <h6>Chiêm Hồng Thái dừng bước ở tứ kết World Cup Veghel 2023</h6>
-                <a href="#" class="read-more">
-                    Xem thêm <span class="sr-only">about this is some title</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </article>
-    <article>
-
-        <div class="article-wrapper">
-            <figure>
-                <img src="~/images/tintuchome2.jpg" alt="" />
-            </figure>
-            <div class="article-body">
-                <h2>Tin tức</h2>
-                <h6>Cơ thủ Nguyễn Anh Tuấn ‘Tkon’ quyết sang Mỹ dự giải dù bị sốt xuất huyết</h6>
-                <a href="#" class="read-more">
-                    Xem thêm <span class="sr-only">about this is some title</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </article>
-    <article>
-
-        <div class="article-wrapper">
-            <figure>
-                <img src="~/images/tintuchome3.jpg" alt="" />
-            </figure>
-            <div class="article-body">
-                <h2>Tin tức</h2>
-                <h6>Anh Chiến, Minh Cẩm giữ phong độ cao, tiến sâu ở chặng 5 PBA Tour</h6>
-                <a href="#" class="read-more">
-                    Xem thêm <span class="sr-only">about this is some title</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </article>
-</section>
-<section class="articles mb-5">
-    <article>
-        <div class="article-wrapper">
-            <figure>
-                <img src="~/images/tintuchome1.jpg" alt="" />
-            </figure>
-            <div class="article-body">
-                <h2>Tin tức</h2>
-                <h6>Chiêm Hồng Thái dừng bước ở tứ kết World Cup Veghel 2023</h6>
-                <a href="#" class="read-more">
-                    Xem thêm <span class="sr-only">about this is some title</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </article>
-    <article>
-
-        <div class="article-wrapper">
-            <figure>
-                <img src="~/images/tintuchome2.jpg" alt="" />
-            </figure>
-            <div class="article-body">
-                <h2>Tin tức</h2>
-                <h6>Cơ thủ Nguyễn Anh Tuấn ‘Tkon’ quyết sang Mỹ dự giải dù bị sốt xuất huyết</h6>
-                <a href="#" class="read-more">
-                    Xem thêm <span class="sr-only">about this is some title</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </article>
-    <article>
-
-        <div class="article-wrapper">
-            <figure>
-                <img src="~/images/tintuchome3.jpg" alt="" />
-            </figure>
-            <div class="article-body">
-                <h2>Tin tức</h2>
-                <h6>Anh Chiến, Minh Cẩm giữ phong độ cao, tiến sâu ở chặng 5 PBA Tour</h6>
-                <a href="#" class="read-more">
-                    Xem thêm <span class="sr-only">about this is some title</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </article>
-</section>
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = Model.PageSize }))
+</div>
 <div class="wrapper" style="margin: 1.5rem 0 2rem 0;">
     <div class="bg"> Top Tác Giả </div>
     <div class="fg"> Top Tác Giả </div>

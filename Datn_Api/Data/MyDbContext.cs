@@ -35,6 +35,7 @@ namespace Datn_Api.Data
         public DbSet<ProductDetail> ProductDetails { get; set; }
         public DbSet<Weight> Weights { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

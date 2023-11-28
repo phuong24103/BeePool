@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Datn_Shared.ViewModels.BillDetailViewModels.BillDetailView>
+@using Datn_Shared.ViewModels.BillDetailViewModels;
+@using Datn_Shared.ViewModels.ProductViewModels;
+
+@{
+    ViewData["Title"] = "BillDetail";
+}
+<div class="pagetitle">
+    <h1>Quản lý danh mục</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Tổng quan</li>
+            <li class="breadcrumb-item active">Danh mục</li>
+        </ol>
+    </nav>
+</div>
+<!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+            <a asp-area="Admin" asp-controller="BillDetail" asp-action="Add" asp-route-id="@Model.First().BillId" class="btn btn-success">
+                Create
+            </a>
+            <div class="row">
+                <!-- Recent Sales -->
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Bill Detail <span>| </span></h5>
+
+                            <table class="table table-hover datatable">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Quantity</td>
+                                    <td>Price</td>
+                                </tr>
+                                @foreach (var item in @Model)
+                                {
+                                    <tr>
+                                        <td>@item.ProductName</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.Price</td>
+                                        <td>
+                                            <a asp-area="Admin" asp-controller="BillDetail" asp-action="Update" asp-route-id="@item.Id" class="btn btn-success">
+                                                <i class="bx bxs-detail"></i>
+                                            </a>
+                                            <a asp-area="Admin" asp-controller="BillDetail" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                                <i class="bx bxs-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div><!-- End Recent Sales -->
+            </div>
+
+       
+
+
+    </div><!-- End Right side columns -->
+
+</section>

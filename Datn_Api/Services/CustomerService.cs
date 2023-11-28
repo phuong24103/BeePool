@@ -251,28 +251,22 @@ namespace Datn_Api.Services
         public async Task<string> GetReportTotalCustomer()
         {
             var customers = await _context.Customers.ToListAsync();
+
             if (customers != null)
             {
-                string customer = "";
-                List<Customer> total = new List<Customer>();
-                for (int i = 0; i < customers.Count; i++)
+                List<int> customerCounts = new List<int>();
+
+                for (int i = 6; i >= 0; i--)
                 {
-                    if (customers[i].FullName != null)
-                    {
-                        /*if (customers[i].CreateDate.DayOfYear == DateTime.Now.AddHours(-i).DayOfYear)
-                        {*/
-                            total.Add(customers[i]);
-                        /*}*/
-                    }
-                    customer += total.Count;
-                    total.Clear();
-                    if (i > 1)
-                    {
-                        customer += ", ";
-                    }
+                    DateTime targetDate = DateTime.Now.AddDays(-i).Date;
+
+                    int count = customers.Count(c => c.CreateDate.Date == targetDate);
+                    customerCounts.Add(count);
                 }
-                return customer;
+
+                return string.Join(", ", customerCounts);
             }
+
             return "";
         }
     }

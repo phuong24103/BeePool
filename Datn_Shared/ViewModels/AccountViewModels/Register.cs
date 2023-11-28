@@ -31,7 +31,5 @@ namespace Datn_Shared.ViewModels.AccountViewModels
         public DateTime? DateOfBirth { get; set; }
         [Required(ErrorMessage = "Không được để trống Địa chỉ")]
         public string? Address { get; set; }
-        [Required(ErrorMessage = "Vui lòng chọn Ảnh")]
-        public string? Image { get; set; }
     }
 }

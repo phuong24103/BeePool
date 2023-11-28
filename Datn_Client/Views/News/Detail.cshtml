@@ -1,0 +1,16 @@
+﻿@model Datn_Shared.ViewModels.PostViewModels.PostView
+
+@{
+    ViewData["Title"] = "Bài viết";
+    <link rel="stylesheet" href="~/css/postDetail.css" asp-append-version="true" />
+}
+
+<div class="card shadow-lg mb-5 px-5 py-5">
+    <h2>@Model.Title</h2>
+    <div class="mt-2 mb-3">
+        <span>@Model.EmployeeName <span class="createdDate">| @Model.CreatedDate</span></span>
+    </div>
+    <h5 class="mb-3">@Model.Description</h5>
+    <img src="~/images/posts/@Model.Image" alt="" />
+    <div class="mt-3" id="text-content">@Model.Content</div>
+</div>
