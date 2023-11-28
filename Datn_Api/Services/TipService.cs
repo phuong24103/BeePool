@@ -4,6 +4,7 @@ using Datn_Shared.Models;
 using Datn_Shared.ViewModels.ShaftViewModels;
 using Datn_Shared.ViewModels.TipViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Datn_Api.Services
 {
@@ -88,7 +89,7 @@ namespace Datn_Api.Services
         public async Task<Tip> GetTipById(Guid id)
         {
             return await _db.Tips.FindAsync(id);
-        }
+        } 
 
         public async Task<bool> UpdateTip(Guid id, UpdateTip tip)
         {

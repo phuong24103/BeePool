@@ -76,7 +76,24 @@
             <div style="margin-bottom : 30px;margin-top : 30px">
                 <b>Chọn các phụ kiện Custom</b>
             </div>
-            <select asp-for="Tip" style="margin-bottom : 30px">
+            <select name="exampleSelect" id="exampleSelect" onchange="redirectOnChange('@Url.Action("GetProductdtByTip", "ProductDetail")')" style="margin-bottom : 30px">
+                @foreach (var item in tip)
+                {
+                    @if (item.Id == Model.TipId)
+                    {
+                        
+                        <option selected value="@item.Id" data="@Model.Id">@item.Name</option>
+
+                    }
+                    else
+                    {
+                        <option value="@item.Id" data="@Model.Id">@item.Name</option>
+
+                    }
+                }
+                <!-- Add more options as needed -->
+            </select>
+           @*  <select id="TipSelect" asp-for="Tip" style="margin-bottom : 30px">
                 @if (tip != null)
                 {
                     @foreach (var item in tip)
@@ -91,40 +108,41 @@
                         }
                     }
                 }
-            </select>
+            </select> *@
 
-            <select asp-for="Shaft" style="margin-bottom : 30px">
-                @if (s != null)
+            <select name="exampleSelect2" id="exampleSelect2" onchange="redirectOnChange2('@Url.Action("GetProductdtByShaft", "ProductDetail")')" style="margin-bottom : 30px">
+                @foreach (var item in s)
                 {
-                    @foreach (var item in s)
+                    @if (item.Id == Model.ShaftId)
                     {
-                        @if (item.Id == Model.ShaftId)
-                        {
-                            <option selected value="@item.Id">@item.Name</option>
-                        }
-                        else
-                        {
-                            <option value="@item.Id">@item.Name</option>
-                        }
+
+                        <option selected value="@item.Id" data="@Model.Id">@item.Name</option>
+
+                    }
+                    else
+                    {
+                        <option value="@item.Id" data="@Model.Id">@item.Name</option>
+
                     }
                 }
-
+                <!-- Add more options as needed -->
             </select>
-            <select asp-for="Weight" style="margin-bottom : 30px">
-                @if (w != null)
+            <select name="exampleSelect3" id="exampleSelect3" onchange="redirectOnChange3('@Url.Action("GetProductdtByWeight", "ProductDetail")')" style="margin-bottom : 30px">
+                @foreach (var item in w)
                 {
-                    @foreach (var item in w)
+                    @if (item.Id == Model.WeightId)
                     {
-                        @if (item.Id == Model.WeightId)
-                        {
-                            <option selected value="@item.Id">@item.Name</option>
-                        }
-                        else
-                        {
-                            <option value="@item.Id">@item.Name</option>
-                        }
+
+                        <option selected value="@item.Id" data="@Model.Id">@item.Name</option>
+
+                    }
+                    else
+                    {
+                        <option value="@item.Id" data="@Model.Id">@item.Name</option>
+
                     }
                 }
+                <!-- Add more options as needed -->
             </select>
             <div class="row">
                 <div class="col-md-3">
@@ -440,3 +458,61 @@
     </div>
 </div>
 
+<script>
+    function redirectOnChange(baseUrl) {
+        var selectedOption = document.getElementById("exampleSelect");
+        var selectedId = selectedOption.value;
+        var selectProductDetailId = selectedOption.options[selectedOption.selectedIndex].getAttribute("data");
+        // Build the URL with the selected option
+        var url = baseUrl + "?id=" + encodeURIComponent(selectProductDetailId)+ "&tipid=" + encodeURIComponent(selectedId);
+
+        // Chuyển hướng đến trang mới
+        window.location.href = url;
+    } 
+    function redirectOnChange2(baseUrl) {
+        var selectedOption2 = document.getElementById("exampleSelect2");
+        var selectedId2 = selectedOption2.value;
+        var selectProductDetailId2 = selectedOption2.options[selectedOption2.selectedIndex].getAttribute("data");
+        // Build the URL with the selected option
+        var url = baseUrl + "?id=" + encodeURIComponent(selectProductDetailId2)+ "&shaftid=" + encodeURIComponent(selectedId2);
+
+        // Chuyển hướng đến trang mới
+        window.location.href = url;
+    } 
+    function redirectOnChange3(baseUrl) {
+        var selectedOption3 = document.getElementById("exampleSelect3");
+        var selectedId3 = selectedOption3.value;
+        var selectProductDetailId3 = selectedOption3.options[selectedOption3.selectedIndex].getAttribute("data");
+        // Build the URL with the selected option
+        var url = baseUrl + "?id=" + encodeURIComponent(selectProductDetailId3)+ "&weightid=" + encodeURIComponent(selectedId3);
+
+        // Chuyển hướng đến trang mới
+        window.location.href = url;
+    }
+</script>
+@* <script>
+    document.getElementById("TipSelect").addEventListener("change", function () {
+        var selectedValue = this.value;
+
+        var controller = "ProductDetail";
+        var url = var url = "https://localhost:7162/" + controller + "/GetProductdtByTip?firstId=" + @Model.Id + "&secondId=" + anotherId + "&selectedValue=" + selectedValue;
+        //url = "https://localhost:7162/" + controller + "/GetProductdtByTip?firstId=" + @Model.Id + "&secondId=" + anotherId + selectedValue;
+        window.location.href = url;
+    });
+    document.getElementById("WeightSelect").addEventListener("change", function () {
+        var selectedValue = this.value;
+        var controller = "ProductDetail";
+        var url = "https://localhost:7162/" + controller + "/GetProductdtByWeight?firstId=" + @Model.Id + "&secondId=" + anotherId + "&selectedValue=" + selectedValue;
+       // "https://localhost:7162/" + controller + "/GetProductdtByWeight?firstId=" + @Model.Id + "&secondId=" + anotherId + selectedValue;
+        window.location.href = url;
+    });  
+    document.getElementById("ShaftSelect").addEventListener("change", function () {
+        var selectedValue = this.value;
+        var controller = "ProductDetail";
+        var url = "https://localhost:7162/" + controller + "/GetProductdtByShaft?firstId=" + @Model.Id + "&secondId=" + anotherId + "&selectedValue=" + selectedValue;;
+       //"https://localhost:7162/" + controller + "/GetProductdtByShaft?firstId=" + @Model.Id + "&secondId=" + anotherId + selectedValue;
+        
+        window.location.href = url;
+    });
+</script>
+ *@
