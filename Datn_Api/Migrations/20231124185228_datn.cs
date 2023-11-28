@@ -606,7 +606,7 @@ namespace Datn_Api.Migrations
                     { new Guid("357267e8-d162-4844-a660-661f46933d04"), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cơ Nhảy", 0, new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified) },
                     { new Guid("357267e8-d162-4844-a660-661f46933d05"), new DateTime(2023, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cơ Phá", 0, new DateTime(2023, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) },
                     { new Guid("357267e8-d162-4844-a660-661f46933d06"), new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cơ Phá + Nhảy", 0, new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { new Guid("357267e8-d162-4844-a660-661f46933d07"), new DateTime(2023, 11, 17, 22, 34, 58, 171, DateTimeKind.Local).AddTicks(861), "Cơ ba băng", 0, new DateTime(2023, 11, 17, 22, 34, 58, 171, DateTimeKind.Local).AddTicks(882) }
+                    { new Guid("357267e8-d162-4844-a660-661f46933d07"), new DateTime(2023, 11, 25, 1, 52, 27, 502, DateTimeKind.Local).AddTicks(5650), "Cơ ba băng", 0, new DateTime(2023, 11, 25, 1, 52, 27, 502, DateTimeKind.Local).AddTicks(5661) }
                 });
 
             migrationBuilder.InsertData(
@@ -644,8 +644,8 @@ namespace Datn_Api.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "a567e8d2-4cb3-44fe-bfa1-1184f246a9ec", "Quản lý", "MANAGE" },
-                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "83723f9b-20f7-439d-b51b-8b7cc0761e97", "Nhân viên", "STAFF" }
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"), "3fb5e386-4f8c-4834-ab75-8ae0b6ee9132", "Quản lý", "MANAGE" },
+                    { new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"), "9f162dba-1650-4ed9-b68a-46bbbdddff27", "Nhân viên", "STAFF" }
                 });
 
             migrationBuilder.InsertData(

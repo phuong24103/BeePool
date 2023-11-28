@@ -1,6 +1,6 @@
 ﻿using Datn_Api.Data;
 using Datn_Api.IServices;
-using Datn_Api.Migrations;
+
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.BillDetailViewModels;
 using Datn_Shared.ViewModels.BillViewModels;

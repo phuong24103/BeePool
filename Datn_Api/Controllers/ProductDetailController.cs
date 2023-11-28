@@ -6,6 +6,8 @@ using Datn_Shared.ViewModels.ProductDetailViewModels;
 using Datn_Shared.ViewModels.TipViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Datn_Api.Controllers
 {
@@ -24,6 +26,50 @@ namespace Datn_Api.Controllers
         {
             var mate = await _iprodtsv.GetAllProductDetail();
             return Ok(mate);
+        }
+        [HttpGet]
+        [Route("GetTip/{id:Guid}/{tipid:Guid}")]
+        public async Task<IActionResult> GetProductdtByTip(Guid id, Guid tipid)
+        {
+            var tip = await _iprodtsv.GetProductdtByTip(id,tipid);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(tip, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
+           
+        }  
+        [HttpGet]
+        [Route("GetShaft/{id:Guid}/{shaftid:Guid}")]
+        public async Task<IActionResult> GetProductdtByShaft(Guid id, Guid shaftid)
+        {
+            var shaft = await _iprodtsv.GetProductdtByShaft(id,shaftid);
+
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(shaft, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
+        }
+        [HttpGet]
+        [Route("GetWeight/{id:Guid}/{weightid:Guid}")]
+        public async Task<IActionResult> GetProductdtByWeight(Guid id, Guid weightid)
+        {
+            var weight = await _iprodtsv.GetProductdtByWeight(id,weightid);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(weight, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
         [HttpGet]
         [Route("GetById/{id:Guid}")]

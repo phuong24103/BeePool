@@ -62,8 +62,104 @@ namespace Datn_Api.Services
             {
                 return false;
             }
-        }
+        } 
+        public async Task<ViewProductDetail> GetProductdtByTip(Guid id,Guid Tipid)
+        {
+            var prodtt = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == id);
+            ViewProductDetail prodtview = new ViewProductDetail();
+            prodtview = await  (
+                from a in _context.ProductDetails
+                join b in _context.Tips on a.TipId equals b.Id
+                join c in _context.Shafts on a.ShaftId equals c.Id
+                join d in _context.Weights on a.WeightId equals d.Id
+                join e in _context.Products on a.ProductID equals e.Id
+                where a.TipId == Tipid && a.ShaftId == prodtt.ShaftId && a.WeightId == prodtt.WeightId && a.ProductID == prodtt.ProductID
+                select new ViewProductDetail()
+                {
+                    Id = a.Id,
+                    TipId = a.TipId,
+                    ShaftId = a.ShaftId,
+                    WeightId = a.WeightId,
+                    ProductID = a.ProductID,
+                    Quantity = a.Quantity,
+                    ImportPrice = a.ImportPrice,
+                    Price = a.Price,
+                    CreateDate = a.CreateDate,
+                    Status = a.Status,
+                    Description = a.Description,
+                    Tip = b,
+                    Shaft = c,
+                    Weight = d,
+                    Product = e,
 
+                }).FirstOrDefaultAsync();
+            return prodtview;
+        }  
+        public async Task<ViewProductDetail> GetProductdtByShaft(Guid id,Guid Shaftid)
+        {
+            var prodtt = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == id);
+            ViewProductDetail prodtview = new ViewProductDetail();
+            prodtview = await  (
+                from a in _context.ProductDetails
+                join b in _context.Tips on a.TipId equals b.Id
+                join c in _context.Shafts on a.ShaftId equals c.Id
+                join d in _context.Weights on a.WeightId equals d.Id
+                join e in _context.Products on a.ProductID equals e.Id
+                where a.ShaftId == Shaftid && a.TipId == prodtt.TipId && a.WeightId == prodtt.WeightId && a.ProductID == prodtt.ProductID
+                select new ViewProductDetail()
+                {
+                    Id = a.Id,
+                    TipId = a.TipId,
+                    ShaftId = a.ShaftId,
+                    WeightId = a.WeightId,
+                    ProductID = a.ProductID,
+                    Quantity = a.Quantity,
+                    ImportPrice = a.ImportPrice,
+                    Price = a.Price,
+                    CreateDate = a.CreateDate,
+                    Status = a.Status,
+                    Description = a.Description,
+                    Tip = b,
+                    Shaft = c,
+                    Weight = d,
+                    Product = e,
+
+                }).FirstOrDefaultAsync();
+            return prodtview;
+        }   
+        public async Task<ViewProductDetail> GetProductdtByWeight(Guid id,Guid Weightid)
+        {
+            var prodtt = await _context.ProductDetails.FirstOrDefaultAsync(p => p.Id == id);
+            ViewProductDetail prodtview = new ViewProductDetail();
+            prodtview = await  (
+                from a in _context.ProductDetails
+                join b in _context.Tips on a.TipId equals b.Id
+                join c in _context.Shafts on a.ShaftId equals c.Id
+                join d in _context.Weights on a.WeightId equals d.Id
+                join e in _context.Products on a.ProductID equals e.Id
+                where a.WeightId == Weightid && a.TipId == prodtt.TipId && a.ShaftId == prodtt.ShaftId && a.ProductID == prodtt.ProductID
+                select new ViewProductDetail()
+                {
+                    Id = a.Id,
+                    TipId = a.TipId,
+                    ShaftId = a.ShaftId,
+                    WeightId = a.WeightId,
+                    ProductID = a.ProductID,
+                    Quantity = a.Quantity,
+                    ImportPrice = a.ImportPrice,
+                    Price = a.Price,
+                    CreateDate = a.CreateDate,
+                    Status = a.Status,
+                    Description = a.Description,
+                    Tip = b,
+                    Shaft = c,
+                    Weight = d,
+                    Product = e,
+
+                }).FirstOrDefaultAsync();
+            return prodtview;
+        } 
+      
         public async Task<IEnumerable<ViewProductDetail>> GetAllProductDetail()
         {
             List<ViewProductDetail> prodtview = new List<ViewProductDetail>();

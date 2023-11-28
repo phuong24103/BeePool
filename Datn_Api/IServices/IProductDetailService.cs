@@ -11,6 +11,9 @@ namespace Datn_Api.IServices
         public Task<bool> ReduceProductDetail(Guid id);
         public Task<bool> ResetQuantityProductDetail(Guid id);
         public Task<bool> DeleteProductDetail(Guid id);
+        public Task<ViewProductDetail> GetProductdtByTip(Guid id,Guid tipid);
+        public Task<ViewProductDetail> GetProductdtByShaft(Guid id, Guid Shaftid);
+        public Task<ViewProductDetail> GetProductdtByWeight(Guid id,Guid Weightid);
         public Task<ViewProductDetail> GetProductDetailById(Guid id);
         public Task<IEnumerable<ViewProductDetail>> GetAllProductDetail();
     }

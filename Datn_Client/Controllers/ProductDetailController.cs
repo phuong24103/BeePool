@@ -1,6 +1,7 @@
 ﻿using Datn_Shared.Models;
 using Datn_Shared.ViewModels.ProductDetailViewModels;
 using Datn_Shared.ViewModels.WeightViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -81,6 +82,23 @@ namespace Datn_Client.Controllers
         {
             await _httpClient.PutAsJsonAsync<ProductDetail>($"https://localhost:7033/api/ProductDetail/Reduce/{id}", null);
             return RedirectToAction("Index", new { id = id });
+        }
+        public async Task<IActionResult> GetProductdtByTip(Guid id,Guid tipid)
+        {
+            Console.WriteLine(id);
+            Console.WriteLine(tipid);
+            var tip =  await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetTip/{id}/{tipid}");
+            return RedirectToAction("Index", new { id = tip.Id });
+        }  
+        public async Task<IActionResult> GetProductdtByShaft(Guid id,Guid shaftid)
+        {
+            var shaft =  await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetShaft/{id}/{shaftid}");
+            return RedirectToAction("Index", new { id = shaft.Id });
+        }  
+        public async Task<IActionResult> GetProductdtByWeight(Guid id,Guid weightid)
+        {
+            var weight =  await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetWeight/{id}/{weightid}");
+            return RedirectToAction("Index", new { id = weight.Id });
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datn_Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231117153458_datn")]
+    [Migration("20231124185228_datn")]
     partial class datn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -307,10 +307,10 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d07"),
-                            CreatedDate = new DateTime(2023, 11, 17, 22, 34, 58, 171, DateTimeKind.Local).AddTicks(861),
+                            CreatedDate = new DateTime(2023, 11, 25, 1, 52, 27, 502, DateTimeKind.Local).AddTicks(5650),
                             Name = "Cơ ba băng",
                             Status = 0,
-                            UpdatedDate = new DateTime(2023, 11, 17, 22, 34, 58, 171, DateTimeKind.Local).AddTicks(882)
+                            UpdatedDate = new DateTime(2023, 11, 25, 1, 52, 27, 502, DateTimeKind.Local).AddTicks(5661)
                         });
                 });
 
@@ -6081,14 +6081,14 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"),
-                            ConcurrencyStamp = "a567e8d2-4cb3-44fe-bfa1-1184f246a9ec",
+                            ConcurrencyStamp = "3fb5e386-4f8c-4834-ab75-8ae0b6ee9132",
                             Name = "Quản lý",
                             NormalizedName = "MANAGE"
                         },
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"),
-                            ConcurrencyStamp = "83723f9b-20f7-439d-b51b-8b7cc0761e97",
+                            ConcurrencyStamp = "9f162dba-1650-4ed9-b68a-46bbbdddff27",
                             Name = "Nhân viên",
                             NormalizedName = "STAFF"
                         });
