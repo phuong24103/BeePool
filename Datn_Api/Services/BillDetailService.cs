@@ -82,12 +82,14 @@ namespace Datn_Api.Services
                 from a in _context.BillDetails
                 join b in _context.Bills on a.BillId equals b.Id
                 join c in _context.ProductDetails on a.ProductDetailId equals c.Id
+                join d in _context.Products on c.ProductID equals d.Id
                 where a.Id == id
                 select new BillDetailView()
                 {
                     Id = a.Id,
                     BillId = a.BillId,
                     ProductDetailId = a.ProductDetailId,
+                    ProductName = d.Name,
                     Quantity = a.Quantity,
                     Price = a.Price,
                     Bill = b,
