@@ -66,6 +66,22 @@ namespace Datn_Api.Controllers
         }
 
         [HttpGet]
+        [Route("GetBillByBillStatusId/{id:Guid}")]
+        public async Task<IActionResult> GetBillByBillStatusId([FromRoute] Guid id)
+        {
+            var bill = await _billService.GetBillByBillStatusId(id);
+            return Ok(bill);
+        }
+
+        [HttpGet]
+        [Route("GetBillByCustomerIdAndBillStatusId/{idcustomer:Guid}/{idbillstatus:Guid}")]
+        public async Task<IActionResult> GetBillByCustomerIdAndBillStatusId([FromRoute] Guid idcustomer, Guid idbillstatus)
+        {
+            var bill = await _billService.GetBillByCustomerIdAndBillStatusId(idcustomer, idbillstatus);
+            return Ok(bill);
+        }
+
+        [HttpGet]
         [Route("GetRecentSales")]
         public async Task<IActionResult> GetRecentSales()
         {
