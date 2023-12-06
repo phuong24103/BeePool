@@ -85,6 +85,33 @@ namespace Datn_Api.Services
             return billViews;
         }
 
+        public async Task<IEnumerable<BillView>> GetBillByBillStatusId(Guid id)
+        {
+            List<BillView> billViews = new List<BillView>();
+            billViews = await(
+                from a in _context.Bills
+                join b in _context.BillStatuses on a.BillStatusId equals b.Id
+                join c in _context.Customers on a.CustomerId equals c.Id
+                join d in _context.Payments on a.PaymentId equals d.Id
+                where a.BillStatusId == id
+                select new BillView()
+                {
+                    Id = a.Id,
+                    CustomerId = a.CustomerId,
+                    BillStatusId = a.BillStatusId,
+                    PaymentId = a.PaymentId,
+                    Price = a.Price,
+                    CreateDate = a.CreateDate,
+                    Address = a.Address,
+                    CustomerName = a.CustomerName,
+                    CustomerPhone = a.CustomerPhone,
+                    Customer = c,
+                    BillStatus = b,
+                    Payment = d
+                }).ToListAsync();
+            return billViews;
+        }
+
         public async Task<IEnumerable<BillView>> GetBillByCustomerId(Guid id)
         {
             List<BillView> billViews = new List<BillView>();
@@ -94,6 +121,33 @@ namespace Datn_Api.Services
                 join c in _context.Customers on a.CustomerId equals c.Id
                 join d in _context.Payments on a.PaymentId equals d.Id
                 where a.CustomerId == id
+                select new BillView()
+                {
+                    Id = a.Id,
+                    CustomerId = a.CustomerId,
+                    BillStatusId = a.BillStatusId,
+                    PaymentId = a.PaymentId,
+                    Price = a.Price,
+                    CreateDate = a.CreateDate,
+                    Address = a.Address,
+                    CustomerName = a.CustomerName,
+                    CustomerPhone = a.CustomerPhone,
+                    Customer = c,
+                    BillStatus = b,
+                    Payment = d
+                }).ToListAsync();
+            return billViews;
+        }
+
+        public async Task<IEnumerable<BillView>> GetBillByCustomerIdAndBillStatusId(Guid idcustomer, Guid idbillstatus)
+        {
+            List<BillView> billViews = new List<BillView>();
+            billViews = await (
+                from a in _context.Bills
+                join b in _context.BillStatuses on a.BillStatusId equals b.Id
+                join c in _context.Customers on a.CustomerId equals c.Id
+                join d in _context.Payments on a.PaymentId equals d.Id
+                where a.CustomerId == idcustomer && a.BillStatusId == idbillstatus
                 select new BillView()
                 {
                     Id = a.Id,

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Datn_Shared.ViewModels.BillViewModels.BillView>
 @{
-    ViewData["Title"] = "Bill";
+    ViewData["Title"] = "BillStatus2";
     <link rel="stylesheet" href="~/css/text.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/bill.css" asp-append-version="true" />
 }
@@ -8,9 +8,9 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
-            <li class="active"><a asp-controller="Bill" asp-action="Bill">Tất cả</a></li>
+            <li><a asp-controller="Bill" asp-action="Bill">Tất cả</a></li>
             <li><a asp-controller="Bill" asp-action="BillStatus1">Chờ xác nhận</a></li>
-            <li><a asp-controller="Bill" asp-action="BillStatus2">Đã xác nhận</a></li>
+            <li class="active"><a asp-controller="Bill" asp-action="BillStatus2">Đã xác nhận</a></li>
             <li><a asp-controller="Bill" asp-action="BillStatus3">Đang lấy hàng</a></li>
             <li><a asp-controller="Bill" asp-action="BillStatus4">Đang giao hàng</a></li>
         </ul>
@@ -101,5 +101,8 @@
         </div>
     </div>
 }
+
+
+
 
 

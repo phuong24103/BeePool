@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<Datn_Shared.ViewModels.BillViewModels.BillView>
 
 @{
-    ViewData["Title"] = "Bill";
+    ViewData["Title"] = "BillStatus1";
 }
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
-            <li class="active"><a asp-area="Admin" asp-controller="Bill" asp-action="Bill">Tất cả</a></li>
-            <li><a asp-area="Admin" asp-controller="Bill" asp-action="BillStatus1">Chờ xác nhận</a></li>
+            <li><a asp-area="Admin" asp-controller="Bill" asp-action="Bill">Tất cả</a></li>
+            <li class="active"><a asp-area="Admin" asp-controller="Bill" asp-action="BillStatus1">Chờ xác nhận</a></li>
             <li><a asp-area="Admin" asp-controller="Bill" asp-action="BillStatus2">Đã xác nhận</a></li>
             <li><a asp-area="Admin" asp-controller="Bill" asp-action="BillStatus3">Đang lấy hàng</a></li>
             <li><a asp-area="Admin" asp-controller="Bill" asp-action="BillStatus4">Đang giao hàng</a></li>
@@ -39,7 +39,7 @@
                                 <th scope="col">Tổng tiền</th>
                                 <th scope="col">Phương thức thanh toán</th>
                                 <th scope="col">Trạng thái</th>
-                                <th scope="col">Đổi trạng thái</th>
+                                <th scope="col">Đổi Trạng thái</th>
                                 <th scope="col">Hdct</th>
                                 <th scope="col">Xóa</th>
                             </tr>
@@ -56,28 +56,9 @@
                                     <td>@item.Payment.Name</td>
                                     <td>@item.BillStatus.Name</td>
                                     <td>
-                                        @if (item.BillStatusId == Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"))
-                                        {
-                                            <a asp-area="Admin" asp-controller="Bill" asp-action="UpdateBillStatus" asp-route-id="@item.Id" class="btn btn-success">
-                                                <i class="bx bxs-detail"></i>
-                                            </a>
-                                        }
-                                        else if (item.BillStatusId == Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5"))
-                                        {
-                                            <a asp-area="Admin" asp-controller="Bill" asp-action="UpdateBillStatus2" asp-route-id="@item.Id" class="btn btn-success">
-                                                <i class="bx bxs-store"></i>
-                                            </a>
-                                        }
-                                        else if (item.BillStatusId == Guid.Parse("b392b872-712a-41a7-8542-83fb58249c23"))
-                                        {
-                                            <a asp-area="Admin" asp-controller="Bill" asp-action="UpdateBillStatus3" asp-route-id="@item.Id" class="btn btn-success">
-                                                <i class="bx bxs-truck"></i>
-                                            </a>
-                                        }
-                                        else
-                                        {
-                                            <span>Đã là trạng thái cuối</span>
-                                        }
+                                        <a asp-area="Admin" asp-controller="Bill" asp-action="UpdateBillStatus" asp-route-id="@item.Id" class="btn btn-success">
+                                            <i class="bx bxs-detail"></i>
+                                        </a>
                                     </td>
                                     <td>
                                         @if (item.BillStatusId == Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"))
@@ -104,6 +85,7 @@
 
     </div>
 </div>
+
 
 
 

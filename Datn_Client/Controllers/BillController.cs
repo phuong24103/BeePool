@@ -36,12 +36,117 @@ namespace Datn_Client.Controllers
             }
             else
             {
-                return RedirectToAction("Register", "Register");
+                var bill = SessionServices<BillView>.GetObjFromSession(HttpContext.Session, "Bill");
+                if(bill.Count == 0)
+                {
+                    return RedirectToAction("Register", "Register");
+                }
+                else
+                {
+                    return View(bill);
+                }
+                
+            }
+        }
+
+        public async Task<IActionResult> BillStatus1()
+        {
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role == null)
+            {
+                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
+                var idbillstatus1 = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15");
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByCustomerIdAndBillStatusId/{customer.Id}/{idbillstatus1}");
+                return View(result);
+            }
+            else
+            {
+                var bill = SessionServices<BillView>.GetObjFromSession(HttpContext.Session, "Bill");
+                if (bill.Count == 0)
+                {
+                    return RedirectToAction("Register", "Register");
+                }
+                else
+                {
+                    return View(bill);
+                }
+            }
+        }
+        public async Task<IActionResult> BillStatus2()
+        {
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role == null)
+            {
+                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
+                var idbillstatus1 = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5");
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByCustomerIdAndBillStatusId/{customer.Id}/{idbillstatus1}");
+                return View(result);
+            }
+            else
+            {
+                var bill = SessionServices<BillView>.GetObjFromSession(HttpContext.Session, "Bill");
+                if (bill.Count == 0)
+                {
+                    return RedirectToAction("Register", "Register");
+                }
+                else
+                {
+                    return View(bill);
+                }
+            }
+        }
+        public async Task<IActionResult> BillStatus3()
+        {
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role == null)
+            {
+                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
+                var idbillstatus1 = Guid.Parse("b392b872-712a-41a7-8542-83fb58249c23");
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByCustomerIdAndBillStatusId/{customer.Id}/{idbillstatus1}");
+                return View(result);
+            }
+            else
+            {
+                var bill = SessionServices<BillView>.GetObjFromSession(HttpContext.Session, "Bill");
+                if (bill.Count == 0)
+                {
+                    return RedirectToAction("Register", "Register");
+                }
+                else
+                {
+                    return View(bill);
+                }
+            }
+        }
+        public async Task<IActionResult> BillStatus4()
+        {
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role == null)
+            {
+                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
+                var idbillstatus1 = Guid.Parse("00357f21-9356-468b-8c0c-b590e3d1bc0a");
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByCustomerIdAndBillStatusId/{customer.Id}/{idbillstatus1}");
+                return View(result);
+            }
+            else
+            {
+                var bill = SessionServices<BillView>.GetObjFromSession(HttpContext.Session, "Bill");
+                if (bill.Count == 0)
+                {
+                    return RedirectToAction("Register", "Register");
+                }
+                else
+                {
+                    return View(bill);
+                }
             }
         }
 
 
-        
         public async Task<IActionResult> Create()
         {
             var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -75,6 +180,16 @@ namespace Datn_Client.Controllers
             {
                 var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
                 var result = await _httpClient.GetFromJsonAsync<List<CartDetailView>>($"https://localhost:7033/api/CartDetail/GetByCustomerId/{customer.Id}");
+                //Kiểm tra giỏ hàng rỗng
+                if(result.Count == 0)
+                {
+                    string messagecart = "Giỏ hàng rỗng";
+                    TempData["Messagecart"] = messagecart;
+                    return RedirectToAction("Index", "Cart");
+                }
+                else
+                {
+                
                 List<CartDetail> cartDetails = new List<CartDetail>();
                 foreach (var item in result)
                 {
@@ -300,7 +415,7 @@ namespace Datn_Client.Controllers
                     return RedirectToAction("Index", "Cart");
                 }
 
-
+                }
             }
 
             //Nếu không đăng nhập
@@ -308,6 +423,16 @@ namespace Datn_Client.Controllers
             {
                 var Bills = SessionServices<BillView>.GetObjFromSession(HttpContext.Session, "Bill");
                 var result = SessionServices<CartDetailView>.GetObjFromSession(HttpContext.Session, "CartDetail");
+                //Kiểm tra giỏ hàng rỗng
+                if(result.Count == 0)
+                {
+                    string messagecart = "Giỏ hàng rỗng";
+                    TempData["Messagecart"] = messagecart;
+                    return RedirectToAction("Index", "Cart");
+                }
+                else
+                {
+                
                 List<CartDetail> cartDetails = new List<CartDetail>();
                 foreach (var item in result)
                 {
@@ -351,20 +476,20 @@ namespace Datn_Client.Controllers
                     else
                     {
                         //Kiểm tra username có tồn tại hay ko
-                        var allcustomer = await _httpClient.GetFromJsonAsync<List<Customer>>($"https://localhost:7033/api/Customer/GetAll");
-                        var usernamecustomer = allcustomer.FirstOrDefault(p => p.UserName == name);
-                        if(usernamecustomer != null)
-                        {
-                            string messagename = "Username này đã tồn tại";
-                            TempData["Messagename"] = messagename;
-                        }
-                        else
-                        {
+                        //var allcustomer = await _httpClient.GetFromJsonAsync<List<Customer>>($"https://localhost:7033/api/Customer/GetAll");
+                        //var usernamecustomer = allcustomer.FirstOrDefault(p => p.UserName == name);
+                        //if(usernamecustomer != null)
+                        //{
+                        //    string messagename = "Username này đã tồn tại";
+                        //    TempData["Messagename"] = messagename;
+                        //}
+                        //else
+                        //{
                             //Tạo mới khách hàng
                             Register Registercustomer = new Register()
                             {
                                 FullName = name,
-                                Username = name,
+                                Username = "khach",
                                 Password = "123456",
                                 ConfirmPassword = "123456",
                                 Gender = 0,
@@ -375,13 +500,13 @@ namespace Datn_Client.Controllers
                             };
                             var AddCus = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
                             //Nếu ko tạo dc khách hàng mới
-                            if (AddCus.IsSuccessStatusCode == false)
-                            {
-                                string messagename = "Vui lòng nhập usename không dấu và viết liền";
-                                TempData["Messagename"] = messagename;
-                            }
-                            else
-                            {
+                            //if (AddCus.IsSuccessStatusCode == false)
+                            //{
+                            //    string messagename = "Vui lòng nhập usename không dấu và viết liền";
+                            //    TempData["Messagename"] = messagename;
+                            //}
+                            //else
+                            //{
                                 string giagiam = "0";
                                 TempData["Giagiam"] = giagiam;
                                 string thanhcong = "Đặt hàng thành công";
@@ -466,8 +591,8 @@ namespace Datn_Client.Controllers
                                     return RedirectToAction("Index", "Cart");
                                 }
                                 
-                            }
-                        }
+                            //}
+                        //}
                         
                         
                     }
@@ -533,15 +658,15 @@ namespace Datn_Client.Controllers
                     else
                     {
                         //Kiểm tra username có tồn tại hay ko
-                        var allcustomer = await _httpClient.GetFromJsonAsync<List<Customer>>($"https://localhost:7033/api/Customer/GetAll");
-                        var usernamecustomer = allcustomer.FirstOrDefault(p => p.UserName == name);
-                        if (usernamecustomer != null)
-                        {
-                            string messagename = "Username này đã tồn tại";
-                            TempData["Messagename"] = messagename;
-                        }
-                        else
-                        {
+                        //var allcustomer = await _httpClient.GetFromJsonAsync<List<Customer>>($"https://localhost:7033/api/Customer/GetAll");
+                        //var usernamecustomer = allcustomer.FirstOrDefault(p => p.UserName == name);
+                        //if (usernamecustomer != null)
+                        //{
+                        //    string messagename = "Username này đã tồn tại";
+                        //    TempData["Messagename"] = messagename;
+                        //}
+                        //else
+                        //{
                             if (voucher != null && voucher.Status == 0 && DateTime.Now <= voucher.TimeEnd && DateTime.Now >= voucher.TimeStart)
                             {
                                 price -= voucher.Value;
@@ -554,7 +679,7 @@ namespace Datn_Client.Controllers
                             Register Registercustomer = new Register()
                             {
                                 FullName = name,
-                                Username = name,
+                                Username = "khach",
                                 Password = "123456",
                                 ConfirmPassword = "123456",
                                 Gender = 0,
@@ -564,13 +689,13 @@ namespace Datn_Client.Controllers
                                 Email = $"{name}@gmail.com",
                             };
                             var AddCus = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
-                            if (AddCus.IsSuccessStatusCode == false)
-                            {
-                                string messagename = "Vui lòng nhập usename không dấu và viết liền";
-                                TempData["Messagename"] = messagename;
-                            }
-                            else
-                            {
+                            //if (AddCus.IsSuccessStatusCode == false)
+                            //{
+                            //    string messagename = "Vui lòng nhập usename không dấu và viết liền";
+                            //    TempData["Messagename"] = messagename;
+                            //}
+                            //else
+                            //{
                                 giagiam = voucher.Value.ToString();
                                 TempData["Giagiam"] = giagiam;
                                 string thanhcong = "Đặt hàng thành công";
@@ -654,8 +779,8 @@ namespace Datn_Client.Controllers
                                 {
                                     return RedirectToAction("Index", "Cart");
                                 }
-                            }
-                        }
+                            //}
+                        //}
                         
                         
                     }
@@ -665,7 +790,7 @@ namespace Datn_Client.Controllers
             }
             
 
-            
+            }
         }
 
         public string UrlPayment(Guid id)

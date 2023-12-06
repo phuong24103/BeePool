@@ -18,6 +18,32 @@ namespace Datn_Client.Areas.Admin.Controllers
             var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetAll");
             return View(result);
         }
+        public async Task<IActionResult> BillStatus1()
+        {
+            var idbillstatus = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15");
+            var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
+            return View(result);
+        }
+        public async Task<IActionResult> BillStatus2()
+        {
+            var idbillstatus = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5");
+            var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
+            return View(result);
+        }
+        public async Task<IActionResult> BillStatus3()
+        {
+            var idbillstatus = Guid.Parse("b392b872-712a-41a7-8542-83fb58249c23");
+            var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
+            return View(result);
+        }
+        public async Task<IActionResult> BillStatus4()
+        {
+            var idbillstatus = Guid.Parse("00357f21-9356-468b-8c0c-b590e3d1bc0a");
+            var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
+            return View(result);
+        }
+
+
         public async Task<IActionResult> UpdateBillStatus(Guid id)
         {
             var b = await _httpClient.GetFromJsonAsync<Bill>($"https://localhost:7033/api/Bill/GetById/{id}");

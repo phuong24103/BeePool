@@ -55,7 +55,12 @@
                         </nav>
                     </div>
                 </div>
-
+                @if (TempData["Messagecart"] != null)
+                {
+                    <h2 id="AlertBox" class="alert alert-warning hide" role="alert">
+                        @TempData["Messagecart"]
+                    </h2>
+                }
                 <div class="row justify-content-around">
                     <div class="col-md-5">
                         <div class="card border-0">
