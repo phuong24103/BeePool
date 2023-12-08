@@ -3,20 +3,19 @@
     ViewData["Title"] = "BillStatus1";
     <link rel="stylesheet" href="~/css/text.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/bill.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/billstatus.css" asp-append-version="true" />
 }
-
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <ul class="nav navbar-nav">
-            <li><a asp-controller="Bill" asp-action="Bill">Tất cả</a></li>
-            <li class="active"><a asp-controller="Bill" asp-action="BillStatus1">Chờ xác nhận</a></li>
-            <li><a asp-controller="Bill" asp-action="BillStatus2">Đã xác nhận</a></li>
-            <li><a asp-controller="Bill" asp-action="BillStatus3">Đang lấy hàng</a></li>
-            <li><a asp-controller="Bill" asp-action="BillStatus4">Đang giao hàng</a></li>
+<div class="page" style="margin-bottom : 50px">
+    <nav class="page__menu menu">
+        <ul class="menu__list r-list">
+            <li class="menu__group"><a asp-controller="Bill" asp-action="Bill" class="menu__link r-link text-underlined">Tất Cả</a></li>
+            <li class="menu__group"><a asp-controller="Bill" asp-action="BillStatus1" class="menu__link r-link text-underlined">Chờ Xác Nhận</a></li>
+            <li class="menu__group"><a asp-controller="Bill" asp-action="BillStatus2" class="menu__link r-link text-underlined">Đã Xác Nhận</a></li>
+            <li class="menu__group"><a asp-controller="Bill" asp-action="BillStatus3" class="menu__link r-link text-underlined">Đang Lấy Hàng</a></li>
+            <li class="menu__group"><a asp-controller="Bill" asp-action="BillStatus4" class="menu__link r-link text-underlined">Đang Giao Hàng</a></li>
         </ul>
-    </div>
-</nav>
-
+    </nav>
+</div>
 @foreach (var item in @Model)
 {
 
