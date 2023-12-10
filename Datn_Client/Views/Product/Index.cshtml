@@ -69,18 +69,13 @@
             </select>
         </div>
         <div class="col-md-4" style="text-align : right">
-
-            <select>
-
-                <option selected value="0">Loại Sản Phẩm</option>
-                <option value="1">Giá : Tăng Dần</option>
-                <option value="2">Giá : Giảm Dần</option>
-                <option value="3">Tên A-Z</option>
-                <option value="4">Tên Z-A</option>
-                <option value="5">Cũ Nhất</option>
-                <option value="6">Mới Nhất</option>
-                <option value="7">Bán Chạy Nhất</option>
-
+            
+            <select name="categorySelect" id="categorySelect" onchange="redirectOnChange('@Url.Action("GetByCategory", "Product")')">
+                <option selected>Chọn loại sản phẩm</option>
+                @foreach (var item in ViewBag.Category)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
             </select>
         </div>
     </div>
@@ -177,5 +172,14 @@
         }
         window.location.href = url;
     });
-</script>
 
+    function redirectOnChange(baseUrl) {
+        var selectedOption = document.getElementById("categorySelect");
+        var selectedName = selectedOption.value;
+        // Build the URL with the selected option
+        var url = baseUrl + "?name=" + encodeURIComponent(selectedName);
+
+        // Chuyển hướng đến trang mới
+        window.location.href = url;
+    }
+</script>

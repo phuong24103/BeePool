@@ -24,6 +24,8 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int page = 1, int pageSize = 6)
         {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAll");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -32,6 +34,8 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> Search(string Name, int page = 1, int pageSize = 6)
         {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByName/{Name}");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -40,6 +44,8 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> GetByCategory(string name, int page = 1, int pageSize = 6)
         {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByCategory/{name}");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -48,6 +54,8 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> GetByNameAZ(int page = 1, int pageSize = 6)
         {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByNameAZ");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -56,6 +64,8 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> GetByNameZA(int page = 1, int pageSize = 6)
         {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByNameZA");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -64,6 +74,8 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> GetByCreateDateOld(int page = 1, int pageSize = 6)
         {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByCreateDateOld");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -72,6 +84,8 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> GetByCreateDateNew(int page = 1, int pageSize = 6)
         {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByCreateDateNew");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -80,6 +94,8 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> GetByPriceMin(int page = 1, int pageSize = 6)
         {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPriceMin");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -88,6 +104,8 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> GetByPriceMax(int page = 1, int pageSize = 6)
         {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPriceMax");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -96,6 +114,8 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> GetByPrice2(int page = 1, int pageSize = 6)
         {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPrice2");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);

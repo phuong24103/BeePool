@@ -6,11 +6,25 @@
 }
 
 <div class="card shadow-lg mb-5 px-5 py-5">
-    <h2>@Model.Title</h2>
-    <div class="mt-2 mb-3">
-        <span>@Model.EmployeeName <span class="createdDate">| @Model.CreatedDate</span></span>
+    <div class="row">
+        <div class="col-8">
+            <h2>@Model.Title</h2>
+            <div class="mt-2 mb-3">
+                <span>@Model.EmployeeName <span class="createdDate">| @Model.CreatedDate</span></span>
+            </div>
+            <h5 class="mb-3">@Model.Description</h5>
+            <img src="~/images/posts/@Model.Image" alt="" width="100%" />
+            <div class="mt-3" id="text-content">@Model.Content</div>
+        </div>
+        <div class="col-4">
+            <h4 class="mb-3">Tin tức &amp; Cập nhật</h4>
+            @foreach (var item in ViewBag.Posts)
+            {
+                <div class="recent-post mb-3">
+                    <img src="~/images/posts/@item.Image" width="80" height="60" class="recent-img" alt="" />
+                    <h6 class="recent-text px-3"><a asp-action="Detail" asp-route-id="@item.Id" class="title-news" title="@item.Title">@item.Title</a></h6>
+                </div>
+            }
+        </div>
     </div>
-    <h5 class="mb-3">@Model.Description</h5>
-    <img src="~/images/posts/@Model.Image" alt="" />
-    <div class="mt-3" id="text-content">@Model.Content</div>
 </div>
