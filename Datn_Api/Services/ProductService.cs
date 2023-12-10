@@ -103,8 +103,8 @@ namespace Datn_Api.Services
                         CategoryName = category.Name
 
                     });
-                }  
-               
+                }
+
             }
             return proview;
         }
@@ -516,6 +516,7 @@ namespace Datn_Api.Services
                 foreach (var product in products)
                 {
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                     string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var billDetails = _context.BillDetails.Where(p => p.ProductDetailId == productDetailId).ToListAsync().Result;
@@ -525,16 +526,19 @@ namespace Datn_Api.Services
                         revenue += item.Price;
                     }
 
-                    proview.Add(new ProductAdminView
+                    if (revenue > 0)
                     {
-                        Id = product.Id,
-                        ProductDetailId = productDetailId,
-                        Name = product.Name,
-                        Price = price,
-                        Image = image,
-                        Sold = product.Sold,
-                        Revenue = revenue,
-                    });
+                        proview.Add(new ProductAdminView
+                        {
+                            Id = product.Id,
+                            ProductDetailId = productDetailId,
+                            Name = product.Name,
+                            Price = price,
+                            Image = image,
+                            Sold = product.Sold,
+                            Revenue = revenue,
+                        });
+                    }
                 }
             }
             return proview.OrderByDescending(p => p.Revenue).Take(5).ToList();
@@ -589,17 +593,19 @@ namespace Datn_Api.Services
                             revenue += item.Price;
                         }
                     }
-
-                    proview.Add(new ProductAdminView
+                    if (revenue > 0)
                     {
-                        Id = product.Id,
-                        ProductDetailId = productDetailId,
-                        Name = product.Name,
-                        Price = price,
-                        Image = image,
-                        Sold = product.Sold,
-                        Revenue = revenue,
-                    });
+                        proview.Add(new ProductAdminView
+                        {
+                            Id = product.Id,
+                            ProductDetailId = productDetailId,
+                            Name = product.Name,
+                            Price = price,
+                            Image = image,
+                            Sold = product.Sold,
+                            Revenue = revenue,
+                        });
+                    }
                 }
             }
             return proview.OrderByDescending(p => p.Revenue).Take(5).ToList();
@@ -613,7 +619,7 @@ namespace Datn_Api.Services
             n.Pin = product.Pin;
             n.Wrap = product.Wrap;
             n.Rings = product.Rings;
-            n.AvailableQuantity = product.AvailableQuantity;          
+            n.AvailableQuantity = product.AvailableQuantity;
             n.Producer = product.Producer;
             n.Status = product.Status;
             n.Description = product.Description;

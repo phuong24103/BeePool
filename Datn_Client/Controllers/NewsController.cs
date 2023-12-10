@@ -1,4 +1,5 @@
-﻿using Datn_Shared.ViewModels.PostViewModels;
+﻿using Datn_Shared.ViewModels.AccountViewModels;
+using Datn_Shared.ViewModels.PostViewModels;
 using Microsoft.AspNetCore.Mvc;
 using X.PagedList;
 
@@ -24,8 +25,10 @@ namespace Datn_Client.Controllers
         [HttpGet]
         public async Task<IActionResult> Detail(Guid id)
         {
-            var postsFromApi = await _httpClient.GetFromJsonAsync<PostView>($"https://localhost:7033/api/Post/GetById/{id}");
-            return View(postsFromApi);
+            var posts = await _httpClient.GetFromJsonAsync<List<PostView>>("https://localhost:7033/api/Post/GetAll");
+            ViewBag.Posts = posts.Take(5).ToList();
+            var postFromApi = await _httpClient.GetFromJsonAsync<PostView>($"https://localhost:7033/api/Post/GetById/{id}");
+            return View(postFromApi);
         }
     }
 }

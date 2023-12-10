@@ -15,7 +15,7 @@ namespace Datn_Shared.ViewModels.ShaftViewModels
         [Required(ErrorMessage = "Vui lòng nhập price")]
         public double Price { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập size")]
-        public int Size { get; set; }
+        public double Size { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập length")]
         public int Length { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập material")]
