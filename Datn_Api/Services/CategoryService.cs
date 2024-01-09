@@ -77,6 +77,7 @@ namespace Datn_Api.Services
                 if (n == null) return false;
                 n.Name = category.Name;
                 n.UpdatedDate = DateTime.Now;
+
                 n.Status = 1;
                 _context.Categories.Update(n);
                 await _context.SaveChangesAsync();

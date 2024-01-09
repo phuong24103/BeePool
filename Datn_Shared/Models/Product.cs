@@ -14,19 +14,21 @@ namespace Datn_Shared.Models
         public Guid Id { get; set; }
         [ForeignKey("CategoryID")]
         public Guid CategoryID { get; set; }
+        [ForeignKey("BrandID")]
+        public Guid BrandID { get; set; }
         public string Name { get; set; }
-        public string Pin {  get; set; }
-        public string Wrap {  get; set; }
-        public string Rings {  get; set; }
+        public string Pin { get; set; }
+        public string Wrap { get; set; }
+        public string Rings { get; set; }
         public int AvailableQuantity { get; set; }
-        public int Sold {  get; set; }
+        public int Sold { get; set; }
         public int Likes { get; set; }
-        public string Producer { get; set; }
         public DateTime CreateDate { get; set; }
         public int Status { get; set; }
         public string Description { get; set; }
         public virtual Category? Category { get; set; }
-        public virtual ICollection <WishList>? WishLists { get; set; }
+        public virtual Brand? Brand { get; set; }
+        public virtual ICollection<WishList>? WishLists { get; set; }
         public virtual ICollection<ProductDetail>? ProductDetails { get; set; }
 
 

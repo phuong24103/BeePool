@@ -254,7 +254,6 @@ namespace Datn_Client.Controllers
                                 Sold = product.Sold,
                                 Likes = product.Likes,
                                 CreateDate = product.CreateDate,
-                                Producer = product.Producer,
                                 Status = product.Status,
                                 Description = product.Description,
                             };
@@ -378,7 +377,6 @@ namespace Datn_Client.Controllers
                                 Sold = product.Sold,
                                 Likes = product.Likes,
                                 CreateDate = product.CreateDate,
-                                Producer = product.Producer,
                                 Status = product.Status,
                                 Description = product.Description,
                             };
@@ -557,7 +555,6 @@ namespace Datn_Client.Controllers
                                         Sold = product.Sold,
                                         Likes = product.Likes,
                                         CreateDate = product.CreateDate,
-                                        Producer = product.Producer,
                                         Status = product.Status,
                                         Description = product.Description,
                                     };
@@ -746,7 +743,6 @@ namespace Datn_Client.Controllers
                                         Sold = product.Sold,
                                         Likes = product.Likes,
                                         CreateDate = product.CreateDate,
-                                        Producer = product.Producer,
                                         Status = product.Status,
                                         Description = product.Description,
                                     };

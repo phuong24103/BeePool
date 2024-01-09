@@ -149,7 +149,6 @@ namespace Datn_Api.Controllers
                     Sold = product.Result.Sold,
                     Likes = product.Result.Likes,
                     CreateDate = product.Result.CreateDate,
-                    Producer = product.Result.Producer,
                     Status = product.Result.Status,
                     Description = product.Result.Description,
                 };
@@ -241,7 +240,6 @@ namespace Datn_Api.Controllers
                     Sold = product.Result.Sold,
                     Likes = product.Result.Likes,
                     CreateDate = product.Result.CreateDate,
-                    Producer = product.Result.Producer,
                     Status = product.Result.Status,
                     Description = product.Result.Description,
                 };

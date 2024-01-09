@@ -13,6 +13,7 @@ namespace Datn_Shared.ViewModels.ProductViewModels
     {
         public Guid Id { get; set; }
         public Guid CategoryID { get; set; }
+        public Guid BrandID {  get; set; }
         public Guid? ProductDetailId { get; set; }
         public string Name { get; set; }
         public string Pin { get; set; }
@@ -24,10 +25,10 @@ namespace Datn_Shared.ViewModels.ProductViewModels
         public int Sold { get; set; }
         public int Likes { get; set; }
         public DateTime CreateDate { get; set; }
-        public string Producer { get; set; }
         public int Status { get; set; }
         public string Description { get; set; }
         public string CategoryName {  get; set; }
         public Category?  Category { get; set; }
+        public Brand?  Brand { get; set; }
     }
 }

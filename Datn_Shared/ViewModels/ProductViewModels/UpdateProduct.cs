@@ -11,6 +11,7 @@ namespace Datn_Shared.ViewModels.ProductViewModels
     {
         public Guid Id { get; set; }
         public Guid CategoryID { get; set; }
+        public Guid BrandID { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
@@ -28,7 +29,6 @@ namespace Datn_Shared.ViewModels.ProductViewModels
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public DateTime CreateDate { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]
-        public string Producer { get; set; }
 
         public int Status { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập nội dung")]

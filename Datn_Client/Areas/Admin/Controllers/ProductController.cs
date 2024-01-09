@@ -1,4 +1,5 @@
-﻿using Datn_Shared.Models;
+﻿using Datn_Api.Migrations;
+using Datn_Shared.Models;
 using Datn_Shared.ViewModels.ProductViewModels;
 using Microsoft.AspNetCore.Mvc;
 using X.PagedList;
@@ -16,14 +17,36 @@ namespace Datn_Client.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(Guid id)
+        public async Task<IActionResult> Index(Guid id,string date)
         {
             var cate = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewData["a"] = cate;
             if (id == Guid.Empty)
             {
-                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ProductView>>("https://localhost:7033/api/Product/GetAll");
-                return View(categories);
+                if (date == "today")
+                {
+                    var pro = await _httpClient.GetFromJsonAsync<IEnumerable<Product>>("https://localhost:7033/api/Product/GetAll");
+                    IEnumerable<Product> b = pro.Where(p => (p.CreateDate.DayOfYear == DateTime.Now.DayOfYear));
+                    ViewBag.DatePro = date;
+                    return View(b);
+                }
+                else if (date == "thisMonth")
+                {
+                    var pro = await _httpClient.GetFromJsonAsync<IEnumerable<Product>>("https://localhost:7033/api/Product/GetAll");
+                    IEnumerable<Product> c = pro.Where(p => (p.CreateDate.Month == DateTime.Now.Month && p.CreateDate.Year == DateTime.Now.Year));
+                    ViewBag.DatePro = date;
+                    return View(c);
+                }
+                else if (date == "thisYear")
+                {
+                    var pro = await _httpClient.GetFromJsonAsync<IEnumerable<Product>>("https://localhost:7033/api/Product/GetAll");
+                    IEnumerable<Product> c = pro.Where(p => (p.CreateDate.Year == DateTime.Now.Year));
+                    ViewBag.DatePro = date;
+                    return View(c);
+                }
+                else {
+                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ProductView>>("https://localhost:7033/api/Product/GetAll");
+                    return View(categories); }
             }
             else
             {
@@ -53,7 +76,10 @@ namespace Datn_Client.Areas.Admin.Controllers
             await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Product/Create", createProduct);
             return RedirectToAction("Index");
         }
-
+        public async Task<IActionResult> Filter(string date)
+        {
+            return RedirectToAction("Index", new { date = date });
+        }
         public async Task<IActionResult> Delete(Guid id)
         {
             await _httpClient.DeleteAsync($"https://localhost:7033/api/Product/Delete/{id}");
