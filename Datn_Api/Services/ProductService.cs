@@ -31,7 +31,6 @@ namespace Datn_Api.Services
                 AvailableQuantity = product.AvailableQuantity,
                 Sold = 0,
                 Likes = 0,
-                Producer = product.Producer,
                 CreateDate = DateTime.Now,
                 Status = product.Status,
                 Description = product.Description,
@@ -95,7 +94,6 @@ namespace Datn_Api.Services
                         Image = image,
                         Sold = product.Sold,
                         Likes = product.Likes,
-                        Producer = product.Producer,
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
@@ -136,7 +134,6 @@ namespace Datn_Api.Services
                     Image = image,
                     Sold = product.Sold,
                     Likes = product.Likes,
-                    Producer = product.Producer,
                     CreateDate = product.CreateDate,
                     Status = product.Status,
                     Description = product.Description,
@@ -176,7 +173,6 @@ namespace Datn_Api.Services
                         Image = image,
                         Sold = product.Sold,
                         Likes = product.Likes,
-                        Producer = product.Producer,
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
@@ -216,7 +212,6 @@ namespace Datn_Api.Services
                         Image = image,
                         Sold = product.Sold,
                         Likes = product.Likes,
-                        Producer = product.Producer,
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
@@ -253,7 +248,6 @@ namespace Datn_Api.Services
                     Image = image,
                     Sold = a.Sold,
                     Likes = a.Likes,
-                    Producer = a.Producer,
                     CreateDate = a.CreateDate,
                     Status = a.Status,
                     Description = a.Description,
@@ -291,7 +285,6 @@ namespace Datn_Api.Services
                         Image = image,
                         Sold = product.Sold,
                         Likes = product.Likes,
-                        Producer = product.Producer,
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
@@ -331,7 +324,6 @@ namespace Datn_Api.Services
                         Image = image,
                         Sold = product.Sold,
                         Likes = product.Likes,
-                        Producer = product.Producer,
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
@@ -371,7 +363,6 @@ namespace Datn_Api.Services
                         Image = image,
                         Sold = product.Sold,
                         Likes = product.Likes,
-                        Producer = product.Producer,
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
@@ -411,7 +402,6 @@ namespace Datn_Api.Services
                         Image = image,
                         Sold = product.Sold,
                         Likes = product.Likes,
-                        Producer = product.Producer,
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
@@ -452,7 +442,6 @@ namespace Datn_Api.Services
                         Image = image,
                         Sold = product.Sold,
                         Likes = product.Likes,
-                        Producer = product.Producer,
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
@@ -493,7 +482,6 @@ namespace Datn_Api.Services
                         Image = image,
                         Sold = product.Sold,
                         Likes = product.Likes,
-                        Producer = product.Producer,
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
@@ -620,7 +608,6 @@ namespace Datn_Api.Services
             n.Wrap = product.Wrap;
             n.Rings = product.Rings;
             n.AvailableQuantity = product.AvailableQuantity;
-            n.Producer = product.Producer;
             n.Status = product.Status;
             n.Description = product.Description;
             try

@@ -27,7 +27,36 @@
                 <!-- Recent Sales -->
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Lọc</h6>
+                                </li>
 
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Filter" asp-route-date="today">Hôm nay</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Filter" asp-route-date="thisMonth">Tháng này</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Filter" asp-route-date="thisYear">Năm nay</a></li>
+                            </ul>
+                        </div>
+                        <span>
+                            | @if (ViewBag.DatePro == "today")
+                            {
+                                <span>Hôm nay</span>
+                            }
+                            else if (ViewBag.DatePro == "thisMonth")
+                            {
+                                <span>Tháng này</span>
+                            }
+                            else if (ViewBag.DatePro == "thisYear")
+                            {
+                                <span>Năm nay</span>
+                            }
+                            else
+                            {
+                                <span>Toàn bộ</span>
+                            }
+                        </span>
                         <div class="card-body">
                             <h5 class="card-title">Sản phẩm <span>| </span></h5>
 
@@ -57,7 +86,6 @@
                                         <td>@item.AvailableQuantity</td>
                                         <td>@item.Sold</td>
                                         <td>@item.Likes</td>
-                                        <td>@item.Producer</td>
                                         <td>@item.CreateDate</td>
                                         <td>@item.Description</td>
                                         <td>
@@ -173,9 +201,7 @@
                                         <label class="col-sm-4 col-form-label">
                                             Producer
                                         </label>
-                                        <div class="col-sm-8">
-                                            <input asp-for="@category.First().Producer" type="text" class="form-control" />
-                                        </div>
+                                       
                                     </div>  
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">
@@ -266,12 +292,12 @@
                                     </div>
                                     </div> *@
 
-                                    <div class="mb-3 row">
+                                   @*  <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Producer</label>
                                         <div class="col-sm-8">
                                             <input name="Producer" type="text" class="form-control" value="" />
                                         </div>
-                                    </div>
+                                    </div> *@
                                     @*     <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">CreateDate</label>
                                     <div class="col-sm-8">
@@ -328,7 +354,6 @@
                                             <p>@item.AvailableQuantity</p>
                                             <p>@item.Sold</p>
                                             <p>@item.Likes</p>
-                                            <p>@item.Producer</p>
                                             <p>@item.CreateDate</p>
                                             <p>@item.Description</p>
 

@@ -65,6 +65,7 @@ builder.Services.Configure<IdentityOptions>(options => {
 });
 
 builder.Services.AddScoped<ITipService, TipService>();
+builder.Services.AddScoped<IBrandServices, BrandService>();
 builder.Services.AddScoped<IShaftService, ShaftService>();
 builder.Services.AddScoped<IWeightService, WeightService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();

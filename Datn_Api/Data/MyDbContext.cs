@@ -16,6 +16,7 @@ namespace Datn_Api.Data
         {
         }
 
+        public DbSet<Brand> Brands { get; set; }
         public DbSet<Bill> Bills { get; set; }
         public DbSet<BillDetail> BillDetails { get; set; }
         public DbSet<BillStatus> BillStatuses { get; set; }
