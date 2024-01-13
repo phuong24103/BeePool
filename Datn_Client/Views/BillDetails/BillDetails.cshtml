@@ -62,9 +62,24 @@
                                 {
                                     <span>Đang giao hàng</span>
                                 }
+                                else if (Model.First().Bill.BillStatusId == Guid.Parse("33c0bdd2-85ca-4f05-9360-22be333895fe"))
+                                {
+                                    <span>Giao hàng thành công</span>
+                                }
                                 else
                                 {
                                     <span>Chờ xác nhận</span>
+                                }
+                    </li>
+                    <li class="text-muted">
+                    <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="me-1 fw-bold">Phương thức thanh toán:</span>
+                                @if (Model.First().Bill.PaymentId == Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16"))
+                                {
+                                    <span>Bank transfer</span>
+                                }
+                                else
+                                {
+                                    <span>Ship(COD)</span>
                                 }
                     </li>
                     </ul>

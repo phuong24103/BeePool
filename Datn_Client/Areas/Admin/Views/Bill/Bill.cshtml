@@ -35,6 +35,9 @@
                         <div class="navbar-nav">
                             <a asp-area="Admin" asp-controller="Bill" asp-action="BillStatus4" class="nav-link">Đang giao hàng</a>
                         </div>
+                        <div class="navbar-nav">
+                            <a asp-area="Admin" asp-controller="Bill" asp-action="BillStatus5" class="nav-link">Giao hàng thành công</a>
+                        </div>
                     </div>
                 </nav>
                 <div class="row my-2 mx-1 justify-content-center">
@@ -83,6 +86,12 @@
                                                 <i class="bx bxs-truck"></i>
                                             </a>
                                         }
+                                        else if (item.BillStatusId == Guid.Parse("00357f21-9356-468b-8c0c-b590e3d1bc0a"))
+                                        {
+                                            <a asp-area="Admin" asp-controller="Bill" asp-action="UpdateBillStatus4" asp-route-id="@item.Id" class="btn btn-success">
+                                                <i class="bx bxs-detail"></i>
+                                            </a>
+                                        }
                                         else
                                         {
                                             <span>Đã là trạng thái cuối</span>
@@ -97,9 +106,12 @@
                                         }
                                     </td>
                                     <td>
-                                        <a asp-area="Admin" asp-controller="Bill" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
-                                            <i class="bx bxs-trash-alt"></i>
-                                        </a>
+                                        @if (item.BillStatusId == Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"))
+                                        {
+                                            <a asp-area="Admin" asp-controller="Bill" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                                <i class="bx bxs-trash-alt"></i>
+                                            </a>
+                                        }
                                     </td>
                                 </tr>
                             }

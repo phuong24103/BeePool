@@ -145,6 +145,30 @@ namespace Datn_Client.Controllers
                 }
             }
         }
+        public async Task<IActionResult> BillStatus5()
+        {
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role == null)
+            {
+                var customer = await _httpClient.GetFromJsonAsync<Customer>($"https://localhost:7033/api/Customer/GetByName/{userName}");
+                var idbillstatus1 = Guid.Parse("33c0bdd2-85ca-4f05-9360-22be333895fe");
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByCustomerIdAndBillStatusId/{customer.Id}/{idbillstatus1}");
+                return View(result);
+            }
+            else
+            {
+                var bill = SessionServices<BillView>.GetObjFromSession(HttpContext.Session, "Bill");
+                if (bill.Count == 0)
+                {
+                    return RedirectToAction("Register", "Register");
+                }
+                else
+                {
+                    return View(bill);
+                }
+            }
+        }
 
 
         public async Task<IActionResult> Create()
@@ -242,23 +266,23 @@ namespace Datn_Client.Controllers
                         {
                             var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
 
-                            var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
-                            UpdateProduct updateProduct = new UpdateProduct()
-                            {
-                                CategoryID = product.CategoryID,
-                                Name = product.Name,
-                                Pin = product.Pin,
-                                Wrap = product.Wrap,
-                                Rings = product.Rings,
-                                AvailableQuantity = product.AvailableQuantity - item.Quantity,
-                                Sold = product.Sold,
-                                Likes = product.Likes,
-                                CreateDate = product.CreateDate,
-                                Status = product.Status,
-                                Description = product.Description,
-                            };
+                            //var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                            //UpdateProduct updateProduct = new UpdateProduct()
+                            //{
+                            //    CategoryID = product.CategoryID,
+                            //    Name = product.Name,
+                            //    Pin = product.Pin,
+                            //    Wrap = product.Wrap,
+                            //    Rings = product.Rings,
+                            //    AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                            //    Sold = product.Sold,
+                            //    Likes = product.Likes,
+                            //    CreateDate = product.CreateDate,
+                            //    Status = product.Status,
+                            //    Description = product.Description,
+                            //};
 
-                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+                            //await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
 
                             CreateBillDetail billDetail = new CreateBillDetail()
                             {
@@ -365,23 +389,23 @@ namespace Datn_Client.Controllers
                         {
                             var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
 
-                            var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
-                            UpdateProduct updateProduct = new UpdateProduct()
-                            {
-                                CategoryID = product.CategoryID,
-                                Name = product.Name,
-                                Pin = product.Pin,
-                                Wrap = product.Wrap,
-                                Rings = product.Rings,
-                                AvailableQuantity = product.AvailableQuantity - item.Quantity,
-                                Sold = product.Sold,
-                                Likes = product.Likes,
-                                CreateDate = product.CreateDate,
-                                Status = product.Status,
-                                Description = product.Description,
-                            };
+                            //var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                            //UpdateProduct updateProduct = new UpdateProduct()
+                            //{
+                            //    CategoryID = product.CategoryID,
+                            //    Name = product.Name,
+                            //    Pin = product.Pin,
+                            //    Wrap = product.Wrap,
+                            //    Rings = product.Rings,
+                            //    AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                            //    Sold = product.Sold,
+                            //    Likes = product.Likes,
+                            //    CreateDate = product.CreateDate,
+                            //    Status = product.Status,
+                            //    Description = product.Description,
+                            //};
 
-                            await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+                            //await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
 
                             CreateBillDetail billDetail = new CreateBillDetail()
                             {
@@ -543,23 +567,23 @@ namespace Datn_Client.Controllers
                                 {
                                     var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
 
-                                    var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
-                                    UpdateProduct updateProduct = new UpdateProduct()
-                                    {
-                                        CategoryID = product.CategoryID,
-                                        Name = product.Name,
-                                        Pin = product.Pin,
-                                        Wrap = product.Wrap,
-                                        Rings = product.Rings,
-                                        AvailableQuantity = product.AvailableQuantity - item.Quantity,
-                                        Sold = product.Sold,
-                                        Likes = product.Likes,
-                                        CreateDate = product.CreateDate,
-                                        Status = product.Status,
-                                        Description = product.Description,
-                                    };
+                                    //var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                                    //UpdateProduct updateProduct = new UpdateProduct()
+                                    //{
+                                    //    CategoryID = product.CategoryID,
+                                    //    Name = product.Name,
+                                    //    Pin = product.Pin,
+                                    //    Wrap = product.Wrap,
+                                    //    Rings = product.Rings,
+                                    //    AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                                    //    Sold = product.Sold,
+                                    //    Likes = product.Likes,
+                                    //    CreateDate = product.CreateDate,
+                                    //    Status = product.Status,
+                                    //    Description = product.Description,
+                                    //};
 
-                                    await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+                                    //await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
 
                                     CreateBillDetail billDetail = new CreateBillDetail()
                                     {
@@ -731,23 +755,23 @@ namespace Datn_Client.Controllers
                                 {
                                     var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
 
-                                    var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
-                                    UpdateProduct updateProduct = new UpdateProduct()
-                                    {
-                                        CategoryID = product.CategoryID,
-                                        Name = product.Name,
-                                        Pin = product.Pin,
-                                        Wrap = product.Wrap,
-                                        Rings = product.Rings,
-                                        AvailableQuantity = product.AvailableQuantity - item.Quantity,
-                                        Sold = product.Sold,
-                                        Likes = product.Likes,
-                                        CreateDate = product.CreateDate,
-                                        Status = product.Status,
-                                        Description = product.Description,
-                                    };
+                                    //var product = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{productdetail.ProductID}");
+                                    //UpdateProduct updateProduct = new UpdateProduct()
+                                    //{
+                                    //    CategoryID = product.CategoryID,
+                                    //    Name = product.Name,
+                                    //    Pin = product.Pin,
+                                    //    Wrap = product.Wrap,
+                                    //    Rings = product.Rings,
+                                    //    AvailableQuantity = product.AvailableQuantity - item.Quantity,
+                                    //    Sold = product.Sold,
+                                    //    Likes = product.Likes,
+                                    //    CreateDate = product.CreateDate,
+                                    //    Status = product.Status,
+                                    //    Description = product.Description,
+                                    //};
 
-                                    await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
+                                    //await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Product/Update/{product.Id}", updateProduct);
 
                                     CreateBillDetail billDetail = new CreateBillDetail()
                                     {
