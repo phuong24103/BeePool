@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Datn_Shared.ViewModels.BillViewModels.BillView>
 @{
-    ViewData["Title"] = "Bill";
+    ViewData["Title"] = "BillStatus5";
     <link rel="stylesheet" href="~/css/text.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/bill.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/billstatus.css" asp-append-version="true" />
@@ -66,23 +66,23 @@
                     </div>
                     <hr>
                     @*<div class="col-xl-10" style="text-align : left">
-                        <p>Trạng thái</p>
-                        </div>
-                        <div class="col-xl-2">
-                        <p class="float-end">
-                        @item.BillStatus.Name
-                        </p>
-                        </div>
-                        <hr>
-                        <div class="col-xl-10" style="text-align : left">
-                        <p>Phương thức thanh toán</p>
-                        </div>
-                        <div class="col-xl-2">
-                        <p class="float-end">
-                        @item.Payment.Name
-                        </p>
-                        </div>
-                        <hr>*@
+                <p>Trạng thái</p>
+                </div>
+                <div class="col-xl-2">
+                <p class="float-end">
+                @item.BillStatus.Name
+                </p>
+                </div>
+                <hr>
+                <div class="col-xl-10" style="text-align : left">
+                <p>Phương thức thanh toán</p>
+                </div>
+                <div class="col-xl-2">
+                <p class="float-end">
+                @item.Payment.Name
+                </p>
+                </div>
+                <hr>*@
                 </div>
                 <div class="row text-black">
 
@@ -101,5 +101,14 @@
         </div>
     </div>
 }
+
+
+
+
+
+
+
+
+
 
 
