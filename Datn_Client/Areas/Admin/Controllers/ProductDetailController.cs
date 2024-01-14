@@ -1,5 +1,6 @@
 ﻿using Datn_Shared.Models;
 using Datn_Shared.ViewModels.ProductDetailViewModels;
+using Datn_Shared.ViewModels.ProductImageViewModels;
 using Datn_Shared.ViewModels.ProductViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -18,13 +19,14 @@ namespace Datn_Client.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(Guid id)
         {
+            
             var tip = await _httpClient.GetFromJsonAsync<List<Tip>>("https://localhost:7033/api/Tip/GetAll");
             ViewData["t"] = tip;
             var shaft = await _httpClient.GetFromJsonAsync<List<Shaft>>("https://localhost:7033/api/Shaft/GetAll");
             ViewData["s"] = shaft;
             var weight = await _httpClient.GetFromJsonAsync<List<Weight>>("https://localhost:7033/api/Weight/GetAll");
             ViewData["w"] = weight;
-            var product = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAll");
+            var product = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAllA");
             ViewData["p"] = product;
             if (id == Guid.Empty)   
             {
@@ -39,11 +41,34 @@ namespace Datn_Client.Areas.Admin.Controllers
                
                 c.Add(category);
                 ViewData["pdt"] = c;
+                ViewBag.ProductDetailId = id;
                 return View(categories);
             }
         }
-        public async Task<IActionResult> Create( CreateProductDetail create)
+        public async Task<IActionResult> Create(CreateProductDetail create, List< IFormFile> imageFile)
         {
+            if (imageFile.Count > 0 )
+            {
+
+                List<string> imgaa = new List<string>();
+                foreach (var item in imageFile)
+                {
+                    if (item != null && item.Length > 0)
+                    {
+                        string images = Guid.NewGuid().ToString() + "_" + item.FileName;
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "products", images);
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await item.CopyToAsync(stream);
+
+                            imgaa.Add(images);
+                        }
+                    }
+
+
+                }
+                create.Image = imgaa;
+            }
             await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/ProductDetail/Create", create);
             return RedirectToAction("Index");
         }

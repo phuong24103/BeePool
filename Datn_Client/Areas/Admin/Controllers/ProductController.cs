@@ -21,36 +21,38 @@ namespace Datn_Client.Areas.Admin.Controllers
         {
             var cate = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewData["a"] = cate;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewData["br"] = brand;
             if (id == Guid.Empty)
             {
                 if (date == "today")
                 {
-                    var pro = await _httpClient.GetFromJsonAsync<IEnumerable<Product>>("https://localhost:7033/api/Product/GetAll");
+                    var pro = await _httpClient.GetFromJsonAsync<IEnumerable<Product>>("https://localhost:7033/api/Product/GetAllA");
                     IEnumerable<Product> b = pro.Where(p => (p.CreateDate.DayOfYear == DateTime.Now.DayOfYear));
                     ViewBag.DatePro = date;
                     return View(b);
                 }
                 else if (date == "thisMonth")
                 {
-                    var pro = await _httpClient.GetFromJsonAsync<IEnumerable<Product>>("https://localhost:7033/api/Product/GetAll");
+                    var pro = await _httpClient.GetFromJsonAsync<IEnumerable<Product>>("https://localhost:7033/api/Product/GetAllA");
                     IEnumerable<Product> c = pro.Where(p => (p.CreateDate.Month == DateTime.Now.Month && p.CreateDate.Year == DateTime.Now.Year));
                     ViewBag.DatePro = date;
                     return View(c);
                 }
                 else if (date == "thisYear")
                 {
-                    var pro = await _httpClient.GetFromJsonAsync<IEnumerable<Product>>("https://localhost:7033/api/Product/GetAll");
+                    var pro = await _httpClient.GetFromJsonAsync<IEnumerable<Product>>("https://localhost:7033/api/Product/GetAllA");
                     IEnumerable<Product> c = pro.Where(p => (p.CreateDate.Year == DateTime.Now.Year));
                     ViewBag.DatePro = date;
                     return View(c);
                 }
                 else {
-                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ProductView>>("https://localhost:7033/api/Product/GetAll");
+                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ProductView>>("https://localhost:7033/api/Product/GetAllA");
                     return View(categories); }
             }
             else
             {
-                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ProductView>>("https://localhost:7033/api/Product/GetAll");
+                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ProductView>>("https://localhost:7033/api/Product/GetAllA");
                 var category = await _httpClient.GetFromJsonAsync<ProductView>($"https://localhost:7033/api/Product/GetById/{id}");
                 List<ProductView> c = new List<ProductView>();
 

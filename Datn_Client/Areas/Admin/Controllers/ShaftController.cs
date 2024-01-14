@@ -35,7 +35,7 @@ namespace Datn_Client.Areas.Admin.Controllers
         public async Task<IActionResult> Create([FromForm] CreateShaft createShaft)
         {
             await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Shaft/Create", createShaft);
-            return RedirectToAction("Index", "Tip");
+            return RedirectToAction("Index", "Shaft");
         }
 
         public async Task<IActionResult> Delete(Guid id)

@@ -22,6 +22,7 @@ namespace Datn_Shared.ViewModels.ProductDetailViewModels
         public double Price { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập createdate")]
         public DateTime CreateDate { get; set; }
+        public List< string> Image { get; set; }
 
         public int Status { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập description")]

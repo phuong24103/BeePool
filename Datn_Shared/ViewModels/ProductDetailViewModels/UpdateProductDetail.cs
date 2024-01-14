@@ -31,5 +31,6 @@ namespace Datn_Shared.ViewModels.ProductDetailViewModels
         public int Status { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập ")]
         public string Description { get; set; }
+        public List<string> Image { get; set; }
     }
 }

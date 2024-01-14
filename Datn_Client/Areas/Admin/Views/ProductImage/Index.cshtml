@@ -1,0 +1,170 @@
+﻿@model IEnumerable<Datn_Shared.Models.ProductImage>
+@using Datn_Shared.Models;
+@using Datn_Shared.ViewModels.ProductDetailViewModels;
+
+@{
+    ViewData["Title"] = "Index";
+    var ima = (ViewData["Image"] as List<ProductImage>);
+    var anh = (ViewData["imagee"] as List<ViewProductDetail>);
+}
+<div class="pagetitle">
+    <h1>Quản lý ảnh sản phẩm</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Tổng quan</li>
+            <li class="breadcrumb-item active">Tin tức &amp; Cập nhật</li>
+        </ol>
+    </nav>
+</div>
+<!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+            <div class="row">
+                <!-- Recent Sales -->
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+
+                        <div class="card-body">
+
+                            <table class="table table-hover datatable">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Tên</th>
+                                    
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in @Model)
+                                    {
+                                        <tr>
+                                            <td><img src="/images/products/@item.Name" width="100" alt=""></td>
+                        
+                                           @*  <td>@item.Status</td> *@
+                               
+                                            <td>
+                                                <a asp-area="Admin" asp-controller="ProductImage" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success mb-1" title="Chi tiết">
+                                                    <i class="bx bxs-detail"></i>
+                                                </a>
+                                                <a asp-area="Admin" asp-controller="ProductImage" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mb-1" title="Xóa">
+                                                    <i class="bx bxs-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div><!-- End Recent Sales -->
+            </div>
+
+        </div><!-- End Left side columns -->
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+            <!-- Recent Activity -->
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Sửa <span>| xx</span></h5>
+                    <!-- Default Tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="contact-tab" data-bs-toggle="tab"
+                                    data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
+                                    aria-selected="false">
+                                Chi tiết
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link " id="home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">
+                                Cập nhật
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    aria-selected="false">
+                                Tạo mới
+                            </button>
+                        </li>
+                    </ul>
+
+                    @* Update *@
+                    <div class="tab-content pt-2" id="myTabContent">
+                        <div class="tab-pane fade" id="home" role="tabpanel"
+                             aria-labelledby="home-tab">
+                            @if (ima != null)
+                            {
+                                <form asp-area="Admin" asp-controller="ProductImage" asp-action="Update" asp-route-id="@ima.First().Id" enctype="multipart/form-data">
+       
+                                    <div class="mb-3">
+                                        <div>
+                                            <input type="file" name="imageFile" accept="image/*" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-warning">Lưu</button>
+                                </form>
+                            }
+                        </div>
+
+                        @* Create *@
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <form asp-area="Admin" asp-controller="ProductImage" asp-action="Create" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                   
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Chọn ảnh</label>
+                                    <div>
+                                        <input type="file" name="imageFile" accept="image/*" class="form-control">
+                                    </div>
+                                </div>
+
+
+                                <button class="btn btn-success">Thêm</button>
+
+                            </form><!-- End Multi Columns Form -->
+                        </div>
+
+                        @* Detail *@
+                        <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            @if (ima != null)
+                            {
+                                <div class="mb-3">
+                                    <label class="form-label">Tên</label>
+                                    <div>
+                                        <p class="form-control">@ima.First().Name</p>
+                                    </div>
+                                </div>
+                               
+                                <div class="mb-3">
+                                    <label class="form-label">Hình ảnh</label>
+                                    <div>
+                                        <img src="/images/images/@ima.First().Name" width="70%">
+                                    </div>
+                                </div>
+                            
+                          
+                            }
+                        </div>
+                    </div><!-- End Default Tabs -->
+
+                </div>
+
+            </div>
+        </div><!-- End Recent Activity -->
+
+
+    </div><!-- End Right side columns -->
+
+</section>

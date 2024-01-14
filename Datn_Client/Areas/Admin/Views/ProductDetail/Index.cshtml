@@ -11,9 +11,10 @@
     var productdt = (ViewData["pdt"] as List<ViewProductDetail>);
     var category = (ViewData["p"] as List<ProductView>);
 
+
 }
 <div class="pagetitle">
-    <h1>Quản lý danh mục</h1>
+    <h1>Quản lý sản phẩm chi tiết</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
@@ -46,8 +47,11 @@
                                     <td>ImportPrice</td>
                                     <td>Price</td>
                                     <td>CreateDate</td>
-                                    <td>Description</td>
+                               
+                                  @*   <td>Ảnh</td> *@
                                     <td>Trạng thái</td>
+                                    <td>ảnh</td>
+                                    
                                 </tr>
                                 @foreach (var item in @Model)
                                 {
@@ -57,10 +61,13 @@
                                         <td>@item.Shaft.Name</td>
                                         <td>@item.Weight.Name</td>
                                         <td>@item.Quantity</td>
+                                        
                                         <td>@item.ImportPrice</td>
                                         <td>@item.Price</td>
+                                       
                                         <td>@item.CreateDate</td>
-                                        <td>@item.Description</td>
+                             
+                                        @*  <td>@item.I</td> *@ 
                                         <td>
                                             @if (item.Status == 0)
                                             {
@@ -76,12 +83,19 @@
                                             }
                                         </td>
                                         <td>
-                                            <a asp-area="Admin" asp-controller="ProductDetail" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success">
+                                            @foreach (var item2 in item.Image)
+                                            {
+                                                <img src="~/images/products/@item2" width="50" />
+                                            }
+                                        </td>
+                                        <td>
+                                            <a asp-area="Admin" asp-controller="ProductDetail" asp-action="Detail"  asp-route-id="@item.Id" class="btn btn-success">
                                                 <i class="bx bxs-detail"></i>
                                             </a>
                                             <a asp-area="Admin" asp-controller="ProductDetail" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
                                                 <i class="bx bxs-trash-alt"></i>
                                             </a>
+                                          
                                         </td>
                                     </tr>
                                 }
@@ -134,7 +148,7 @@
                                 <form asp-area="Admin" asp-controller="ProductDetail" asp-action="Update" asp-route-id="@productdt.First().Id">
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Tên sản phẩm</label>
-                                        <select name="ProductID" class="form-select" aria-label="Default select example">
+                                        <select asp-for="@Model.First().ProductID" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in category)
                                             {
@@ -147,7 +161,7 @@
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Tên tip</label>
-                                        <select name="TipId" class="form-select" aria-label="Default select example">
+                                        <select asp-for="@Model.First().TipId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in tip)
                                             {
@@ -158,7 +172,7 @@
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Tên shaft</label>
-                                        <select name="ShaftId" class="form-select" aria-label="Default select example">
+                                        <select asp-for="@Model.First().ShaftId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in shaft)
                                             {
@@ -166,9 +180,10 @@
                                             }
                                         </select>
                                       
-                                    </div>   <div class="mb-3 row">
+                                    </div>  
+                                    <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Tên weight</label>
-                                        <select name="WeightId" class="form-select" aria-label="Default select example">
+                                        <select asp-for="@Model.First().WeightId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in weight)
                                             {
@@ -180,42 +195,44 @@
                                     <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Quantity</label>
                                         <div class="col-sm-8">
-                                        <input name="Quantity" type="text" class="form-control" />
+                                            <input asp-for="@Model.First().Quantity" type="text" class="form-control" />
                                         </div>
-                                    </div>    
+                                    </div>   
+                                    <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">des</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@Model.First().Description" type="text" class="form-control" />
+                                        </div>
+                                    </div> 
+                                    
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">ImportPrice</label>
                                         <div class="col-sm-8">
-                                            <input name="ImportPrice" type="text" class="form-control" />
+                                            <input asp-for="@Model.First().ImportPrice" type="text" class="form-control" />
                                         </div>
                                     </div>  
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Price</label>
                                         <div class="col-sm-8">
-                                            <input name="Price" type="text" class="form-control" />
-                                        </div>
-                                    </div>   
-                                 @*    <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">CreateDate</label>
-                                        <div class="col-sm-8">
-                                            <input asp-for="@productdt.First().CreateDate" type="text" class="form-control" />
-                                        </div>
-                                    </div> *@  
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Description</label>
-                                        <div class="col-sm-8">
-                                            <input name="Description" type="text" class="form-control" />
+                                            <input asp-for="@Model.First().Price" type="text" class="form-control" />
                                         </div>
                                     </div>
+
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Status</label>
                                         <div class="col-sm-8">
-                                            <select name="Status" class="form-select" aria-label="Default select example">
+                                            <select asp-for="@Model.First().Status" class="form-select" aria-label="Default select example">
                                                 <option selected>Open this select menu</option>
                                                 <option value="0">Còn hàng</option>
                                                 <option value="1">Hết hàng</option>
                                                 <option value="2">Ngừng bán</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Ảnh</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@Model.First().Image" type="file" class="form-control" />
                                         </div>
                                     </div>
 
@@ -226,7 +243,7 @@
 
                         @* Create *@
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <form asp-area="Admin" asp-controller="ProductDetail" asp-action="Create">
+                            <form asp-area="Admin"  asp-controller="ProductDetail" asp-action="Create" enctype="multipart/form-data">
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Tên sản phẩm</label>
                                     <div class="col-sm-8">
@@ -295,11 +312,18 @@
                                         </select>
                                     </div>
                                 </div>
-                                
+
+                               
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Quantity</label>
                                     <div class="col-sm-8">
                                         <input name="Quantity" type="text" class="form-control" value="" />
+                                    </div>
+                                </div> 
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">descrip</label>
+                                    <div class="col-sm-8">
+                                        <input name="Description" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
@@ -314,18 +338,7 @@
                                         <input name="Price" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
-
-                            @*     <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">CreateDate</label>
-                                    <div class="col-sm-8">
-                                        <input asp-for="@Model.First().CreateDate" type="text" class="form-control" value="" />
-                                    </div>
-                                </div> *@ <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Description</label>
-                                    <div class="col-sm-8">
-                                        <input name="Description" type="text" class="form-control" value="" />
-                                    </div>
-                                </div>
+                             
                                 <div class="mb-3 row">
                                     <label class="col-sm-4 col-form-label">Status</label>
                                     <div class="col-sm-8">
@@ -334,6 +347,12 @@
                                             <option value="0">Còn hàng</option>
                                             <option value="1">Hết hàng</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">ảnh</label>
+                                    <div class="col-sm-8">
+                                        <input name="imageFile" type="file" accept="image/*" class="form-control" multiple="multiple" />
                                     </div>
                                 </div>
 
@@ -354,9 +373,8 @@
                                         <p>Quantity</p>
                                         <p>ImportPrice</p>
                                         <p>Price</p>
-                                     @*    <p>CreateDate</p> *@
-                                        <p>Description</p>
                                         <span>Trạng thái</span>
+                                        <p>Ảnh</p>
                                     </label>
                                     <label class="col-sm-8 col-form-label">
                                         @foreach (var item in productdt)
@@ -368,19 +386,24 @@
                                             <p>@item.Quantity</p>
                                             <p>@item.ImportPrice</p>
                                             <p>@item.Price</p>
-                                            <p>@item.Description</p>
                                             @if (item.Status == 0)
                                             {
-                                                <span>Còn hàng</span>
+                                                <p>Còn hàng</p>
                                             }
                                             else if (item.Status == 1)
                                             {
-                                                <span>Hết hàng</span>
+                                                <p>Hết hàng</p>
                                             }
                                             else
                                             {
-                                                <span>Ngừng bán</span>
+                                                <p>Ngừng bán</p>
                                             }
+                                            <span>
+                                                @foreach (var item2 in item.Image)
+                                                {
+                                                    <img src="~/images/products/@item2" width="20"  />
+                                                }
+                                            </span>
                                         }
                                     </label>
                                 </div>
@@ -398,3 +421,38 @@
     </div><!-- End Right side columns -->
 
 </section>
+@* @* <script>
+    document.getElementById('uploadButton').addEventListener('click', function () {
+        document.getElementById('imageFileInput').click();
+    });
+
+    document.getElementById('imageFileInput').addEventListener('change', function () {
+        var fileInput = document.getElementById('imageFileInput');
+        var selectedFile = fileInput.files[0];
+
+        if (selectedFile) {
+            var formData = new FormData();
+            formData.append('imageFile', selectedFile);
+
+            // Sử dụng Fetch API để gửi ảnh lên máy chủ bằng phương thức POST
+            fetch('/Admin/ProductImage/Create', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Upload successful!');
+                        fileInput.value = null; // Đặt lại giá trị của input file để cho phép người dùng chọn lại cùng một tệp tin (nếu cần).
+
+                        // Làm mới trang sau khi tải lên thành công
+                        location.reload();
+                    } else {
+                        console.error('Upload failed!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Upload failed: ' + error);
+                });
+        }
+    });
+</script> *@
