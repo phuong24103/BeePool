@@ -83,6 +83,7 @@ namespace Datn_Client.Areas.Admin.Controllers
                         await imageFile.CopyToAsync(stream);
                     }
                     post.Image = image;
+                        
                 }
                 await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Post/Create", post);
             }

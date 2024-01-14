@@ -26,6 +26,8 @@ namespace Datn_Client.Controllers
         {
             var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewBag.Category = category;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewBag.Brand = brand;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAll");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -36,6 +38,8 @@ namespace Datn_Client.Controllers
         {
             var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewBag.Category = category;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewBag.Brand = brand;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByName/{Name}");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -46,7 +50,20 @@ namespace Datn_Client.Controllers
         {
             var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewBag.Category = category;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewBag.Brand = brand;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByCategory/{name}");
+            var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
+            return View("Index", pagedList);
+        } 
+        [HttpGet]
+        public async Task<IActionResult> GetProductByBrand(string name, int page = 1, int pageSize = 6)
+        {
+            var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
+            ViewBag.Category = category;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewBag.Brand = brand;
+            var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetProductByBrand/{name}");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
         }
@@ -56,6 +73,8 @@ namespace Datn_Client.Controllers
         {
             var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewBag.Category = category;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewBag.Brand = brand;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByNameAZ");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -66,6 +85,8 @@ namespace Datn_Client.Controllers
         {
             var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewBag.Category = category;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewBag.Brand = brand;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByNameZA");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -76,6 +97,8 @@ namespace Datn_Client.Controllers
         {
             var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewBag.Category = category;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewBag.Brand = brand;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByCreateDateOld");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -96,6 +119,8 @@ namespace Datn_Client.Controllers
         {
             var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewBag.Category = category;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewBag.Brand = brand;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPriceMin");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -106,6 +131,8 @@ namespace Datn_Client.Controllers
         {
             var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewBag.Category = category;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewBag.Brand = brand;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPriceMax");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);
@@ -116,6 +143,8 @@ namespace Datn_Client.Controllers
         {
             var category = await _httpClient.GetFromJsonAsync<List<Category>>("https://localhost:7033/api/Category/GetAll");
             ViewBag.Category = category;
+            var brand = await _httpClient.GetFromJsonAsync<List<Brand>>("https://localhost:7033/api/Brand/GetAll");
+            ViewBag.Brand = brand;
             var productsFromApi = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetByPrice2");
             var pagedList = new PagedList<ProductView>(productsFromApi, page, pageSize);
             return View("Index", pagedList);

@@ -39,18 +39,14 @@
     </div>
     <div class="row" style="margin-right : 50px;margin-bottom : 50px">
 
-        <div class="col-md-4" style="text-align : right;">
+        <div class="col-md-4" style="text-align : right">
 
-            <select>
-                <option selected value="0">Thương Hiệu</option>
-                <option value="1">Giá : Tăng Dần</option>
-                <option value="2">Giá : Giảm Dần</option>
-                <option value="3">Tên A-Z</option>
-                <option value="4">Tên Z-A</option>
-                <option value="5">Cũ Nhất</option>
-                <option value="6">Mới Nhất</option>
-                <option value="7">Bán Chạy Nhất</option>
-
+            <select name="BrandSelect" id="BrandSelect" onchange="redirectOnChange22('@Url.Action("GetProductByBrand", "Product")')">
+                <option selected>Chọn loại thương hiệu</option>
+                @foreach (var item in ViewBag.Brand)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
             </select>
         </div>
         <div class="col-md-4" style="text-align : right">
@@ -174,6 +170,15 @@
 
     function redirectOnChange(baseUrl) {
         var selectedOption = document.getElementById("categorySelect");
+        var selectedName = selectedOption.value;
+        // Build the URL with the selected option
+        var url = baseUrl + "?name=" + encodeURIComponent(selectedName);
+
+        // Chuyển hướng đến trang mới
+        window.location.href = url;
+    }  
+    function redirectOnChange22(baseUrl) {
+        var selectedOption = document.getElementById("BrandSelect");
         var selectedName = selectedOption.value;
         // Build the URL with the selected option
         var url = baseUrl + "?name=" + encodeURIComponent(selectedName);

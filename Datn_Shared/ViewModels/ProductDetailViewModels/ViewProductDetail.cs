@@ -22,6 +22,7 @@ namespace Datn_Shared.ViewModels.ProductDetailViewModels
         public DateTime CreateDate { get; set; }
         public int Status { get; set; }
         public string Description { get; set; }
+        public List<string> Image { get; set; }
         public  Product Product { get; set; }
         public  Tip Tip { get; set; }
         public  Shaft Shaft { get; set; }

@@ -25,7 +25,14 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetAllProductDetail()
         {
             var mate = await _iprodtsv.GetAllProductDetail();
-            return Ok(mate);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(mate, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
         [HttpGet]
         [Route("GetTip/{id:Guid}/{tipid:Guid}")]
@@ -76,7 +83,14 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetProductDetailById([FromRoute] Guid id)
         {
             var mate = await _iprodtsv.GetProductDetailById(id);
-            return Ok(mate);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(mate, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
         [HttpPost]
         [Route("Create")]

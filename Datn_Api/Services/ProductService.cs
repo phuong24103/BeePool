@@ -1,10 +1,8 @@
 ﻿using Datn_Api.Data;
 using Datn_Api.IServices;
 using Datn_Shared.Models;
-using Datn_Shared.ViewModels.ProductDetailViewModels;
 using Datn_Shared.ViewModels.ProductViewModels;
 using Microsoft.EntityFrameworkCore;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Datn_Api.Services
 {
@@ -23,6 +21,7 @@ namespace Datn_Api.Services
             {
                 Id = Guid.NewGuid(),
                 CategoryID = product.CategoryID,
+                BrandID = product.BrandID,
 
                 Name = product.Name,
                 Pin = product.Pin,
@@ -63,8 +62,7 @@ namespace Datn_Api.Services
                 return false;
             }
         }
-
-        public async Task<IEnumerable<ProductView>> GetAllProduct()
+        public async Task<IEnumerable<ProductView>> GetAllProductA()
         {
             var products = await _context.Products.Include(p => p.ProductDetails).ToListAsync();
 
@@ -73,17 +71,18 @@ namespace Datn_Api.Services
             foreach (var product in products)
             {
                 Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                if (productDetailId != Guid.Empty)
-                {
+               
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
 
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : "";
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : "";
                     var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
+                    var brand = await _context.Brands.Where(p => p.Id == product.BrandID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
                         Id = product.Id,
                         CategoryID = product.CategoryID,
+                        BrandID = product.BrandID,
                         ProductDetailId = productDetailId,
                         Name = product.Name,
                         Pin = product.Pin,
@@ -98,7 +97,54 @@ namespace Datn_Api.Services
                         Status = product.Status,
                         Description = product.Description,
                         Category = product.Category,
-                        CategoryName = category.Name
+                        CategoryName = category.Name,
+                        BrandName = brand.Name
+
+                    });
+                }
+            
+
+            
+            return proview;
+        }
+        public async Task<IEnumerable<ProductView>> GetAllProduct()
+        {
+            var products = await _context.Products.Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductView> proview = new List<ProductView>();
+
+            foreach (var product in products )
+            {
+                Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                if (productDetailId != Guid.Empty && product.Status !=2)
+                {
+                    double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : "";
+                    var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
+                    var brand = await _context.Brands.Where(p => p.Id == product.BrandID).FirstOrDefaultAsync();
+
+                    proview.Add(new ProductView
+                    {
+                        Id = product.Id,
+                        CategoryID = product.CategoryID,
+                        BrandID = product.BrandID,
+                        ProductDetailId = productDetailId,
+                        Name = product.Name,
+                        Pin = product.Pin,
+                        Wrap = product.Wrap,
+                        Rings = product.Rings,
+                        AvailableQuantity = product.AvailableQuantity,
+                        Price = price,
+                        Image = image,
+                        Sold = product.Sold,
+                        Likes = product.Likes,
+                        CreateDate = product.CreateDate,
+                        Status = product.Status,
+                        Description = product.Description,
+                        Category = product.Category,
+                        CategoryName = category.Name,
+                        BrandName = brand.Name
 
                     });
                 }
@@ -117,13 +163,14 @@ namespace Datn_Api.Services
             {
                 double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                 Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                 var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                 proview.Add(new ProductView
                 {
                     Id = product.Id,
                     CategoryID = product.CategoryID,
+                    BrandID = product.BrandID,
                     ProductDetailId = productDetailId,
                     Name = product.Name,
                     Pin = product.Pin,
@@ -156,13 +203,14 @@ namespace Datn_Api.Services
                 {
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
                         Id = product.Id,
                         CategoryID = product.CategoryID,
+                        BrandID = product.BrandID,
                         ProductDetailId = productDetailId,
                         Name = product.Name,
                         Pin = product.Pin,
@@ -195,13 +243,14 @@ namespace Datn_Api.Services
                 {
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
                         Id = product.Id,
                         CategoryID = product.CategoryID,
+                        BrandID = product.BrandID,
                         ProductDetailId = productDetailId,
                         Name = product.Name,
                         Pin = product.Pin,
@@ -228,7 +277,7 @@ namespace Datn_Api.Services
             var product = await _context.Products.Include(p => p.ProductDetails).FirstOrDefaultAsync(p => p.Id == id);
             double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
             Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-            string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+            string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
             ProductView proview = new ProductView();
             proview = await (
                 from a in _context.Products
@@ -238,6 +287,7 @@ namespace Datn_Api.Services
                 {
                     Id = a.Id,
                     CategoryID = a.CategoryID,
+                    BrandID = a.BrandID,
                     ProductDetailId = productDetailId,
                     Name = a.Name,
                     Pin = a.Pin,
@@ -268,13 +318,14 @@ namespace Datn_Api.Services
                 {
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
                         Id = product.Id,
                         CategoryID = product.CategoryID,
+                        BrandID = product.BrandID,
                         ProductDetailId = productDetailId,
                         Name = product.Name,
                         Pin = product.Pin,
@@ -307,13 +358,14 @@ namespace Datn_Api.Services
                 {
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
                         Id = product.Id,
                         CategoryID = product.CategoryID,
+                        BrandID = product.BrandID,
                         ProductDetailId = productDetailId,
                         Name = product.Name,
                         Pin = product.Pin,
@@ -346,13 +398,14 @@ namespace Datn_Api.Services
                 {
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
                         Id = product.Id,
                         CategoryID = product.CategoryID,
+                        BrandID = product.BrandID,
                         ProductDetailId = productDetailId,
                         Name = product.Name,
                         Pin = product.Pin,
@@ -385,13 +438,14 @@ namespace Datn_Api.Services
                 {
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
                         Id = product.Id,
                         CategoryID = product.CategoryID,
+                        BrandID = product.BrandID,
                         ProductDetailId = productDetailId,
                         Name = product.Name,
                         Pin = product.Pin,
@@ -425,13 +479,14 @@ namespace Datn_Api.Services
                 {
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
                         Id = product.Id,
                         CategoryID = product.CategoryID,
+                        BrandID = product.BrandID,
                         ProductDetailId = productDetailId,
                         Name = product.Name,
                         Pin = product.Pin,
@@ -465,13 +520,14 @@ namespace Datn_Api.Services
                 {
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var category = await _context.Categories.Where(p => p.Id == product.CategoryID).FirstOrDefaultAsync();
 
                     proview.Add(new ProductView
                     {
                         Id = product.Id,
                         CategoryID = product.CategoryID,
+                        BrandID = product.BrandID,
                         ProductDetailId = productDetailId,
                         Name = product.Name,
                         Pin = product.Pin,
@@ -506,7 +562,7 @@ namespace Datn_Api.Services
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
 
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var billDetails = _context.BillDetails.Where(p => p.ProductDetailId == productDetailId).ToListAsync().Result;
                     double revenue = 0;
                     foreach (var item in billDetails)
@@ -520,6 +576,7 @@ namespace Datn_Api.Services
                         {
                             Id = product.Id,
                             ProductDetailId = productDetailId,
+                     
                             Name = product.Name,
                             Price = price,
                             Image = image,
@@ -543,7 +600,7 @@ namespace Datn_Api.Services
                 {
                     double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
-                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                    string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
                     var billDetails = await _context.BillDetails.Where(p => p.ProductDetailId == productDetailId).ToListAsync();
                     double revenue = 0;
                     if (date == "today" || date == "thisYear" || date == "thisMonth")
@@ -603,7 +660,10 @@ namespace Datn_Api.Services
         {
             var n = _context.Products.Find(id);
             if (n == null) return false;
+            n.BrandID = product.BrandID;
+            n.CategoryID = product.CategoryID;
             n.Name = product.Name;
+
             n.Pin = product.Pin;
             n.Wrap = product.Wrap;
             n.Rings = product.Rings;
@@ -621,5 +681,45 @@ namespace Datn_Api.Services
                 return false;
             }
         }
+        public async Task<IEnumerable<ProductView>> GetProductByBrand(string name)
+        {
+            var products = await _context.Products.Where(p => p.Brand.Name == name).Include(p => p.ProductDetails).ToListAsync();
+
+            List<ProductView> proview = new List<ProductView>();
+
+            foreach (var product in products)
+            {
+                double price = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Price : 0;
+                Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
+                string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) !=null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
+                var brand = await _context.Brands.Where(p => p.Id == product.BrandID).FirstOrDefaultAsync();
+
+                proview.Add(new ProductView
+                {
+                    Id = product.Id,
+                    CategoryID = product.CategoryID,
+                    BrandID = product.BrandID,
+                    ProductDetailId = productDetailId,
+                    Name = product.Name,
+                    Pin = product.Pin,
+                    Wrap = product.Wrap,
+                    Rings = product.Rings,
+                    AvailableQuantity = product.AvailableQuantity,
+                    Price = price,
+                    Image = image,
+                    Sold = product.Sold,
+                    Likes = product.Likes,
+                    CreateDate = product.CreateDate,
+                    Status = product.Status,
+                    Description = product.Description,
+                    Category = product.Category,
+                    BrandName = brand.Name
+
+                });
+            }
+            return proview;
+        }
+
+
     }
 }

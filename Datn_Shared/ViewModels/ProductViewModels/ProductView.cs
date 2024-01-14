@@ -28,6 +28,7 @@ namespace Datn_Shared.ViewModels.ProductViewModels
         public int Status { get; set; }
         public string Description { get; set; }
         public string CategoryName {  get; set; }
+        public string BrandName {  get; set; }
         public Category?  Category { get; set; }
         public Brand?  Brand { get; set; }
     }

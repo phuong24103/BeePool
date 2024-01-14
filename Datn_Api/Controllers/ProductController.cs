@@ -35,6 +35,20 @@ namespace Datn_Api.Controllers
             JToken parsedJson = JToken.Parse(json);
             string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
             return Ok(formattedJson);
+        } 
+        [HttpGet]
+        [Route("GetAllA")]
+        public async Task<IActionResult> GetAllProductA()
+        {
+            var mate = await _iprosv.GetAllProductA();
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(mate, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
         }
 
         [HttpGet]
@@ -70,6 +84,19 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetProductByCategory([FromRoute] string name)
         {
             var product = await _iprosv.GetProductByCategory(name);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(product, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
+        }
+        [HttpGet("GetProductByBrand/{name}")]
+        public async Task<IActionResult> GetProductByBrand([FromRoute] string name)
+        {
+            var product = await _iprosv.GetProductByBrand(name);
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects

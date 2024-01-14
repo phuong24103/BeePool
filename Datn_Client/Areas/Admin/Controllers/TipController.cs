@@ -19,13 +19,13 @@ namespace Datn_Client.Areas.Admin.Controllers
         {
             if (id == Guid.Empty)
             {
-                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Tip>>("\"https://localhost:7033/api/Tip/GetAll");
+                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Tip>>("https://localhost:7033/api/Tip/GetAll");
                 return View(categories);
             }
             else
             {
-                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Tip>>("\"https://localhost:7033/api/Tip/GetAll");
-                var category = await _httpClient.GetFromJsonAsync<Tip>($"\"https://localhost:7033/api/Tip/GetById/{id}");
+                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Tip>>("https://localhost:7033/api/Tip/GetAll");
+                var category = await _httpClient.GetFromJsonAsync<Tip>($"https://localhost:7033/api/Tip/GetById/{id}");
                 List<Tip> c = new List<Tip>();
                 c.Add(category);
                 ViewData["Tip"] = c;
