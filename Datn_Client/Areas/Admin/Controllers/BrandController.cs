@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Datn_Shared.Models;
 using Humanizer;
-using Datn_Api.Migrations;
+/*using Datn_Api.Migrations;*/
 using Datn_Shared.ViewModels.BrandViewModels;
 
 namespace Datn_Client.Areas.Admin.Controllers
