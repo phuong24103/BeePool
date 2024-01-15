@@ -235,7 +235,25 @@ namespace Datn_Client.Controllers
 
                 if (code == null)
                 {
-                    if(payment == null)
+                    if (name == null)
+                    {
+                        string messagename = "Vui lòng nhập tên";
+                        TempData["Messagename"] = messagename;
+                        return RedirectToAction("Index", "Cart");
+                    }
+                    else if (phonenumber == null || phonenumber.Length > 10)
+                    {
+                        string messagephone = "Vui lòng nhập số điện thoại và tối đa là 10";
+                        TempData["Messagephone"] = messagephone;
+                        return RedirectToAction("Index", "Cart");
+                    }
+                    else if (address == null)
+                    {
+                        string messageaddress = "Vui lòng nhập địa chỉ nhận";
+                        TempData["Messageaddress"] = messageaddress;
+                        return RedirectToAction("Index", "Cart");
+                    }
+                    else if(payment == null)
                     {
                         string messagepayment = "Vui lòng chọn phương thức thanh toán";
                         TempData["Messagepayment"] = messagepayment;
@@ -257,9 +275,9 @@ namespace Datn_Client.Controllers
                             PaymentId = Guid.Parse(payment),
                             Price = price,
                             CreateDate = DateTime.Now,
-                            Address = customer.Address,
-                            CustomerName = customer.FullName,
-                            CustomerPhone = customer.PhoneNumber,
+                            Address = address,
+                            CustomerName = name,
+                            CustomerPhone = phonenumber,
                         };
                         await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", bill);
                         foreach (var item in cartDetails)
@@ -351,6 +369,21 @@ namespace Datn_Client.Controllers
                         message = "Khách hàng không đủ điểm để sử dụng voucher này";
                         TempData["Message"] = message;
                     }
+                    else if (name == null)
+                    {
+                        string messagename = "Vui lòng nhập tên";
+                        TempData["Messagename"] = messagename;
+                    }
+                    else if (phonenumber == null || phonenumber.Length > 10)
+                    {
+                        string messagephone = "Vui lòng nhập số điện thoại và tối đa là 10";
+                        TempData["Messagephone"] = messagephone;
+                    }
+                    else if (address == null)
+                    {
+                        string messageaddress = "Vui lòng nhập địa chỉ nhận";
+                        TempData["Messageaddress"] = messageaddress;
+                    }
                     else if(payment == null)
                     {
                         string messagepayment = "Vui lòng chọn phương thức thanh toán";
@@ -380,9 +413,9 @@ namespace Datn_Client.Controllers
                             PaymentId = Guid.Parse(payment),
                             Price = price,
                             CreateDate = DateTime.Now,
-                            Address = customer.Address,
-                            CustomerName = customer.FullName,
-                            CustomerPhone = customer.PhoneNumber,
+                            Address = address,
+                            CustomerName = name,
+                            CustomerPhone = phonenumber,
                         };
                         await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Bill/CreateBillBT", bill);
                         foreach (var item in cartDetails)
@@ -518,7 +551,7 @@ namespace Datn_Client.Controllers
                                 DateOfBirth = new DateTime(2003, 10, 20),
                                 Address = address,
                                 PhoneNumber = phonenumber,
-                                Email = $"{name}@gmail.com",
+                                Email = "khach@gmail.com",
                             };
                             var AddCus = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
                             //Nếu ko tạo dc khách hàng mới
@@ -707,7 +740,7 @@ namespace Datn_Client.Controllers
                                 DateOfBirth = new DateTime(2003, 10, 20),
                                 Address = address,
                                 PhoneNumber = phonenumber,
-                                Email = $"{name}@gmail.com",
+                                Email = "khach@gmail.com",
                             };
                             var AddCus = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterCustomer", Registercustomer);
                             //if (AddCus.IsSuccessStatusCode == false)
@@ -826,7 +859,7 @@ namespace Datn_Client.Controllers
 
             VnPayLibrary vnpay = new VnPayLibrary();
 
-            var price = (long)bill.Price * 100000;
+            var price = (long)bill.Price * 100;
             vnpay.AddRequestData("vnp_Version", VnPayLibrary.VERSION);
             vnpay.AddRequestData("vnp_Command", "pay");
             vnpay.AddRequestData("vnp_TmnCode", vnp_TmnCode);
@@ -835,7 +868,6 @@ namespace Datn_Client.Controllers
 
             vnpay.AddRequestData("vnp_CreateDate", bill.CreateDate.ToString("yyyyMMddHHmmss"));
             vnpay.AddRequestData("vnp_CurrCode", "VND");
-            //Lấy địa chỉ ip máy tính
             vnpay.AddRequestData("vnp_IpAddr", "13.160.92.202");
             vnpay.AddRequestData("vnp_Locale", "vn");
             vnpay.AddRequestData("vnp_OrderInfo", "Thanh toan don hang:" + bill.Id);
