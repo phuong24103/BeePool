@@ -563,7 +563,7 @@ namespace Datn_Api.Services
 
                     Guid productDetailId = (product != null && product.ProductDetails.FirstOrDefault() != null) ? product.ProductDetails.FirstOrDefault().Id : Guid.Empty;
                     string image = (product != null && product.ProductDetails.FirstOrDefault() != null && _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId) != null) ? _context.ProductImages.FirstOrDefault(p => p.ProductDetailId == productDetailId).Name : null;
-                    var billDetails = _context.BillDetails.Where(p => p.ProductDetailId == productDetailId).ToListAsync().Result;
+                    var billDetails = await _context.BillDetails.Where(p => p.ProductDetailId == productDetailId).ToListAsync();
                     double revenue = 0;
                     foreach (var item in billDetails)
                     {

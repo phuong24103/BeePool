@@ -29,6 +29,14 @@ namespace Datn_Api.Controllers
         }
 
         [HttpGet]
+        [Route("GetAllStaff")]
+        public async Task<IActionResult> GetAllStaff()
+        {
+            var customer = await _employeeService.GetAllStaff();
+            return Ok(customer);
+        }
+
+        [HttpGet]
         [Route("GetById/{id:Guid}")]
         public async Task<IActionResult> GetEmployeebyId(Guid id)
         {

@@ -69,26 +69,38 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf3"),
-                            Address = "Bình nguyên vô tận",
+                            Address = "Hoa Thanh Quế",
                             BillStatusId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
-                            CustomerName = "Hoàng Xuân",
+                            CustomerName = "Quỳnh Anh",
                             CustomerPhone = "0364838484",
                             PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
-                            Price = 1500.0
+                            Price = 20700000.0
                         },
                         new
                         {
                             Id = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b13"),
-                            Address = "phi phai",
+                            Address = "Hoa Thanh Quế",
                             BillStatusId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
-                            CustomerName = "Hoàng Xuân",
+                            CustomerName = "Quỳnh Anh",
                             CustomerPhone = "0364838484",
                             PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16"),
-                            Price = 1450.0
+                            Price = 13300000.0
+                        },
+                        new
+                        {
+                            Id = new Guid("78abde54-7bb8-4320-bff5-a8b77d3c2cf2"),
+                            Address = "Hoa Thanh Quế",
+                            BillStatusId = new Guid("33c0bdd2-85ca-4f05-9360-22be333895fe"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            CustomerName = "Hoàng Thanh Tùng",
+                            CustomerPhone = "0696969696",
+                            PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16"),
+                            Price = 20600000.0
                         });
                 });
 
@@ -127,7 +139,7 @@ namespace Datn_Api.Migrations
                             Id = new Guid("8f95d2d6-c3d3-4749-be89-97e220d62e79"),
                             BillId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf3"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Price = 1500.0,
+                            Price = 20700000.0,
                             ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"),
                             Quantity = 1
                         },
@@ -136,8 +148,26 @@ namespace Datn_Api.Migrations
                             Id = new Guid("8f95d2d6-c3d3-4749-be89-97e220d62e78"),
                             BillId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b13"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Price = 1450.0,
+                            Price = 5000000.0,
                             ProductDetailId = new Guid("2eaaba04-80ff-43a6-a746-a74a91c4c0e0"),
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("8f95d2d6-c3d3-4749-be89-97e220d62e77"),
+                            BillId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b13"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 3500000.0,
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d6"),
+                            Quantity = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("8f95d2d6-c3d3-4749-be89-97e220d62e76"),
+                            BillId = new Guid("78abde54-7bb8-4320-bff5-a8b77d3c2cf2"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 20700000.0,
+                            ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e5"),
                             Quantity = 1
                         });
                 });
@@ -277,8 +307,16 @@ namespace Datn_Api.Migrations
                         {
                             Id = new Guid("f205098b-3986-484a-ab3f-8dcab46fc228"),
                             DateCreated = new DateTime(2022, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Có lý do tại sao Tín hiệu hành động là lựa chọn ưa thích của hơn 400.000 người chơi giải đấu trên toàn cầu. Hành động xây dựng tín hiệu bi-a cho mọi cấp độ của người chơi bi-a. Cho dù bạn là người mới bắt đầu hay người chơi trong giải đấu, Action đều có một cây gậy dành riêng cho bạn.\r\n\r\nVới các tín hiệu và hộp đựng Hành động, bạn sẽ có được chất lượng thủ công với mức giá phải chăng. Cho dù đó là hộp đựng bi-a mới, gợi ý hình xăm lấy cảm hứng từ Thủy thủ Jerry từ loạt phim Phiêu lưu hay thậm chí là một trong những loạt phim Impact trừu tượng hơn, luôn có một sản phẩm Hành động đáp ứng nhu cầu của bạn và vượt quá mong đợi của bạn. Mỗi tín hiệu Hành động đều được nhà sản xuất bảo hành 1 năm đối với các lỗi. PoolDawg là Đại lý được ủy quyền cho các sản phẩm bida Action.",
+                            Description = "Có lý do tại sao Action Pool Cues là lựa chọn ưa thích của hơn 400.000 người chơi giải đấu trên toàn cầu. Hành động xây dựng tín hiệu bi-a cho mọi cấp độ của người chơi bi-a. Cho dù bạn là người mới bắt đầu hay người chơi trong giải đấu, Action đều có một cây gậy dành riêng cho bạn.\r\n\r\nVới các tín hiệu và hộp đựng Hành động, bạn sẽ có được chất lượng thủ công với mức giá phải chăng. Cho dù đó là hộp đựng bi-a mới, gợi ý hình xăm lấy cảm hứng từ Thủy thủ Jerry từ loạt phim Phiêu lưu hay thậm chí là một trong những loạt phim Impact trừu tượng hơn, luôn có một sản phẩm Hành động đáp ứng nhu cầu của bạn và vượt quá mong đợi của bạn. Mỗi tín hiệu Hành động đều được nhà sản xuất bảo hành 1 năm đối với các lỗi. PoolDawg là Đại lý được ủy quyền cho các sản phẩm bida Action.",
                             Name = "Action Pool Cues",
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("f205098b-3986-484a-ab3f-8dcab46fc229"),
+                            DateCreated = new DateTime(2022, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Gậy bida Scorpion đang nhanh chóng trở thành một trong những loại gậy bida phổ biến nhất trong ngành bida. Tín hiệu hồ bơi Bọ Cạp là sự kết hợp giữa sức mạnh và phong cách. Gậy hồ bơi Scorpion được bọc lớp giáp bằng sợi thủy tinh để bảo vệ khỏi cong vênh và va đập. Gậy bơi Scorpion có đầu tip Le Pro và vải bọc vải lanh Ailen.\r\n\r\nPoolDawg là Đại lý được ủy quyền cho tất cả các sản phẩm gậy bida và bida của Scorpion.",
+                            Name = "Scorpion Pool Cues",
                             Status = 0
                         });
                 });
@@ -312,9 +350,9 @@ namespace Datn_Api.Migrations
                         new
                         {
                             CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
-                            Quantity = 1,
+                            Quantity = 3,
                             Status = 0,
-                            TotalMoney = 2000.0
+                            TotalMoney = 16700000.0
                         });
                 });
 
@@ -349,9 +387,17 @@ namespace Datn_Api.Migrations
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d02"),
                             CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
-                            Price = 2000.0,
-                            ProductDetailId = new Guid("2eaaba04-80ff-43a6-a746-a74a91c4c0e0"),
+                            Price = 3500000.0,
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d8"),
                             Quantity = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("357267e8-d162-4844-a660-661f46933d03"),
+                            CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            Price = 6600000.0,
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d1"),
+                            Quantity = 2
                         });
                 });
 
@@ -383,7 +429,7 @@ namespace Datn_Api.Migrations
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d03"),
                             CreatedDate = new DateTime(2022, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Cơ Đánh",
+                            Name = "Cơ Truyền thống",
                             Status = 0,
                             UpdatedDate = new DateTime(2022, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -414,10 +460,18 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("357267e8-d162-4844-a660-661f46933d07"),
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(1604),
-                            Name = "Cơ ba băng",
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(3517),
+                            Name = "Cơ Hiện đại",
                             Status = 0,
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(1614)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(3525)
+                        },
+                        new
+                        {
+                            Id = new Guid("357267e8-d162-4844-a660-661f46933d08"),
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(3526),
+                            Name = "Cơ cho người Mới",
+                            Status = 0,
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(3527)
                         });
                 });
 
@@ -697,7 +751,7 @@ namespace Datn_Api.Migrations
                             Address = "Hoa Thanh Quế",
                             ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
                             CreateDate = new DateTime(2020, 12, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfBirth = new DateTime(2000, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(2003, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "vanphuong@gmail.com",
                             EmailConfirmed = false,
                             Facebook = "https://facebook.com/#",
@@ -792,181 +846,181 @@ namespace Datn_Api.Migrations
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736531"),
                             Content = "Giải carom 3 băng Veghel World Cup 2023 kết thúc khuya ngày 28/10 mới đây chứng kiến màn lên ngôi rất thuyết phục của Dick Jaspers. Với phong độ ấn tượng, siêu sao người Hà Lan chỉ mất đúng 12 lượt cơ để đánh bại cơ thủ số 1 nước Đức Martin Horn với cách biệt 50-22 để giành chức vô địch.\r\n\r\nNgay sau khi giải đấu kết thúc, Liên đoàn carom 3 băng thế giới (UMB) đã cập nhật điểm số và công bố bảng xếp hạng thế giới mới với rất nhiều bất ngờ thú vị. Trong đó, điểm nhấn lớn nhất là việc “thần đồng” 25 tuổi người Hàn Quốc Cho Myung Woo bất ngờ leo lên ngôi số 1 thế giới.\r\n\r\nMặc dù dừng bước ở vòng 16 và giữ nguyên số điểm là 258 điểm, Cho Myung Woo lại chiếm lấy vị trí đỉnh BXH của Marco Zanetti khi siêu sao người Ý sớm bị loại từ vòng bảng, qua đó chỉ còn 257 điểm, thua đúng 1 điểm trước Cho Myung Woo khiến ông rơi xuống vị trí thứ 2.\r\n\r\nMột trong những nguyên nhân khiến Marco Zanetti bị loại sớm và mất ngôi số 1 đến từ trận thua sốc trước Chiêm Hồng Thái. Cụ thể ở lượt trận mở màn vòng bảng, tài năng 24 tuổi của Việt Nam đã thể hiện phong độ xuất thần để đánh bại siêu sao người Ý với tỉ số 40-25 sau 20 lượt cơ.\r\n\r\nTiếp đà hưng phấn, Hồng Thái đã một mạch tiến vào đến tứ kết và trở thành cơ thủ Việt Nam lọt vào sâu nhất tại giải đấu này. Với màn thể hiện ấn tượng, Hồng Thái đã thăng tiến 9 bậc từ hạng 30 lên hạng 21 thế giới với 123 điểm.\r\n\r\n2 cơ thủ khác của Việt Nam là Trần Thanh Lực (từ hạng 35 lên hạng 29 thế giới) và Nguyễn Trần Thanh Tự (từ hạng 62 lên 56 thế giới) cũng có sự thăng tiến nhẹ khi vượt qua vòng loại để góp mặt ở vòng chính. Ngoài ra, Trần Quyết Chiến (hạng 5 thế giới) và Bao Phương Vinh (hạng 11 thế giới) giữ nguyên thứ hạng của mình.\r\n\r\nMặt khác, trong top 10 thế giới có thêm chút thay đổi khi Eddy Merckx tăng 2 bậc lên hạng 6 thế giới, đẩy Sameh Sidhom xuống hạng 7. Với khoảng cách về điểm số là rất ít, BXH được dự báo sẽ biến động rất mạnh ở chặng World Cup tiếp theo sẽ diễn ra tại Hàn Quốc vào đầu tháng 11 tới đây.",
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5591),
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(7994),
                             Description = "(Tin thể thao, tin bi-a) Những kết quả bất ngờ tại giải carom 3 băng Veghel World Cup 2023 đã khiến bảng xếp hạng carom 3 băng thế giới có nhiều sự thay đổi thú vị.",
                             EmployeeId = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
                             Image = "slidenews1.jpg",
                             Status = 0,
                             Title = "Nóng bảng xếp hạng bi-a thế giới: Hồng Thái “bay cao”, “thần đồng” Hàn Quốc lên số 1",
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5594)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(7995)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736532"),
                             Content = "Hanoi Pool Open Championship 2023 đã kết thúc tại Hà Nội vào 15/10 nhưng dư âm về sự kiện này vẫn đang kéo dài. Giải đấu pool quốc tế lần đầu tiên tổ chức tại Thủ đô giúp khán giả Việt Nam tới gần hơn với những cơ thủ hàng đầu thế giới, hay huyền thoại lừng danh thế giới, các tay cơ chủ nhà cũng có dịp thi đấu, cọ xát với đối thủ lớn.\r\n\r\nĐáng tiếc, không có tay cơ nào của Việt Nam đi tiếp sau vòng knock-out, dù vậy những Anh Tuấn, Đức Thiện, Thành Kiên..., đặc biệt là Đỗ Khải tạo dấu ấn đậm nét với khán giả và bạn bè quốc tế.\r\n\r\nVới phong cách thi đấu phóng khoáng và có phần \"hoang dã\", Đỗ Khải là cái tên gây sốt nhất tại Hanoi Open. Tay cơ \"Khải tóc dài\" có thêm biệt danh \"Quý ông người Pháp\" sau khi trao nụ hôn lên tay của CEO Matchroom Multi Sports, bà Emily Frazer.\r\n\r\nNhờ lối thi đấu mang đậm tính giải trí, Đỗ Khải đã được thi đấu trận giao lưu với huyền thoại Efren Reyes, cơ thủ 69 tuổi, được mệnh danh \"Phù thủy\" bi-a tới từ Philippines.\r\n\r\nNhưng chưa hết, \"Khải tóc dài\" còn được cơ thủ số 1 bi-a pool (do Matchroom xếp hạng) Francisco Sanchez Ruiz \"mời gia nhập\" đội tuyển châu Âu.\r\n\r\nMosconi Cup 2023 diễn ra từ 6 tới 9/12 tại Anh, Team Europe (đội bi-a châu Âu) đã xác định được 3/5 cái tên bao gồm Sanchez Ruiz, David Alcaide và Jayson Shaw. 2/5 suất còn lại là suất wildcard (suất đặc cách) và sẽ được lựa chọn tùy ý theo quyết định riêng của từng đội tuyển.\r\n\r\nTrong phần bình luận mới đây, cơ thủ người Tây Ban Nha Sanchez Ruiz đã nhắc tới tên của Đỗ Khải, anh này mong muốn cơ thủ Việt Nam sẽ là thành viên nhận 1 trong suất còn lại của tuyển châu Âu.\r\n\r\nRõ ràng đây chỉ là bình luận vui vẻ của cơ thủ Ruiz, dù có biệt danh là \"Quý ông người Pháp\" nhưng Đỗ Khải mang quốc tịch Việt Nam vì thế anh không thể chơi cho đội tuyển châu Âu ở giải đồng đội sắp tới.\r\n\r\nTất nhiên chuyện gì cũng có thể xảy ra. Nếu Mosconi Cup 2023 có màn thi đấu giao lưu dành cho khách mời như ở Hanoi Open vừa qua, thì rất có khả năng Đỗ Khải sẽ trở thành khách mời đặc biệt.",
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5598),
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(7999),
                             Description = "(Tin thể thao, tin bi-a) Francisco Sanchez Ruiz nhắn nhủ lời đặc biệt tới cơ thủ Đỗ Khải của Việt Nam.",
                             EmployeeId = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
                             Image = "post2.jpg",
                             Status = 0,
                             Title = "Cơ thủ bi-a số 1 thế giới tiến cử \"Khải tóc dài\" thi đấu cho tuyển châu Âu",
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5598)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(7999)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736533"),
                             Content = "Sau giải bi-a quốc tế diễn ra ở Hà Nội, lúc này làng bi-a pool đang hướng sự tập trung vào giải vô địch 10 bi nữ thế giới 2023 diễn ra tại Áo từ 18 tới 22/10.\r\n\r\nTrải những trận đấu vòng loại, ban tổ chức đã xác định được 16 cái tên giành vé vào 1/8 thi đấu vào tối 20/10. Gương mặt nhận được nhiều sự quan tâm nhất có lẽ là Pan Xiaoting (Phan Hiểu Đình), VĐV \"tài sắc vẹn toàn\" đến từ Trung Quốc.\r\n\r\nỞ vòng loại, mỹ nhân 41 tuổi trải qua nhiều trận đấu căng thẳng, trong đó phải kể tới màn \"ngược dòng\" thắng Chihiro Kawahara 7-6, trước đó cơ thủ Nhật Bản dẫn trước Hiểu Đình tới 5-0.\r\n\r\nTại vòng đấu dành cho 16 cơ thủ, mỹ nhân Trung Quốc chạm trán Allison Fisher. Đây là trận đấu của hai phong cách đối lập, nếu như Fisher mang phong cách tomboy thì Hiểu Đình là mỹ nhân yểu điệu, duyên dáng của làng billiard thế giới.\r\n\r\nFisher tỏ ra vượt trội hơn, cô đã dẫn tỷ số ván 4-1 sau 5 ván đầu tiên, trong khi Pan Xiaoting dù rất nỗ lực cũng chỉ đủ rút ngắn cách biệt xuống còn 2 điểm. Fisher thắng chung cuộc với tỷ số 9-6.",
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5601),
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8002),
                             Description = "(Tin thể thao, tin bi-a) Nữ thần bi-a Trung Quốc vừa có màn \"ngược dòng\" ấn tượng trước đối thủ Nhật Bản.",
                             EmployeeId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
                             Image = "post3.jpg",
                             Status = 0,
                             Title = "\"Nữ thần\" bi-a Trung Quốc đua tài, khoe sắc ở giải vô địch thế giới 2023",
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5602)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8002)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736534"),
                             Content = "Hanoi Open Pool Championship 2023 tổ chức tại Hà Nội từ 10 tới 15/10 tại Hà Nội mang tới cho khán giả Việt Nam quá nhiều kỷ niệm đáng nhớ. Ở sự kiện bi-a quốc tế tầm cỡ lần đầu tiên diễn ra tại Việt Nam, quy tụ những cơ thủ hàng đầu thế giới, cơ cấu giải thưởng lớn và có cả sự xuất hiện của \"Phù thủy\" Efren Reyes (Philippines).\r\n\r\nNhững siêu sao hàng đầu bi-a pool thế giới như Shane Van Boening, Francisco Sanchez Ruiz, Fedor Gorst, Jayson Shaw... đã trình diễn những đường cơ làm hài lòng những khán giả khó tính nhất. Bên cạnh đó, huyền thoại bi-a được cả thế giới ngưỡng mộ Reyes có hai trận đấu giao lưu mãn nhãn với Anh Tuấn và Đỗ Khải. \r\n\r\nSau trận đấu giao lưu với cơ thủ Anh Tuấn vào tối 14/10, sức hút từ cơ thủ 69 tuổi Philippines đã khiến ban tổ chức tạo thêm màn so cơ không có trong kế hoạch với Đỗ Khải, hay còn gọi là \"Khải tóc dài\", vào chiều 15/10.\r\n\r\nSự kết hợp giữa \"Phù thủy\" Reyes và ngôi sao có khả năng \"phù phép bi chủ\" Đỗ Khải đã tạo ra màn so tài mang nặng tính giải trí. Không chỉ khán giả, trong trận đấu nhiều lần huyền thoại Reyes cũng phải cười phá lên vì những động tác uốn éo như nhảy cùng trái bóng của Đỗ Khải. Reyes thắng 7-4 trước Đỗ Khải và ông sẽ mang theo rất nhiều kỷ niệm về Đỗ Khải, người hâm mộ và không khí cổ vũ tuyệt vời tại Hà Nội. \r\n\r\nKhép lại màn so cơ của Reyes và Đỗ Khải, trận chung kết được chờ đợi nhất giữa Jayson Shaw (Anh) và Albin Ouschan (Áo) mang tới cuộc rượt đuổi tỷ số nghẹt thở. \r\n\r\nLà một trong những cơ thủ chơi ổn định nhất, Shaw cơ thủ có biệt danh \"Mắt đại bàng\" bất ngờ để Albin dẫn 0-4. Chơi tập trung gỡ 3-4, nhưng rồi Shaw tiếp tục bị dẫn trước 6-10.\r\n\r\nBản lĩnh của Shaw được phát huy, \"Mắt đại bàng\" thi đấu cực tốt để vươn lên dẫn trước 12-11. Chỉ cần 1 ván nữa là thắng nhưng cơ thủ người Anh chơi ẩu, đánh lắc lỗ 1 bi ở ván 24, tạo điều kiện cho đối thủ Áo gỡ hòa 12-12.\r\n\r\nVận may cuối cùng ngoảnh mặt với Albin, ở tình huống phá bàn, bi chủ đã rơi xuống lỗ. Được đặt bóng ở vị trí thuận lợi, \"Mắt đại bàng\" tận dụng tốt cơ hội để khép lại trận đấu với tỷ số 13-12, qua đó bước lên ngôi vô địch Hanoi Open Pool Championship 2023. \r\n\r\nShaw nhận cúp và phần thưởng 30.000 USD (733 triệu đồng) cho chức vô địch, á quân Albin nhận 15.000  USD (366 triệu đồng), 2 cơ thủ đồng hạng ba cùng nhận 9.500 USD (232 triệu đồng).",
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5605),
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8006),
                             Description = "(Tin thể thao, tin bi-a) Ngày cuối cùng Hanoi Open Pool Championship để lại nhiều ấn tượng khó quên với khán giả hâm mộ billiards (bi-a) trong nước và thế giới.",
                             EmployeeId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
                             Image = "post4.jpg",
                             Status = 0,
                             Title = "Reyes đánh bại \"Khải tóc dài\", Jayson Shaw vô địch nghẹt thở giải bi-a ở Hà Nội",
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5605)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8006)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736535"),
                             Content = "Hanoi Open Pool Championship 2023, giải bi-a quốc tế tầm cỡ đầu tiên được tổ chức tại Hà Nội từ 10 tới 15/10 dần bước vào những trận đấu cuối cùng. Không chỉ có những cơ thủ hàng đầu tới tranh tài, sự kiện còn \"nóng\" hơn khi huyền thoại 69 tuổi, Efren Reyes xuất hiện vào chiều 14/10.\r\n\r\nTới tham dự giải với tư cách khách mời danh dự, \"Phù thủy\" Philippines tham gia trận đấu biểu diễn với tay cơ số 2 pool Việt Nam Nguyễn Anh Tuấn. Những trận đấu tại vòng knock-out Hanoi Open, cộng với hiệu ứng từ Reyes giúp Cung thể thao Điền kinh trong nhà Mỹ Đình trở nên nhộn nhịp. \r\n\r\nNgay khi xuất hiện, huyền thoại Reyes đã được người hâm mộ vây quanh, ông rất cảm kích trước tình cảm của khán giả dành cho mình. \r\n\r\nNhư để tri ân người xem, ngay ở cơ đánh dạo bàn khởi động đầu tiên, người đàn ông Philippines đã thực hiện pha \"dọn bàn\" đẹp mắt. Toàn bộ 9 bi được \"Phù thủy\" đưa xuống lỗ, đặc biệt nhất là bóng số 9. Dù đó là cơ đánh thẳng tắp để ăn bi số 9, nhưng Reyes đã đưa trái bóng này đi 4 băng trước khi rơi vào lỗ góc. Tình huống khiến nhiều người có mặt rất phấn khích. \r\n\r\nKhi bước vào trận đấu biểu diễn, giao lưu với Nguyễn Anh Tuấn (hạng 107 thế giới theo bảng xếp hạng Matchroom), huyền thoại Philippines vẫn thể hiện được nhiều cơ đánh tốt nhưng \"Tkon\" xuất sắc hơn. \r\n\r\nVới thể thức đánh \"chạm 10\", Reyes và Anh Tuấn tạo ra tỷ số rượt đuổi hấp dẫn, cuối cùng thì tài năng và sức trẻ giúp cơ thủ Việt Nam vượt qua huyền thoại Philippines 10-7. \r\n\r\nDĩ nhiên kết quả này không quá quan trọng, sau trận đấu cơ thủ Anh Tuấn tiến tới xin chữ ký của huyền thoại Reyes và anh thổ lộ \"thầy cũng mệt rồi nên thi đấu không được như ý\". \r\n\r\nCơ thủ Reyes, 69 tuổi, từng vô địch thế giới pool 9 bi năm 1999 và pool 8 bi năm 2004. Reyes không chỉ nổi tiếng bởi những danh hiệu, ông được cả thế giới biết tới thông qua những trận \"đánh độ\" tại quê nhà và phô diễn các đường cơ huyền ảo. \r\n\r\nKhán giả không sai khi đặt cho Reyes biệt danh \"Phù thủy\", người đàn ông sở hữu cả \"kho tàng\" những cú đánh chẳng thể tìm thấy trong sách giáo khoa nào cả.",
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5608),
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8009),
                             Description = "(Tin thể thao, tin bi-a) Thêm một lần góp mặt tại các sự kiện bi-a tổ chức ở Việt Nam, \"Phù thủy\" Reyes tri ân khán giả bằng pha đi cơ đáng nhớ.",
                             EmployeeId = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
                             Image = "post5.jpg",
                             Status = 0,
                             Title = "\"Phù thủy bi-a\" Reyes tri ân khán giả Việt bằng cơ 4 băng kinh điển",
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5608)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8009)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736536"),
                             Content = "Shane Van Boening, cơ thủ sinh năm 1983 người Mỹ là một trong số những VĐV đặc biệt nhất của làng bi-a thế giới. Anh bị khiếm thính từ nhỏ, bi-a đã giúp cơ thủ phát huy tài năng để tự tin bước ra ngoài trở thành ngôi sao hàng đầu bi-a.\r\n\r\nĐược xem như một trong số cơ thủ bi-a Mỹ giỏi nhất và từng vươn tới số 1 thế giới năm 2020, Boening nổi tiếng với nhiều cơ đánh nhanh, mạnh, chính xác. Ở một giải bi-a pool 9 bi vào năm 2022, cơ thủ Boeing \"dọn bàn\" chỉ sau 72 giây.\r\n\r\nVào tháng trước Boening cũng góp mặt tại sự kiện bi-a tại Hà Nội, dù không giành được chức vô địch nhưng cơ thủ người Mỹ để lại nhiều ấn tượng đẹp với người hâm mộ.\r\n\r\nTrong 2 tuần liên tiếp vừa qua, cơ thủ 40 tuổi đăng quang tại giải Vô địch 8 bi thế giới 2023, rồi lên ngôi Bigfoot 10 bi International Open 2023 tại Mỹ.\r\n\r\nVới phong độ rất tốt sau khi giành chức vô địch 10 bi Bigfoot, Boening chỉ mất đúng 1 tiếng 25 phút để đánh bại cơ thủ người Philippines, Joven Bustamante với tỷ số 10-0 tại sự kiện 9 bi International Open 2023 diễn ra ở Mỹ.\r\n\r\nĐể thắng trắng 1 trận đấu bi-a là điều không phải dễ dàng, và Boening đã làm được điều đáng kinh ngạc này. Tỷ số cũng cho thấy khả năng phá bóng rồi \"dọn bàn\" gần như hoàn hảo của cơ thủ 40 tuổi. Suốt trận đấu Bustamante chẳng khác nào khán giả xem Boening đi cơ.",
-                            CreatedDate = new DateTime(2024, 1, 12, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5611),
+                            CreatedDate = new DateTime(2024, 1, 15, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8012),
                             Description = "(Tin thể thao, tin bi-a) Thi đấu với tâm lý vững vàng và gần như \"không cảm xúc\", cơ thủ người Mỹ hạ tay cơ Philippines 10-0.",
                             EmployeeId = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
                             Image = "post6.jpg",
                             Status = 0,
                             Title = "Cơ thủ chơi bi-a kiểu robot, hạ đối thủ 10-0 mặt vẫn lạnh tanh",
-                            UpdatedDate = new DateTime(2024, 1, 12, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5617)
+                            UpdatedDate = new DateTime(2024, 1, 15, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8017)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736537"),
                             Content = "O'Sullivan được mọi người ca ngợi là tay cơ vĩ đại và thành công nhất trong lịch sử bi-a với 7 lần vô địch thế giới cùng lối đánh hoa mỹ. Huyền thoại bi-a Jimmy White cho rằng đỉnh cao của O'Sullivan có thể so sánh với Roger Federer ở môn quần vợt.\r\n\r\nWhite nói: “Đừng nhầm lẫn, đường cơ của O'Sullivan thật huyền ảo! Nó giống như phong cánh chơi tennis của Roger Federer và những người kiểu như vậy. Nhưng O'Sullivan là người cầu toàn và anh ấy có thể nói rằng anh ấy đã chơi rất tệ”.\r\n\r\nO'Sullivan là một fan hâm mộ quần vợt cuồng nhiệt, nhưng tay vợt yêu thích của anh lại là Novak Djokovic, một trong những đối thủ lớn nhất của Federer khi huyền thoại người Thụy Sĩ còn thi đấu.\r\n\r\nNhà vô địch thế giới 7 lần nói: “Federer, Nadal, Djokovic. Tôi luôn thích xem họ thi đấu. Họ là ba tay vợt xuất sắc nhất mọi thời đại. Đối với tôi, Djokovic sẽ là vua của tất cả. Không quan trọng bạn là cầu thủ bóng đá, vận động viên chơi golf, hay vận động viên khúc côn cầu, mọi người đều nhìn vào Djokovic.\r\n\r\nTôi ước gì mình có thể làm được những gì Djokovic đã làm ở quần vợt. Cuộc sống của một vận động viên quần vợt chuyên nghiệp thật khó khăn. Nhưng khi họ ở trên đỉnh cao… thì những địa điểm họ thi đấu thật ấn tượng”.\r\n\r\nThể thức “một chọi một” của quần vợt về mặt nào đó có thể so sánh với bi-a. Đó có thể là lý do tại sao O'Sullivan lại rất ngưỡng mộ Djokovic, tay vợt nam sở hữu nhiều danh hiệu Grand Slam nhất lịch sử với 24 danh hiệu.\r\n\r\nVề phần O'Sullivan, anh đã tạo ra tiếng vang lớn với bộ phim tài liệu mới “The Edge of Everything” trong những ngày gần đây. Bộ phim hấp dẫn được công chiếu ở London (Anh) hôm 28/11, ghi lại những khó khăn về sức khỏe tinh thần của người đàn ông 47 tuổi trong thời gian đầu trong sự nghiệp bi-a của anh, đặc biệt là sau khi cha anh bị bỏ tù vì tội giết người vào năm 1992.\r\n\r\nCơ thủ được mệnh danh là \"Phù thủy bi-a\", hay \"The Rocket\" đã vượt lên tất cả để trở thành ngôi sao thể thao hàng đầu thế giới. Bộ phim lên đến đỉnh điểm với việc O'Sullivan lên ngôi tại giải vô địch bi-a thế giới năm 2022, danh hiệu thứ 7 giúp anh sánh ngang huyền thoại Stephen Hendry.",
-                            CreatedDate = new DateTime(2024, 1, 12, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5621),
+                            CreatedDate = new DateTime(2024, 1, 15, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8020),
                             Description = "(Tin thể thao, tin tennis) Huyền thoại bi-a Ronnie O'Sullivan đã dành lời ca ngợi cho Novak Djokovic.",
                             EmployeeId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
                             Image = "post7.jpg",
                             Status = 0,
                             Title = "\"Phù thủy\" bi-a ngưỡng mộ Djokovic, dù được so sánh với Federer",
-                            UpdatedDate = new DateTime(2024, 1, 12, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5621)
+                            UpdatedDate = new DateTime(2024, 1, 15, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8021)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736538"),
                             Content = "Cựu số 1 bi-a snooker, từng vô địch thế giới Judd Trump (Anh) khiến khán giả Trung Quốc có phần hụt hẫng khi loại bỏ \"Thần đồng\" 12 nước này một cách nhanh chóng.\r\n\r\nTay cơ 34 tuổi có biệt danh \"Át chủ bài\" thể hiện thái độ thi đấu cực kỳ chuyên nghiệp, anh coi VĐV 12 tuổi là đối thủ, vì thế chơi nghiêm túc, không bộ lộ nhiều cảm xúc.\r\n\r\nKhi Trump chơi tập trung, cơ hội dành cho Wang Xinzhong không nhiều. Tại vòng loại International Championship 2023 diễn ra tại Thiên Tân, Trung Quốc (từ 5 tới 12/11), Trump nhanh chóng đánh bại Wang 6-0 để giành vé vào đấu chính thức.\r\n\r\nTừ một ngôi sao được đặt nhiều kỳ vọng, \"Thần đồng\" Wang đã phải \"trở lại mặt đất\" sau trận đấu gặp Trump. Nhiều khán giả chủ nhà bày tỏ sự thất vọng, có người tỏ ra rất sốc.\r\n\r\n\"Thần đồng\" 12 tuổi bị thua nhanh chóng, vẫn còn nhiều thời gian để xóa khoảng cách về trình độ\", một người viết. \"Cậu bé mới chỉ 12 tuổi, thật khó vượt qua cú sốc từ trận đấu này\", người khác viết. \"Cậu ấy mới có 12 tuổi thôi, có thể ưu ái một chút được không?\", tài khoản khác viết.\r\n\r\nSố 3 thế giới Trump đối mặt với Michael White (Xứ Wales) ở vòng đấu tiếp theo. Trump đã vô địch ở sự kiện tổ chức năm 2019. Cho đến nay, Mark Selby là tay vợt duy nhất bảo vệ thành công chức vô địch vào năm 2016, 2017.",
-                            CreatedDate = new DateTime(2024, 1, 12, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5624),
+                            CreatedDate = new DateTime(2024, 1, 15, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8024),
                             Description = "(Tin thể thao, tin bi-a) Judd Trump không hề nương tay khi so tài với \"Thần đồng\" bi-a Trung Quốc 12 tuổi.",
                             EmployeeId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
                             Image = "post8.jpg",
                             Status = 0,
                             Title = "Số 3 thế giới Trump đưa \"Thần đồng\" bi-a 12 tuổi \"trở lại mặt đất\"",
-                            UpdatedDate = new DateTime(2024, 1, 12, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5624)
+                            UpdatedDate = new DateTime(2024, 1, 15, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8024)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736539"),
                             Content = "Mới đây scandal từ chối thi đấu bi-a diễn ra tại sự kiện Ladies Champions of Champions ở Denbighshire, Xứ Wales. Nữ cơ thủ Lynne Pinches từ chối so tài với Harriet Haynes, vì đây là VĐV chuyển giới nam thành nữ.\r\n\r\nĐoạn phim ghi lại cho thấy, nữ cơ thủ đến gần trọng tài để thông báo về không thi đấu, rồi vẫy tay chào khán giả. Cô quay trở lại chỗ ngồi của mình, thu dọn đồ đạc và rời khỏi đấu trường trước sự choáng váng của người xem. Haynes không hiểu chuyện gì xảy ra, sau đó nghiễm nhiên trở thành nhà vô địch.\r\n\r\nAnh trai của Pinches, Barry, lên mạng xã hội để khen ngợi em gái mình là người \"có lập trường\" và cho rằng việc phải thi đấu với 1 người chuyển giới là \"không công bằng\".\r\n\r\nBarry nói: \"Tôi hoàn toàn đồng ý với quan điểm của em gái mình, việc phụ nữ thi đấu với một VĐV chuyển giới ở bất kỳ môn thể thao nào cũng hoàn toàn không công bằng\".\r\n\r\nPinches từng là một trong số các VĐV nữ hàng đầu lên tiếng về việc phụ nữ chuyển giới được phép thi đấu tại các sự kiện lớn.\r\n\r\nCuộc tranh cãi hiện đang làm rung chuyển các giải đấu bi-a chuyên nghiệp từ 24/10, thời điểm Liên đoàn bi-a 8 bóng thế giới (WEPF) thay đổi quy định, cho phép người chuyển giới tham dự các giải đấu dành cho nữ.\r\n\r\nLuật được thông qua, những cơ thủ nam chuyển giới thành nữ đủ điều kiện tham dự giải nữ, mặc cho làn sóng phản đối họ thi đấu. Cơ thủ chuyển giới chỉ làm theo luật, nhưng điều đáng tiếc, họ không được chào đón ở nhiều sự kiện.",
-                            CreatedDate = new DateTime(2024, 1, 12, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5627),
+                            CreatedDate = new DateTime(2024, 1, 15, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8027),
                             Description = "(Tin thể thao, tin bi-a) Lynne Pinches không màng tới chiếc cúp vô địch, cô từ chối thi đấu để phản đối đối thủ.",
                             EmployeeId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
                             Image = "post9.jpg",
                             Status = 0,
                             Title = "Chấn động bi-a: Nữ cơ thủ bỏ đấu chung kết để phản ứng đối thủ",
-                            UpdatedDate = new DateTime(2024, 1, 12, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5627)
+                            UpdatedDate = new DateTime(2024, 1, 15, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8027)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736540"),
                             Content = "Giải carom 3 băng Seoul World Cup 2023 kết thúc cuối tuần vừa qua tại Hàn Quốc chứng kiến màn đăng quang thuyết phục của siêu sao 55 tuổi Eddy Merckx. Đối đầu “thần đồng” đang xếp hạng 1 thế giới Cho Myung Woo, tay cơ người Bỉ đã nhập cuộc tự tin để dẫn trước đến 20-4. Dù Cho Myung Woo đã nỗ lực rút ngắn cách biệt, Eddy Merckx giữ vững phong độ để về đích với chiến thắng 50-43 sau 21 lượt cơ.\r\n\r\nEddy Merckx một lần nữa khẳng định vì sao được xem là “ông vua của những trận chung kết” khi đây đã là chức vô địch World Cup thứ 13 của ông chỉ sau 14 lần vào chung kết. “Thần cơ nước Bỉ” cũng là tay cơ vô địch World Cup nhiều nhất khi rời châu Âu với 4 lần vô địch ở Hàn Quốc, 3 lần ở Ai Cập và 2 lần tại Việt Nam. Ông là tay cơ vô địch World Cup ở Hàn Quốc nhiều nhất trên thế giới.\r\n\r\nTuy nhiên do phải bảo vệ 80 điểm với chức vô địch trước đó nên thứ hạng của Eddy Merckx (hạng 6 thế giới) vẫn giữ nguyên khi Liên đoàn carom thế giới (UMB) công bố bảng xếp hạng (BXH) carom 3 băng thế giới mới ngay sau Seoul World Cup 2023. Ngược lại, BXH này mang đến tin vui cho các cơ thủ Việt Nam.\r\n\r\nNếu như Trần Quyết Chiến vẫn giữ nguyên vị trí hạng 5 thế giới của mình thì Bao Phương Vinh tiếp tục thiết lập cột mốc ấn tượng mới cho bản thân khi tăng 2 bậc lên hạng 9 thế giới. Rõ ràng khi chỉ mới 28 tuổi, nhà đương kim vô địch thế giới sẽ còn có thể tiến xa hơn trong tương lai.\r\n\r\nViệc Phương Vinh vươn lên hạng 9 cũng làm người hâm mộ phấn khích khi đã rất lâu rồi, carom 3 băng Việt Nam mới lại được chứng kiến việc có 2 cơ thủ Việt Nam cùng nằm trong top 10 thế giới.\r\n\r\nTrên BXH thế giới hiện tại, Việt Nam là 1 trong 2 quốc gia có 2 tay cơ nằm trong top 10 (cùng với Hàn Quốc). Với việc vào đến vòng 1/8 và là cơ thủ Việt Nam tiến xa nhất ở giải đấu này, tay cơ 24 tuổi Chiêm Hồng Thái tăng 2 bậc lên hạng 19 thế giới.\r\n\r\nMột số thay đổi đáng chú ý, Dick Jaspers và Torbjorn Blomdahl đổi chỗ cho nhau khi Dick Jaspers lên hạng 3 thế giới, còn Blomdahl xuống vị trí thứ 4. Kim Haeng Jik tăng 2 bậc lên hạng 8 thế giới. Cơ thủ số 1 của Thổ Nhĩ Kỳ Tayfun Tasdemir từ hạng 9 xuống hạng 11 thế giới. Chặng World Cup tiếp theo sẽ diễn ra từ ngày 3-9/12 tại Ai Cập.",
-                            CreatedDate = new DateTime(2024, 1, 12, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5630),
+                            CreatedDate = new DateTime(2024, 1, 15, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8031),
                             Description = "(Tin thể thao, tin bi-a) Cơ thủ Bao Phương Vinh thiết lập cột mốc mới trên bảng xếp hạng carom 3 băng thế giới, qua đó giúp Billiards Việt Nam hiện có 2 cơ thủ nằm trong top 10.",
                             EmployeeId = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
                             Image = "post10.jpg",
                             Status = 0,
                             Title = "Nức lòng bi-a Việt Nam: 2 cơ thủ lọt top 10 thế giới, Bao Phương Vinh lập mốc mới",
-                            UpdatedDate = new DateTime(2024, 1, 12, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5630)
+                            UpdatedDate = new DateTime(2024, 1, 15, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8031)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736541"),
                             Content = "Đây là trận đấu mà Hồng Thái đã bị đối thủ kỳ cựu dẫn trước đến 10-21 sau hiệp đầu. Dù vậy trong hiệp 2, cơ thủ mới 24 tuổi của Việt Nam vùng lên mạnh mẽ với nhiều series ghi điểm trung bình để dẫn ngược lại 31-28.\r\n\r\nBury sau đó có tiếp một cú đánh ghi 6 điểm để dẫn 39-34. Khi đối thủ chỉ còn đúng 1 điểm, Hồng Thái cho thấy bản lĩnh đáng nể để ghi thêm 6 điểm và cầm hòa đối thủ với cách biệt 40-40 sau 25 lượt cơ.\r\n\r\nỞ lượt trận cuối cùng của bảng đấu, Hồng Thái làm nức lòng người hâm mộ bi-a nước nhà khi đánh bại tay cơ người Áo Gerhard Kostistansky với tỉ số 40-19 chỉ sau 16 lượt cơ để độc chiếm ngôi đầu bảng và giành suất đi tiếp vào vòng knock-out top 16. Ở lượt trận còn lại của bảng đấu này, Sameh Sidhom với đường cơ 15 điểm đã đánh bại Jeremy Bury để giành ngôi nhì bảng cùng suất đi tiếp còn lại.\r\n\r\nĐáng tiếc ở bảng G, Phương Bao Vinh đã để thua Myeong Jong Cha (Hàn Quốc) với tỉ số 31-40 sau 21 lượt cơ trong trận đấu quyết định cho suất đi tiếp. Ngoài ra tại bảng E, Trần Quyết Chiến bị loại khi để thua cả 3 trận.\r\n\r\nNhư vậy, Chiêm Hồng Thái là đại diện duy nhất của Việt Nam tại vòng knock-out của 16 tay cơ xuất sắc nhất giải. Đối thủ của Hồng Thái tại vòng đấu này là Ruben Legazpi (Tây Ban Nha). Trận đấu diễn ra vào lúc 12h ngày 11/11 (theo giờ Việt Nam).",
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5633),
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8033),
                             Description = "(Tin thể thao, tin bi-a) Sau khi gây sốc với chiến thắng trước cơ thủ hạng 7 thế giới Sameh Sidhom, Chiêm Hồng Thái tiếp tục thể hiện phong độ ấn tượng khi xuất sắc cầm hòa “quái kiệt bi-a” Jeremy Bury ở lượt trận thứ 2 tại bảng F trong khuôn khổ vòng bảng chính thức giải carom 3 băng Seoul World Cup 2023.",
                             EmployeeId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
                             Image = "post11.jpg",
                             Status = 0,
                             Title = "Chiêm Hồng Thái “đại náo” bi-a World Cup, ngoạn mục vượt bảng “tử thần”",
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5634)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8034)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736542"),
                             Content = "Vòng bảng chính thức giải carom 3 băng Veghel World Cup 2023 kết thúc vào rạng sáng ngày 27/10 tại Hà Lan chứng kiến nhiều diễn biến hấp dẫn, trong đó có những màn thể hiện ấn tượng của hai cơ thủ Việt Nam là Chiêm Hồng Thái và Trần Quyết Chiến.\r\n\r\nTại bảng B, Chiêm Hồng Thái sớm gây chấn động khi đánh bại cơ thủ số 1 thế giới Marco Zanetti (Ý) với tỉ số 40-25 chỉ sau 20 lượt cơ. Mặc dù để thua Sam Van Etten (Hà Lan) ở lượt trận tiếp theo, tài năng trẻ 24 tuổi của Việt Nam kịp lấy lại tinh thần để có chiến thắng quyết định trước Jeong Ye Sung (Hàn Quốc) với cách biệt 40-33 sau 32 lượt cơ để đứng nhì bảng B, cùng Sam Van Etten (nhất bảng) giành 2 suất đi tiếp vào vòng 16 tại bảng đấu này.\r\n\r\nTrong khi đó ở bảng H, Trần Quyết Chiến sớm giành quyền đi tiếp trước 1 lượt đấu bằng 2 chiến thắng liên tiếp trước Nguyễn Trần Thanh Tự (40-36 sau 27 lượt cơ) và Peter Ceulemans (40-22 sau 17 lượt cơ). Mặc dù Quyết Chiến để thua lượt trận cuối cùng trước Kim Haeng Jik, cơ thủ số 1 Việt Nam vẫn giành ngôi nhất bảng để cùng tay cơ người Hàn Quốc có suất đi tiếp, còn Thanh Tự bị loại.\r\n\r\nĐáng tiếc nhất phải kể đến trường hợp bị loại của Trần Thanh Lực tại bảng E. Cơ thủ của Việt Nam đã khởi đầu như mơ bằng chiến thắng ấn tượng 40-36 sau 22 lượt cơ trước thần đồng đang xếp hạng 2 thế giới Cho Myung Woo, dù cơ thủ người Hàn Quốc đã có series 11 ở trận đấu này.\r\n\r\nTuy nhiên sau đó, Thanh Lực hòa 40-40 trước Barry Van Beers (Hà Lan) và để thua Nikos Polychronopoulos (Hi Lạp) với tỉ số 25-40 sau 13 lượt cơ. Đáng nói trong trận đấu với Nikos, Thanh Lực dẫn trước đến 18-1 thì bất ngờ tay cơ người Hi Lạp tung “cơ điên” lên đến 25 điểm để lật ngược tình thế. Hai cơ thủ giành suất đi tiếp tại bảng đấu này là Cho Myung Woo và Nikos Polychronopoulos.\r\n\r\nĐại diện còn lại của Việt Nam là Bao Phương Vinh cũng bị loại khi chỉ đứng thứ 3 tại bảng D. Nhà đương kim vô địch thế giới có được chiến thắng trước cơ thủ hạng 6 thế giới Sameh Sidhom (Ai Cập) nhưng để thua hai đối thủ còn lại là Heo Jung Han (Hàn Quốc, tỉ số 24-40) và Berkay Karakurt (Thổ Nhĩ Kỳ, tỉ số 36-40).\r\n\r\nNhư vậy, tuyển billiards Việt Nam có 2 đại diện góp mặt ở vòng 16 diễn ra chiều tối ngày 27/10 là Trần Quyết Chiến và Chiêm Hồng Thái. Tại vòng đấu này, Quyết Chiến sẽ gặp tay cơ vừa có series 25 điểm Nikos Polychronopoulos (Hi Lạp), còn Hồng Thái đụng độ Berkay Karakurt (Thổ Nhĩ Kỳ). Bên cạnh đó, lượt trận tứ kết sẽ diễn ra vào khuya cùng ngày.",
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5636),
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8036),
                             Description = "(Tin thể thao, tin bi-a) Nếu như Trần Quyết Chiến và Chiêm Hồng Thái thi đấu ấn tượng để tiến sâu thì Trần Thanh Lực bị loại sốc bởi đường cơ 25 điểm.",
                             EmployeeId = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
                             Image = "post12.jpg",
                             Status = 0,
                             Title = "Trần Quyết Chiến tung hoành bi-a World Cup, choáng “cơ điên” 25 điểm loại Thanh Lực",
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5637)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8037)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736543"),
                             Content = "Giải Billiards siêu cúp Việt Nam – Hàn Quốc (Hollywood Super Cup) năm 2023 diễn ra tại TP.HCM trong 2 ngày 25 và 26/11. Đây là lần thứ hai, tuyển Billiards Việt Nam và Hàn Quốc gặp nhau ở giải đấu đồng đội hấp dẫn ở cả hai nội dung pool và carom 3 băng. Trước đó ở lần đầu tiên diễn ra tại Quảng Nam hồi tháng 2 năm nay, tuyển Billiards Việt Nam đã có màn ngược dòng ngoạn mục để giành chiến thắng.\r\n\r\nVới quyết tâm “đòi nợ”, tuyển Billiards Hàn Quốc đã mang đến giải đội hình rất mạnh với dàn cơ thủ nổi tiếng xứ sở Kim chi như nhà vô địch Carom 3 băng World Cup Heo Jung Han, Kim Jun Tae (hạng 13 thế giới), các nữ cơ thủ tài năng và xinh đẹp như Choi Bo-me, Heo Chae Won, Lee Woo Jin…\r\n\r\nTrong khi đó, tuyển Việt Nam có lực lượng được xem là tốt nhất với Trần Quyết Chiến (hạng 5 thế giới), đương kim vô địch World Championship Bao Phương Vinh, hai cơ thủ nữ hàng đầu Nguyễn Hoàng Yến Nhi và Phùng Kiện Tường ở nội dung carom 3 băng.  Ở nội dung pool, tuyển Việt Nam có mặt Dương Quốc Hoàng, Bùi Xuân Vàng và Huỳnh Thị Ngọc Huyền.\r\n\r\nTheo lịch thi đấu, ngày 25/11 diễn ra nội dung pool với các trận đấu đơn nam, 2 trận đơn nữ, đôi nam nữ và đồng đội. Nội dung carom 3 băng sẽ thi đấu vào ngày 26/11 với 2 trận đơn nam, 2 trận đơn nữ cùng đồng đội tiếp sức. Đội giành chiến thắng chung cuộc sẽ nhận 20.000 USD (khoảng 484 triệu đồng) và đội thua sẽ nhận 10.000 USD (khoảng 242 triệu đồng). \r\n\r\nỞ trận đấu mở màn diễn ra sáng ngày 25/11 theo thể thức pool đơn nữ, Bùi Xuân Vàng có màn đối đầu với nữ cơ thủ xinh đẹp Jin Hye Ju. Trong năm 2023, cơ thủ 27 tuổi của Hàn Quốc từng liên tiếp vào top 5 của 2 giải Pool nữ lớn của thế giới là China Open 2023 và vô địch 9 bi nữ thế giới 2023.\r\n\r\nVới đẳng cấp của mình, Jin Hye Ju sớm dẫn trước 4-0 sau 4 ván đầu, trong đó có 2 lần “dọn bàn” ấn tượng. Sau giờ nghỉ giải lao, Xuân Vàng vùng lên mạnh mẽ để san hòa tỉ số 4-4. Tuy nhiên sau đó, Jin Hye Ju tiếp tục có 3 ván thắng nữa để thắng chung cuộc 7-4, đưa tuyển Hàn Quốc vượt lên dẫn 1-0.\r\n\r\nTrận đấu thứ 2 là trận pool đơn nam giữa Dương Quốc Hoàng và Ha Minug. Với những cú đánh tỉ mỉ và tinh tế, Ha Minug dẫn trước 7-4 sau 11 ván đầu. Nỗ lực của Quốc Hoàng giúp anh san hòa được cách biệt 8-8. Tuy nhiên ở ván đấu quyết định, Ha Minug một lần nữa có được sự chính xác để thắng 9-8.\r\n\r\nMột cơ thủ xinh đẹp khác của Hàn Quốc là Lee Ha Rin tiếp tục gây khó khăn cho tuyển Việt Nam khi có chiến thắng ấn tượng 7-4 trong trận pool đơn nữ trước nhà vô địch quốc gia Huỳnh Thị Ngọc Huyền. Đây là trận đấu mà Lee Ha Rin khiến khán giả phải trầm trồ bằng kỹ thuật điêu luyện, đặc biệt là những cú đánh sút tê (nhảy bi) có độ chính xác rất cao. \r\n\r\nMặc dù Dương Quốc Hoàng và Bùi Xuân Vàng có được chiến thắng 5-2 trước bộ đôi Ha Minug và Lee Ha Rin ở trận đấu song tô đôi nam nữ, nhưng sau đó bộ ba Ha Minug, Lee Ha Rin và Jin Hye Ju lại có chiến thắng 5-1 trước 3 cơ thủ Dương Quốc Hoàng, Bùi Xuân Vàng, Huỳnh Thị Ngọc Huyền ở trận đấu đồng đội.\r\n\r\nNhư vậy sau ngày thi đấu đầu tiên ở nội dung pool, tuyển Billiards Việt Nam đang tạm bị dẫn trước đến 1-4. Điều này bắt buộc Quyết Chiến và các đồng đội sẽ phải thi đấu thăng hoa trong 5 trận đấu carom 3 băng ở ngày thi đấu còn lại mới mong lật ngược được thế trận để có chiến thắng chung cuộc.",
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5659),
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8039),
                             Description = "(Tin thể thao, tin bi-a) Hai nữ cơ thủ xinh đẹp và tài năng Jin Hye Ju và Lee Ha Rin đã khiến tuyển Billiards Việt Nam rơi vào tình thế khó khăn tại giải Billiards siêu cúp Việt Nam – Hàn Quốc 2023.",
                             EmployeeId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
                             Image = "post13.jpg",
                             Status = 0,
                             Title = "Hot girl bi-a Hàn Quốc liên tiếp \"dọn bàn\", tuyển VN gặp khó tại siêu cúp quốc tế",
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5659)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8039)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736544"),
                             Content = "Sự kiện bi-a snooker Champion of Champions 2023 diễn ra tại Anh chứng kiến pha đi cơ đặc biệt. Ván đấu cuối cùng màn so tài vòng 1/16, Mark Williams (Xứ Wales) dù thua 2-4 trước Robert Milkins (Anh) nhưng vẫn được khán giả ca ngợi.\r\n\r\nTình huống ấn tượng diễn ra ở ván cuối, Milkins đang thắng 3-2 và dẫn 64-50. Lúc này, trên bàn chỉ còn bi hồng (6 điểm) và bi đen (7 điểm), dù có đưa cả 2 bóng này xuống bàn Williams vẫn thua. Đây là lý do mà cơ thủ 48 tuổi tới từ Xứ Wales dùng kĩ thuật móc bi hồng ra khỏi lỗ góc, sau đó còn giấu thành công bi chủ nấp sau bi đen.\r\n\r\nWilliams làm như vậy để buộc đối thủ mắc lỗi sẽ giúp cho anh có thêm điểm để thắng. Nhưng Milkins không phải tay mơ, ngôi sao người Anh sau đó đi cơ \"giải vây\" thành công và khép lại trận đấu với kết quả 4-2.\r\n\r\nDù thua, Williams nhận lời khen đặc biệt vì cú \"giấu bi\" đẳng cấp. Một khán giả viết: \"Không thể tin được. Tình huống đi cơ làm nhiều người nhớ tới các huyền thoại như Ronnie, Trump và Jimmy!\"\r\n\r\nNgười khác bày tỏ: \"Đây là một trong những tình huống đi cơ hay nhất lịch sử. Một cơ thủ thú vị để theo dõi\". Tài khoản còn lại viết: \"Một trong những sở thích lớn nhất của tôi, đó là xem Mark Williams thi đấu!\".\r\n\r\nMilkins giành quyền đi tiếp vào vòng 1/8, tại đây hành trình của anh dừng lại bởi đối thủ Robert Hawkins.",
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5675),
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8042),
                             Description = "(Tin thể thao, tin bi-a) Dù bi mục tiêu nằm ở cửa lỗ nhưng bằng cách nào đó cơ thủ lại móc được ra ngoài.",
                             EmployeeId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
                             Image = "post14.jpg",
                             Status = 0,
                             Title = "Sững sờ bi-a: Cú đánh trượt ở cửa lỗ lại được đề cử \"tình huống số 1 năm\"",
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5676)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8043)
                         },
                         new
                         {
                             Id = new Guid("1e510dc9-e8fd-40fc-ac14-19e701736545"),
-                            Content = "Ronnie O'Sullivan, cơ thủ người Anh là một trong số những huyền thoại sống vẫn còn thi đấu thể thao. Bước sang tuổi 47, O'Sullivan vẫn đang giữ ngôi số 1 thế giới, và đang chia sẻ Stephen Hendry giữ kỷ lục 7 lần giành ngôi vô địch thế giới.\r\n\r\nĐể trở thành một ngôi sao như hiện tại, O'Sullivan trải qua rất nhiều khó khăn khi cha mẹ từng phải ngồi tù, bản thân tay cơ 47 tuổi từng dính vào chất kích thích. Nhưng tay cơ được mệnh danh là \"Phù thủy bi-a\", hay \"The Rocket\" vượt lên tất cả để biến bản thân trở thành ngôi sao thể thao hàng đầu thế giới.\r\n\r\nBộ phim tài liệu về sự nghiệp, cuộc sống của O'Sullivan sắp được công chiếu, ở đó có chi tiết anh được 600 tù nhân cổ vũ khi vô địch thế giới lần 2.\r\n\r\nBố của O'Sullivan, Ronnie O'Sullivan Sr, bị kết án tù chung thân vào năm 1992 vì tội giết người, thời điểm này tay cơ người Anh mới chưa đầy 17 tuổi.\r\n\r\nTrong nhà giam, dù không có tivi nhưng người bố Ronnie Sr vẫn làm mọi cách để cổ vũ con trai thi đấu. Ronnie Sr đã cố gắng biến những người bạn tù thành fan của cậu con trai \"The Rocket\" và 600 tù nhân đã \"mở hội\" trong nhà giam khi Ronnie Jr đánh bại Dotts với tỷ số 18-8 để bước lên ngôi vô địch snooker thế giới năm 2004.\r\n\r\nO'Sullivan Sr cho biết: \"Thời điểm con trai tôi vô địch, 600 tù nhân cùng đập vào tường, cửa, tạo ra âm thanh náo loạn tại phòng giam. Một cảnh tượng khiến tôi không thể nào quên\".O'Sullivan từng suy sụp ở quãng thời gian bố mình đi tù, thậm chí anh cũng phải quán xuyến công việc kinh doanh gia đình khi mẹ anh, bà Maria, bị bỏ tù một năm vì tội trốn thuế vào những năm 1990.\r\n\r\nCơ thủ 47 tuổi thừa nhận anh mất đi 5 năm quý giá, nếu không anh đã có hơn 7 lần vô địch thế giới: \"Từ năm 1995 đến năm 2000, tôi đã thắng một số giải đấu nhưng mọi thứ không phải tuyệt vời nhất. Có lẽ tôi đã lãng phí 5 năm sự nghiệp của mình, mọi thứ thực sự là lộn xộn\".",
-                            CreatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5679),
+                            Content = "Ronnie O'Sullivan, cơ thủ người Anh là một trong số những huyền thoại sống vẫn còn thi đấu thể thao. Bước sang tuổi 47, O'Sullivan vẫn đang giữ ngôi số 1 thế giới, và đang chia sẻ Stephen Hendry giữ kỷ lục 7 lần giành ngôi vô địch thế giới.\r\n\r\nĐể trở thành một ngôi sao như hiện tại, O'Sullivan trải qua rất nhiều khó khăn khi cha mẹ từng phải ngồi tù, bản thân tay cơ 47 tuổi từng dính vào chất kích thích. Nhưng tay cơ được mệnh danh là \"Phù thủy bi-a\", hay \"The Rocket\" vượt lên tất cả để biến bản thân trở thành ngôi sao thể thao hàng đầu thế giới.\r\n\r\nBộ phim tài liệu về sự nghiệp, cuộc sống của O'Sullivan sắp được công chiếu, ở đó có chi tiết anh được 600 tù nhân cổ vũ khi vô địch thế giới lần 2.\r\n\r\nBố của O'Sullivan, Ronnie O'Sullivan Sr, bị kết án tù chung thân vào năm 1992 vì tội giết người, thời điểm này tay cơ người Anh mới chưa đầy 17 tuổi.\r\n\r\nTrong nhà giam, dù không có tivi nhưng người bố Ronnie Sr vẫn làm mọi cách để cổ vũ con trai thi đấu. Ronnie Sr đã cố gắng biến những người bạn tù thành fan của cậu con trai \"The Rocket\" và 600 tù nhân đã \"mở hội\" trong nhà giam khi Ronnie Jr đánh bại Dotts với tỷ số 18-8 để bước lên ngôi vô địch snooker thế giới năm 2004.\r\n\r\nO'Sullivan Sr cho biết: \"Thời điểm con trai tôi vô địch, 600 tù nhân cùng đập vào tường, cửa, tạo ra âm thanh náo loạn tại phòng giam. Một cảnh tượng khiến tôi không thể nào quên\".O'Sullivan từng suy sụp ở quãng thời gian bố mình đi tù, thậm chí anh cũng phải quán xuyến công việc kinh doanh gia đình khi mẹ anh, bà Maria, bị bỏ tù một năm vì tội trốn thuế vào những năm 1990.\r\n\r\nCơ thủ 47 tuổi thừa nhận anh mất đi 5 năm quý giá, nếu không anh đã có hơn 7 lần vô địch thế giới: \"Từ năm 1995 đến năm 20700000, tôi đã thắng một số giải đấu nhưng mọi thứ không phải tuyệt vời nhất. Có lẽ tôi đã lãng phí 5 năm sự nghiệp của mình, mọi thứ thực sự là lộn xộn\".",
+                            CreatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8045),
                             Description = "(Tin thể thao, tin bi-a) Ít ai biết, bố của cơ thủ huyền thoại Ronnie O'Sullivan từng là một kẻ giết người.",
                             EmployeeId = new Guid("40b601c0-2c08-449f-a41e-7564648f2c87"),
                             Image = "post15.jpg",
                             Status = 0,
                             Title = "600 tù nhân làm loạn nhà giam cổ vũ \"Phù thủy bi-a\" Sullivan vô địch thế giới",
-                            UpdatedDate = new DateTime(2024, 1, 13, 22, 39, 3, 427, DateTimeKind.Local).AddTicks(5680)
+                            UpdatedDate = new DateTime(2024, 1, 16, 12, 1, 22, 114, DateTimeKind.Local).AddTicks(8046)
                         });
                 });
 
@@ -1033,19 +1087,19 @@ namespace Datn_Api.Migrations
                             BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc220"),
                             CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Giới thiệu Cue Predator Sneaky Pete, nơi sự khéo léo kết hợp sự sang trọng. Lớp hoàn thiện mờ Purpleheart thể hiện phong cách đặc biệt của nó, với tám điểm màu xanh lam, vàng và đen quyến rũ. Màu xanh bóng mượt với lớp bọc vải lanh Ailen màu trắng tạo thêm nét đẳng cấp và tăng cường khả năng cầm nắm của bạn. Nâng cao trò chơi của bạn với độ chính xác và sự khéo léo của tín hiệu Predator Sneaky Pete.",
-                            Likes = 0,
+                            Description = "Cơ Predator Sneaky Pete, nơi sự khéo léo kết hợp sự sang trọng. Lớp hoàn thiện mờ Purpleheart thể hiện phong cách đặc biệt của nó, với tám điểm màu xanh lam, vàng và đen quyến rũ. Màu xanh bóng mượt với lớp bọc vải lanh Ailen màu trắng tạo thêm nét đẳng cấp và tăng cường khả năng cầm nắm của bạn. Nâng cao trò chơi của bạn với độ chính xác và sự khéo léo của tín hiệu Predator Sneaky Pete.",
+                            Likes = 1,
                             Name = "Predator Purpleheart 8-Point Sneaky Pete With Wrap",
                             Pin = "Uniloc Quick Release",
                             Rings = "None",
-                            Sold = 0,
+                            Sold = 2,
                             Status = 0,
                             Wrap = "Blue and White Irish Linen"
                         },
                         new
                         {
                             Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8b"),
-                            AvailableQuantity = 2000,
+                            AvailableQuantity = 1000,
                             BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc221"),
                             CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d04"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1054,18 +1108,18 @@ namespace Datn_Api.Migrations
                             Name = "ELITE ELBJGB BREAK JUMP CUE W",
                             Pin = "Action Quick-Release (both joints)",
                             Rings = "None",
-                            Sold = 0,
+                            Sold = 1,
                             Status = 0,
                             Wrap = "Black Irish linen"
                         },
                         new
                         {
                             Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"),
-                            AvailableQuantity = 2000,
+                            AvailableQuantity = 1000,
                             BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc223"),
-                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d05"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d07"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Description",
+                            Description = "Hãy để This Summit SUML17 Pool Cue là thanh kiếm bạn rút ra từ đá và sử dụng nó một cách chính đáng. Trục là gỗ thích đá cứng 29\" với côn chuyên nghiệp 12\" và mộng lõi lai trọng lượng nhẹ 30 mm. Cue này đi kèm với đầu mềm Kamui Clear Soft 12,5. Hãy cảm nhận lớp phủ màu xanh đậm và opal của gỗ tự nhiên trên tay bạn ngay hôm nay.",
                             Likes = 0,
                             Name = "Summit SUML17 Pool Cue",
                             Pin = "Mezz United Joint",
@@ -1077,11 +1131,11 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("cc37720a-7e89-463a-9510-2936e6761d8a"),
-                            AvailableQuantity = 2000,
+                            AvailableQuantity = 1000,
                             BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc221"),
                             CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d06"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Description",
+                            Description = "",
                             Likes = 0,
                             Name = "Katana KAT19 Pool Cue",
                             Pin = "Mezz United Joint",
@@ -1093,11 +1147,11 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("cc37720a-7e89-463a-9510-3936e6761d8b"),
-                            AvailableQuantity = 2000,
+                            AvailableQuantity = 1000,
                             BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc223"),
                             CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d07"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Description",
+                            Description = "Summit Pro Pool Cue này thật tuyệt vời! Đạt đến đỉnh cao mới trong trò chơi của bạn với sự trợ giúp từ gỗ phong cứng 29\", côn chuyên nghiệp 12\", trục mộng lõi lai trọng lượng nhẹ 30 mm. Bạn sẽ chơi thật phong cách khi cầm cây phong nhuộm màu xanh lam của cây cơ này với các điểm phủ màu xanh và đen xen kẽ, với phần cẳng tay và phần mông được thiết kế hình kim cương Opal. Đừng quên biến tín hiệu này thành của riêng bạn bằng cách thay đổi mẹo hoặc khắc tùy chỉnh.",
                             Likes = 0,
                             Name = "Summit SUML13 Pool Cue",
                             Pin = "Mezz United Joint",
@@ -1113,7 +1167,7 @@ namespace Datn_Api.Migrations
                             BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc223"),
                             CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Giới thiệu Cue Predator Sneaky Pete, nơi sự khéo léo kết hợp sự sang trọng. Lớp hoàn thiện mờ Purpleheart thể hiện phong cách đặc biệt của nó, với tám điểm màu xanh lam, vàng và đen quyến rũ. Màu xanh bóng mượt với lớp bọc vải lanh Ailen màu trắng tạo thêm nét đẳng cấp và tăng cường khả năng cầm nắm của bạn. Nâng cao trò chơi của bạn với độ chính xác và sự khéo léo của tín hiệu Predator Sneaky Pete.",
+                            Description = "Cơ Predator Sneaky Pete, nơi sự khéo léo kết hợp sự sang trọng. Lớp hoàn thiện mờ Purpleheart thể hiện phong cách đặc biệt của nó, với tám điểm màu xanh lam, vàng và đen quyến rũ. Màu xanh bóng mượt với lớp bọc vải lanh Ailen màu trắng tạo thêm nét đẳng cấp và tăng cường khả năng cầm nắm của bạn. Nâng cao trò chơi của bạn với độ chính xác và sự khéo léo của tín hiệu Predator Sneaky Pete.",
                             Likes = 0,
                             Name = "Cuetec AVID Proof CT326NW Pool Cue",
                             Pin = "Uniloc Quick Release",
@@ -1125,11 +1179,11 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("cc37720a-7e89-463a-9510-5936e6761d8a"),
-                            AvailableQuantity = 2000,
+                            AvailableQuantity = 1000,
                             BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc223"),
                             CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d04"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Description",
+                            Description = "",
                             Likes = 0,
                             Name = "Cuetec AVID Proof CT326LTC Pool Cue",
                             Pin = "Mezz United Joint",
@@ -1141,11 +1195,11 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("cc37720a-7e89-463a-9510-6936e6761d8b"),
-                            AvailableQuantity = 2000,
+                            AvailableQuantity = 1000,
                             BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc225"),
                             CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d05"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Description",
+                            Description = "",
                             Likes = 0,
                             Name = "Meucci Casino MECAS10 Pool Cue",
                             Pin = "Mezz United Joint",
@@ -1157,13 +1211,13 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("cc37720a-7e89-463a-9510-7936e6761d8c"),
-                            AvailableQuantity = 2000,
+                            AvailableQuantity = 1000,
                             BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc226"),
                             CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Description",
+                            Description = "Giải phóng trò chơi của bạn với thanh Bull Carbon. Chiếc gậy năng động này kết hợp giữa nét thẩm mỹ màu đen bóng bẩy với các điểm màu bạc, tạo nên một kiệt tác có hình ảnh ấn tượng. Lớp bọc da rải sỏi của nó mang lại cảm giác sang trọng và tăng cường khả năng cầm nắm của bạn để có những bức ảnh chính xác. Kết hợp với cán Bull Carbon hiệu suất cao, cây gậy này mang lại sức mạnh, khả năng kiểm soát và phong cách vô song cho những người chơi có yêu cầu tốt nhất. Đẩy mạnh trò chơi của bạn và thống trị cuộc cạnh tranh với gậy Bull Carbon.",
                             Likes = 0,
-                            Name = "Bull Carbon BCSP2 Silver Split Cue W/",
+                            Name = "Bull Carbon BCSP2 Silver Split Cue W/ Shaft",
                             Pin = "Mezz United Joint",
                             Rings = "Silver Rings",
                             Sold = 0,
@@ -1173,15 +1227,255 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("cc37720a-7e89-463a-9510-8936e6761d8a"),
-                            AvailableQuantity = 2000,
+                            AvailableQuantity = 1000,
                             BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc227"),
                             CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d04"),
                             CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Description",
+                            Description = "Cơ Balabushka GBT là một kiệt tác của sự khéo léo và sang trọng. Với khảm ngọc trai tinh tế, chiếc gậy này thu hút sự chú ý và thể hiện vẻ đẹp vượt thời gian của chiếc gậy Balabushka. Mỗi lớp khảm đều được đặt tỉ mỉ, tạo ra một màn hình trực quan tuyệt đẹp, bổ sung cho thiết kế tổng thể của gậy. Cho dù bạn là người chơi chuyên nghiệp hay người đam mê cơ, gậy Balabushka GBT là một tác phẩm nghệ thuật đích thực kết hợp hiệu suất vượt trội với tính thẩm mỹ vô song. Nâng cao trò chơi của bạn và đưa ra tuyên bố với cây gậy Balabushka GBT.",
                             Likes = 0,
                             Name = "Balabushka GBT Era Cue",
                             Pin = "Mezz United Joint",
                             Rings = "Silver Rings",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "Black Irish Linen"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce280"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc228"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d05"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Cần độ bám tốt hơn khi bẻ gãy, không cần tìm đâu xa ngoài ABK08. Còi phanh này có lớp sơn đen bóng, với sọc thể thao màu vàng phù hợp và tay cầm có kết cấu hiệu suất cao để tạo ra một cú đánh an toàn và sự phá cách chắc chắn. ABK08 đạt tiêu chuẩn với trục Hard Maple 13,5mm sử dụng Inox Quick Release để đảm bảo vừa vặn an toàn và đầu phenolic với miếng đệm màu vàng mang lại cảm giác sắc nét khi bẻ gãy.",
+                            Likes = 1,
+                            Name = "Action ABK08 Yellow Sport Break Cue",
+                            Pin = "Inox Quick-Release",
+                            Rings = "None",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "Balck Textured Performance Grip"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce281"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc221"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d06"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Cơ nhảy Elite ELBJGY có các khớp nối nhanh và an toàn cho phép bạn chuyển đổi từ tín hiệu nghỉ hoàn toàn sang tín hiệu nhảy trong vài giây. ELBJGY có sẵn các trọng lượng từ 18-21oz và có thể điều chỉnh trọng lượng để sau này nếu bạn muốn thay đổi trọng lượng của cơ, bạn có tùy chọn. ELBJGY có tay cầm bằng gỗ phong Birdseye màu xám đẹp mắt cùng với tay cầm jumper màu xám. Sự kết hợp giữa đầu phenolic và ống sắt mang đến cho bạn sự phá cách nhất quán với đầu cứng mà không cần phải trầy xước hoặc mọc nấm xuống đầu. Đầu phenolic là một phần thưởng bổ sung vì bạn sẽ không phải thay đổi đầu trên trục trong suốt tuổi thọ của cơ.",
+                            Likes = 0,
+                            Name = "Elite ELBJGY Break Jump Cue",
+                            Pin = "Action Quick Release",
+                            Rings = "Black with Silver Rings",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "None"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce282"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc228"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d06"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Nổi bật với lớp bọc mở rộng, Gậy Action ACTBJW Break Jump thể hiện phong cách đơn giản nhưng độc đáo bằng gỗ phong Birdseye và 4 điểm màu nâu anh đào được viền bằng các lớp veneer đen nguyên khối. ACTBJW là một cấu trúc ba mảnh, dễ dàng chuyển đổi từ tín hiệu ngắt sang tín hiệu nhảy và quay lại bằng các khớp nhả nhanh. Cơ có một đầu Phenolic 13mm và kết hợp ống sắt giúp hỗ trợ đầu ít bị mài mòn hơn, đồng nghĩa với việc ít phải thay đầu hơn.\r\n\r\nGiữ cho khớp đó được thông thoáng và thông thoáng với Bộ bảo vệ khớp Action Break Jump! Đi tới trang Action Joint Protector và chọn tùy chọn 'Action Break Jump'.",
+                            Likes = 1,
+                            Name = "Action ACTBJW Break Jump Cue",
+                            Pin = "Action Quick-Release",
+                            Rings = "None",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "Black Irish linen"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce283"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc229"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d08"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Gậy Scorpion Gunmetal Grey không chỉ là một cây gậy; đó là một tuyên bố về sự tinh tế và chính xác.\r\n\r\nCẳng tay được trang trí bằng màu xám gunmetal tinh xảo, với logo Scorpion màu bạc nổi bật ở giữa. Gậy này bao gồm một lớp vải lanh Ailen màu đen tiện dụng nhưng đầy phong cách, đảm bảo bạn có thể cầm gậy thoải mái và an toàn cho những cú đánh quan trọng.\r\n\r\nVà chủ đề tiếp tục lan xuống tay áo, nổi bật với phông nền màu xám kim loại màu súng trang nhã. Để tăng thêm phần tinh tế, chúng tôi đã tặng kèm một tấm bảng màu đen được trang trí bằng logo Scorpion màu bạc.\r\n\r\nCho dù bạn là một người chơi dày dạn kinh nghiệm hay chỉ đơn giản là đang tận hưởng một trò chơi thoải mái với bạn bè, cây gậy này hứa hẹn sẽ nâng tầm trò chơi của bạn trong khi vẫn duy trì được phong cách nhẹ nhàng.",
+                            Likes = 0,
+                            Name = "Scorpion SW04 Pool Cue",
+                            Pin = "Inox Quick Release",
+                            Rings = "None",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "Black Irish Linen Wrap"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce284"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc229"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d08"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Gậy Scorpion Metallic Blue dễ dàng kết hợp sự tinh tế và độ chính xác cho trò chơi của bạn.\r\n\r\nCẳng tay được nhúng trong màu xanh kim loại đầy mê hoặc này, sảng khoái như một ngày hè. Ngay chính giữa có logo Scorpion màu bạc bắt mắt, mang đến cho cây gậy của bạn nét cá tính. Không có vòng để trông gọn gàng hơn.\r\n\r\nChúng tôi trang bị cho bạn một lớp bọc bằng vải lanh Ailen màu đen thoải mái và đáng tin cậy để đảm bảo bạn có thể giữ chắc gậy cho những cú đánh quan trọng. Tay áo giúp bữa tiệc tiếp tục với màu xanh kim loại quyến rũ và có một tấm bảng màu đen với logo Scorpion màu bạc để tạo thêm điểm nhấn hoàn thiện.",
+                            Likes = 0,
+                            Name = "Scorpion SW01 Pool Cue",
+                            Pin = "Inox Quick Release",
+                            Rings = "None",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "Black Irish Linen Wrap"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce285"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc229"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d08"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Cơ Scorpion này có thể là cách mới để bạn thể hiện phong cách độc đáo và sự tinh tế của mình trên bàn bi-a.\r\n\r\nCẳng tay đang đung đưa màu xanh kim loại tuyệt vời này, tràn đầy năng lượng. Ngay chính giữa, có logo Scorpion màu bạc bắt mắt mang đến cho cây gậy của bạn một chút cá tính. Chúng tôi hướng đến một cái nhìn gọn gàng và đơn giản, không có đường cong làm phức tạp mọi thứ. Đó là tất cả về việc giữ cho nó đơn giản và kiểu dáng đẹp.\r\n\r\nVới tay cầm, chúng tôi đã mang đến cho bạn một lớp bọc bằng vải lanh Ailen màu đen cổ điển. Tay áo giúp giữ cho thời gian vui vẻ trôi chảy với cùng cảm giác màu xanh kim loại đó và có một tấm bảng màu đen với biểu tượng Bọ cạp màu bạc giúp tăng thêm vẻ đẳng cấp.",
+                            Likes = 0,
+                            Name = "Scorpion SW02 Pool Cue",
+                            Pin = "Inox Quick Release",
+                            Rings = "None",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "Black Irish Linen Wrap"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce286"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc229"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d08"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Gậy Scorpion Red thể hiện phong cách và độ chính xác cho trò chơi của bạn.\r\n\r\nCẳng tay có màu đỏ rực rỡ và ngay chính giữa có logo Scorpion màu bạc nổi bật giúp tăng thêm nét cá tính và lôi cuốn cho cây gậy của bạn. Để phù hợp với thiết kế gọn gàng và đơn giản, chúng tôi đã quyết định loại bỏ các vòng để đảm bảo chiếc gậy vẫn giữ được vẻ ngoài bóng bẩy và gọn gàng.\r\n\r\nCây gậy này bao gồm một lớp bọc vải lanh Ailen màu đen rất thiết thực nhưng đầy phong cách, mang lại cảm giác cầm nắm thoải mái và ổn định. Tay áo tiếp tục mô típ với phông nền màu đỏ đậm và để tạo thêm nét tinh tế, chúng tôi đã kết hợp một tấm bảng màu đen được trang trí bằng biểu tượng Bọ cạp màu bạc",
+                            Likes = 1,
+                            Name = "Scorpion SW03 Pool Cue",
+                            Pin = "Inox Quick Release",
+                            Rings = "None",
+                            Sold = 2,
+                            Status = 0,
+                            Wrap = "Black Irish Linen Wrap"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce287"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc228"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d08"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Cây gậy bida Action Fractal ACT172 này giống như việc nhìn chằm chằm vào mặt trời mà không cảm thấy đau đớn. Gợi nhớ đến Con mắt của Sauron, dung nham nóng chảy và thậm chí cả những ngôi sao rực lửa ở gần và riêng tư. Hãy xem cho chính mình! bạn thấy gì? Một thương hiệu không bao giờ làm bạn thất vọng đó là Action, luôn cho ra đời những thiết kế đẹp nhất. hãy để cây gậy này điều khiển cơn thịnh nộ của bạn.",
+                            Likes = 1,
+                            Name = "Action Fractal ACT172 Pool Cue",
+                            Pin = "5/16x18",
+                            Rings = "None",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "Black Irish Linen"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce288"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc221"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d06"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Gậy Elite là những gì xảy ra khi hình thức đáp ứng chức năng; chúng là bản chất của phong cách. Ví dụ: cú nhảy đột phá mới này có thể được chế tạo như một cây gậy tiêu chuẩn không có thật khác và vẫn đáp ứng tiêu chuẩn của Elite. Tuy nhiên, cây gậy này đã được chế tác đẹp mắt bằng gỗ phong và gỗ ngựa vằn có màu tự nhiên, tạo cho nó một sự tương phản nổi bật ở các khớp của nó và do không có vòng đệm ở khớp nên nó cũng hòa quyện rất đẹp vào trục.",
+                            Likes = 1,
+                            Name = "Elite ELBJZ Break Jump Cue",
+                            Pin = "Action Quick Release",
+                            Rings = "Black with Silver Rings",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "None"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce289"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc228"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d06"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Đầu tư vào một cây gậy Jump Break có thể cải thiện đáng kể trò chơi của bạn vì đây là một trong những cú đánh quan trọng nhất của trò chơi. Nếu bạn giống tôi và bạn thích màu đen phẳng thì cây gậy này không chỉ đẹp mà ACTBJ09 này sẽ giúp bạn cải thiện khả năng nghỉ ngơi của mình!",
+                            Likes = 0,
+                            Name = "Action ACTBJ09 Break Jump Cue",
+                            Pin = "Quick release",
+                            Rings = "None",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "None"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce290"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc223"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d07"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Summit Pro Pool Cue đây là một điểm dừng tuyệt đối! Đạt đến đỉnh cao mới trong trò chơi của bạn với sự trợ giúp từ gỗ phong cứng 29\", chuyên nghiệp 12\", mộng ảo lai chất lượng nhẹ 30 mm. Bạn sẽ chơi thật phong cách khi cầm gậy bằng gỗ phong màu quả mọng với các điểm đen và trắng xen kẽ trên Viết này, với phần cánh tay và phần mo được thiết kế hình kim cương Opal. Đừng quên biến bài viết này thành của riêng bạn bằng cách thay đổi đầu bút hoặc giải quyết tùy chỉnh.",
+                            Likes = 1,
+                            Name = "Summit SUML12 Pool Cue",
+                            Pin = "3/8x10",
+                            Rings = "None",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "Black Leather Wrap"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce291"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc223"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d07"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mạnh mẽ và mạnh mẽ là cách bạn sẽ có được với The Summit SUML15 Pool Cue. Trục là gỗ thích đá cứng 29\" với côn chuyên nghiệp 12\" và mộng lõi lai trọng lượng nhẹ 30 mm. Cây gậy này đi kèm với đầu mềm Kamui Clear Soft 12,5. Cảm nhận dòng điện bên trong Màu đen với màu xanh điện với các điểm đen và trắng xen kẽ - với thiết kế kim cương đen và xanh.",
+                            Likes = 0,
+                            Name = "Summit SUML15 Pool Cue",
+                            Pin = "3/8x10",
+                            Rings = "Silver",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "Black leather"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce292"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc223"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d07"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Ngọt ngào và sắc nét là cách bạn sẽ cảm nhận được với The Summit SUML16 Pool Cue. Trục là gỗ thích đá cứng 29\" với côn chuyên nghiệp 12\" và mộng lõi lai trọng lượng nhẹ 30 mm. Cây gậy này đi kèm với đầu mềm Kamui Clear Soft 12,5. Hãy cảm nhận gỗ tự nhiên nhuộm màu mật ong ngọt ngào và để nó điều khiển cú đánh của bạn.",
+                            Likes = 0,
+                            Name = "Summit SUML16 Pool Cue",
+                            Pin = "3/8x10",
+                            Rings = "Silver",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "Black leather"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce293"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc229"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Gậy Johnny Archer Series Scorpion JAR02 có mặt trước bằng gỗ phong màu anh đào với các mặt gỗ màu kem và các điểm bằng gỗ phong. Đầu lớp Aculeus 12 mm nằm trên trục gỗ phong cứng và có Hệ thống Hiệu suất Telson (TPS) và khớp nhả nhanh Inox.\r\n\r\nHệ thống Telson Performance được thiết kế để tối đa hóa sản lượng và cải thiện trò chơi của bạn. Hệ thống này bao gồm đầu Aculeus mang tính cách mạng, một đầu 6 lớp được làm từ da heo được lựa chọn đặc biệt, nằm trên một Tấm sợi Carbon được thiết kế để thu thập, khuếch tán và phân phối lại năng lượng va chạm đồng đều khắp trục. Những chiếc gậy này cũng đi kèm với một ống sắt XTC nhẹ, ổn định tia cực tím đã được rút ngắn để giảm độ lệch. Cuối cùng, khớp nối nhanh Inox và các vòng ổn định bằng tre kết hợp lực để tăng phản hồi và giảm thời gian lắp đặt.",
+                            Likes = 1,
+                            Name = "Scorpion JAR02 Pool Cue",
+                            Pin = "Inox Quick Release",
+                            Rings = "None",
+                            Sold = 0,
+                            Status = 0,
+                            Wrap = "None - Cherry Stained Maple"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa7b6dc6-8461-4415-a683-207a452ce294"),
+                            AvailableQuantity = 1000,
+                            BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc229"),
+                            CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
+                            CreateDate = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Khi người chơi bi-a vô địch thế giới Johnny \"The Scorpion\" Archer nói với chúng tôi rằng gậy Scorpion đang tạo ra một giải Wood Series, chúng tôi đã rất phấn khích! Dòng này thể hiện sự khác biệt so với những chiếc gậy được bọc sợi thủy tinh điển hình của họ. JAR04 có mặt trước bằng gỗ phong nhuộm màu cổ với các điểm và mặt dán bằng gỗ phong và gỗ cẩm lai tự nhiên. Ngoài ra, chiếc gậy này còn được trang bị tiêu chuẩn công nghệ tiên tiến Telson Performance System.\r\n\r\nHệ thống Telson Performance được thiết kế để tối đa hóa sản lượng và cải thiện trò chơi của bạn. Hệ thống này bao gồm đầu Aculeus mang tính cách mạng, một đầu 6 lớp được làm từ da heo được lựa chọn đặc biệt, nằm trên một Tấm sợi Carbon được thiết kế để thu thập, khuếch tán và phân phối lại năng lượng va chạm đồng đều khắp trục. Những chiếc gậy này cũng đi kèm với một ống sắt XTC nhẹ, ổn định tia cực tím đã được rút ngắn để giảm độ lệch. Cuối cùng, khớp nối nhanh Inox và các vòng ổn định bằng tre kết hợp lực để tăng phản hồi và giảm thời gian lắp đặt.",
+                            Likes = 0,
+                            Name = "Scorpion JAR04 Pool Cue",
+                            Pin = "Inox Quick Release",
+                            Rings = "None",
                             Sold = 0,
                             Status = 0,
                             Wrap = "Black Irish Linen"
@@ -1243,8 +1537,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1257,8 +1551,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1271,8 +1565,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1285,8 +1579,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1299,8 +1593,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1313,8 +1607,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1327,8 +1621,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1341,8 +1635,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1355,8 +1649,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1369,8 +1663,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1383,8 +1677,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1397,8 +1691,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1411,8 +1705,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1425,8 +1719,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1439,8 +1733,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1453,8 +1747,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1467,8 +1761,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1481,8 +1775,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1495,8 +1789,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1509,8 +1803,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1523,8 +1817,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -1537,8 +1831,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -1551,8 +1845,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -1565,8 +1859,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -1579,8 +1873,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -1593,8 +1887,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -1607,8 +1901,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -1621,8 +1915,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -1635,8 +1929,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -1649,8 +1943,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c2e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -1663,8 +1957,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -1677,8 +1971,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -1691,8 +1985,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -1705,8 +1999,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -1719,8 +2013,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -1733,8 +2027,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -1747,8 +2041,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -1761,8 +2055,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -1775,8 +2069,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -1789,8 +2083,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c3e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -1803,8 +2097,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1817,8 +2111,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1831,8 +2125,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1845,8 +2139,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1859,8 +2153,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1873,8 +2167,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1887,8 +2181,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1901,8 +2195,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1915,8 +2209,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1929,8 +2223,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c0e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -1943,8 +2237,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1957,8 +2251,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1971,8 +2265,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1985,8 +2279,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -1999,8 +2293,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2013,8 +2307,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2027,8 +2321,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2041,8 +2335,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2055,8 +2349,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2069,8 +2363,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c1e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2083,8 +2377,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2097,8 +2391,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2111,8 +2405,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2125,8 +2419,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2139,8 +2433,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2153,8 +2447,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2167,8 +2461,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2181,8 +2475,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2195,8 +2489,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2209,8 +2503,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c2e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2223,8 +2517,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2237,8 +2531,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2251,8 +2545,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2265,8 +2559,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2279,8 +2573,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2293,8 +2587,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2307,8 +2601,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2321,8 +2615,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2335,8 +2629,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2349,8 +2643,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c5c3e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2363,8 +2657,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2377,8 +2671,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2391,8 +2685,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2405,8 +2699,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2419,8 +2713,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2433,8 +2727,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2447,8 +2741,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2461,8 +2755,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2475,8 +2769,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2489,8 +2783,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c0e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2503,8 +2797,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2517,8 +2811,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2531,8 +2825,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2545,8 +2839,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2559,8 +2853,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2573,8 +2867,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2587,8 +2881,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2601,8 +2895,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2615,8 +2909,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2629,8 +2923,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c1e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -2643,8 +2937,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2657,8 +2951,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2671,8 +2965,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2685,8 +2979,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2699,8 +2993,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2713,8 +3007,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2727,8 +3021,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2741,8 +3035,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2755,8 +3049,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2769,8 +3063,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c2e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -2783,8 +3077,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2797,8 +3091,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2811,8 +3105,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2825,8 +3119,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2839,8 +3133,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2853,8 +3147,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2867,8 +3161,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2881,8 +3175,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2895,8 +3189,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2909,8 +3203,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c6c3e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -2923,8 +3217,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2937,8 +3231,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2951,8 +3245,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2965,8 +3259,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2979,8 +3273,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -2993,8 +3287,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -3007,8 +3301,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -3021,8 +3315,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -3035,8 +3329,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -3049,8 +3343,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c0e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d83"),
@@ -3063,8 +3357,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -3077,8 +3371,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -3091,8 +3385,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -3105,8 +3399,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -3119,8 +3413,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -3133,8 +3427,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -3147,8 +3441,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -3161,8 +3455,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -3175,8 +3469,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -3189,8 +3483,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c1e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -3203,8 +3497,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -3217,8 +3511,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -3231,8 +3525,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -3245,8 +3539,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -3259,8 +3553,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -3273,8 +3567,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -3287,8 +3581,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -3301,8 +3595,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -3315,8 +3609,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -3329,8 +3623,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c2e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d63"),
@@ -3343,8 +3637,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -3357,8 +3651,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e1"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -3371,8 +3665,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e2"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -3385,8 +3679,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -3399,8 +3693,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -3413,8 +3707,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -3427,8 +3721,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -3441,8 +3735,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -3455,8 +3749,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -3469,8 +3763,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("1eaaba04-80ff-43a6-a746-a74a91c7c3e9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 1500.0,
-                            Price = 2000.0,
+                            ImportPrice = 18000000.0,
+                            Price = 20700000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d53"),
@@ -5723,8 +6017,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 4000000.0,
-                            Price = 5000000.0,
+                            ImportPrice = 5000000.0,
+                            Price = 6600000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-1936e6761d8c"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -5737,8 +6031,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 4000000.0,
-                            Price = 5000000.0,
+                            ImportPrice = 200000000.0,
+                            Price = 22800000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-2936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -5751,8 +6045,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c5"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 4000000.0,
-                            Price = 5000000.0,
+                            ImportPrice = 5000000.0,
+                            Price = 6600000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-3936e6761d8b"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -5765,8 +6059,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 4000000.0,
-                            Price = 5000000.0,
+                            ImportPrice = 6000000.0,
+                            Price = 7800000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-4936e6761d8c"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -5779,8 +6073,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 4000000.0,
-                            Price = 5000000.0,
+                            ImportPrice = 6800000.0,
+                            Price = 8300000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-5936e6761d8a"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -5793,8 +6087,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c8"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 4000000.0,
-                            Price = 5000000.0,
+                            ImportPrice = 26500000.0,
+                            Price = 29230000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-6936e6761d8b"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -5807,8 +6101,8 @@ namespace Datn_Api.Migrations
                             Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c9"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 4000000.0,
-                            Price = 5000000.0,
+                            ImportPrice = 14000000.0,
+                            Price = 16000000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-7936e6761d8c"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
@@ -5821,9 +6115,219 @@ namespace Datn_Api.Migrations
                             Id = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c0"),
                             CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description",
-                            ImportPrice = 4000000.0,
-                            Price = 5000000.0,
+                            ImportPrice = 16000000.0,
+                            Price = 186000000.0,
                             ProductID = new Guid("cc37720a-7e89-463a-9510-8936e6761d8a"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d0"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 3000000.0,
+                            Price = 3500000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce280"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d1"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 3000000.0,
+                            Price = 3500000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce281"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d2"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 2800000.0,
+                            Price = 3250000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce282"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d3"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 3000000.0,
+                            Price = 3500000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce283"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d4"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 3000000.0,
+                            Price = 3500000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce284"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d5"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 3000000.0,
+                            Price = 3500000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce285"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d6"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 3000000.0,
+                            Price = 3500000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce286"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d7"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 3300000.0,
+                            Price = 3800000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce287"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d8"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 3000000.0,
+                            Price = 3500000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce288"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d9"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 2300000.0,
+                            Price = 2800000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce289"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d0"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 5200000.0,
+                            Price = 6600000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce290"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d1"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 5200000.0,
+                            Price = 6600000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce291"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d2"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 5200000.0,
+                            Price = 6600000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce292"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d3"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 4000000.0,
+                            Price = 5100000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce293"),
+                            Quantity = 1,
+                            ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
+                            Status = 0,
+                            TipId = new Guid("cc37720a-7e89-463a-9510-1936e6761d74"),
+                            WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d4"),
+                            CreateDate = new DateTime(2023, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Description",
+                            ImportPrice = 5000000.0,
+                            Price = 6300000.0,
+                            ProductID = new Guid("fa7b6dc6-8461-4415-a683-207a452ce294"),
                             Quantity = 1,
                             ShaftId = new Guid("cc37720a-7e89-463a-9510-1936e6761d73"),
                             Status = 0,
@@ -13697,58 +14201,548 @@ namespace Datn_Api.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6423"),
-                            Name = "2.png",
+                            Id = new Guid("f1d63cd1-210a-4482-b171-3f3817b3560a"),
+                            Name = "suml17_01.jpg",
                             ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
                             Status = 0
                         },
                         new
                         {
-                            Id = new Guid("e666f8b0-0d76-400e-bdb0-ca85a9ba65d4"),
-                            Name = "1.png",
+                            Id = new Guid("f1d63cd1-210a-4482-b171-3f3817b3561a"),
+                            Name = "suml17_cat.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("f1d63cd1-210a-4482-b171-3f3817b3562a"),
+                            Name = "suml17-h2_01.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("f1d63cd1-210a-4482-b171-3f3817b3563a"),
+                            Name = "suml17-h1_01.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("f1d63cd1-210a-4482-b171-3f3817b3564a"),
+                            Name = "sumxs1_02.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("6d594357-dcb9-4e66-accc-49414c7e6751"),
+                            Name = "kat19_01.jpg",
                             ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"),
                             Status = 0
                         },
                         new
                         {
-                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6425"),
-                            Name = "2.png",
+                            Id = new Guid("6d594357-dcb9-4e66-accc-49414c7e6752"),
+                            Name = "kat19_cat.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("6d594357-dcb9-4e66-accc-49414c7e6753"),
+                            Name = "kat19-h2_01.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("6d594357-dcb9-4e66-accc-49414c7e6754"),
+                            Name = "kat19-h1_01.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c4"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("54d44586-7758-43f0-842f-e46def972f5f"),
+                            Name = "suml13_01.jpg",
                             ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c5"),
                             Status = 0
                         },
                         new
                         {
-                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6426"),
-                            Name = "2.png",
+                            Id = new Guid("54d44586-7758-43f0-842f-e46def972f6f"),
+                            Name = "suml13_cat.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c5"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("54e0edfd-391a-4594-b9d0-e2aead0aae34"),
+                            Name = "ct326nw_01.jpg",
                             ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"),
                             Status = 0
                         },
                         new
                         {
-                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6427"),
-                            Name = "1.png",
+                            Id = new Guid("54e0edfd-391a-4594-b9d0-e2aead0aae35"),
+                            Name = "ct326nw_cat.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("54e0edfd-391a-4594-b9d0-e2aead0aae36"),
+                            Name = "ctxs_a12.75_01_1_4.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("54e0edfd-391a-4594-b9d0-e2aead0aae37"),
+                            Name = "ctxs_a12.75_cat_1_4.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("54e0edfd-391a-4594-b9d0-e2aead0aae38"),
+                            Name = "ctxs_a12.75_02_2_3.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c6"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ce5923ef-22f0-4e79-8595-dadf29251a60"),
+                            Name = "ct326ltc_01.jpg",
                             ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"),
                             Status = 0
                         },
                         new
                         {
-                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6428"),
-                            Name = "2.png",
+                            Id = new Guid("ce5923ef-22f0-4e79-8595-dadf29251a61"),
+                            Name = "ct326ltc_cat.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ce5923ef-22f0-4e79-8595-dadf29251a62"),
+                            Name = "ctxs_a12.75_01_1_3.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ce5923ef-22f0-4e79-8595-dadf29251a63"),
+                            Name = "ctxs_a12.75_cat_1_3.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ce5923ef-22f0-4e79-8595-dadf29251a64"),
+                            Name = "ctxs_a12.75_02_2_2.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c7"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("2787fecd-bcab-4d0f-841d-59f39a4f6ce3"),
+                            Name = "mecas10_01.jpg",
                             ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c8"),
                             Status = 0
                         },
                         new
                         {
-                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6429"),
-                            Name = "1.png",
+                            Id = new Guid("2787fecd-bcab-4d0f-841d-59f39a4f6ce4"),
+                            Name = "mecas10_cat.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c8"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("cb5e2fc6-9481-4e46-8bc4-f91043d531ae"),
+                            Name = "bcsp2_01.jpg",
                             ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c9"),
                             Status = 0
                         },
                         new
                         {
-                            Id = new Guid("a9e47c8b-4af6-4ccd-b259-7367eb8f6420"),
-                            Name = "2.png",
+                            Id = new Guid("cb5e2fc6-9481-4e46-8bc4-f91043d532ae"),
+                            Name = "bcsp2_cat.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c9"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("04cced3a-b935-4cb7-8228-bc482e1868f2"),
+                            Name = "gbt_01_1.jpg",
                             ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c0"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("04cced3a-b935-4cb7-8228-bc482e1868f3"),
+                            Name = "gbt_cat.jpg",
+                            ProductDetailId = new Guid("84a7b7bd-0490-4cf1-9499-1d9fe88580c0"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d00"),
+                            Name = "abk08_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d0"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d01"),
+                            Name = "abk08-h2_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d0"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d02"),
+                            Name = "abk08-h1_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d0"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d03"),
+                            Name = "actxs-6_02.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d0"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d04"),
+                            Name = "elbjgy_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d1"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d05"),
+                            Name = "elbjgy-h2_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d1"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d06"),
+                            Name = "elbjgy-h1_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d1"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d07"),
+                            Name = "actxs-k_02_7.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d1"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d08"),
+                            Name = "actbjw_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d2"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d09"),
+                            Name = "actbjw-h2_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d2"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d10"),
+                            Name = "actbjw-h1_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d2"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d11"),
+                            Name = "actxs-k_02_2.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d2"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d12"),
+                            Name = "sw04_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d13"),
+                            Name = "sw04_cat.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d14"),
+                            Name = "sw01_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d4"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d15"),
+                            Name = "sw01_cat.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d4"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d16"),
+                            Name = "sw02_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d5"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d17"),
+                            Name = "sw02_cat.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d5"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d18"),
+                            Name = "sw03_01_1.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d6"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d19"),
+                            Name = "sw03_cat_1.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d6"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d20"),
+                            Name = "act172_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d7"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d21"),
+                            Name = "act172_cat.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d7"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d22"),
+                            Name = "act172-h2_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d7"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d23"),
+                            Name = "act172-h1_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d7"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d24"),
+                            Name = "elbjz_01_6.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d8"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d25"),
+                            Name = "elbjz-h2_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d8"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d26"),
+                            Name = "elbjz-h1_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d8"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d27"),
+                            Name = "actxs-k_02_10.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d8"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d28"),
+                            Name = "actbj09_1_2.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d9"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d29"),
+                            Name = "actbj09-h2_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d9"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d30"),
+                            Name = "actbj09-h1_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d9"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d31"),
+                            Name = "actxs-k_02.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b735d9"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d32"),
+                            Name = "suml12_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d0"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d33"),
+                            Name = "suml12_cat.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d0"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d34"),
+                            Name = "suml15_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d1"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d35"),
+                            Name = "suml15_cat.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d1"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d36"),
+                            Name = "suml15-h2_01_1.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d1"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d37"),
+                            Name = "suml15-h1_01_1.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d1"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d38"),
+                            Name = "suml16_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d2"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d39"),
+                            Name = "suml16_cat.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d2"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d40"),
+                            Name = "suml16-h2_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d2"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d41"),
+                            Name = "suml16-h1_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d2"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d42"),
+                            Name = "jar02_1_1.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d43"),
+                            Name = "jar02_sm.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d44"),
+                            Name = "jar02-h2_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d45"),
+                            Name = "jar02-h1_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d46"),
+                            Name = "scoxs-jarb12_02.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d3"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d47"),
+                            Name = "jar04_1.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d4"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d48"),
+                            Name = "jar04-h2_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d4"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d49"),
+                            Name = "jar04-h1_01.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d4"),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("ec410ab9-cc0f-4fdc-86e7-fc2757a19d50"),
+                            Name = "scoxs-jarb12_02_1.jpg",
+                            ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d4"),
                             Status = 0
                         });
                 });
@@ -13954,7 +14948,7 @@ namespace Datn_Api.Migrations
                             Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d24"),
                             Color = "Đen",
                             Length = 10,
-                            Material = "Trung bình",
+                            Material = "Vừa",
                             Name = "Kamui Clear Black - Medium",
                             Price = 28.300000000000001,
                             Size = 13,
@@ -13987,7 +14981,7 @@ namespace Datn_Api.Migrations
                             Id = new Guid("cc37720a-7e89-463a-9510-1936e6761d54"),
                             Color = "Đen",
                             Length = 10,
-                            Material = "Trung bình",
+                            Material = "Vừa",
                             Name = "Kamui Black - Medium",
                             Price = 26.800000000000001,
                             Size = 13,
@@ -14058,6 +15052,11 @@ namespace Datn_Api.Migrations
                         {
                             BillId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b13"),
                             VoucherId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b14")
+                        },
+                        new
+                        {
+                            BillId = new Guid("78abde54-7bb8-4320-bff5-a8b77d3c2cf2"),
+                            VoucherId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf4")
                         });
                 });
 
@@ -14105,7 +15104,7 @@ namespace Datn_Api.Migrations
                             Status = 0,
                             TimeEnd = new DateTime(2023, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TimeStart = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Value = 30.0
+                            Value = 100000.0
                         },
                         new
                         {
@@ -14116,7 +15115,7 @@ namespace Datn_Api.Migrations
                             Status = 1,
                             TimeEnd = new DateTime(2023, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TimeStart = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Value = 50.0
+                            Value = 200000.0
                         });
                 });
 
@@ -14197,6 +15196,48 @@ namespace Datn_Api.Migrations
                             Id = new Guid("37c66a8d-acb9-41a1-af73-f46e83a578dc"),
                             CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
                             ProductId = new Guid("cc37720a-7e89-463a-9510-1936e6761d8a")
+                        },
+                        new
+                        {
+                            Id = new Guid("37c66a8d-acb9-41a1-af73-f46e83a579dc"),
+                            CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            ProductId = new Guid("fa7b6dc6-8461-4415-a683-207a452ce288")
+                        },
+                        new
+                        {
+                            Id = new Guid("37c66a8d-acb9-41a1-af73-f46e83a580dc"),
+                            CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            ProductId = new Guid("fa7b6dc6-8461-4415-a683-207a452ce286")
+                        },
+                        new
+                        {
+                            Id = new Guid("37c66a8d-acb9-41a1-af73-f46e83a581dc"),
+                            CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            ProductId = new Guid("fa7b6dc6-8461-4415-a683-207a452ce282")
+                        },
+                        new
+                        {
+                            Id = new Guid("37c66a8d-acb9-41a1-af73-f46e83a582dc"),
+                            CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            ProductId = new Guid("fa7b6dc6-8461-4415-a683-207a452ce280")
+                        },
+                        new
+                        {
+                            Id = new Guid("37c66a8d-acb9-41a1-af73-f46e83a583dc"),
+                            CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            ProductId = new Guid("fa7b6dc6-8461-4415-a683-207a452ce287")
+                        },
+                        new
+                        {
+                            Id = new Guid("37c66a8d-acb9-41a1-af73-f46e83a584dc"),
+                            CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            ProductId = new Guid("fa7b6dc6-8461-4415-a683-207a452ce290")
+                        },
+                        new
+                        {
+                            Id = new Guid("37c66a8d-acb9-41a1-af73-f46e83a585dc"),
+                            CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9231"),
+                            ProductId = new Guid("fa7b6dc6-8461-4415-a683-207a452ce293")
                         });
                 });
 
@@ -14231,14 +15272,14 @@ namespace Datn_Api.Migrations
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"),
-                            ConcurrencyStamp = "954fe0f7-8155-4cbe-8613-dd1cc32c79a4",
+                            ConcurrencyStamp = "5d574360-6dda-41b8-b13c-5693818ed6d8",
                             Name = "Quản lý",
                             NormalizedName = "QUẢN LÝ"
                         },
                         new
                         {
                             Id = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"),
-                            ConcurrencyStamp = "492a0750-0b96-47c4-bbda-2ff7b2a105b8",
+                            ConcurrencyStamp = "ceed1c0e-c704-49dd-9d8d-6d3b5dce4dc3",
                             Name = "Nhân viên",
                             NormalizedName = "NHÂN VIÊN"
                         });

@@ -16,13 +16,16 @@
                     <form asp-controller="Login" asp-action="Login">
                         <div class="group">
                             <label for="user" class="label">Tài Khoản</label>
-                            <input asp-for="Username" id="user" type="text" class="input">
+                            <input asp-for="Username" id="user" type="text" class="input" required>
                             <span asp-validation-for="Username" class="text-danger"></span>
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Mật Khẩu</label>
-                            <input asp-for="Password" id="pass" type="password" class="input" data-type="password">
+                            <input asp-for="Password" id="pass" type="password" class="input" data-type="password" required>
                             <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="group">
+                            <label class="label" style="color: red">@ViewBag.MessageLogin</label>
                         </div>
                         <div class="group">
                             <input id="check" type="checkbox" class="check" checked>
@@ -41,22 +44,22 @@
                     <form asp-controller="Register" asp-action="Register" method="post">
                         <div class="group">
                             <label class="label">Họ tên</label>
-                            <input asp-for="FullName" type="text" class="input">
+                            <input asp-for="FullName" type="text" class="input" required>
                             <span asp-validation-for="FullName" class="text-danger"></span>
                         </div>
                         <div class="group">
                             <label class="label">Tài Khoản</label>
-                            <input asp-for="Username" type="text" class="input">
+                            <input asp-for="Username" type="text" class="input" required>
                             <span asp-validation-for="Username" class="text-danger"></span>
                         </div>
                         <div class="group">
                             <label class="label">Mật Khẩu</label>
-                            <input asp-for="Password" type="password" class="input" data-type="password">
+                            <input asp-for="Password" type="password" class="input" data-type="password" required>
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
                         <div class="group">
                             <label class="label">Nhập Lại Mật Khẩu</label>
-                            <input asp-for="ConfirmPassword" type="password" class="input" data-type="password">
+                            <input asp-for="ConfirmPassword" type="password" class="input" data-type="password" required>
                             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                         </div>
                         <div class="group">
@@ -69,31 +72,34 @@
                         </div>
                         <div class="group">
                             <label class="label">Số điện thoại</label>
-                            <input asp-for="PhoneNumber" type="text" class="input">
+                            <input asp-for="PhoneNumber" type="text" class="input" required>
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
                         <div class="group">
                             <label class="label">Email</label>
-                            <input asp-for="Email" type="email" class="input">
+                            <input asp-for="Email" type="email" class="input" required>
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="group">
                             <label class="label">Ngày sinh</label>
-                            <input asp-for="DateOfBirth" type="date" class="input" min="1920-01-01" max="2015-12-31">
+                            <input asp-for="DateOfBirth" type="date" class="input" min="1920-01-01" max="2015-12-31" required>
                             <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                         </div>
                         <div class="group">
                             <label class="label">Địa chỉ</label>
-                            <input asp-for="Address" type="text" class="input">
+                            <input asp-for="Address" type="text" class="input" required>
                             <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                        <div class="group">
+                            <label class="label" style="color: red">@ViewBag.MessageRegister</label>
                         </div>
                         <div class="group">
                             <input type="submit" class="button" value="Đăng Ký">
                         </div>
                         <div class="hr"></div>
-                        <div class="foot-lnk">
+                        @* <div class="foot-lnk">
                             <label for="tab-1"><a asp-area="" asp-controller="Login" asp-action="Login">Đã Có Tài Khoản?</a></label>
-                        </div>
+                        </div> *@
                     </form>
                 </div>
             </div>

@@ -94,7 +94,7 @@
                                                 <a asp-area="Admin" asp-controller="Post" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success mb-1" title="Chi tiết">
                                                     <i class="bx bxs-detail"></i>
                                                 </a>
-                                                <a asp-area="Admin" asp-controller="Post" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mb-1" title="Xóa">
+                                                <a asp-area="Admin" asp-controller="Post" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mb-1" onclick="return confirm('Bạn chắc chắn có muốn xóa??')" title="Xóa">
                                                     <i class="bx bxs-trash-alt"></i>
                                                 </a>
                                             </td>
@@ -115,7 +115,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Sửa <span>| xx</span></h5>
+                    <h5 class="card-title">Quản lý <span>| xx</span></h5>
                     <!-- Default Tabs -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
