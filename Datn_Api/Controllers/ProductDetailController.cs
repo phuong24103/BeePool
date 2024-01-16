@@ -94,6 +94,20 @@ namespace Datn_Api.Controllers
             string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
             return Ok(formattedJson);
         }
+        [HttpGet]
+        [Route("GetProductDetailFEById/{id:Guid}")]
+        public async Task<IActionResult> GetProductDetailFEById([FromRoute] Guid id)
+        {
+            var mate = await _iprodtsv.GetProductDetailFEById(id);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(mate, settings);
+            JToken parsedJson = JToken.Parse(json);
+            string formattedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
+            return Ok(formattedJson);
+        }
         [HttpPost]
         [Route("Create")]
         public async Task<ActionResult<CreateProductDetail>> CreateProductDetail(CreateProductDetail createProductDetail)

@@ -419,5 +419,37 @@ namespace Datn_Api.Services
                 return false;
             }
         }
+
+        public async Task<ProductDetail> GetProductDetailFEById(Guid id)
+        {
+            ProductDetail prodtview = new ProductDetail();
+            prodtview = await(
+                from a in _context.ProductDetails
+                join b in _context.Tips on a.TipId equals b.Id
+                join c in _context.Shafts on a.ShaftId equals c.Id
+                join d in _context.Weights on a.WeightId equals d.Id
+                join e in _context.Products on a.ProductID equals e.Id
+                where a.Id == id
+                select new ProductDetail()
+                {
+                    Id = a.Id,
+                    TipId = a.TipId,
+                    ShaftId = a.ShaftId,
+                    WeightId = a.WeightId,
+                    ProductID = a.ProductID,
+                    Quantity = a.Quantity,
+                    ImportPrice = a.ImportPrice,
+                    Price = a.Price,
+                    CreateDate = a.CreateDate,
+                    Status = a.Status,
+                    Description = a.Description,
+                    Tip = b,
+                    Shaft = c,
+                    Weight = d,
+                    Product = e,
+
+                }).FirstAsync();
+            return prodtview;
+        }
     }
 }

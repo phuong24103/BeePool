@@ -58,7 +58,7 @@ namespace Datn_Client.Controllers
             else
             {
                 var cartDetails = SessionServices<CartDetailView>.GetObjFromSession(HttpContext.Session, "CartDetail");
-                var product = await _httpClient.GetFromJsonAsync<ProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{cartDetailFE.Id}");
+                var product = await _httpClient.GetFromJsonAsync<ProductDetail>($"https://localhost:7033/api/ProductDetail/GetProductDetailFEById/{cartDetailFE.Id}");
                 var images = await _httpClient.GetFromJsonAsync<IEnumerable<ProductImage>>($"https://localhost:7033/api/ProductImage/GetByProductDetailId/{product.Id}");
 
                 if (SessionServices<CartDetailView>.CheckExistCartDetail(cartDetailFE.Id, cartDetails))
@@ -151,7 +151,7 @@ namespace Datn_Client.Controllers
             else
             {
                 var cartDetails = SessionServices<CartDetailView>.GetObjFromSession(HttpContext.Session, "CartDetail");
-                var product = await _httpClient.GetFromJsonAsync<ProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{id}");
+                var product = await _httpClient.GetFromJsonAsync<ProductDetail>($"https://localhost:7033/api/ProductDetail/GetProductDetailFEById/{id}");
                 var images = await _httpClient.GetFromJsonAsync<IEnumerable<ProductImage>>($"https://localhost:7033/api/ProductImage/GetByProductDetailId/{id}");
 
                 if (SessionServices<CartDetailView>.CheckExistCartDetail(id, cartDetails))
