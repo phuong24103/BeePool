@@ -6,6 +6,7 @@
     var category = (ViewData["Category"] as List<ProductView>);
     var coDanh = (ViewData["CoDanh"] as List<ProductView>);
     var coNhay = (ViewData["CoNhay"] as List<ProductView>);
+    var coTruyenthong = (ViewData["coTruyenthong"] as List<ProductView>);
     <link rel="stylesheet" href="~/css/default.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/productbutton.css" asp-append-version="true" />
@@ -137,13 +138,13 @@
 
 </div>
 <div class="wrapper mb-5">
-    <div class="bg"> Cơ Đánh </div>
-    <div class="fg"> Cơ Đánh </div>
+    <div class="bg"> Cơ Truyền Thống</div>
+    <div class="fg"> Cơ Truyền Thống </div>
 </div>
 <div class="row">
-    @if (coDanh != null)
+    @if (coTruyenthong != null)
     {
-        @foreach (var item in coDanh)
+        @foreach (var item in coTruyenthong)
         {
             @if (@item.ProductDetailId != Guid.Empty)
             {
@@ -186,8 +187,8 @@
     }
 </div>
 <div class="wrapper my-5">
-    <div class="bg"> Cơ Phá </div>
-    <div class="fg"> Cơ Phá </div>
+    <div class="bg"> Cơ Hiện Đại </div>
+    <div class="fg"> Cơ Hiện Đại </div>
 </div>
 <div class="row">
     @if (coNhay != null)

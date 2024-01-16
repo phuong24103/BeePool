@@ -2,6 +2,7 @@
 using Datn_Shared.ViewModels.CategoryViewModels;
 using Humanizer;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Datn_Client.Areas.Admin.Controllers
 {
@@ -16,44 +17,50 @@ namespace Datn_Client.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index(Guid id, string date)
         {
-            if (id == Guid.Empty)
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
             {
-                if (date == "today")
+                if (id == Guid.Empty)
                 {
-                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
-                    IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.DayOfYear == DateTime.Now.DayOfYear) || (p.UpdatedDate.DayOfYear == DateTime.Now.DayOfYear));
-                    ViewBag.DateCategory = date;
-                    return View(c);
-                }
-                else if (date == "thisMonth")
-                {
-                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
-                    IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.Month == DateTime.Now.Month && p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Month == DateTime.Now.Month && p.UpdatedDate.Year == DateTime.Now.Year));
-                    ViewBag.DateCategory = date;
-                    return View(c);
-                }
-                else if (date == "thisYear")
-                {
-                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
-                    IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Year == DateTime.Now.Year));
-                    ViewBag.DateCategory = date;
-                    return View(c);
+                    if (date == "today")
+                    {
+                        var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
+                        IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.DayOfYear == DateTime.Now.DayOfYear) || (p.UpdatedDate.DayOfYear == DateTime.Now.DayOfYear));
+                        ViewBag.DateCategory = date;
+                        return View(c);
+                    }
+                    else if (date == "thisMonth")
+                    {
+                        var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
+                        IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.Month == DateTime.Now.Month && p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Month == DateTime.Now.Month && p.UpdatedDate.Year == DateTime.Now.Year));
+                        ViewBag.DateCategory = date;
+                        return View(c);
+                    }
+                    else if (date == "thisYear")
+                    {
+                        var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
+                        IEnumerable<Category> c = categories.Where(p => (p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Year == DateTime.Now.Year));
+                        ViewBag.DateCategory = date;
+                        return View(c);
+                    }
+                    else
+                    {
+                        var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
+                        return View(categories);
+                    }
                 }
                 else
                 {
                     var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
+                    var category = await _httpClient.GetFromJsonAsync<Category>($"https://localhost:7033/api/Category/GetById/{id}");
+                    List<Category> c = new List<Category>();
+                    c.Add(category);
+                    ViewData["Category"] = c;
                     return View(categories);
                 }
             }
-            else
-            {
-                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7033/api/Category/GetAll");
-                var category = await _httpClient.GetFromJsonAsync<Category>($"https://localhost:7033/api/Category/GetById/{id}");
-                List<Category> c = new List<Category>();
-                c.Add(category);
-                ViewData["Category"] = c;
-                return View(categories);
-            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
         public async Task<IActionResult> Detail(Guid id)
         {
