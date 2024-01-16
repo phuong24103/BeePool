@@ -24,7 +24,13 @@ namespace Datn_Client.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Login(Login loginEmployee)
+        public async Task<IActionResult> Login(string message)
+        {
+            ViewBag.Message = message;
+            return View();
+        }
+
+        public async Task<IActionResult> Log(Login loginEmployee)
         {
             // Send request POST to register API
             var response = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/LoginEmployee", loginEmployee);
@@ -47,8 +53,8 @@ namespace Datn_Client.Areas.Admin.Controllers
             }
             else
             {
-                ViewBag.Message = await response.Content.ReadAsStringAsync();
-                return View();
+                var message = await response.Content.ReadAsStringAsync();
+                return RedirectToAction("Login", new { message });
             }
         }
         public async Task<IActionResult> Logout()

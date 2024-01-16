@@ -8,6 +8,7 @@ namespace Datn_Api.IServices
     public interface IEmployeeService
     {
         public Task<List<Employee>> GetAllEmployee();
+        public Task<List<Employee>> GetAllStaff();
         public Task<Employee> GetEmployeebyId(Guid id);
         public Task<Employee> GetEmployeebyNames(string name);
         public Task<EmployeeView> GetEmployeebyName(string name);

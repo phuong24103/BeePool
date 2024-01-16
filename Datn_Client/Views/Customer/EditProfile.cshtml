@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-md-6" style="margin-bottom : 10px">
                                 <div class="input-group flex-nowrap">
-                                    <input asp-for="Customer.FullName" name="FullName" type="text" class="form-control" placeholder="Họ tên" aria-label="Họ và tên" aria-describedby="addon-wrapping">
+                                    <input asp-for="Customer.FullName" name="FullName" type="text" class="form-control" placeholder="Họ tên" aria-label="Họ và tên" aria-describedby="addon-wrapping" required>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                             </div>
                             <div class="col-md-6" style="margin-bottom : 10px">
                                 <div class="input-group flex-nowrap">
-                                    <input asp-for="Customer.Email" name="Email" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping">
+                                    <input asp-for="Customer.Email" name="Email" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping" required>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                             </div>
                             <div class="col-md-6" style="margin-bottom : 10px">
                                 <div class="input-group flex-nowrap">
-                                    <input asp-for="Customer.PhoneNumber" name="PhoneNumber" type="text" class="form-control" placeholder="Số điện thoại" aria-label="Số điện thoại" aria-describedby="addon-wrapping">
+                                    <input asp-for="Customer.PhoneNumber" name="PhoneNumber" type="text" class="form-control" placeholder="Số điện thoại" aria-label="Số điện thoại" aria-describedby="addon-wrapping" required>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                 <label>Ngày tháng năm sinh</label>
                             </div>
                             <div class="col-md-6" style="margin-bottom : 10px">
-                                <input asp-for="Customer.DateOfBirth" name="DateOfBirth" type="date" id="start" class="form-control" value="@Model.Customer.DateOfBirth.ToString("yyyy-MM-dd")" min="1920-01-01" max="2015-12-31" />
+                                <input asp-for="Customer.DateOfBirth" name="DateOfBirth" type="date" id="start" class="form-control" value="@Model.Customer.DateOfBirth.ToString("yyyy-MM-dd")" min="1920-01-01" max="2015-12-31" required />
                             </div>
                         </div>
                         <div class="row">
@@ -109,7 +109,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group flex-nowrap" style="margin-bottom : 10px">
-                                    <input asp-for="Customer.Address" name="Address" type="text" class="form-control" placeholder="Địa chỉ" aria-label="Địa chỉ" aria-describedby="addon-wrapping">
+                                    <input asp-for="Customer.Address" name="Address" type="text" class="form-control" placeholder="Địa chỉ" aria-label="Địa chỉ" aria-describedby="addon-wrapping" required>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,10 @@
 ﻿using Datn_Shared.ViewModels.AccountViewModels;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace Datn_Client.Areas.Admin.Controllers
@@ -16,9 +20,10 @@ namespace Datn_Client.Areas.Admin.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult Register()
-		{
-			return View();
+		public IActionResult Register(string message)
+        {
+            ViewBag.Message = message;
+            return View();
 		}
 
 		[HttpPost]
@@ -29,9 +34,12 @@ namespace Datn_Client.Areas.Admin.Controllers
             var queryString = $"?role={role}";
             // Send request POST to register API
             var response = await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/RegisterEmployee{queryString}", registerEmployee);
-			ViewBag.Message = await response.Content.ReadAsStringAsync();
-
-			return RedirectToAction("Index", "Home", new { area = "Admin" });
+            if (!response.IsSuccessStatusCode)
+            {
+                var message = await response.Content.ReadAsStringAsync();
+                return RedirectToAction("Register", new { message });
+            }
+            return RedirectToAction("Index", "Home", new { area = "Admin" });
 		}
 	}
 }
