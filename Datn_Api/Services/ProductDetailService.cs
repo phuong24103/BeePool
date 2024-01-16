@@ -25,7 +25,7 @@ namespace Datn_Api.Services
                 TipId = product.TipId,
                 ShaftId = product.ShaftId,
                 WeightId = product.WeightId,
-                Quantity = product.Quantity,
+                Quantity = 1,
                 ImportPrice = product.ImportPrice,
                 Price = product.Price,
                 CreateDate = DateTime.Now,
@@ -99,10 +99,10 @@ namespace Datn_Api.Services
                     CreateDate = a.CreateDate,
                     Status = a.Status,
                     Description = a.Description,
-                    Tip = b,
-                    Shaft = c,
-                    Weight = d,
-                    Product = e,
+                    TipName = b.Name,
+                    ShaftName = c.Name,
+                    WeightName = d.Name,
+                    ProductName = e.Name,
 
                 }).FirstOrDefaultAsync();
             return prodtview;
@@ -131,10 +131,10 @@ namespace Datn_Api.Services
                     CreateDate = a.CreateDate,
                     Status = a.Status,
                     Description = a.Description,
-                    Tip = b,
-                    Shaft = c,
-                    Weight = d,
-                    Product = e,
+                    TipName = b.Name,
+                    ShaftName = c.Name,
+                    WeightName = d.Name,
+                    ProductName = e.Name,
 
                 }).FirstOrDefaultAsync();
             return prodtview;
@@ -163,11 +163,10 @@ namespace Datn_Api.Services
                     CreateDate = a.CreateDate,
                     Status = a.Status,
                     Description = a.Description,
-                    Tip = b,
-                    Shaft = c,
-                    Weight = d,
-                    Product = e,
-
+                    TipName = b.Name,
+                    ShaftName = c.Name,
+                    WeightName = d.Name,
+                    ProductName = e.Name,
                 }).FirstOrDefaultAsync();
             return prodtview;
         } 
@@ -175,22 +174,22 @@ namespace Datn_Api.Services
         public async Task<IEnumerable<ViewProductDetail>> GetAllProductDetail()
         {
             var products = await _context.ProductDetails.Include(p => p.ProductImages).ToListAsync();
-          
+
 
             List<ViewProductDetail> proview = new List<ViewProductDetail>();
 
             foreach (var product in products)
             {
                 var pro = await _context.Products.FirstOrDefaultAsync(p => p.Id == product.ProductID);
-                var tip = await _context.Tips.FirstOrDefaultAsync(p=>p.Id == product.TipId);
-                var shaft = await _context.Shafts.FirstOrDefaultAsync(p=>p.Id == product.ShaftId);
-                var weight = await _context.Weights.FirstOrDefaultAsync(p=>p.Id == product.WeightId);
-                Guid productDetailId = (product != null && product.ProductImages.FirstOrDefault() != null) ? product.ProductImages.FirstOrDefault().Id : Guid.Empty;
+                var tip = await _context.Tips.FirstOrDefaultAsync(p => p.Id == product.TipId);
+                var shaft = await _context.Shafts.FirstOrDefaultAsync(p => p.Id == product.ShaftId);
+                var weight = await _context.Weights.FirstOrDefaultAsync(p => p.Id == product.WeightId);
+                Guid productDetailId = (product != null && product.ProductImages.FirstOrDefault(p => p.ProductDetailId == product.Id) != null) ? product.ProductImages.FirstOrDefault().Id : Guid.Empty;
                 if (productDetailId != Guid.Empty && product.Status != 2)
                 {
 
                     var anh = await _context.ProductImages.Where(p => p.ProductDetailId == product.Id).ToListAsync();
-                    List <string> productImages = new List<string>();
+                    List<string> productImages = new List<string>();
                     foreach (var image in anh)
                     {
 
@@ -198,23 +197,23 @@ namespace Datn_Api.Services
                     }
                     proview.Add(new ViewProductDetail
                     {
-                     
-                     Id = product.Id,
-                     TipId = product.TipId,
-                     ShaftId = product.ShaftId,
-                     WeightId = product.WeightId,
-                     ProductID = product.ProductID,
-                     Quantity = product.Quantity,
-                     ImportPrice = product.ImportPrice,
-                     Price = product.Price,
-                     CreateDate = product.CreateDate,
-                     Status = product.Status,
-                     Description = product.Description,
-                     Tip = tip,
-                     Shaft = shaft,
-                     Weight = weight,
-                     Product = pro,
-                     Image = productImages,
+
+                        Id = product.Id,
+                        TipId = product.TipId,
+                        ShaftId = product.ShaftId,
+                        WeightId = product.WeightId,
+                        ProductID = product.ProductID,
+                        Quantity = product.Quantity,
+                        ImportPrice = product.ImportPrice,
+                        Price = product.Price,
+                        CreateDate = product.CreateDate,
+                        Status = product.Status,
+                        Description = product.Description,
+                        TipName = tip.Name,
+                        ShaftName = shaft.Name,
+                        WeightName = weight.Name,
+                        ProductName = pro.Name,
+                        Image = productImages,
 
                     });
                 }
@@ -222,12 +221,14 @@ namespace Datn_Api.Services
             }
             return proview;
             /* List<ViewProductDetail> prodtview = new List<ViewProductDetail>();
+
              prodtview = await (
                  from a in _context.ProductDetails
                  join b in _context.Tips on a.TipId equals b.Id
                  join c in _context.Shafts on a.ShaftId equals c.Id
                  join d in _context.Weights on a.WeightId equals d.Id
                  join e in _context.Products on a.ProductID equals e.Id
+                 where a.Status != 2 
                  select new ViewProductDetail()
                  {
                      Id = a.Id,
@@ -247,8 +248,8 @@ namespace Datn_Api.Services
                      Product = e,
 
                  }).ToListAsync();
-             return prodtview;*/
-
+             return prodtview;
+ */
         }
 
         public async Task<ViewProductDetail> GetProductDetailById(Guid id)
@@ -263,7 +264,7 @@ namespace Datn_Api.Services
                 var tip = await _context.Tips.FirstOrDefaultAsync(p => p.Id == product.TipId);
                 var shaft = await _context.Shafts.FirstOrDefaultAsync(p => p.Id == product.ShaftId);
                 var weight = await _context.Weights.FirstOrDefaultAsync(p => p.Id == product.WeightId);
-                Guid productDetailId = (product != null && product.ProductImages.FirstOrDefault() != null) ? product.ProductImages.FirstOrDefault().Id : Guid.Empty;
+                Guid productDetailId = (product != null && product.ProductImages.FirstOrDefault(p=>p.ProductDetailId == id) != null) ? product.ProductImages.FirstOrDefault().Id : Guid.Empty;
                 if (productDetailId != Guid.Empty && product.Status != 2)
                 {
 
@@ -288,10 +289,10 @@ namespace Datn_Api.Services
                         CreateDate = product.CreateDate,
                         Status = product.Status,
                         Description = product.Description,
-                        Tip = tip,
-                        Shaft = shaft,
-                        Weight = weight,
-                        Product = pro,
+                        TipName = tip.Name,
+                        ShaftName = shaft.Name,
+                        WeightName = weight.Name,
+                        ProductName = pro.Name,
                         Image = productImages,
 
                     });
@@ -391,7 +392,7 @@ namespace Datn_Api.Services
             n.TipId = product.TipId;
             n.ShaftId = product.ShaftId;
             n.WeightId =product.WeightId;
-            n.Quantity = product.Quantity;
+            n.Quantity = 1;
             n.ImportPrice = product.ImportPrice;
             n.Price = product.Price;
             n.Status = product.Status;
@@ -399,6 +400,17 @@ namespace Datn_Api.Services
             try
             {
                 _context.ProductDetails.Update(n);
+                foreach (var item in product.Image)
+                {
+                    ProductImage productImage = new ProductImage()
+                    {
+                        Id = Guid.NewGuid(),
+                        ProductDetailId = n.Id,
+                        Name = item,
+                        Status = product.Status,
+                    };
+                    await _context.ProductImages.AddAsync(productImage);
+                }
                 await _context.SaveChangesAsync();
                 return true;
             }

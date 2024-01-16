@@ -25,9 +25,11 @@ namespace Datn_Api.Controllers
         public async Task<IActionResult> GetAllProductDetail()
         {
             var mate = await _iprodtsv.GetAllProductDetail();
+
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
-                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+
             };
             string json = JsonConvert.SerializeObject(mate, settings);
             JToken parsedJson = JToken.Parse(json);

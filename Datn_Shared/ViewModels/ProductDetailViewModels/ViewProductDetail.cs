@@ -23,9 +23,9 @@ namespace Datn_Shared.ViewModels.ProductDetailViewModels
         public int Status { get; set; }
         public string Description { get; set; }
         public List<string> Image { get; set; }
-        public  Product Product { get; set; }
-        public  Tip Tip { get; set; }
-        public  Shaft Shaft { get; set; }
-        public  Weight Weight { get; set; }
+        public string ProductName  { get; set; }
+        public  string  TipName  { get; set; }
+        public string ShaftName  { get; set; }
+        public string WeightName  { get; set; }
     }
 }
