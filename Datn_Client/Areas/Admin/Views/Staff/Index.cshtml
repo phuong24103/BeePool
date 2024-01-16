@@ -34,9 +34,9 @@
                                     <h6>Lọc</h6>
                                 </li>
 
-                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Filter" asp-route-date="today">Hôm nay</a></li>
-                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Filter" asp-route-date="thisMonth">Tháng này</a></li>
-                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Filter" asp-route-date="thisYear">Năm nay</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Staff" asp-action="Filter" asp-route-date="today">Hôm nay</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Staff" asp-action="Filter" asp-route-date="thisMonth">Tháng này</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Staff" asp-action="Filter" asp-route-date="thisYear">Năm nay</a></li>
                             </ul>
                         </div>
 
@@ -44,15 +44,15 @@
                             <h5 class="card-title">
                                 Nhân viên
                                 <span>
-                                    | @if (ViewBag.DateCategory == "today")
+                                    | @if (ViewBag.DateEmployee == "today")
                                     {
                                         <span>Hôm nay</span>
                                     }
-                                    else if (ViewBag.DateCategory == "thisMonth")
+                                    else if (ViewBag.DateEmployee == "thisMonth")
                                     {
                                         <span>Tháng này</span>
                                     }
-                                    else if (ViewBag.DateCategory == "thisYear")
+                                    else if (ViewBag.DateEmployee == "thisYear")
                                     {
                                         <span>Năm nay</span>
                                     }
@@ -66,8 +66,11 @@
                             <table class="table table-hover datatable">
                                 <thead>
                                     <tr>
-                                        <th>Tên</th>
-                                        <th>Ngày tạo</th>
+                                        <th>Họ tên</th>
+                                        <th>Giới tính</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Ảnh</th>
+                                        <th>Trạng thái</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -76,13 +79,40 @@
                                     {
                                         <tr>
                                             <td>@item.FullName</td>
-                                            <td>@item.CreateDate</td>
                                             <td>
-                                                <a asp-area="Admin" asp-controller="Category" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success" title="Chi tiết">
+                                                @if (item.Gender == 0)
+                                                {
+                                                    <span>Nam</span>
+                                                }
+                                                else if (item.Gender == 1)
+                                                {
+                                                    <span>Nữ</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Khác</span>
+                                                }
+                                            </td>
+                                            <td>@item.PhoneNumber</td>
+                                            <td>
+                                                <img src="~/images/employees/@item.Image" width="100" style="object-fit: cover;" />
+                                            </td>
+                                            <td>
+                                                @if (item.Status == 0)
+                                                {
+                                                    <span>Đang làm</span>
+                                                }
+                                                else if (item.Status == 2)
+                                                {
+                                                    <span>Đã nghỉ</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-area="Admin" asp-controller="Staff" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success" title="Chi tiết" style="margin-bottom: 5px;">
                                                     <i class="bx bxs-detail"></i>
                                                 </a>
-                                                <a asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn có muốn xóa??')" title="Xóa">
-                                                    <i class="bx bxs-trash-alt"></i>
+                                                <a asp-area="Admin" asp-controller="Staff" asp-action="ChangeRole" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn có muốn nâng người này lên làm Quản Lý??')" title="Nâng lên làm quản lý">
+                                                    <i class="bx bxs-chevrons-up"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -119,13 +149,6 @@
                                 Cập nhật
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
-                                    aria-selected="false">
-                                Tạo mới
-                            </button>
-                        </li>
                     </ul>
 
                     @* Update *@
@@ -134,62 +157,231 @@
                              aria-labelledby="home-tab">
                             @if (employee != null)
                             {
-                                <form asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-id="@employee.First().Id">
+                                <form asp-area="Admin" asp-controller="Staff" asp-action="Update" asp-route-id="@employee.First().Id" enctype="multipart/form-data">
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Tên</label>
+                                        <label class="col-sm-4 col-form-label">Họ tên</label>
                                         <div class="col-sm-8">
-                                            <input asp-for="@employee.First().FullName" type="text" class="form-control" />
+                                            <input asp-for="@employee.First().FullName" type="text" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Giới tính</label>
+                                        <div class="col-sm-8">
+                                            <select asp-for="@employee.First().Gender" class="form-control">
+                                                @if (@employee.First().Gender == 0)
+                                                {
+                                                    <option value="0" selected>Nam</option>
+                                                    <option value="1">Nữ</option>
+                                                    <option value="2">Khác</option>
+                                                }
+                                                else if (@employee.First().Gender == 1)
+                                                {
+                                                    <option value="0">Nam</option>
+                                                    <option value="1" selected>Nữ</option>
+                                                    <option value="2">Khác</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">Nam</option>
+                                                    <option value="1">Nữ</option>
+                                                    <option value="2" selected>Khác</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Số điện thoại</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@employee.First().PhoneNumber" type="number" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Email</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@employee.First().Email" type="email" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Ngày sinh</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@employee.First().DateOfBirth" type="date" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Địa chỉ</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@employee.First().Address" type="text" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Twitter</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@employee.First().Twitter" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Facebook</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@employee.First().Facebook" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Instagram</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@employee.First().Instagram" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Linkedin</label>
+                                        <div class="col-sm-8">
+                                            <input asp-for="@employee.First().Linkedin" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Trạng thái</label>
+                                        <div class="col-sm-8">
+                                            <select asp-for="@employee.First().Status" class="form-control">
+                                                @if (@employee.First().Status == 0)
+                                                {
+                                                    <option value="0" selected>Đang làm</option>
+                                                    <option value="2">Đã nghỉ</option>
+                                                }
+                                                else if (@employee.First().Status == 2)
+                                                {
+                                                    <option value="0">Đang làm</option>
+                                                    <option value="2" selected>Đã nghỉ</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">Đang làm</option>
+                                                    <option value="2">Đã nghỉ</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-4 col-form-label">Ảnh</label>
+                                        <div class="col-sm-8">
+                                            <input name="imageFile" type="file" class="form-control" accept="image/*" />
                                         </div>
                                     </div>
 
-                                    <button class="btn btn-warning">Lưu</button>
+                                    <button class="btn btn-warning" onclick="return confirm('Bạn chắc chắn có muốn sửa??')">Lưu</button>
                                 </form>
                             }
-                        </div>
-
-                        @* Create *@
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <form asp-area="Admin" asp-controller="Category" asp-action="Create">
-                                <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Tên</label>
-                                    <div class="col-sm-8">
-                                        <input name="Name" type="text" class="form-control" />
-                                    </div>
-                                </div>
-
-                                <button class="btn btn-success">Thêm</button>
-                            </form><!-- End Multi Columns Form -->
                         </div>
 
                         @* Detail *@
                         <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             @if (employee != null)
                             {
-                                <div class="row">
-                                    <label class="col-sm-4 col-form-label">
-                                        <p>Tên</p>
-                                        <p>Ngày tạo</p>
-                                        <span>Trạng thái</span>
-                                    </label>
-                                    <label class="col-sm-8 col-form-label">
-                                        @foreach (var item in employee)
+                                <div class="mb-3">
+                                    <label class="form-label">Họ tên</label>
+                                    <div>
+                                        <p class="form-control">@employee.First().FullName</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-3 col-form-label">Giới tính</label>
+                                    <div class="col-sm-9">
+                                        @if (employee.First().Gender == 0)
                                         {
-                                            <p>@item.FullName</p>
-                                            <p>@item.CreateDate</p>
-                                            @if (item.Status == 0)
-                                            {
-                                                <span>Mới</span>
-                                            }
-                                            else if (item.Status == 1)
-                                            {
-                                                <span>Đã sửa</span>
-                                            }
-                                            else
-                                            {
-                                                <span>Đã xóa</span>
-                                            }
+                                            <p class="form-control">Nam</p>
                                         }
-                                    </label>
+                                        else if (employee.First().Gender == 1)
+                                        {
+                                            <p class="form-control">Nữ</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="form-control">Khác</p>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-5 col-form-label">Số điện thoại</label>
+                                    <div class="col-sm-7">
+                                        <p class="form-control">@employee.First().PhoneNumber</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control">@employee.First().Email</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Ngày sinh</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control">@employee.First().DateOfBirth.Day/@employee.First().DateOfBirth.Month/@employee.First().DateOfBirth.Year</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Ngày tạo tài khoản</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control">@employee.First().CreateDate.Day/@employee.First().CreateDate.Month/@employee.First().CreateDate.Year</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Địa chỉ</label>
+                                    <div>
+                                        <p class="form-control">@employee.First().Address</p>
+                                    </div>
+                                </div>
+                                @if (employee.First().Twitter != null)
+                                {
+                                    <div class="mb-3">
+                                        <label class="form-label">Twitter</label>
+                                        <div>
+                                            <p class="form-control">@employee.First().Twitter</p>
+                                        </div>
+                                    </div>
+                                }
+                                @if (employee.First().Facebook != null)
+                                {
+                                    <div class="mb-3">
+                                        <label class="form-label">Facebook</label>
+                                        <div>
+                                            <p class="form-control">@employee.First().Facebook</p>
+                                        </div>
+                                    </div>
+                                }
+                                @if (employee.First().Instagram != null)
+                                {
+                                    <div class="mb-3">
+                                        <label class="form-label">Instagram</label>
+                                        <div>
+                                            <p class="form-control">@employee.First().Instagram</p>
+                                        </div>
+                                    </div>
+                                }
+                                @if (employee.First().Linkedin != null)
+                                {
+                                    <div class="mb-3">
+                                        <label class="form-label">Linkedin</label>
+                                        <div>
+                                            <p class="form-control">@employee.First().Linkedin</p>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Trạng thái</label>
+                                    <div class="col-sm-8">
+                                        @if (employee.First().Status == 0)
+                                        {
+                                            <p class="form-control">Đang làm</p>
+                                        }
+                                        else if (employee.First().Status == 2)
+                                        {
+                                            <p class="form-control">Đã nghỉ</p>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Hình ảnh</label>
+                                    <div class="col-sm-8">
+                                        <img src="~/images/employees/@employee.First().Image" width="100" style="object-fit: cover;" />
+                                    </div>
                                 </div>
                             }
                         </div>

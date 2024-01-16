@@ -2,12 +2,10 @@
 using Datn_Api.IServices;
 using Datn_Shared.Models;
 using Datn_Shared.ViewModels.AccountViewModels;
-using Datn_Shared.ViewModels.CustomerViewModels;
 using Datn_Shared.ViewModels.EmployeeViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-using static System.Net.Mime.MediaTypeNames;
+using System.Data;
 
 namespace Datn_Api.Services
 {
@@ -20,6 +18,34 @@ namespace Datn_Api.Services
         {
             _context = context;
             _employeeManager = employeeManager;
+        }
+
+        public async Task<bool> ChangeRole(Guid id)
+        {
+            try
+            {
+                IdentityUserRole<Guid> userRole = new IdentityUserRole<Guid>()
+                {
+                    UserId = id,
+                    RoleId = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873"),
+                };
+                _context.UserRoles.Remove(userRole);
+                await _context.SaveChangesAsync();
+
+                IdentityUserRole<Guid> userRoles = new IdentityUserRole<Guid>()
+                {
+                    UserId = id,
+                    RoleId = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe872"),
+                };
+
+                await _context.UserRoles.AddAsync(userRoles);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<List<Employee>> GetAllEmployee()
@@ -98,7 +124,7 @@ namespace Datn_Api.Services
             try
             {
                 var check = await _employeeManager.FindByNameAsync(userName);
-                if(employee.NewPassword != employee.ConfirmNewPassword)
+                if (employee.NewPassword != employee.ConfirmNewPassword)
                 {
                     return new Response()
                     {
@@ -142,19 +168,50 @@ namespace Datn_Api.Services
                 var n = await _employeeManager.FindByNameAsync(userName);
                 if (n == null) return false;
 
-                Employee employee1 = n;
-                employee1.FullName = employee.FullName;
-                employee1.Gender = employee.Gender;
-                employee1.DateOfBirth = employee.DateOfBirth;
-                employee1.Address = employee.Address;
-                employee1.PhoneNumber = employee.PhoneNumber;
-                employee1.Email = employee.Email;
-                employee1.Twitter = employee.Twitter;
-                employee1.Facebook = employee.Facebook;
-                employee1.Instagram = employee.Instagram;
-                employee1.Linkedin = employee.Linkedin;
+                n.FullName = employee.FullName;
+                n.Gender = employee.Gender;
+                n.DateOfBirth = employee.DateOfBirth;
+                n.Address = employee.Address;
+                n.PhoneNumber = employee.PhoneNumber;
+                n.Email = employee.Email;
+                n.Twitter = employee.Twitter;
+                n.Facebook = employee.Facebook;
+                n.Instagram = employee.Instagram;
+                n.Linkedin = employee.Linkedin;
 
-                _context.Employees.Update(employee1);
+                _context.Employees.Update(n);
+                await _context.SaveChangesAsync();
+                return true;
+
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateStaff(string userName, UpdateStaff staff)
+        {
+            try
+            {
+                var n = await _employeeManager.FindByNameAsync(userName);
+                if (n == null) return false;
+
+                n.FullName = staff.FullName;
+                n.Gender = staff.Gender;
+                n.DateOfBirth = staff.DateOfBirth;
+                n.Address = staff.Address;
+                n.PhoneNumber = staff.PhoneNumber;
+                n.Email = staff.Email;
+                n.Image = staff.Image;
+                n.Status = staff.Status;
+                n.Twitter = staff.Twitter;
+                n.Facebook = staff.Facebook;
+                n.Instagram = staff.Instagram;
+                n.Linkedin = staff.Linkedin;
+
+                _context.Employees.Update(n);
                 await _context.SaveChangesAsync();
                 return true;
 

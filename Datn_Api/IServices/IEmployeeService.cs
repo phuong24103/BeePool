@@ -14,6 +14,8 @@ namespace Datn_Api.IServices
         public Task<EmployeeView> GetEmployeebyName(string name);
         public Task<bool> UpdateProfileEmployee(string userName, UpdateProfileEmployee employee);
         public Task<Response> UpdatePasswordEmployee(string userName, UpdatePasswordEmployee employee);
+        public Task<bool> UpdateStaff(string userName, UpdateStaff staff);
+        public Task<bool> ChangeRole(Guid id);
         public Task<bool> UpdateImageEmployee(string userName, string image);
     }
 }

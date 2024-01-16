@@ -81,6 +81,22 @@ namespace Datn_Api.Controllers
         }
 
         [HttpPut]
+        [Route("UpdateStaff/{userName}")]
+        public async Task<IActionResult> UpdateStaff(string userName, UpdateStaff staff)
+        {
+            await _employeeService.UpdateStaff(userName, staff);
+            return Ok(staff);
+        }
+
+        [HttpPut]
+        [Route("ChangeRole/{id:Guid}")]
+        public async Task<IActionResult> ChangeRole(Guid id)
+        {
+            await _employeeService.ChangeRole(id);
+            return Ok();
+        }
+
+        [HttpPut]
         [Route("UpdateImage/{userName}/{image}")]
         public async Task<IActionResult> UpdateImageEmployee(string userName, string image)
         {
