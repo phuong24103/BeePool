@@ -55,8 +55,8 @@ namespace Datn_Client.Controllers
             }
             else
             {
-                ViewBag.Message = await response.Content.ReadAsStringAsync();
-                return RedirectToAction("Register", "Register");
+                var messageLogin = await response.Content.ReadAsStringAsync();
+                return RedirectToAction("Register", "Register", new { messageLogin });
             }
         }
         public async Task<IActionResult> Logout()

@@ -27,6 +27,18 @@ namespace Datn_Api.Services
             return await _context.Employees.ToListAsync();
         }
 
+        public async Task<List<Employee>> GetAllStaff()
+        {
+            var staff = await _context.UserRoles.Where(p => p.RoleId == new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873")).ToListAsync();
+            List<Employee> employee = new List<Employee>();
+            foreach (var item in staff)
+            {
+                var employ = await _context.Employees.Where(p => p.Id == item.UserId).FirstOrDefaultAsync();
+                employee.Add(employ);
+            }
+            return employee;
+        }
+
         public async Task<Employee> GetEmployeebyId(Guid id)
         {
             return await _context.Employees.FirstOrDefaultAsync(c => c.Id == id);
