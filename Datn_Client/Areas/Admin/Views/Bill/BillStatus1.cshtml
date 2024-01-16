@@ -79,7 +79,7 @@
                                         }
                                     </td>
                                     <td>
-                                        <a asp-area="Admin" asp-controller="Bill" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                        <a asp-area="Admin" asp-controller="Bill" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn có muốn xóa??')" title="Xóa">
                                             <i class="bx bxs-trash-alt"></i>
                                         </a>
                                     </td>

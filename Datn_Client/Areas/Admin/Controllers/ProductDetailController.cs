@@ -85,8 +85,29 @@ namespace Datn_Client.Areas.Admin.Controllers
             return View(t);
         }
 
-        public async Task<IActionResult> Update(Guid id, UpdateProductDetail updateProductDetail)
+        public async Task<IActionResult> Update(Guid id, UpdateProductDetail updateProductDetail, List<IFormFile> imageFile)
         {
+            if (imageFile.Count > 0)
+            {
+
+                List<string> imgaa = new List<string>();
+                foreach (var item in imageFile)
+                {
+                    if (item != null && item.Length > 0)
+                    {
+                        string images = Guid.NewGuid().ToString() + "_" + item.FileName;
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "products", images);
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await item.CopyToAsync(stream);
+                            imgaa.Add(images);
+                        }
+                    }
+
+
+                }
+                updateProductDetail.Image = imgaa;
+            }
             await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/ProductDetail/Update/{id}", updateProductDetail);
             return RedirectToAction("Index");
         }

@@ -282,6 +282,7 @@ namespace Datn_Api.Services
             proview = await (
                 from a in _context.Products
                 join b in _context.Categories on a.CategoryID equals b.Id
+                join c in _context.Brands on a.BrandID equals c.Id
                 where a.Id == id
                 select new ProductView()
                 {
@@ -302,7 +303,8 @@ namespace Datn_Api.Services
                     Status = a.Status,
                     Description = a.Description,
                     Category = b,
-                    CategoryName = b.Name
+                    CategoryName = b.Name,
+                    BrandName = c.Name
                 }).FirstAsync();
             return proview;
         }
