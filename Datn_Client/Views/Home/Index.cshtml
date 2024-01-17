@@ -58,7 +58,7 @@
                 <a class="card" asp-area="" asp-controller="Product" asp-action="GetByCategory" asp-route-name="@item.CategoryName">
                     <div class="card__background" style="background-image: url(/images/products/@item.Image)"></div>
                     <div class="card__content">
-                        <p class="card__category">Danh mục</p>
+                        <p class="card__category">Thể Loại</p>
                         <h3 class="card__heading">@item.CategoryName</h3>
                     </div>
                 </a>
@@ -72,12 +72,12 @@
             <div class="section-col">
                 <div class="section">
                     <div class="section-in">
-                        <img src="https://down-vn.img.susercontent.com/file/sg-11134201-7rbm6-lmcrik0wqvkbd1" alt="">
+                        <a asp-area="" asp-controller="Product" asp-action="GetProductByBrand" asp-route-name="Predator Cues"><img src="https://down-vn.img.susercontent.com/file/sg-11134201-7rbm6-lmcrik0wqvkbd1" alt=""></a>
                     </div>
                 </div>
             </div>
             <div class="hover-text">
-                <h2>Gậy Đánh</h2>
+                <h2>Cơ Truyền Thống</h2>
             </div>
             <div class="section-col">
                 <div class="section">
@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="hover-text">
-                <h2>Gậy Phá</h2>
+                <h2>Cơ Phá</h2>
             </div>
             <div class="section-col">
                 <div class="section">
@@ -97,7 +97,7 @@
                 </div>
             </div>
             <div class="hover-text">
-                <h2>Tip</h2>
+                <h2>Ngọn</h2>
             </div>
             <div class="section-col">
                 <div class="section">
@@ -107,7 +107,7 @@
                 </div>
             </div>
             <div class="hover-text">
-                <h2>Shaft</h2>
+                <h2>Thân</h2>
             </div>
             <div class="section-col">
                 <div class="section">
@@ -142,9 +142,9 @@
     <div class="fg"> Cơ Truyền Thống </div>
 </div>
 <div class="row">
-    @if (coTruyenthong != null)
+    @if (coDanh != null)
     {
-        @foreach (var item in coTruyenthong)
+        @foreach (var item in coDanh)
         {
             @if (@item.ProductDetailId != Guid.Empty)
             {
@@ -187,7 +187,7 @@
     }
 </div>
 <div class="wrapper my-5">
-    <div class="bg"> Cơ Hiện Đại </div>
+    <div class="bg"> Cơ Hiện Đại</div>
     <div class="fg"> Cơ Hiện Đại </div>
 </div>
 <div class="row">
@@ -235,6 +235,7 @@
         }
     }
 </div>
+
 <div class="wrapper my-5">
     <div class="bg"> Tin Tức </div>
     <div class="fg"> Tin Tức </div>
