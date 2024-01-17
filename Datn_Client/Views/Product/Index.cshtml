@@ -51,17 +51,11 @@
         </div>
         <div class="col-md-4" style="text-align : right">
 
-            <select id="productSelect2">
+            <select id="productSelect3">
 
                 <option selected value="0">Giá</option>
-                <option value="1">Dưới 2000</option>
-                <option value="2">Từ 2000 đến 5000</option>
-                <option value="3">Từ 5000 đến 10000</option>
-                <option value="4">Từ 10000 đến 20000</option>
-                <option value="5">Từ 20000 đến 50000</option>
-                <option value="6">Từ 50000 đến 100000</option>
-                <option value="7">Trên 100000</option>
-
+                <option value="1">Tăng Dần</option>
+                <option value="2">Giảm Dần</option>
             </select>
         </div>
         <div class="col-md-4" style="text-align : right">
@@ -166,6 +160,19 @@
             url = "https://localhost:7162/" + controller + "/" + "GetByPrice2" + "?selectedValue=" + selectedValue;
         }
         window.location.href = url;
+    });
+     document.getElementById("productSelect3").addEventListener("change", function () {
+        var selectedValue = this.value;
+        var controller = "Product";
+        var url;
+        if(selectedValue=="1")
+        {
+            url = "https://localhost:7162/" + controller + "/" + "GetByPriceMin" + "?selectedValue=" + selectedValue;
+        }
+        if(selectedValue=="2")
+        {
+            url = "https://localhost:7162/" + controller + "/" + "GetByPriceMax" + "?selectedValue=" + selectedValue;
+        }
     });
 
     function redirectOnChange(baseUrl) {

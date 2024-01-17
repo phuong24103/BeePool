@@ -24,10 +24,10 @@ namespace Datn_Client.Controllers
             var lstProductView = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAll");
             var category = lstProductView.Where(p => p.Status == 0).GroupBy(p => p.CategoryName).Select(g => g.First()).Take(4).ToList();
 
-            string queryString1 = "Cơ Đánh";
+            string queryString1 = "Cơ Truyền Thống";
             var coDanh = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByCategory/{queryString1}");
 
-            string queryString2 = "Cơ Nhảy";
+            string queryString2 = "Cơ Hiện Đại";
             var coNhay = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByCategory/{queryString2}");
 
             ViewData["Category"] = category;
