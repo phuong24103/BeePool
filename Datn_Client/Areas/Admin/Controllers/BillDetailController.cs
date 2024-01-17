@@ -6,6 +6,7 @@ using Datn_Shared.ViewModels.ProductViewModels;
 using Datn_Shared.ViewModels.VoucherViewModels;
 using Datn_Shared.ViewModels.WeightViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Datn_Client.Areas.Admin.Controllers
 {
@@ -24,17 +25,22 @@ namespace Datn_Client.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> BillDetail(Guid id)
         {
-            var result = await _httpClient.GetFromJsonAsync<List<BillDetailView>>($"https://localhost:7033/api/BillDetail/GetByBillId/{id}");
-            if(result.Count == 0)
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
             {
-                await _httpClient.DeleteAsync($"https://localhost:7033/api/Bill/Delete/{id}");
-                return RedirectToAction("Bill", "Bill");
+                var result = await _httpClient.GetFromJsonAsync<List<BillDetailView>>($"https://localhost:7033/api/BillDetail/GetByBillId/{id}");
+                if (result.Count == 0)
+                {
+                    await _httpClient.DeleteAsync($"https://localhost:7033/api/Bill/Delete/{id}");
+                    return RedirectToAction("Bill", "Bill");
+                }
+                else
+                {
+                    return View(result);
+                }
             }
-            else
-            {
-                return View(result);
-            }
-            
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
         public async Task<IActionResult> Update(Guid id)
         {

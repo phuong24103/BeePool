@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Home Page";
     var category = (ViewData["Category"] as List<ProductView>);
+    var brand = (ViewData["Brand"] as List<ProductView>);
     var coDanh = (ViewData["CoDanh"] as List<ProductView>);
     var coNhay = (ViewData["CoNhay"] as List<ProductView>);
     var coTruyenthong = (ViewData["coTruyenthong"] as List<ProductView>);
@@ -69,17 +70,23 @@
 <div class="row">
     <div class="section-fluid-main">
         <div class="section-row">
-            <div class="section-col">
-                <div class="section">
-                    <div class="section-in">
-                        <a asp-area="" asp-controller="Product" asp-action="GetProductByBrand" asp-route-name="Predator Cues"><img src="https://down-vn.img.susercontent.com/file/sg-11134201-7rbm6-lmcrik0wqvkbd1" alt=""></a>
+            @if (brand != null)
+            {
+                @foreach (var item in brand)
+                {
+                    <div class="section-col">
+                        <div class="section">
+                            <div class="section-in">
+                                <a asp-area="Client" asp-controller="Product" asp-action="GetProductByBrand" asp-route-name="@item.BrandName"><img src="~/images/products/@item.Image" alt=""></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="hover-text">
-                <h2>Cơ Truyền Thống</h2>
-            </div>
-            <div class="section-col">
+                    <div class="hover-text">
+                        <h2>@item.BrandName</h2>
+                    </div>
+                }
+            }
+            @* <div class="section-col">
                 <div class="section">
                     <div class="section-in">
                         <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lkaftnchz1k84f" alt="">
@@ -128,7 +135,7 @@
             </div>
             <div class="hover-text">
                 <h2>Tin Tức</h2>
-            </div>
+            </div> *@
         </div>
 
         <a href="https://front.codes/" class="logo" target="_blank">

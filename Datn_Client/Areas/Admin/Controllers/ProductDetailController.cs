@@ -19,35 +19,40 @@ namespace Datn_Client.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(Guid id)
         {
-            
-            var tip = await _httpClient.GetFromJsonAsync<List<Tip>>("https://localhost:7033/api/Tip/GetAll");
-            ViewData["t"] = tip;
-            var shaft = await _httpClient.GetFromJsonAsync<List<Shaft>>("https://localhost:7033/api/Shaft/GetAll");
-            ViewData["s"] = shaft;
-            var weight = await _httpClient.GetFromJsonAsync<List<Weight>>("https://localhost:7033/api/Weight/GetAll");
-            ViewData["w"] = weight;
-            var product = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAllA");
-            ViewData["p"] = product;
-            if (id == Guid.Empty)   
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
             {
-                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ViewProductDetail>>("https://localhost:7033/api/ProductDetail/GetAll");
-                return View(categories);
+                var tip = await _httpClient.GetFromJsonAsync<List<Tip>>("https://localhost:7033/api/Tip/GetAll");
+                ViewData["t"] = tip;
+                var shaft = await _httpClient.GetFromJsonAsync<List<Shaft>>("https://localhost:7033/api/Shaft/GetAll");
+                ViewData["s"] = shaft;
+                var weight = await _httpClient.GetFromJsonAsync<List<Weight>>("https://localhost:7033/api/Weight/GetAll");
+                ViewData["w"] = weight;
+                var product = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAllA");
+                ViewData["p"] = product;
+                if (id == Guid.Empty)
+                {
+                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ViewProductDetail>>("https://localhost:7033/api/ProductDetail/GetAll");
+                    return View(categories);
+                }
+                else
+                {
+                    var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ViewProductDetail>>("https://localhost:7033/api/ProductDetail/GetAll");
+                    var category = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{id}");
+                    List<ViewProductDetail> c = new List<ViewProductDetail>();
+
+                    c.Add(category);
+                    ViewData["pdt"] = c;
+                    ViewBag.ProductDetailId = id;
+                    return View(categories);
+                }
             }
-            else
-            {
-                var categories = await _httpClient.GetFromJsonAsync<IEnumerable<ViewProductDetail>>("https://localhost:7033/api/ProductDetail/GetAll");
-                var category = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{id}");
-                List<ViewProductDetail> c = new List<ViewProductDetail>();
-               
-                c.Add(category);
-                ViewData["pdt"] = c;
-                ViewBag.ProductDetailId = id;
-                return View(categories);
-            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
-        public async Task<IActionResult> Create(CreateProductDetail create, List< IFormFile> imageFile)
+        public async Task<IActionResult> Create(CreateProductDetail create, List<IFormFile> imageFile)
         {
-            if (imageFile.Count > 0 )
+            if (imageFile.Count > 0)
             {
 
                 List<string> imgaa = new List<string>();

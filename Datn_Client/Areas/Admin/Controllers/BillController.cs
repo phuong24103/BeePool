@@ -18,38 +18,74 @@ namespace Datn_Client.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Bill()
         {
-            var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetAll");
-            return View(result);
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
+            {
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetAll");
+                return View(result);
+            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
         public async Task<IActionResult> BillStatus1()
         {
-            var idbillstatus = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15");
-            var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
-            return View(result);
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
+            {
+                var idbillstatus = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15");
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
+                return View(result);
+            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
         public async Task<IActionResult> BillStatus2()
         {
-            var idbillstatus = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5");
-            var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
-            return View(result);
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
+            {
+                var idbillstatus = Guid.Parse("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5");
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
+                return View(result);
+            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
         public async Task<IActionResult> BillStatus3()
         {
-            var idbillstatus = Guid.Parse("b392b872-712a-41a7-8542-83fb58249c23");
-            var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
-            return View(result);
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
+            {
+                var idbillstatus = Guid.Parse("b392b872-712a-41a7-8542-83fb58249c23");
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
+                return View(result);
+            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
         public async Task<IActionResult> BillStatus4()
         {
-            var idbillstatus = Guid.Parse("00357f21-9356-468b-8c0c-b590e3d1bc0a");
-            var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
-            return View(result);
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
+            {
+                var idbillstatus = Guid.Parse("00357f21-9356-468b-8c0c-b590e3d1bc0a");
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
+                return View(result);
+            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
         public async Task<IActionResult> BillStatus5()
         {
-            var idbillstatus = Guid.Parse("33c0bdd2-85ca-4f05-9360-22be333895fe");
-            var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
-            return View(result);
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
+            {
+                var idbillstatus = Guid.Parse("33c0bdd2-85ca-4f05-9360-22be333895fe");
+                var result = await _httpClient.GetFromJsonAsync<List<BillView>>($"https://localhost:7033/api/Bill/GetBillByBillStatusId/{idbillstatus}");
+                return View(result);
+            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
 
 
@@ -60,7 +96,7 @@ namespace Datn_Client.Areas.Admin.Controllers
             await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Bill/Update/{id}", b);
             //Giam so luong ton
             var listBillDetail = await _httpClient.GetFromJsonAsync<List<BillDetailView>>($"https://localhost:7033/api/BillDetail/GetByBillId/{id}");
-            foreach(var item in listBillDetail)
+            foreach (var item in listBillDetail)
             {
                 var productdetail = await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetById/{item.ProductDetailId}");
 

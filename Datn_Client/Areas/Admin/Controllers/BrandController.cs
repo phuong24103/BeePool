@@ -3,6 +3,7 @@ using Datn_Shared.Models;
 using Humanizer;
 /*using Datn_Api.Migrations;*/
 using Datn_Shared.ViewModels.BrandViewModels;
+using System.Security.Claims;
 
 namespace Datn_Client.Areas.Admin.Controllers
 {
@@ -14,46 +15,52 @@ namespace Datn_Client.Areas.Admin.Controllers
         {
             _httpClient = httpClient;
         }
-        public async Task<IActionResult> Index(Guid id , string date)
+        public async Task<IActionResult> Index(Guid id, string date)
         {
-            if (id == Guid.Empty)
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
             {
-                if (date == "today")
+                if (id == Guid.Empty)
                 {
-                    var brand = await _httpClient.GetFromJsonAsync<IEnumerable<Brand>>("https://localhost:7033/api/Brand/GetAll");
-                    IEnumerable<Brand> b = brand.Where(p => (p.DateCreated.DayOfYear == DateTime.Now.DayOfYear));
-                    ViewBag.DateBrand = date;
-                    return View(b);
-                }
-                else if (date == "thisMonth")
-                {
-                    var brand = await _httpClient.GetFromJsonAsync<IEnumerable<Brand>>("https://localhost:7033/api/Brand/GetAll");
-                    IEnumerable<Brand> c = brand.Where(p => (p.DateCreated.Month == DateTime.Now.Month && p.DateCreated.Year == DateTime.Now.Year));
-                    ViewBag.DateBrand = date;
-                    return View(c);
-                }
-                else if (date == "thisYear")
-                {
-                    var brand = await _httpClient.GetFromJsonAsync<IEnumerable<Brand>>("https://localhost:7033/api/Brand/GetAll");
-                    IEnumerable<Brand> c = brand.Where(p => (p.DateCreated.Year == DateTime.Now.Year));
-                    ViewBag.DateBrand = date;
-                    return View(c);
+                    if (date == "today")
+                    {
+                        var brand = await _httpClient.GetFromJsonAsync<IEnumerable<Brand>>("https://localhost:7033/api/Brand/GetAll");
+                        IEnumerable<Brand> b = brand.Where(p => (p.DateCreated.DayOfYear == DateTime.Now.DayOfYear));
+                        ViewBag.DateBrand = date;
+                        return View(b);
+                    }
+                    else if (date == "thisMonth")
+                    {
+                        var brand = await _httpClient.GetFromJsonAsync<IEnumerable<Brand>>("https://localhost:7033/api/Brand/GetAll");
+                        IEnumerable<Brand> c = brand.Where(p => (p.DateCreated.Month == DateTime.Now.Month && p.DateCreated.Year == DateTime.Now.Year));
+                        ViewBag.DateBrand = date;
+                        return View(c);
+                    }
+                    else if (date == "thisYear")
+                    {
+                        var brand = await _httpClient.GetFromJsonAsync<IEnumerable<Brand>>("https://localhost:7033/api/Brand/GetAll");
+                        IEnumerable<Brand> c = brand.Where(p => (p.DateCreated.Year == DateTime.Now.Year));
+                        ViewBag.DateBrand = date;
+                        return View(c);
+                    }
+                    else
+                    {
+                        var brand = await _httpClient.GetFromJsonAsync<IEnumerable<Brand>>("https://localhost:7033/api/Brand/GetAll");
+                        return View(brand);
+                    }
                 }
                 else
                 {
-                    var brand = await _httpClient.GetFromJsonAsync<IEnumerable<Brand>>("https://localhost:7033/api/Brand/GetAll");
-                    return View(brand);
+                    var brands = await _httpClient.GetFromJsonAsync<IEnumerable<Brand>>("https://localhost:7033/api/Brand/GetAll");
+                    var brand = await _httpClient.GetFromJsonAsync<Brand>($"https://localhost:7033/api/Brand/GetById/{id}");
+                    List<Brand> c = new List<Brand>();
+                    c.Add(brand);
+                    ViewData["Brand"] = c;
+                    return View(brands);
                 }
             }
-            else
-            {
-                var brands = await _httpClient.GetFromJsonAsync<IEnumerable<Brand>>("https://localhost:7033/api/Brand/GetAll");
-                var brand = await _httpClient.GetFromJsonAsync<Brand>($"https://localhost:7033/api/Brand/GetById/{id}");
-                List<Brand> c = new List<Brand>();
-                c.Add(brand);
-                ViewData["Brand"] = c;
-                return View(brands);
-            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
         public async Task<IActionResult> Detail(Guid id)
         {
@@ -68,7 +75,7 @@ namespace Datn_Client.Areas.Admin.Controllers
             await _httpClient.PostAsJsonAsync($"https://localhost:7033/api/Brand/Create", createBrand);
             return RedirectToAction("Index");
         }
-        public async Task<IActionResult> Update(Guid id, UpdateBrand  brand)
+        public async Task<IActionResult> Update(Guid id, UpdateBrand brand)
         {
             await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Brand/Update/{id}", brand);
             return RedirectToAction("Index");
@@ -79,4 +86,4 @@ namespace Datn_Client.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
     }
-    }
+}

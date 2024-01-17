@@ -9,25 +9,31 @@ using System.Text;
 
 namespace Datn_Client.Areas.Admin.Controllers
 {
-	[Area("Admin")]
-	public class RegisterController : Controller
-	{
-		private readonly HttpClient _httpClient;
+    [Area("Admin")]
+    public class RegisterController : Controller
+    {
+        private readonly HttpClient _httpClient;
 
-		public RegisterController(HttpClient httpClient)
-		{
-			_httpClient = httpClient;
-		}
-
-		[HttpGet]
-		public IActionResult Register(string message)
+        public RegisterController(HttpClient httpClient)
         {
-            ViewBag.Message = message;
-            return View();
-		}
+            _httpClient = httpClient;
+        }
 
-		[HttpPost]
-		public async Task<IActionResult> Register(Register registerEmployee, string role)
+        [HttpGet]
+        public IActionResult Register(string message)
+        {
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
+            {
+                ViewBag.Message = message;
+                return View();
+            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(Register registerEmployee, string role)
         {
             // Add role to queryString
             role = "Nhân viên";
@@ -40,6 +46,6 @@ namespace Datn_Client.Areas.Admin.Controllers
                 return RedirectToAction("Register", new { message });
             }
             return RedirectToAction("Index", "Home", new { area = "Admin" });
-		}
-	}
+        }
+    }
 }

@@ -23,6 +23,7 @@ namespace Datn_Client.Controllers
         {
             var lstProductView = await _httpClient.GetFromJsonAsync<List<ProductView>>("https://localhost:7033/api/Product/GetAll");
             var category = lstProductView.Where(p => p.Status == 0).GroupBy(p => p.CategoryName).Select(g => g.First()).Take(4).ToList();
+            var brand = lstProductView.Where(p => p.Status == 0).GroupBy(p => p.BrandName).Select(g => g.First()).Take(6).ToList();
 
             string queryString1 = "Cơ Truyền Thống";
             var coDanh = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByCategory/{queryString1}");
@@ -31,6 +32,7 @@ namespace Datn_Client.Controllers
             var coNhay = await _httpClient.GetFromJsonAsync<List<ProductView>>($"https://localhost:7033/api/Product/GetByCategory/{queryString2}");
 
             ViewData["Category"] = category;
+            ViewData["Brand"] = brand;
             ViewData["CoDanh"] = coDanh.Take(3).ToList();
             ViewData["CoNhay"] = coNhay.Take(3).ToList();
 
