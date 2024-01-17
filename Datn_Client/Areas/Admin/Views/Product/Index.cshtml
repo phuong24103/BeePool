@@ -14,7 +14,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
             <li class="breadcrumb-item active">Tổng quan</li>
-            <li class="breadcrumb-item active">Danh mục</li>
+            <li class="breadcrumb-item active"> Sản phẩm</li>
         </ol>
     </nav>
 </div>
@@ -62,20 +62,20 @@
                             <h5 class="card-title">Sản phẩm <span>| </span></h5>
 
                             <table class="table table-hover datatable">
+                                <thead>
                                 <tr>
-                                    <td>tên Sản phẩm</td>
-                                    <td>Tên danh mục</td>
-                                    <td>Pin</td>
-                                    <td>Wrap</td>
-                                    <td>Rings</td>
-                                    <td>AvailableQuantity</td>
-                                  @*   <td>Sold</td>
-                                    <td>Likes</td> *@
-                                    <td>Brand</td>
-                                @*     <td>CreateDate</td> *@
-                                    <td>Ảnh</td>
-                                @*     <td>Trạng thái</td> *@
+                                    <th>Sản phẩm</th>
+                                    <th>Danh mục</th>
+                                    <th>Đinh vít</th>
+                                    <th>Cán cơ</th>
+                                    <th>Vòng</th>
+                                    <th>Số lượng tồn</th>
+                                    <th>Thương hiệu</th>
+                                    <th>Ảnh</th>
+                                    <th></th>
                                 </tr>
+                                </thead>
+                                <tbody>
                                 @foreach (var item in @Model)
                                 {
                                     <tr>
@@ -85,25 +85,8 @@
                                         <td>@item.Wrap</td>
                                         <td>@item.Rings</td>
                                         <td>@item.AvailableQuantity</td>
-                                @*         <td>@item.Sold</td>
-                                        <td>@item.Likes</td> *@
                                         <td>@item.BrandName</td>
-                               @*          <td>@item.CreateDate</td> *@
                                         <td> <img src="/images/products/@item.Image" width="100" height="100" style="object-fit:cover;" /></td>
-                                   @*      <td>
-                                            @if (item.Status == 0)
-                                            {
-                                                <span>Còn hàng</span>
-                                            }
-                                            else if (item.Status == 1)
-                                            {
-                                                <span>Hết hàng</span>
-                                            }
-                                            else
-                                            {
-                                                <span>Ngừng bán</span>
-                                            }
-                                        </td> *@
                                         <td>
                                             <a asp-area="Admin" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success">
                                                 <i class="bx bxs-detail"></i>
@@ -114,6 +97,7 @@
                                         </td>
                                     </tr>
                                 }
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -128,7 +112,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Sửa <span>| xx</span></h5>
+                    <h5 class="card-title">Quản lý <span>| xx</span></h5>
                     <!-- Default Tabs -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -162,13 +146,13 @@
                             {
                                 <form asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@category.First().Id">
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Name</label>
+                                        <label class="col-sm-4 col-form-label">Sản phẩm</label>
                                         <div class="col-sm-8">
                                             <input asp-for="@category.First().Name" type="text" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Tên danh mục</label>
+                                        <label class="col-sm-4 col-form-label">Danh mục</label>
                                         <div class="col-sm-8">
                                             <select asp-for="@category.First().CategoryID" class="form-select" aria-label="Default select example">
                                                 <option selected>Open this select menu</option>
@@ -185,7 +169,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Tên thương hiệu</label>
+                                        <label class="col-sm-4 col-form-label">Thương hiệu</label>
                                         <div class="col-sm-8">
                                             <select asp-for ="@category.First().BrandID" class="form-select" aria-label="Default select example">
                                                 <option selected>Open this select menu</option>
@@ -254,7 +238,7 @@
                                         </div>
                                     </div>
 
-                                    <button class="btn btn-warning">Lưu</button>
+                                    <button class="btn btn-warning" onclick="return confirm('Xác nhận để lưu thay đổi')" title="Cập nhật">Lưu</button>
                                 </form>
                             }
                         </div>
@@ -303,38 +287,38 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Pin</label>
+                                    <label class="col-sm-4 col-form-label">Đinh vít</label>
                                     <div class="col-sm-8">
                                         <input name="Pin" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Wrap</label>
+                                    <label class="col-sm-4 col-form-label">Cán cơ</label>
                                     <div class="col-sm-8">
                                         <input name="Wrap" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Rings</label>
+                                    <label class="col-sm-4 col-form-label">Vòng</label>
                                     <div class="col-sm-8">
                                         <input name="Rings" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">AvailableQuantity</label>
+                                    <label class="col-sm-4 col-form-label">Số lượng tồn</label>
                                     <div class="col-sm-8">
                                         <input name="AvailableQuantity" type="text" class="form-control" value="" />
                                     </div>
                                 </div>   
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Description</label>
+                                        <label class="col-sm-4 col-form-label">Mô tả</label>
                                         <div class="col-sm-8">
                                             <input name="Description" type="text" class="form-control" value="" />
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Status</label>
+                                        <label class="col-sm-4 col-form-label">Trạng thái</label>
                                         <div class="col-sm-8">
                                             <select name="Status" class="form-select" aria-label="Default select example">
                                                 <option selected>Open this select menu</option>
@@ -344,7 +328,7 @@
                                         </div>
                                     </div>
 
-                                    <button class="btn btn-success">Thêm</button>
+                                <button class="btn btn-success" onclick="return confirm('Xác nhận để thêm sản phẩm')" title="Thêm">Thêm</button>
                             </form><!-- End Multi Columns Form -->
                         </div>
 
@@ -354,17 +338,17 @@
                             {
                                 <div class="row">
                                     <label class="col-sm-4 col-form-label">
-                                        <p>Tên sp</p>
-                                        <p>Tên dm</p>
-                                        <p>Pin</p>
-                                        <p>Wrap</p>
-                                        <p>Rings</p>
-                                        <p>Sl tồn</p>
-                                        <p>Sold</p>
-                                        <p>Likes</p>
-                                        <p>Brand</p>
-                                        <p>CreateDate</p>
-                                        <p>Description</p>
+                                        <p>Sản phẩm</p>
+                                        <p>Danh mục</p>
+                                        <p>Đinh vít</p>
+                                        <p>Cán cơ</p>
+                                        <p>Vòng</p>
+                                        <p>Số lượng tồn</p>
+                                        <p>Lượt bán</p>
+                                        <p>Lượt thích</p>
+                                        <p>Thương hiệu</p>
+                                        <p>Ngày tạo</p>
+                                        <p>Mô tả</p>
                                         <span>Trạng thái</span>
                                     </label>
                                     <label class="col-sm-8 col-form-label">

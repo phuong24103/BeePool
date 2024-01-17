@@ -12,7 +12,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
             <li class="breadcrumb-item active">Tổng quan</li>
-            <li class="breadcrumb-item active">Loại sản phẩm</li>
+            <li class="breadcrumb-item active">Thương hiệu</li>
         </ol>
     </nav>
 </div>
@@ -41,8 +41,8 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">
-                                Loại sản phẩm
+@*                             <h5 class="card-title">
+                                Thương hiệu
                                 <span>
                                     | @if (ViewBag.DateBrand == "today")
                                     {
@@ -61,14 +61,15 @@
                                         <span>Toàn bộ</span>
                                     }
                                 </span>
-                            </h5>
+                            </h5> *@
 
                             <table class="table table-hover datatable">
                                 <thead>
                                     <tr>
                                         <th>Tên</th>
                                         <th>Ngày tạo</th>
-                                        <th>Description</th>
+                                        <th>Mô tả</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,7 +79,7 @@
                                             <td>@item.Name</td>
                                             <td>@item.DateCreated</td>
                                             <td>@item.Description</td>
-                                            <td>
+                                           @*  <td>
                                                 @if (item.Status == 0)
                                                 {
                                                     <span>Còn hàng</span>
@@ -91,7 +92,7 @@
                                                 {
                                                     <span>Ngừng bán</span>
                                                 }
-                                            </td>
+                                            </td> *@
                                             <td>
                                                 <a asp-area="Admin" asp-controller="Brand" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success" title="Chi tiết">
                                                     <i class="bx bxs-detail"></i>
@@ -117,7 +118,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Sửa <span>| xx</span></h5>
+                    <h5 class="card-title">Quản lý <span>| xx</span></h5>
                     <!-- Default Tabs -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -157,13 +158,13 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Description</label>
+                                        <label class="col-sm-4 col-form-label">Mô tả</label>
                                         <div class="col-sm-8">
                                             <input asp-for="@brand.First().Description" type="text" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Status</label>
+                                        <label class="col-sm-4 col-form-label">Trạng thái</label>
                                         <div class="col-sm-8">
                                             <select asp-for="@brand.First().Status" class="form-select" aria-label="Default select example">
                                                 <option selected>Open this select menu</option>
@@ -174,7 +175,7 @@
                                         </div>
                                     </div>
 
-                                    <button class="btn btn-warning">Lưu</button>
+                                    <button class="btn btn-warning" onclick="return confirm('Xác nhận để lưu thay đổi')" title="Cập nhật">Lưu</button>
                                 </form>
                             }
                         </div>
@@ -189,13 +190,13 @@
                                     </div>
                                 </div> 
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Description</label>
+                                    <label class="col-sm-4 col-form-label">Mô tả</label>
                                     <div class="col-sm-8">
                                         <input name="Description" type="text" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Status</label>
+                                    <label class="col-sm-4 col-form-label">Trạng thái</label>
                                     <div class="col-sm-8">
                                         <select name="Status" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
@@ -205,7 +206,7 @@
                                     </div>
                                 </div>
 
-                                <button class="btn btn-success">Thêm</button>
+                                <button class="btn btn-success" onclick="return confirm('Xác nhận để thêm sản phẩm')" title="Thêm">Thêm</button>
                             </form><!-- End Multi Columns Form -->
                         </div>
 
@@ -217,7 +218,7 @@
                                     <label class="col-sm-4 col-form-label">
                                         <p>Tên</p>
                                         <p>Ngày tạo</p>
-                                        <p>Description</p>
+                                        <p>Mô tả</p>
                                         <span>Trạng thái</span>
                                     </label>
                                     <label class="col-sm-8 col-form-label">

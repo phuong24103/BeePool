@@ -19,21 +19,11 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
             <li class="breadcrumb-item active">Tổng quan</li>
-            <li class="breadcrumb-item active">Danh mục</li>
+            <li class="breadcrumb-item active">Sản phẩm chi tiết</li>
         </ol>
     </nav>
 </div>
 <!-- End Page Title -->
-<div class="pagetitle">
-    <h1>Quản lý sản phẩm chi tiết</h1>
-    <nav>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
-            <li class="breadcrumb-item active">Tổng quan</li>
-            <li class="breadcrumb-item active">Danh mục</li>
-        </ol>
-    </nav>
-</div>
 <!-- End Page Title -->
 
 <section class="section dashboard">
@@ -46,18 +36,19 @@
                     <div class="card recent-sales overflow-auto">
 
                         <div class="card-body">
-                            <h5 class="card-title">Sản phẩm <span>| </span></h5>
+                            <h5 class="card-title">Sản phẩm chi tiết <span>| </span></h5>
 
                             <table class="table table-hover datatable">
                                 <thead>
                                     <tr>
-                                        <th>tên Sản phẩm</th>
-                                        <th>Tên tip</th>
-                                        <th>Tên shaft</th>
-                                        <th>weight</th>
-                                        <th>ImportPrice</th>
-                                        <th>Price</th>
+                                        <th>Sản phẩm</th>
+                                        <th>Ngọn</th>
+                                        <th>Thân gậy</th>
+                                        <th>Trọng lượng</th>
+                                        <th>Giá nhập</th>
+                                        <th>Giá bán</th>
                                         <th>Ảnh</th>
+                                        <th></th>
 
                                     </tr>
                                 </thead>
@@ -104,7 +95,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Sửa <span>| xx</span></h5>
+                    <h5 class="card-title">Quản lý <span>| xx</span></h5>
                     <!-- Default Tabs -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -159,7 +150,7 @@
 
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Tên tip</label>
+                                        <label class="col-sm-4 col-form-label">Ngọn</label>
                                         <select asp-for="@productdt.First().TipId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in tip)
@@ -178,7 +169,7 @@
 
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Tên shaft</label>
+                                        <label class="col-sm-4 col-form-label">Thân</label>
                                         <select asp-for="@productdt.First().ShaftId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in shaft)
@@ -197,7 +188,7 @@
 
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Tên weight</label>
+                                        <label class="col-sm-4 col-form-label">Trọng lượng</label>
                                         <select asp-for="@productdt.First().WeightId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             @foreach (var item in weight)
@@ -222,27 +213,27 @@
                                 </div>
                                 </div> *@
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">des</label>
+                                        <label class="col-sm-4 col-form-label">Mô tả</label>
                                         <div class="col-sm-8">
                                             <input asp-for="@productdt.First().Description" type="text" class="form-control" />
                                         </div>
                                     </div>
 
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">ImportPrice</label>
+                                        <label class="col-sm-4 col-form-label">Giá nhập</label>
                                         <div class="col-sm-8">
                                             <input asp-for="@productdt.First().ImportPrice" type="text" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Price</label>
+                                        <label class="col-sm-4 col-form-label">Giá bán</label>
                                         <div class="col-sm-8">
                                             <input asp-for="@productdt.First().Price" type="text" class="form-control" />
                                         </div>
                                     </div>
 
                                     <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Status</label>
+                                        <label class="col-sm-4 col-form-label">Trạng thái</label>
                                         <div class="col-sm-8">
                                             <select asp-for="@Model.First().Status" class="form-select" aria-label="Default select example">
                                                 <option selected>Open this select menu</option>
@@ -259,7 +250,7 @@
                                         </div>
                                     </div>
 
-                                    <button class="btn btn-warning">Lưu</button>
+                                    <button class="btn btn-warning" onclick="return confirm('Xác nhận để thay đổi')" title="Cập nhật">Lưu</button>
                                 </form>
                             }
                         </div>
@@ -268,7 +259,7 @@
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <form asp-area="Admin" asp-controller="ProductDetail" asp-action="Create" enctype="multipart/form-data">
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Tên sản phẩm</label>
+                                    <label class="col-sm-4 col-form-label">Tên</label>
                                     <div class="col-sm-8">
                                         <select name="ProductID" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
@@ -285,7 +276,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Tên tip</label>
+                                    <label class="col-sm-4 col-form-label">Ngọn</label>
                                     <div class="col-sm-8">
                                         <select name="TipId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
@@ -302,7 +293,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Tên shaft</label>
+                                    <label class="col-sm-4 col-form-label">Thân</label>
                                     <div class="col-sm-8">
                                         <select name="ShaftId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
@@ -319,7 +310,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Tên Weight</label>
+                                    <label class="col-sm-4 col-form-label">Trọng lượng</label>
                                     <div class="col-sm-8">
                                         <select name="WeightId" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
@@ -337,33 +328,28 @@
                                 </div>
 
 
-                                @*      <div class="mb-3 row">
-                                <label class="col-sm-4 col-form-label">Quantity</label>
-                                <div class="col-sm-8">
-                                <input name="Quantity" type="text" class="form-control" value="" />
-                                </div>
-                                </div>  *@
+                         
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">descrip</label>
+                                    <label class="col-sm-4 col-form-label">Mô tả</label>
                                     <div class="col-sm-8">
                                         <input name="Description" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">ImportPrice</label>
+                                    <label class="col-sm-4 col-form-label">Giá nhập</label>
                                     <div class="col-sm-8">
                                         <input name="ImportPrice" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Price</label>
+                                    <label class="col-sm-4 col-form-label">Giá bán</label>
                                     <div class="col-sm-8">
                                         <input name="Price" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Status</label>
+                                    <label class="col-sm-4 col-form-label">Trạng thái</label>
                                     <div class="col-sm-8">
                                         <select name="Status" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
@@ -373,13 +359,13 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">ảnh</label>
+                                    <label class="col-sm-4 col-form-label">Ảnh</label>
                                     <div class="col-sm-8">
                                         <input name="imageFile" type="file" accept="image/*" class="form-control" multiple="multiple" />
                                     </div>
                                 </div>
 
-                                <button class="btn btn-success">Thêm</button>
+                                <button class="btn btn-success" onclick="return confirm('Xác nhận để thêm sản phẩm')" title="Thêm">Thêm</button>
                             </form><!-- End Multi Columns Form -->
                         </div>
 
@@ -394,33 +380,33 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-3 col-form-label">Tip</label>
+                                    <label class="col-sm-3 col-form-label">Ngọn</label>
                                     <div class="col-sm-9">
                                         <p class="form-control">@productdt.First().TipName</p>
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label class="col-sm-3 col-form-label">Shaft</label>
+                                    <label class="col-sm-3 col-form-label">Thân</label>
                                     <div class="col-sm-9">
                                         <p class="form-control">@productdt.First().ShaftName</p>
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Weight</label>
+                                    <label class="col-sm-4 col-form-label">Trọng lượng</label>
                                     <div class="col-sm-8">
                                         <p class="form-control">@productdt.First().WeightName</p>
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">ImportPrice</label>
+                                    <label class="form-label">Giá nhập</label>
                                     <div>
                                         <p class="form-control">@productdt.First().ImportPrice</p>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Price</label>
+                                    <label class="form-label">Giá bán</label>
                                     <div>
                                         <p class="form-control">@productdt.First().Price</p>
                                     </div>
@@ -453,51 +439,7 @@
                                 </div>
                             }
                         </div>
-                        @*  <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        @if (productdt != null)
-                        {
-                        <div class="row">
-                        <label class="col-sm-4 col-form-label">
-                        <p>Sản phẩm</p>
-                        <p>Tên tip</p>
-                        <p>Tên shaft</p>
-                        <p>Tên weight</p>
-                        <p>Quantity</p>
-                        <p>ImportPrice</p>
-                        <p>Price</p>
-                        <p>Trạng thái</p>
-                        <span>Ảnh</span>
-                        </label>
-                        <label class="col-sm-8 col-form-label">
-                        @foreach (var item in productdt)
-                        {
-                        <p>@item.ProductName</p>
-                        <p>@item.TipName</p>
-                        <p>@item.ShaftName</p>
-                        <p>@item.WeightName</p>
-                        <p>@item.Quantity</p>
-                        <p>@item.ImportPrice</p>
-                        <p>@item.Price</p>
-                        @if (item.Status == 0)
-                        {
-                        <p>Còn hàng</p>
-                        }
-                        else if (item.Status == 1)
-                        {
-                        <p>Hết hàng</p>
-                        }
-                        else
-                        {
-                        <p>Ngừng bán</p>
-                        }
-                        <span>
-
-                        </span>
-                        }
-                        </label>
-                        </div>
-                        }
-                        </div> *@
+                      
                     </div><!-- End Default Tabs -->
 
 
@@ -510,38 +452,3 @@
     </div><!-- End Right side columns -->
 
 </section>
-@* @* <script>
-    document.getElementById('uploadButton').addEventListener('click', function () {
-        document.getElementById('imageFileInput').click();
-    });
-
-    document.getElementById('imageFileInput').addEventListener('change', function () {
-        var fileInput = document.getElementById('imageFileInput');
-        var selectedFile = fileInput.files[0];
-
-        if (selectedFile) {
-            var formData = new FormData();
-            formData.append('imageFile', selectedFile);
-
-            // Sử dụng Fetch API để gửi ảnh lên máy chủ bằng phương thức POST
-            fetch('/Admin/ProductImage/Create', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('Upload successful!');
-                        fileInput.value = null; // Đặt lại giá trị của input file để cho phép người dùng chọn lại cùng một tệp tin (nếu cần).
-
-                        // Làm mới trang sau khi tải lên thành công
-                        location.reload();
-                    } else {
-                        console.error('Upload failed!');
-                    }
-                })
-                .catch(error => {
-                    console.error('Upload failed: ' + error);
-                });
-        }
-    });
-</script> *@
