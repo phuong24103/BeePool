@@ -131,11 +131,11 @@ namespace Datn_Api.Services
 
                 for (int i = 6; i >= 0; i--)
                 {
-                    DateTime targetDate = DateTime.Now.AddDays(-i).Date;
+                    var targetDate = DateTime.Now.AddHours(-i).Hour;
 
                     double price = billDetails
-                        .Where(b => b.CreateDate.Date == targetDate)
-                        .Sum(b => b.Price);
+                        .Where(b => b.CreateDate.Hour == targetDate)
+                        .Sum(b => b.Price * b.Quantity);
 
                     revenue.Add(price);
                 }
@@ -156,10 +156,10 @@ namespace Datn_Api.Services
 
                 for (int i = 6; i >= 0; i--)
                 {
-                    DateTime targetDate = DateTime.Now.AddDays(-i).Date;
+                    var targetDate = DateTime.Now.AddHours(-i).Hour;
 
                     int quantity = billDetails
-                        .Where(b => b.CreateDate.Date == targetDate)
+                        .Where(b => b.CreateDate.Hour == targetDate)
                         .Sum(b => b.Quantity);
 
                     salesQuantities.Add(quantity);

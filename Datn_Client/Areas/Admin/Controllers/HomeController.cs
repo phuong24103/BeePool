@@ -39,9 +39,9 @@ namespace Datn_Client.Areas.Admin.Controllers
             };
             ViewBag.DateTimes = dateTimes;
 
-            ViewBag.ReportSales = await _httpClient.GetStringAsync("https://localhost:7033/api/BillDetail/GetReportSales");
+            //ViewBag.ReportSales = await _httpClient.GetStringAsync("https://localhost:7033/api/BillDetail/GetReportSales");
             ViewBag.ReportRevenue = await _httpClient.GetStringAsync("https://localhost:7033/api/BillDetail/GetReportRevenue");
-            ViewBag.ReportTotalCustomer = await _httpClient.GetStringAsync("https://localhost:7033/api/Customer/GetReportTotalCustomer");
+            //ViewBag.ReportTotalCustomer = await _httpClient.GetStringAsync("https://localhost:7033/api/Customer/GetReportTotalCustomer");
 
             if (datePost == "today")
             {

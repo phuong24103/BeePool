@@ -258,9 +258,9 @@ namespace Datn_Api.Services
 
                 for (int i = 6; i >= 0; i--)
                 {
-                    DateTime targetDate = DateTime.Now.AddDays(-i).Date;
+                    var targetDate = DateTime.Now.AddHours(-i).Hour;
 
-                    int count = customers.Count(c => c.CreateDate.Date == targetDate);
+                    int count = customers.Count(c => c.CreateDate.Hour == targetDate);
                     customerCounts.Add(count);
                 }
 

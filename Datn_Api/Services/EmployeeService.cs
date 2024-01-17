@@ -204,7 +204,6 @@ namespace Datn_Api.Services
                 n.Address = staff.Address;
                 n.PhoneNumber = staff.PhoneNumber;
                 n.Email = staff.Email;
-                n.Image = staff.Image;
                 n.Status = staff.Status;
                 n.Twitter = staff.Twitter;
                 n.Facebook = staff.Facebook;

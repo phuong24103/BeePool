@@ -85,8 +85,6 @@ namespace Datn_Client.Controllers
         }
         public async Task<IActionResult> GetProductdtByTip(Guid id,Guid tipid)
         {
-            Console.WriteLine(id);
-            Console.WriteLine(tipid);
             var tip =  await _httpClient.GetFromJsonAsync<ViewProductDetail>($"https://localhost:7033/api/ProductDetail/GetTip/{id}/{tipid}");
             return RedirectToAction("Index", new { id = tip.Id });
         }  

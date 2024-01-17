@@ -14,7 +14,7 @@ namespace Datn_Shared.ViewModels.ProductViewModels
         public string Name { get; set; }
         public double Price { get; set; }
         public string? Image { get; set; }
-        public int Sold { get; set; }
+        public int AvailableQuantity { get; set; }
         public double Revenue { get; set; }
     }
 }
