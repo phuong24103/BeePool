@@ -7,6 +7,7 @@ using Datn_Shared.ViewModels.PostViewModels;
 using Datn_Shared.ViewModels.ProductViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace Datn_Client.Areas.Admin.Controllers
 {
@@ -21,13 +22,18 @@ namespace Datn_Client.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index(string dateSales, string dateRevenue, string dateCustomer, string dateTopSelling, string dateRecentSale, string datePost)
         {
-            ViewBag.Sales = await _httpClient.GetFromJsonAsync<int>($"https://localhost:7033/api/BillDetail/GetSales/{dateSales}");
-            ViewBag.Revenue = await _httpClient.GetFromJsonAsync<double>($"https://localhost:7033/api/BillDetail/GetRevenue/{dateRevenue}");
-            ViewBag.TotalCustomer = await _httpClient.GetFromJsonAsync<int>($"https://localhost:7033/api/Customer/GetTotalCustomer/{dateCustomer}");
-            ViewBag.TopSelling = await _httpClient.GetFromJsonAsync<IEnumerable<ProductAdminView>>($"https://localhost:7033/api/Product/GetProductStatistics/{dateTopSelling}");
-            ViewBag.RecentSale = await _httpClient.GetFromJsonAsync<IEnumerable<BillAdminView>>($"https://localhost:7033/api/Bill/GetRecentSales/{dateRecentSale}");
+            var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (userName != null && role != null)
+            {
 
-            List<DateTime> dateTimes = new List<DateTime>()
+                ViewBag.Sales = await _httpClient.GetFromJsonAsync<int>($"https://localhost:7033/api/BillDetail/GetSales/{dateSales}");
+                ViewBag.Revenue = await _httpClient.GetFromJsonAsync<double>($"https://localhost:7033/api/BillDetail/GetRevenue/{dateRevenue}");
+                ViewBag.TotalCustomer = await _httpClient.GetFromJsonAsync<int>($"https://localhost:7033/api/Customer/GetTotalCustomer/{dateCustomer}");
+                ViewBag.TopSelling = await _httpClient.GetFromJsonAsync<IEnumerable<ProductAdminView>>($"https://localhost:7033/api/Product/GetProductStatistics/{dateTopSelling}");
+                ViewBag.RecentSale = await _httpClient.GetFromJsonAsync<IEnumerable<BillAdminView>>($"https://localhost:7033/api/Bill/GetRecentSales/{dateRecentSale}");
+
+                List<DateTime> dateTimes = new List<DateTime>()
             {
                 DateTime.Now.AddHours(1),
                 DateTime.Now.AddHours(2),
@@ -37,43 +43,45 @@ namespace Datn_Client.Areas.Admin.Controllers
                 DateTime.Now.AddHours(6),
                 DateTime.Now.AddHours(7),
             };
-            ViewBag.DateTimes = dateTimes;
+                ViewBag.DateTimes = dateTimes;
 
-            //ViewBag.ReportSales = await _httpClient.GetStringAsync("https://localhost:7033/api/BillDetail/GetReportSales");
-            ViewBag.ReportRevenue = await _httpClient.GetStringAsync("https://localhost:7033/api/BillDetail/GetReportRevenue");
-            //ViewBag.ReportTotalCustomer = await _httpClient.GetStringAsync("https://localhost:7033/api/Customer/GetReportTotalCustomer");
+                //ViewBag.ReportSales = await _httpClient.GetStringAsync("https://localhost:7033/api/BillDetail/GetReportSales");
+                ViewBag.ReportRevenue = await _httpClient.GetStringAsync("https://localhost:7033/api/BillDetail/GetReportRevenue");
+                //ViewBag.ReportTotalCustomer = await _httpClient.GetStringAsync("https://localhost:7033/api/Customer/GetReportTotalCustomer");
 
-            if (datePost == "today")
-            {
-                var posts = await _httpClient.GetFromJsonAsync<IEnumerable<PostView>>("https://localhost:7033/api/Post/GetAll");
-                IEnumerable<PostView> c = posts.Where(p => (p.CreatedDate.DayOfYear == DateTime.Now.DayOfYear) || (p.UpdatedDate.DayOfYear == DateTime.Now.DayOfYear));
-                ViewBag.Posts = c.Take(5).ToList();
-            }
-            else if (datePost == "thisMonth")
-            {
-                var posts = await _httpClient.GetFromJsonAsync<IEnumerable<PostView>>("https://localhost:7033/api/Post/GetAll");
-                IEnumerable<PostView> c = posts.Where(p => (p.CreatedDate.Month == DateTime.Now.Month && p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Month == DateTime.Now.Month && p.UpdatedDate.Year == DateTime.Now.Year));
-                ViewBag.Posts = c.Take(5).ToList();
-            }
-            else if (datePost == "thisYear")
-            {
-                var posts = await _httpClient.GetFromJsonAsync<IEnumerable<PostView>>("https://localhost:7033/api/Post/GetAll");
-                IEnumerable<PostView> c = posts.Where(p => (p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Year == DateTime.Now.Year));
-                ViewBag.Posts = c.Take(5).ToList();
-            }
-            else
-            {
-                var posts = await _httpClient.GetFromJsonAsync<IEnumerable<PostView>>("https://localhost:7033/api/Post/GetAll");
-                ViewBag.Posts = posts.Take(5).ToList();
-            }
+                if (datePost == "today")
+                {
+                    var posts = await _httpClient.GetFromJsonAsync<IEnumerable<PostView>>("https://localhost:7033/api/Post/GetAll");
+                    IEnumerable<PostView> c = posts.Where(p => (p.CreatedDate.DayOfYear == DateTime.Now.DayOfYear) || (p.UpdatedDate.DayOfYear == DateTime.Now.DayOfYear));
+                    ViewBag.Posts = c.Take(5).ToList();
+                }
+                else if (datePost == "thisMonth")
+                {
+                    var posts = await _httpClient.GetFromJsonAsync<IEnumerable<PostView>>("https://localhost:7033/api/Post/GetAll");
+                    IEnumerable<PostView> c = posts.Where(p => (p.CreatedDate.Month == DateTime.Now.Month && p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Month == DateTime.Now.Month && p.UpdatedDate.Year == DateTime.Now.Year));
+                    ViewBag.Posts = c.Take(5).ToList();
+                }
+                else if (datePost == "thisYear")
+                {
+                    var posts = await _httpClient.GetFromJsonAsync<IEnumerable<PostView>>("https://localhost:7033/api/Post/GetAll");
+                    IEnumerable<PostView> c = posts.Where(p => (p.CreatedDate.Year == DateTime.Now.Year) || (p.UpdatedDate.Year == DateTime.Now.Year));
+                    ViewBag.Posts = c.Take(5).ToList();
+                }
+                else
+                {
+                    var posts = await _httpClient.GetFromJsonAsync<IEnumerable<PostView>>("https://localhost:7033/api/Post/GetAll");
+                    ViewBag.Posts = posts.Take(5).ToList();
+                }
 
-            ViewBag.DateSales = dateSales;
-            ViewBag.DateRevenue = dateRevenue;
-            ViewBag.DateTotalCustomer = dateCustomer;
-            ViewBag.DateTopSelling = dateTopSelling;
-            ViewBag.DateRecentSale = dateRecentSale;
-            ViewBag.DatePost = datePost;
-            return View();
+                ViewBag.DateSales = dateSales;
+                ViewBag.DateRevenue = dateRevenue;
+                ViewBag.DateTotalCustomer = dateCustomer;
+                ViewBag.DateTopSelling = dateTopSelling;
+                ViewBag.DateRecentSale = dateRecentSale;
+                ViewBag.DatePost = datePost;
+                return View();
+            }
+            return RedirectToAction("Login", "Login", new { areas = "Admin" });
         }
 
         public async Task<IActionResult> FilterSales(string date)

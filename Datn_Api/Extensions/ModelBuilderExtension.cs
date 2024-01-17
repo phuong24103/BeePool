@@ -674,7 +674,7 @@ namespace Datn_Api.Extensions
                 {
                     Id = new Guid("cc37720a-7e89-463a-9510-2936e6761d8a"),
                     CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d06"),
-                    BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc221"),
+                    BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc222"),
                     Name = "Katana KAT19 Pool Cue",
                     Pin = "Mezz United Joint",
                     Wrap = "Black Irish Linen",
@@ -706,7 +706,7 @@ namespace Datn_Api.Extensions
                 {
                     Id = new Guid("cc37720a-7e89-463a-9510-4936e6761d8c"),
                     CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d03"),
-                    BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc223"),
+                    BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc224"),
                     Name = "Cuetec AVID Proof CT326NW Pool Cue",
                     Pin = "Uniloc Quick Release",
                     Wrap = "Blue and White Irish Linen",
@@ -722,7 +722,7 @@ namespace Datn_Api.Extensions
                 {
                     Id = new Guid("cc37720a-7e89-463a-9510-5936e6761d8a"),
                     CategoryID = new Guid("357267e8-d162-4844-a660-661f46933d04"),
-                    BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc223"),
+                    BrandID = new Guid("f205098b-3986-484a-ab3f-8dcab46fc224"),
                     Name = "Cuetec AVID Proof CT326LTC Pool Cue",
                     Pin = "Mezz United Joint",
                     Wrap = "Black Irish Linen",
