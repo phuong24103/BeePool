@@ -569,7 +569,7 @@ namespace Datn_Api.Services
                     double revenue = 0;
                     foreach (var item in billDetails)
                     {
-                        revenue += item.Price;
+                        revenue += item.Price * item.Quantity;
                     }
 
                     if (revenue > 0)
@@ -582,7 +582,7 @@ namespace Datn_Api.Services
                             Name = product.Name,
                             Price = price,
                             Image = image,
-                            Sold = product.Sold,
+                            AvailableQuantity = product.AvailableQuantity,
                             Revenue = revenue,
                         });
                     }
@@ -637,7 +637,7 @@ namespace Datn_Api.Services
                     {
                         foreach (var item in billDetails)
                         {
-                            revenue += item.Price;
+                            revenue += item.Price * item.Quantity;
                         }
                     }
                     if (revenue > 0)
@@ -649,7 +649,7 @@ namespace Datn_Api.Services
                             Name = product.Name,
                             Price = price,
                             Image = image,
-                            Sold = product.Sold,
+                            AvailableQuantity = product.AvailableQuantity,
                             Revenue = revenue,
                         });
                     }

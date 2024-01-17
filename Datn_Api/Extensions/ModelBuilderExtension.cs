@@ -98,6 +98,126 @@ namespace Datn_Api.Extensions
                 ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
                 PhoneNumber = "0386753434",
                 LockoutEnabled = true,
+            },
+            new Employee()
+            {
+                Id = new Guid("dbca0788-4fb0-4986-8928-4df593da3f6e"),
+                FullName = "Nguyễn Văn Phương",
+                Gender = 0,
+                DateOfBirth = new DateTime(2003, 10, 26),
+                Address = "Hoa Thanh Quế",
+                Image = "phuongmv.png",
+                Twitter = "https://twitter.com/#",
+                Facebook = "https://facebook.com/#",
+                Instagram = "https://instagram.com/#",
+                Linkedin = "https://linkedin.com/#",
+                CreateDate = DateTime.Now,
+                Status = 0,
+                UserName = "NguyenVanPhuong",
+                NormalizedUserName = "NGUYENVANPHUONG",
+                Email = "nguyenvanphuong@gmail.com",
+                NormalizedEmail = "NGUYENVANPHUONG@GMAIL.COM",
+                PasswordHash = "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==",
+                SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
+                ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
+                PhoneNumber = "0386789657",
+                LockoutEnabled = true,
+            },
+            new Employee()
+            {
+                Id = new Guid("dbca0788-4fb0-4986-8928-4df593da3f7e"),
+                FullName = "Hoàng Văn Phương",
+                Gender = 0,
+                DateOfBirth = new DateTime(2003, 10, 26),
+                Address = "Hoa Thanh Quế",
+                Image = "phuongmv.png",
+                Twitter = "https://twitter.com/#",
+                Facebook = "https://facebook.com/#",
+                Instagram = "https://instagram.com/#",
+                Linkedin = "https://linkedin.com/#",
+                CreateDate = DateTime.Now,
+                Status = 0,
+                UserName = "HoangVanPhuong",
+                NormalizedUserName = "HOANGVANPHUONG",
+                Email = "hoangvanphuong@gmail.com",
+                NormalizedEmail = "HOANGVANPHUONG@GMAIL.COM",
+                PasswordHash = "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==",
+                SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
+                ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
+                PhoneNumber = "0356989657",
+                LockoutEnabled = true,
+            },
+            new Employee()
+            {
+                Id = new Guid("dbca0788-4fb0-4986-8928-4df593da3f8e"),
+                FullName = "Đỗ Văn Phương",
+                Gender = 0,
+                DateOfBirth = new DateTime(2003, 10, 26),
+                Address = "Hoa Thanh Quế",
+                Image = "phuongmv.png",
+                Twitter = "https://twitter.com/#",
+                Facebook = "https://facebook.com/#",
+                Instagram = "https://instagram.com/#",
+                Linkedin = "https://linkedin.com/#",
+                CreateDate = DateTime.Now,
+                Status = 0,
+                UserName = "DoVanPhuong",
+                NormalizedUserName = "DOVANPHUONG",
+                Email = "dovanphuong@gmail.com",
+                NormalizedEmail = "DOVANPHUONG@GMAIL.COM",
+                PasswordHash = "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==",
+                SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
+                ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
+                PhoneNumber = "0356563657",
+                LockoutEnabled = true,
+            },
+            new Employee()
+            {
+                Id = new Guid("dbca0788-4fb0-4986-8928-4df593da3f9e"),
+                FullName = "Phạm Văn Phương",
+                Gender = 0,
+                DateOfBirth = new DateTime(2003, 10, 26),
+                Address = "Hoa Thanh Quế",
+                Image = "phuongmv.png",
+                Twitter = "https://twitter.com/#",
+                Facebook = "https://facebook.com/#",
+                Instagram = "https://instagram.com/#",
+                Linkedin = "https://linkedin.com/#",
+                CreateDate = DateTime.Now,
+                Status = 0,
+                UserName = "PhamVanPhuong",
+                NormalizedUserName = "PHAMVANPHUONG",
+                Email = "phamvanphuong@gmail.com",
+                NormalizedEmail = "PHAMVANPHUONG@GMAIL.COM",
+                PasswordHash = "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==",
+                SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
+                ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
+                PhoneNumber = "0356585357",
+                LockoutEnabled = true,
+            },
+            new Employee()
+            {
+                Id = new Guid("dbca0788-4fb0-4986-8928-4df593da3f0e"),
+                FullName = "Trần Văn Phương",
+                Gender = 0,
+                DateOfBirth = new DateTime(2003, 10, 26),
+                Address = "Hoa Thanh Quế",
+                Image = "phuongmv.png",
+                Twitter = "https://twitter.com/#",
+                Facebook = "https://facebook.com/#",
+                Instagram = "https://instagram.com/#",
+                Linkedin = "https://linkedin.com/#",
+                CreateDate = DateTime.Now,
+                Status = 0,
+                UserName = "TranVanPhuong",
+                NormalizedUserName = "TRANVANPHUONG",
+                Email = "tranvanphuong@gmail.com",
+                NormalizedEmail = "TRANVANPHUONG@GMAIL.COM",
+                PasswordHash = "AQAAAAEAACcQAAAAEDnw9/bad7RVII19Bn9Zetmhe4D2/RUELI0q65G6PgafUeSuvXTxEHTAC/hp5s372A==",
+                SecurityStamp = "4GK7QXS2ZVKDV4BO2GGNSUH5SIGOGCMZ",
+                ConcurrencyStamp = "e4bf7cff-6b1d-4814-801c-02470855c7e5",
+                PhoneNumber = "0352348357",
+                LockoutEnabled = true,
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(
@@ -109,6 +229,31 @@ namespace Datn_Api.Extensions
                 new IdentityUserRole<Guid>()
                 {
                     UserId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f5e"),
+                    RoleId = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873")
+                },
+                new IdentityUserRole<Guid>()
+                {
+                    UserId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f6e"),
+                    RoleId = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873")
+                },
+                new IdentityUserRole<Guid>()
+                {
+                    UserId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f7e"),
+                    RoleId = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873")
+                },
+                new IdentityUserRole<Guid>()
+                {
+                    UserId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f8e"),
+                    RoleId = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873")
+                },
+                new IdentityUserRole<Guid>()
+                {
+                    UserId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f9e"),
+                    RoleId = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873")
+                },
+                new IdentityUserRole<Guid>()
+                {
+                    UserId = new Guid("dbca0788-4fb0-4986-8928-4df593da3f0e"),
                     RoleId = new Guid("b108d866-eb13-46e3-b3d2-ecae4fbfe873")
                 });
 
@@ -502,8 +647,8 @@ namespace Datn_Api.Extensions
                     Pin = "Action Quick-Release (both joints)",
                     Wrap = "Black Irish linen",
                     Rings = "None",
-                    AvailableQuantity = 999,
-                    Sold = 1,
+                    AvailableQuantity = 1000,
+                    Sold = 0,
                     Likes = 0,
                     CreateDate = new DateTime(2023, 09, 11),
                     Status = 0,
@@ -838,8 +983,8 @@ namespace Datn_Api.Extensions
                     Pin = "3/8x10",
                     Wrap = "Black leather",
                     Rings = "Silver",
-                    AvailableQuantity = 1000,
-                    Sold = 0,
+                    AvailableQuantity = 999,
+                    Sold = 1,
                     Likes = 0,
                     CreateDate = new DateTime(2023, 09, 11),
                     Status = 0,
@@ -5466,7 +5611,7 @@ namespace Datn_Api.Extensions
                     WeightId = new Guid("cc37720a-7e89-463a-9510-1936e6761d75"),
                     Quantity = 1,
                     ImportPrice = 16000000,
-                    Price = 186000000,
+                    Price = 18600000,
                     CreateDate = new DateTime(2023, 09, 12),
                     Status = 0,
                     Description = "Description",
@@ -5787,7 +5932,7 @@ namespace Datn_Api.Extensions
                 BillStatusId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b15"),
                 PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf6"),
                 Price = 20700000,
-                CreateDate = new DateTime(2023, 09, 11),
+                CreateDate = DateTime.Now,
                 Address = "Hoa Thanh Quế",
                 CustomerName = "Quỳnh Anh",
                 CustomerPhone = "0364838484",
@@ -5798,7 +5943,7 @@ namespace Datn_Api.Extensions
                 CustomerId = new Guid("a77f8ae9-af3d-4288-bbf3-8f77776f9230"),
                 BillStatusId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf5"),
                 PaymentId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b16"),
-                Price = 13300000,
+                Price = 13400000,
                 CreateDate = new DateTime(2023, 09, 11),
                 Address = "Hoa Thanh Quế",
                 CustomerName = "Quỳnh Anh",
@@ -5834,7 +5979,7 @@ namespace Datn_Api.Extensions
             {
                 Id = new Guid("8f95d2d6-c3d3-4749-be89-97e220d62e79"),
                 BillId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492bf3"),
-                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e3"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e0"),
                 Quantity = 1,
                 Price = 20700000,
             },
@@ -5842,9 +5987,9 @@ namespace Datn_Api.Extensions
             {
                 Id = new Guid("8f95d2d6-c3d3-4749-be89-97e220d62e78"),
                 BillId = new Guid("a51f7c3c-a8e7-4c0a-aeea-b6fc70492b13"),
-                ProductDetailId = new Guid("2eaaba04-80ff-43a6-a746-a74a91c4c0e0"),
+                ProductDetailId = new Guid("3e43ceed-67c6-4e15-b4c0-308e56b736d2"),
                 Quantity = 1,
-                Price = 5000000,
+                Price = 6600000,
             },
             new BillDetail()
             {
@@ -5858,7 +6003,7 @@ namespace Datn_Api.Extensions
             {
                 Id = new Guid("8f95d2d6-c3d3-4749-be89-97e220d62e76"),
                 BillId = new Guid("78abde54-7bb8-4320-bff5-a8b77d3c2cf2"),
-                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c1e5"),
+                ProductDetailId = new Guid("1eaaba04-80ff-43a6-a746-a74a91c4c0e0"),
                 Quantity = 1,
                 Price = 20700000,
             });

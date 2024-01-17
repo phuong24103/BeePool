@@ -24,7 +24,6 @@ namespace Datn_Shared.ViewModels.EmployeeViewModels
         [Required(ErrorMessage = "Vui lòng nhập Email")]
         public string? Email { get; set; }
         public int Status { get; set; }
-        public string? Image { get; set; }
         public string? Twitter { get; set; }
         public string? Facebook { get; set; }
         public string? Instagram { get; set; }

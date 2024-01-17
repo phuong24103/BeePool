@@ -66,19 +66,8 @@ namespace Datn_Client.Areas.Admin.Controllers
         {
             return RedirectToAction("Index", new { date = date });
         }
-        public async Task<IActionResult> Update(Guid id, UpdateStaff staff, IFormFile imageFile)
+        public async Task<IActionResult> Update(Guid id, UpdateStaff staff)
         {
-            if (imageFile != null && imageFile.Length > 0)//Kiểm tra đường dẫn phù hợp
-            {
-                string image = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "employees", image);
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    await imageFile.CopyToAsync(stream);
-                }
-
-                staff.Image = image;
-            }
             var staffs = await _httpClient.GetFromJsonAsync<Employee>($"https://localhost:7033/api/Employee/GetById/{id}");
             await _httpClient.PutAsJsonAsync($"https://localhost:7033/api/Employee/UpdateStaff/{staffs.UserName}", staff);
             return RedirectToAction("Index");

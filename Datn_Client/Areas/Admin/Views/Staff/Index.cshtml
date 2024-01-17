@@ -157,7 +157,7 @@
                              aria-labelledby="home-tab">
                             @if (employee != null)
                             {
-                                <form asp-area="Admin" asp-controller="Staff" asp-action="Update" asp-route-id="@employee.First().Id" enctype="multipart/form-data">
+                                <form asp-area="Admin" asp-controller="Staff" asp-action="Update" asp-route-id="@employee.First().Id">
                                     <div class="mb-3 row">
                                         <label class="col-sm-4 col-form-label">Họ tên</label>
                                         <div class="col-sm-8">
@@ -257,12 +257,6 @@
                                                     <option value="2">Đã nghỉ</option>
                                                 }
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-4 col-form-label">Ảnh</label>
-                                        <div class="col-sm-8">
-                                            <input name="imageFile" type="file" class="form-control" accept="image/*" />
                                         </div>
                                     </div>
 

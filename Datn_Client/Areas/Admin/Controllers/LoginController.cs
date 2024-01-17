@@ -60,7 +60,7 @@ namespace Datn_Client.Areas.Admin.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("Index", "Home", new { area = "Admin" });
+            return RedirectToAction("Login", "Login", new { area = "Admin" });
         }
     }
 }
